@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form id="casenew" title="New notification">
+
+	<section id="sec1" title="@cases.patientdata" column-count="4">
+		<field value="patient.name" label="@Patient.name" colspan="3" required="true" />
+		<field value="patient.securityNumber" label="@Patient.securityNumber" maxchars="20" charCase="UPPER" />
+		<field value="patient.gender" label="@Gender" required="true" />
+		<field value="patient.birthDate" label="@Patient.birthDate" />
+		<field value="tbcase.age" label="@TbCase.age" />
+		<field value="patient.motherName" label="@Patient.motherName" width="350" maxchars="100" colspan="3" charCase="UPPER" />
+		<field value="tbcase.nationality" label="@Nationality" options="${globalLists.nationalities}"/>
+	</section>
+		
+	<section title="@cases.details.addressnotif" column-count="4">
+		<field value="tbcase.notifAddress.address" label="@Address" colspan="3" maxchars="200" width="300" />
+		<field value="tbcase.notifAddress.complement" label="@Address.complement" colspan="3" maxSize="200" width="300" />
+		<field value="tbcase.notifAddress.adminUnit" label="@AdministrativeUnit" colspan="3" required="true"/>
+		<field value="tbcase.notifAddress.zipCode" label="@Address.zipCode" colspan="3"  />
+			
+		<label colspan="3">@TbCase.notifAddressChanged</label>
+		<field value="tbcase.notifAddressChanged" handler="yesno" colspan="3"/>
+		<section title="@cases.details.addresscurr" colspan="4" column-count="2" visible="${tbcase.notifAddressChanged and not empty tbcase.currentAddress}">
+			<field value="tbcase.currentAddress.address" label="@Address" colspan="3" maxchars="200" width="300" />
+			<field value="tbcase.currentAddress.complement" label="@Address.complement" colspan="3" maxSize="200" width="300" />
+			<field value="tbcase.currentAddress.adminUnit" label="@AdministrativeUnit" colspan="3" required="true"/>
+			<field value="tbcase.currentAddress.zipCode" label="@Address.zipCode" colspan="3"  />
+		</section>
+		<field value="tbcase.phoneNumber" label="@TbCase.phoneNumber" />
+		<field value="tbcase.mobileNumber" label="@TbCase.mobileNumber" />
+	</section>
+		
+	<section title="@cases.generaldata" column-count="2">
+		<field value="tbcase.notificationUnit" label="@TbCase.notificationUnit" required="true" />
+		<field value="tbcase.registrationDate" label="@TbCase.registrationDate" required="true" />
+		<field value="tbcase.diagnosisType" label="@DiagnosisType" required="true" colspan="3" readonly="true"/>
+		<region visible="${tbcase.diagnosisType == 'CONFIRMED'}">
+			<field value="tbcase.diagnosisDate" label="@TbCase.diagnosisDate" colspan="3" required="true" />
+			<field value="tbcase.patientType" label="@PatientType" colspan="3" required="true" />
+			<field value="tbcase.infectionSite" label="@InfectionSite" colspan="3" />
+			<field value="tbcase.pulmonaryType" label="@TbField.PULMONARY_TYPES"
+		    	options="${fieldsOptions.pulmonaryTypes}"
+			    colspan="3" visible="${tbcase.infectionSite == 'PULMONARY' or tbcase.infectionSite == 'BOTH'}">
+			</field>
+			<field value="tbcase.extrapulmonaryType" label="@TbField.EXTRAPULMONARY_TYPES"
+			    options="${fieldsOptions.extrapulmonaryTypes}" 
+		    	visible="${tbcase.infectionSite == 'EXTRAPULMONARY' or tbcase.infectionSite == 'BOTH'}">
+			</field>
+			<field value="tbcase.extrapulmonaryType2" label="@TbField.EXTRAPULMONARY_TYPES"
+		    	options="${fieldsOptions.extrapulmonaryTypes}"
+		    	visible="${tbcase.infectionSite == 'EXTRAPULMONARY' or tbcase.infectionSite == 'BOTH'}">
+			</field>
+		</region>
+	</section>
+
+	<section title="@cases.details.medexam" visible="${empty tbcase.id}" column-count="2">
+		<field value="medicalexamination.date" label="@cases.details.date" required="true" />
+		<field value="medicalexamination.responsible" label="@MedicalExamination.responsible" required="true" maxchars="100" width="300" />
+		<field value="medicalexamination.height" label="@MedicalExamination.height" />
+		<field value="medicalexamination.weight" label="@MedicalExamination.weight" />
+		<field value="medicalexamination.comments" label="@global.comments" handler="text" />
+	</section>
+</form>

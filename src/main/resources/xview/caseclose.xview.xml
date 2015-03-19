@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<section column-count="2">
+		<field value="controller.date" label="@cases.details.date" required="true" />
+		<field value="controller.state" label="@CaseState" required="true" handler="radio" options="${controller.outcomes}">
+			<validation rule="controller.state.ordinal > 2"	message="@javax.faces.component.UISelectMany.INVALID" />
+		</field>
+		<field value="controller.comment" label="@global.comments" 
+			maxChars="100" width="200" visible="${controller.state == 'OTHER'}"/>
+	</section>
+</form>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form column-count="2">
+    <section column-count="2" title="@PrescribedMedicine">
+    	<field value="prescribedMedicine.medicine" label="@Medicine" required="true" 
+    	    handler="combo" options="${medicineServices.medicines}" width="450" />
+		<field value="prescribedMedicine.period.iniDate" label="@TbCase.iniTreatmentDate" required="true" />
+		<field value="prescribedMedicine.period.endDate" label="@TbCase.endTreatmentDate" required="true" />
+	    <field value="prescribedMedicine.doseUnit" label="@PrescribedMedicine.doseUnit" required="true" handler="combo">
+			<param name="min" value="1" />
+			<param name="max" value="6" />
+	    </field>
+	    <field value="prescribedMedicine.frequency" label="@PrescribedMedicine.frequency" required="true" handler="combo">
+			<param name="min" value="1" />
+			<param name="max" value="7" />
+	    </field>
+	    <field value="prescribedMedicine.source" label="@Source" required="true" options="${sourceServices.sources}" 
+	            optionLabel="abbrevName" handler="combo"/>
+	    <field value="prescribedMedicine.comments" label="@global.comments" handler="text"/>
+	</section>
+</form>

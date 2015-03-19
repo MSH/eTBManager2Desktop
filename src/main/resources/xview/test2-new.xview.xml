@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form column-count="2" id="form">
+    <field value="form.data.email" label="e-mail" width="200" handler="string" />
+    <field value="form.data.goToRome" label="Go to rome?" handler="yesno" />
+    <field value="form.data.numberOfPeople" label="Number of people" handler="int" />
+    <field value="form.data.notificationUnit" label="Notification unit" handler="tbunit" />
+    <field value="form.data.adminunit" label="Administrative Unit" handler="adminunit" />
+    <field value="form.data.laboratory" label="Laboratory" handler="laboratory" />
+    
+    <field value="form.email" label="e-mail (not custom)" width="200" />
+    
+    <table values="${form.items}" var="it" row-selection="MULTIPLE" readonly="false" checkbox-column-field="it.selected" colspan="2">
+        <column title="City">
+            <field value="it.name" readonly="true"/>
+        </column>
+        <column title="Population">
+            <field value="it.population" readonly="true" />
+        </column>
+        <column title="Population">
+            <field value="it.population" visible="${it.selected}"/>
+        </column>
+    </table>
+</form>

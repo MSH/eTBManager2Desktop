@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd 
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd 
+       http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
+
+    <context:annotation-config/>
+
+    <context:component-scan base-package="org.msh.etbm.*" />
+
+
+    <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>   
+       
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+    <bean class="org.msh.springframework.persistence.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
+        <property name="persistenceUnitName" value="etbmPersistenceUnit"/>
+    </bean>
+
+ 	<bean class="org.springframework.orm.jpa.support.SharedEntityManagerBean" id="entityManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+
+	<bean class="org.msh.springframework.seam.Expressions" id="expressions">
+	</bean>
+	
+	<bean id="formManager" factory-bean="formManagerFactory" factory-method="createFormManager" />
+
+    <bean id="defaultWorkspace" class="org.msh.etbm.entities.Workspace" scope="prototype" factory-bean="userSession" factory-method="getWorkspaceRef" >
+    </bean> 
+
+    <bean id="userWorkspace" class="org.msh.etbm.entities.Workspace" scope="prototype" factory-bean="userSession" factory-method="getUserWorkspaceRef" >
+    </bean> 
+
+    <bean id="authenticator" class="org.msh.etbm.services.login.Authenticator" scope="prototype" autowire="byType" >
+    </bean>
+
+    <bean id="userSession" class="org.msh.etbm.services.login.UserSession" scope="singleton" autowire="byType">
+    </bean>
+
+    <bean id="caseFilters" class="org.msh.etbm.services.cases.CaseFilters" scope="singleton" autowire="byType">
+    </bean>
+    
+</beans>

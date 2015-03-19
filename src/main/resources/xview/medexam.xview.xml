@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <h3>@cases.details.medexam</h3>
+		<section column-count="2">
+			<field value="medicalexamination.date" label="@cases.details.date" required="true" />
+			<field value="medicalexamination.appointmentType" label="@MedAppointmentType" required="true" />
+			<field value="medicalexamination.weight" label="@MedicalExamination.weight" required="true"/>
+			<field value="medicalexamination.height" label="@MedicalExamination.height" />
+			<field value="medicalexamination.usingPrescMedicines" label="@MedicalExamination.usingPrescMedicines" required="true"/>
+			<field value="medicalexamination.reasonNotUsingPrescMedicines" label="@MedicalExamination.reasonNotUsingPrescMedicines" 
+				width="300" maxchars="100" visible="${medicalexamination.usingPrescMedicines == 'NO'}"/>
+			<field value="medicalexamination.responsible" label="@MedicalExamination.responsible" required="true" maxchars="100" width="300" />
+			<field value="medicalexamination.comments" label="@global.comments" handler="text" />
+		</section>
+</form>

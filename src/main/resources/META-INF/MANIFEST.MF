@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Implementation-Title: eTB Manager Desktop
+Implementation-Version: 0.8.0 (Development)
+Built-By: Ricardo
+Created-By: Apache Maven 3.0.4
+SplashScreen-Image: resources/images/logo.png
+Implementation-Vendor: Management Sciences for Health, Inc
+Implementation-Vendor-Id: org.msh.etbm
+Build-Jdk: 1.6.0_32
+Implementation-Build: 127
+Main-Class: org.msh.etbm.desktop.app.MainWindow
+Archiver-Version: Plexus Archiver

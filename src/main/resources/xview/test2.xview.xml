@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form column-count="1">
+
+	<section title="This is a very simple form" column-count="2">
+		<field value="variable.name" readonly="true" width="200"/>
+		<field value="variable.name" label="Name:" width="30"/>
+		<field value="variable.phone" label="Phone:"/>
+		<field value="variable.login" label="Login:" charCase="UPPER"/>
+		<field value="variable.email" label="e-mail:" width="30"/>
+		<field value="variable.url" label="URL:" width="30"/>
+		<field value="variable.checked" label="Checked:" handler="yesno" />
+		<field value="variable.comments" label="Comments:" handler="text"/>
+		<field value="variable.number" label="Number:" handler="combo">
+			<param name="min" value="1" />
+			<param name="max" value="5" />
+		</field>
+		<field value="variable.gender" label="Gender:" handler="radio"/>
+<!-- 		<field value="variable.date" label="Birth date:" /> -->
+	</section>
+</form>

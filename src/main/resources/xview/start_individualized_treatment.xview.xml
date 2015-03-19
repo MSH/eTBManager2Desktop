@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form action="startTreatmentController.start">
+	<section column-count="2">
+		<field value="startTreatmentController.treatmentUnit" label="@FilterHealthUnit.TREATMENT_UNIT" required="true" />
+		<field value="startTreatmentController.iniTreatmentDate" label="@cases.details.date" required="true" />
+	</section>
+	<section column-count="2" title="@RegimenPhase.INTENSIVE" >
+	    <button id="btnIntensive" label="@cases.regimens.addmed" icon="ICON_PLUS" action="${form.selectMedicinesIntensivePhase()}"/>
+	    <table values="${startTreatmentController.medicinesIntensivePhase}" var="it" colspan="2" force-new-row="true">
+	        <column title="@Medicine">
+	        	<field value="it.medicine" readonly="true"/>
+	        </column>
+	        <column title="@global.period">
+		        <field value="it.months" label="@global.period" required="true" handler="combo">
+					<param name="min" value="1" />
+					<param name="max" value="12" />
+	        	</field>
+	        </column>
+	        <column title="@PrescribedMedicine.doseUnit">
+		        <field value="it.doseUnit" required="true" handler="combo">
+					<param name="min" value="1" />
+					<param name="max" value="6" />
+	        	</field>
+	        </column>
+	        <column title="@PrescribedMedicine.frequency">
+		        <field value="it.frequency" required="true" handler="combo">
+					<param name="min" value="1" />
+					<param name="max" value="7" />
+	        	</field>
+	        </column>
+	        <column title="@Source">
+		        <field value="it.source" label="@Source" required="true" options="${sourceServices.sources}" 
+		            optionLabel="abbrevName" handler="combo"/>
+	        </column>
+	    </table>
+	</section>
+	<section column-count="2" title="@RegimenPhase.CONTINUOUS">
+	    <button id="btnContinuous" label="@cases.regimens.addmed" icon="ICON_PLUS" action="${form.selectMedicinesContinuousPhase()}"/>
+	    <table values="${startTreatmentController.medicinesContinuousPhase}" var="it" colspan="2"  force-new-row="true">
+	        <column title="@Medicine">
+	        	<field value="it.medicine" readonly="true"/>
+	        </column>
+	        <column title="@global.period">
+		        <field value="it.months" label="@global.period" required="true" handler="combo">
+					<param name="min" value="1" />
+					<param name="max" value="12" />
+	        	</field>
+	        </column>
+	        <column title="@PrescribedMedicine.doseUnit">
+		        <field value="it.doseUnit" required="true" handler="combo">
+					<param name="min" value="1" />
+					<param name="max" value="6" />
+	        	</field>
+	        </column>
+	        <column title="@PrescribedMedicine.frequency">
+		        <field value="it.frequency" required="true" handler="combo">
+					<param name="min" value="1" />
+					<param name="max" value="7" />
+	        	</field>
+	        </column>
+	        <column title="@Source">
+		        <field value="it.source" label="@Source" required="true" options="${sourceServices.sources}" 
+		            optionLabel="abbrevName" handler="combo"/>
+	        </column>
+	    </table>
+	</section>
+</form>

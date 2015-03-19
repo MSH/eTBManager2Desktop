@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form >
+    <section column-count="4">
+    		<field value="examhiv.date" label="@cases.exams.dateRelease" colspan="3" required="true"/>
+			<field value="examhiv.result" label="@cases.details.result" colspan="3" required="true" options="${globalLists.HIVResults}"/>
+
+			<field value="examhiv.ARTstarted" label="@cases.examhiv.art" visible="${examhiv.result == 'POSITIVE'}"
+				handler="yesno" force-new-row="true" />
+
+			<field value="examhiv.startedARTdate" label="@global.date"
+				required="examhiv.ARTstarted" 
+				visible="${examhiv.ARTstarted and examhiv.result == 'POSITIVE'}" />
+
+			<field id="cpt" value="examhiv.CPTstarted" label="@cases.examhiv.cpt" visible="${examhiv.result == 'POSITIVE'}" 
+				handler="yesno" force-new-row="true" />
+
+			<field value="examhiv.startedCPTdate" label="@global.date"
+				required="examhiv.CPTstarted" 
+				visible="${examhiv.CPTstarted and examhiv.result == 'POSITIVE'}" />
+
+			<field value="examhiv.laboratory" label="@Laboratory" width="300" maxchars="100" force-new-row="true" colspan="3"/>
+			<field value="examhiv.comments" label="@global.comments" handler="text" colspan="3"/>
+	</section>
+</form>

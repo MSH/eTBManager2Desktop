@@ -1,0 +1,2510 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+	<system>
+		<systemURL>http://www.etbmanager.org</systemURL>
+		<pageRootURL>https://www.etbmanager.org/etbmanager</pageRootURL>
+		<countryCode>NG</countryCode>
+		<adminMail>USrivastava@msh.org,rmemoria@msh.org,etbmanager.errors@gmail.com,msantos.msh@gmail.com</adminMail>
+	</system>
+
+
+	<workspace id="1">
+		<name1>MSH Demo</name1>
+		<name2>М.Ш.Х. Демонстрация</name2>
+		<description>MSH Demonstration space - No real information</description>
+		<defaultLocale>en</defaultLocale>
+		<defaultTimeZone>America/New_York</defaultTimeZone>
+		<weekFreq1>2</weekFreq1>
+		<weekFreq2>18</weekFreq2>
+		<weekFreq3>42</weekFreq3>
+		<weekFreq4>30</weekFreq4>
+		<weekFreq5>62</weekFreq5>
+		<weekFreq6>126</weekFreq6>
+		<weekFreq7>127</weekFreq7>
+		<patientNameComposition>FIRST_MIDDLE_LASTNAME</patientNameComposition>
+		<caseValidationTB>REQUIRED_BEFORE_TREATMENT_START</caseValidationTB>
+		<caseValidationDRTB>REQUIRED_BEFORE_TREATMENT_START</caseValidationDRTB>
+		<caseValidationNTM>ENABLED</caseValidationNTM>
+		<ulaActive>1</ulaActive>
+		<suspectCaseNumber>VALIDATION_NUMBER</suspectCaseNumber>
+		<confirmedCaseNumber>VALIDATION_NUMBER</confirmedCaseNumber>
+		<patientAddrRequiredLevels>2</patientAddrRequiredLevels>
+		<url>www.etbmanager.org</url>
+		<sendSystemMessages>0</sendSystemMessages>
+		<monthsToAlertExpiredMedicines>1</monthsToAlertExpiredMedicines>
+		<minStockOnHand>1</minStockOnHand>
+		<maxStockOnHand>8</maxStockOnHand>
+		<treatMonitoringInput>SIMPLE</treatMonitoringInput>
+	</workspace>
+
+	
+	<userprofile id="940352">
+		<permissions>
+			<permission role_id="49" id="942412" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="100" id="942413" canChange="1" canExecute="1" grant="1" classif="TB" />
+			<permission role_id="101" id="942414" canChange="0" canExecute="1" grant="1" classif="TB" />
+			<permission role_id="102" id="942415" canChange="0" canExecute="1" grant="1" classif="TB" />
+			<permission role_id="103" id="942416" canChange="0" canExecute="1" grant="1" classif="TB" />
+			<permission role_id="104" id="942417" canChange="0" canExecute="1" grant="1" classif="TB" />
+			<permission role_id="105" id="942418" canChange="1" canExecute="1" grant="1" classif="TB" />
+			<permission role_id="106" id="942419" canChange="1" canExecute="1" grant="1" classif="TB" />
+			<permission role_id="140" id="942420" canChange="1" canExecute="1" grant="1" classif="DRTB" />
+			<permission role_id="101" id="942421" canChange="0" canExecute="1" grant="1" classif="DRTB" />
+			<permission role_id="102" id="942422" canChange="0" canExecute="1" grant="1" classif="DRTB" />
+			<permission role_id="103" id="942423" canChange="0" canExecute="1" grant="1" classif="DRTB" />
+			<permission role_id="104" id="942424" canChange="0" canExecute="1" grant="1" classif="DRTB" />
+			<permission role_id="105" id="942425" canChange="1" canExecute="1" grant="1" classif="DRTB" />
+			<permission role_id="106" id="942426" canChange="1" canExecute="1" grant="1" classif="DRTB" />
+			<permission role_id="9" id="942427" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="11" id="942428" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="37" id="942429" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="18" id="942430" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="13" id="942431" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="14" id="942432" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="15" id="942433" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="25" id="942434" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="16" id="942436" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="27" id="942439" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="46" id="942440" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="28" id="942441" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="10" id="942443" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="30" id="942444" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="31" id="942445" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="32" id="942446" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="34" id="942447" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="35" id="942448" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="59" id="942449" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="60" id="942450" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="1" id="942451" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="19" id="942452" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="3" id="942453" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="5" id="942454" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="6" id="942455" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="7" id="942456" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="2" id="942457" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="40" id="942458" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="41" id="942459" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="39" id="942460" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="50" id="942461" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="52" id="942463" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="53" id="942464" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="58" id="942466" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="65" id="942467" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="61" id="942468" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="62" id="942469" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="63" id="942470" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="54" id="942834" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="64" id="942835" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="117" id="942857" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="118" id="943578" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="119" id="944851" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="120" id="944852" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="130" id="947021" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="131" id="947022" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="132" id="947023" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="133" id="947024" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="134" id="947025" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="135" id="947026" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="136" id="947027" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="140" id="947687" canChange="1" canExecute="1" grant="1" classif="NTM" />
+			<permission role_id="138" id="947860" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="100" id="949092" canChange="0" canExecute="1" grant="1" classif="DRTB" />
+			<permission role_id="100" id="949157" canChange="0" canExecute="1" grant="1" classif="NTM" />
+			<permission role_id="140" id="949346" canChange="1" canExecute="1" grant="1" classif="TB" />
+			<permission role_id="147" id="949410" canChange="0" canExecute="1" grant="1" classif="TB" />
+			<permission role_id="147" id="949503" canChange="0" canExecute="1" grant="1" classif="DRTB" />
+			<permission role_id="147" id="949568" canChange="0" canExecute="1" grant="1" classif="NTM" />
+			<permission role_id="141" id="949675" canChange="1" canExecute="1" grant="1" classif="TB" />
+			<permission role_id="141" id="949676" canChange="1" canExecute="1" grant="1" classif="DRTB" />
+			<permission role_id="142" id="949920" canChange="1" canExecute="1" grant="1" classif="TB" />
+			<permission role_id="142" id="950013" canChange="0" canExecute="1" grant="1" classif="DRTB" />
+			<permission role_id="142" id="950078" canChange="0" canExecute="1" grant="1" classif="NTM" />
+			<permission role_id="146" id="950175" canChange="1" canExecute="1" grant="1" classif="TB" />
+			<permission role_id="146" id="950268" canChange="1" canExecute="1" grant="1" classif="DRTB" />
+			<permission role_id="146" id="950333" canChange="1" canExecute="1" grant="1" classif="NTM" />
+			<permission role_id="143" id="950440" canChange="0" canExecute="1" grant="1" classif="TB" />
+			<permission role_id="143" id="950441" canChange="0" canExecute="1" grant="1" classif="DRTB" />
+			<permission role_id="106" id="950678" canChange="1" canExecute="1" grant="1" classif="NTM" />
+			<permission role_id="141" id="950741" canChange="1" canExecute="1" grant="1" classif="NTM" />
+			<permission role_id="105" id="950804" canChange="1" canExecute="1" grant="1" classif="NTM" />
+			<permission role_id="101" id="950867" canChange="0" canExecute="1" grant="1" classif="NTM" />
+			<permission role_id="143" id="950930" canChange="0" canExecute="1" grant="1" classif="NTM" />
+			<permission role_id="102" id="950993" canChange="0" canExecute="1" grant="1" classif="NTM" />
+			<permission role_id="103" id="951056" canChange="0" canExecute="1" grant="1" classif="NTM" />
+			<permission role_id="104" id="951119" canChange="0" canExecute="1" grant="1" classif="NTM" />
+			<permission role_id="144" id="951197" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="145" id="951324" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="150" id="951451" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="151" id="951578" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="152" id="952112" canChange="0" canExecute="0" grant="1" classif="TB" />
+			<permission role_id="152" id="952113" canChange="0" canExecute="0" grant="1" classif="DRTB" />
+			<permission role_id="152" id="952114" canChange="0" canExecute="0" grant="1" classif="NTM" />
+			<permission role_id="153" id="952115" canChange="0" canExecute="0" grant="1" classif="TB" />
+			<permission role_id="153" id="952116" canChange="0" canExecute="0" grant="1" classif="DRTB" />
+			<permission role_id="153" id="952117" canChange="0" canExecute="0" grant="1" classif="NTM" />
+			<permission role_id="154" id="952118" canChange="0" canExecute="0" grant="1" classif="TB" />
+			<permission role_id="154" id="952119" canChange="0" canExecute="0" grant="1" classif="DRTB" />
+			<permission role_id="154" id="952120" canChange="0" canExecute="0" grant="1" classif="NTM" />
+			<permission role_id="156" id="952121" canChange="0" canExecute="0" grant="1" />
+			<permission role_id="155" id="952122" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="159" id="952609" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="160" id="952672" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="159" id="952751" canChange="0" canExecute="1" grant="1" classif="TB" />
+			<permission role_id="159" id="952752" canChange="0" canExecute="1" grant="1" classif="DRTB" />
+			<permission role_id="159" id="952753" canChange="0" canExecute="1" grant="1" classif="NTM" />
+			<permission role_id="160" id="952754" canChange="0" canExecute="1" grant="1" classif="TB" />
+			<permission role_id="160" id="952755" canChange="0" canExecute="1" grant="1" classif="DRTB" />
+			<permission role_id="160" id="952756" canChange="0" canExecute="1" grant="1" classif="NTM" />
+			<permission role_id="157" id="952757" canChange="1" canExecute="0" grant="1" />
+			<permission role_id="158" id="952758" canChange="1" canExecute="0" grant="1" />
+			<permission role_id="165" id="953409" canChange="0" canExecute="1" grant="1" classif="TB" />
+			<permission role_id="165" id="953410" canChange="0" canExecute="1" grant="1" classif="DRTB" />
+			<permission role_id="165" id="953411" canChange="0" canExecute="1" grant="1" classif="NTM" />
+			<permission role_id="166" id="953412" canChange="0" canExecute="0" grant="1" />
+			<permission role_id="162" id="953413" canChange="1" canExecute="1" grant="1" />
+			<permission role_id="167" id="953541" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="168" id="954001" canChange="0" canExecute="0" grant="1" />
+			<permission role_id="170" id="954664" canChange="0" canExecute="0" grant="1" />
+			<permission role_id="171" id="954665" canChange="0" canExecute="0" grant="1" />
+			<permission role_id="172" id="954666" canChange="0" canExecute="0" grant="1" />
+			<permission role_id="181" id="955056" canChange="0" canExecute="0" grant="1" classif="TB" />
+			<permission role_id="181" id="955057" canChange="0" canExecute="0" grant="1" classif="DRTB" />
+			<permission role_id="181" id="955058" canChange="0" canExecute="0" grant="1" classif="NTM" />
+			<permission role_id="182" id="955059" canChange="0" canExecute="0" grant="1" classif="TB" />
+			<permission role_id="182" id="955060" canChange="0" canExecute="0" grant="1" classif="DRTB" />
+			<permission role_id="182" id="955061" canChange="0" canExecute="0" grant="1" classif="NTM" />
+			<permission role_id="183" id="955062" canChange="0" canExecute="0" grant="1" classif="TB" />
+			<permission role_id="183" id="955063" canChange="0" canExecute="0" grant="1" classif="DRTB" />
+			<permission role_id="183" id="955064" canChange="0" canExecute="0" grant="1" classif="NTM" />
+			<permission role_id="180" id="955065" canChange="0" canExecute="0" grant="1" />
+			<permission role_id="184" id="955694" canChange="0" canExecute="0" grant="1" classif="TB" />
+			<permission role_id="184" id="955695" canChange="0" canExecute="0" grant="1" classif="DRTB" />
+			<permission role_id="184" id="955696" canChange="0" canExecute="0" grant="1" classif="NTM" />
+			<permission role_id="190" id="955697" canChange="0" canExecute="0" grant="1" classif="TB" />
+			<permission role_id="190" id="955698" canChange="0" canExecute="0" grant="1" classif="DRTB" />
+			<permission role_id="190" id="955699" canChange="0" canExecute="0" grant="1" classif="NTM" />
+			<permission role_id="200" id="959592" canChange="1" canExecute="1" grant="1" classif="TB" />
+			<permission role_id="200" id="959655" canChange="1" canExecute="1" grant="1" classif="DRTB" />
+			<permission role_id="200" id="959718" canChange="1" canExecute="1" grant="1" classif="NTM" />
+			<permission role_id="199" id="959966" canChange="0" canExecute="0" grant="1" classif="TB" />
+			<permission role_id="199" id="959967" canChange="0" canExecute="0" grant="1" classif="DRTB" />
+			<permission role_id="199" id="959968" canChange="0" canExecute="0" grant="1" classif="NTM" />
+			<permission role_id="195" id="959969" canChange="1" canExecute="0" grant="1" classif="TB" />
+			<permission role_id="195" id="959970" canChange="1" canExecute="0" grant="1" classif="DRTB" />
+			<permission role_id="195" id="959971" canChange="1" canExecute="0" grant="1" classif="NTM" />
+			<permission role_id="201" id="960367" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="205" id="960569" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="206" id="960632" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="207" id="960695" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="208" id="960758" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="209" id="960884" canChange="0" canExecute="1" grant="1" />
+			<permission role_id="203" id="961186" canChange="0" canExecute="0" grant="1" />
+			<permission role_id="204" id="961187" canChange="0" canExecute="0" grant="1" />
+			<permission role_id="202" id="961188" canChange="0" canExecute="0" grant="1" />
+			<permission role_id="211" id="962016" canChange="0" canExecute="1" grant="1" />
+		</permissions>
+		<name>Administrator</name>
+	</userprofile>
+
+	
+	
+	<countrystructure id="9418" level="2" name1="District" name2="Районные" />
+	<countrystructure id="941766" level="1" name1="Province" name2="Region" />
+	<countrystructure id="941901" level="3" name1="City" />
+
+	
+	
+	<adminunit id="1" name1="Province A" name2="Region A" struct="941766" code="001" legacyId="1" unitsCount="3" />
+	<adminunit id="10005" name1="District B" name2="City B" struct="9418" code="001001" parent_id="1" unitsCount="4" />
+	<adminunit id="10276" name1="District A" name2="City A" struct="9418" code="001001" parent_id="1" unitsCount="2" />
+	<adminunit id="38814" name1="District C" name2="City C" struct="9418" code="001001" parent_id="1" unitsCount="2" />
+	<adminunit id="970579" name1="City B" struct="941901" code="001001001" parent_id="10005" unitsCount="0" />
+	<adminunit id="970578" name1="City A" struct="941901" code="001001001" parent_id="10276" unitsCount="0" />
+	<adminunit id="970581" name1="City D" struct="941901" code="001001001" parent_id="38814" unitsCount="0" />
+	<adminunit id="970580" name1="City C" struct="941901" code="001001002" parent_id="10005" unitsCount="0" />
+	<adminunit id="950654" name1="Province B" name2="Region B" struct="941766" code="01E" legacyId="2" unitsCount="2" />
+	<adminunit id="950656" name1="District D" name2="City D" struct="9418" code="01E002" parent_id="950654" unitsCount="1" />
+	<adminunit id="950666" name1="District E" name2="City E" struct="9418" code="01E003" parent_id="950654" unitsCount="1" />
+	<adminunit id="950660" name1="Province C" name2="Region C" struct="941766" code="01F" legacyId="" unitsCount="0" />
+	
+	
+	
+	<healthsys id="902">
+		<name1>Ministry of Health</name1>
+		<name2>Ministry of Health</name2>
+	</healthsys>
+	<healthsys id="957">
+		<name1>Ministry of Justice</name1>
+		<name2>Ministry of Justice</name2>
+	</healthsys>
+	<healthsys id="959">
+		<name1>Other</name1>
+		<name2>Other</name2>
+	</healthsys>
+	<source id="62">
+		<name1>Green Light Committee</name1>
+		<name2/>
+		<abbrevname1>GLC</abbrevname1>
+		<abbrevname2/>
+	</source>
+	<source id="20305">
+		<name1>Ministry of Health</name1>
+		<abbrevname1>MoH</abbrevname1>
+	</source>
+	<source id="28796">
+		<name1>Global Drug Facility</name1>
+		<abbrevname1>GDF</abbrevname1>
+	</source>
+	<source id="940610">
+		<name1>Donors</name1>
+		<name2>Donors</name2>
+		<abbrevname1>DON</abbrevname1>
+		<abbrevname2>DON</abbrevname2>
+	</source>
+	
+	
+	
+	
+	<tbunit id="1" legacyId="">
+		<name1>NATIONAL WAREHOUSE</name1>
+		<name2/>
+		<adminunit>10276</adminunit>
+		<healthSystem>902</healthSystem>
+		<address>26 Virginia Street</address>
+		<addressCont/>
+		<zipCode/>
+		<phoneNumber/>
+		<batchControl>1</batchControl>
+		<treatmentHealthUnit>0</treatmentHealthUnit>
+		<medicineStorage>1</medicineStorage>
+		<changeEstimatedQuantity>1</changeEstimatedQuantity>
+		<receivingFromSource>1</receivingFromSource>
+		<medicineSupplier>1</medicineSupplier>
+		<tbHealthUnit>1</tbHealthUnit>
+		<mdrHealthUnit>1</mdrHealthUnit>
+		<notifHealthUnit>0</notifHealthUnit>
+		<patientDispensing>0</patientDispensing>
+		<ntmHealthUnit>1</ntmHealthUnit>
+		<active>1</active>
+		<orderOverMinimum>1</orderOverMinimum>
+		<medManStartDate>2011-06-09T00:00:00-0300</medManStartDate>
+	</tbunit>
+	<tbunit id="28857" legacyId="">
+		<name1>HEALTH CENTER 1</name1>
+		<name2>ТБ КЛИНИКЕ 1</name2>
+		<adminunit>10276</adminunit>
+		<healthSystem>902</healthSystem>
+		<address>75 Arlington Street</address>
+		<addressCont/>
+		<zipCode/>
+		<phoneNumber/>
+		<batchControl>1</batchControl>
+		<treatmentHealthUnit>1</treatmentHealthUnit>
+		<medicineStorage>1</medicineStorage>
+		<changeEstimatedQuantity>1</changeEstimatedQuantity>
+		<receivingFromSource>0</receivingFromSource>
+		<medicineSupplier>0</medicineSupplier>
+		<dispensingFrequency>MONTHLY</dispensingFrequency>
+		<tbHealthUnit>1</tbHealthUnit>
+		<mdrHealthUnit>1</mdrHealthUnit>
+		<notifHealthUnit>1</notifHealthUnit>
+		<patientDispensing>0</patientDispensing>
+		<ntmHealthUnit>1</ntmHealthUnit>
+		<active>1</active>
+		<orderOverMinimum>1</orderOverMinimum>
+		<numDaysOrder>120</numDaysOrder>
+		<medManStartDate>2010-10-01T00:00:00-0300</medManStartDate>
+	</tbunit>
+	<tbunit id="941825" legacyId="">
+		<name1>HEALTH CENTER 2</name1>
+		<name2>TB FREE CLINIC</name2>
+		<adminunit>10005</adminunit>
+		<healthSystem>902</healthSystem>
+		<address/>
+		<addressCont/>
+		<zipCode/>
+		<phoneNumber/>
+		<batchControl>1</batchControl>
+		<treatmentHealthUnit>1</treatmentHealthUnit>
+		<medicineStorage>1</medicineStorage>
+		<changeEstimatedQuantity>1</changeEstimatedQuantity>
+		<receivingFromSource>0</receivingFromSource>
+		<medicineSupplier>1</medicineSupplier>
+		<tbHealthUnit>1</tbHealthUnit>
+		<mdrHealthUnit>1</mdrHealthUnit>
+		<notifHealthUnit>1</notifHealthUnit>
+		<patientDispensing>1</patientDispensing>
+		<ntmHealthUnit>1</ntmHealthUnit>
+		<active>1</active>
+		<orderOverMinimum>1</orderOverMinimum>
+		<numDaysOrder>120</numDaysOrder>
+		<medManStartDate>2012-07-04T00:00:00-0300</medManStartDate>
+	</tbunit>
+	<tbunit id="941834" legacyId="">
+		<name1>HEALTH CENTER 3</name1>
+		<name2>MAYBERRY SANITORIUM</name2>
+		<adminunit>38814</adminunit>
+		<healthSystem>902</healthSystem>
+		<address>46 Washington Street</address>
+		<addressCont/>
+		<zipCode/>
+		<phoneNumber/>
+		<batchControl>1</batchControl>
+		<treatmentHealthUnit>1</treatmentHealthUnit>
+		<medicineStorage>1</medicineStorage>
+		<changeEstimatedQuantity>1</changeEstimatedQuantity>
+		<receivingFromSource>0</receivingFromSource>
+		<medicineSupplier>0</medicineSupplier>
+		<tbHealthUnit>1</tbHealthUnit>
+		<mdrHealthUnit>1</mdrHealthUnit>
+		<notifHealthUnit>1</notifHealthUnit>
+		<patientDispensing>1</patientDispensing>
+		<ntmHealthUnit>1</ntmHealthUnit>
+		<active>1</active>
+		<orderOverMinimum>1</orderOverMinimum>
+		<numDaysOrder>120</numDaysOrder>
+		<medManStartDate>2012-08-31T00:00:00-0300</medManStartDate>
+	</tbunit>
+	<tbunit id="942014" legacyId="">
+		<name1>HEALTH CENTER 4</name1>
+		<adminunit>950656</adminunit>
+		<healthSystem>902</healthSystem>
+		<address>79 Lincoln Avenue</address>
+		<addressCont/>
+		<zipCode/>
+		<phoneNumber/>
+		<batchControl>1</batchControl>
+		<treatmentHealthUnit>1</treatmentHealthUnit>
+		<medicineStorage>1</medicineStorage>
+		<changeEstimatedQuantity>1</changeEstimatedQuantity>
+		<receivingFromSource>0</receivingFromSource>
+		<medicineSupplier>0</medicineSupplier>
+		<tbHealthUnit>1</tbHealthUnit>
+		<mdrHealthUnit>1</mdrHealthUnit>
+		<notifHealthUnit>1</notifHealthUnit>
+		<patientDispensing>1</patientDispensing>
+		<ntmHealthUnit>1</ntmHealthUnit>
+		<active>1</active>
+		<orderOverMinimum>1</orderOverMinimum>
+		<numDaysOrder>120</numDaysOrder>
+		<medManStartDate>2013-12-31T00:00:00-0200</medManStartDate>
+	</tbunit>
+	<tbunit id="942198" legacyId="">
+		<name1>NTP PROGRAM</name1>
+		<adminunit>970578</adminunit>
+		<healthSystem>902</healthSystem>
+		<address/>
+		<addressCont/>
+		<zipCode/>
+		<phoneNumber/>
+		<batchControl>1</batchControl>
+		<treatmentHealthUnit>0</treatmentHealthUnit>
+		<medicineStorage>0</medicineStorage>
+		<changeEstimatedQuantity>0</changeEstimatedQuantity>
+		<receivingFromSource>0</receivingFromSource>
+		<medicineSupplier>0</medicineSupplier>
+		<tbHealthUnit>0</tbHealthUnit>
+		<mdrHealthUnit>0</mdrHealthUnit>
+		<notifHealthUnit>0</notifHealthUnit>
+		<patientDispensing>0</patientDispensing>
+		<ntmHealthUnit>0</ntmHealthUnit>
+		<active>1</active>
+		<orderOverMinimum>0</orderOverMinimum>
+		<medManStartDate>2014-01-01T00:00:00-0200</medManStartDate>
+	</tbunit>
+	<tbunit id="942202" legacyId="">
+		<name1>PLATEAU</name1>
+		<adminunit>950660</adminunit>
+		<healthSystem>902</healthSystem>
+		<address/>
+		<addressCont/>
+		<zipCode/>
+		<phoneNumber/>
+		<batchControl>1</batchControl>
+		<treatmentHealthUnit>1</treatmentHealthUnit>
+		<medicineStorage>1</medicineStorage>
+		<changeEstimatedQuantity>1</changeEstimatedQuantity>
+		<receivingFromSource>0</receivingFromSource>
+		<medicineSupplier>0</medicineSupplier>
+		<tbHealthUnit>0</tbHealthUnit>
+		<mdrHealthUnit>1</mdrHealthUnit>
+		<notifHealthUnit>1</notifHealthUnit>
+		<patientDispensing>0</patientDispensing>
+		<ntmHealthUnit>0</ntmHealthUnit>
+		<active>1</active>
+		<orderOverMinimum>0</orderOverMinimum>
+		<numDaysOrder>120</numDaysOrder>
+		<medManStartDate>2013-12-31T00:00:00-0200</medManStartDate>
+	</tbunit>
+	<tbunit id="942203" legacyId="">
+		<name1>KADUNA</name1>
+		<adminunit>950660</adminunit>
+		<healthSystem>902</healthSystem>
+		<address/>
+		<addressCont/>
+		<zipCode/>
+		<phoneNumber/>
+		<batchControl>1</batchControl>
+		<treatmentHealthUnit>1</treatmentHealthUnit>
+		<medicineStorage>1</medicineStorage>
+		<changeEstimatedQuantity>1</changeEstimatedQuantity>
+		<receivingFromSource>0</receivingFromSource>
+		<medicineSupplier>0</medicineSupplier>
+		<tbHealthUnit>0</tbHealthUnit>
+		<mdrHealthUnit>1</mdrHealthUnit>
+		<notifHealthUnit>1</notifHealthUnit>
+		<patientDispensing>0</patientDispensing>
+		<ntmHealthUnit>0</ntmHealthUnit>
+		<active>1</active>
+		<orderOverMinimum>0</orderOverMinimum>
+		<numDaysOrder>120</numDaysOrder>
+		<medManStartDate>2013-12-31T00:00:00-0200</medManStartDate>
+	</tbunit>
+	<tbunit id="942204" legacyId="">
+		<name1>RIVERS</name1>
+		<adminunit>950660</adminunit>
+		<healthSystem>902</healthSystem>
+		<address/>
+		<addressCont/>
+		<zipCode/>
+		<phoneNumber/>
+		<batchControl>1</batchControl>
+		<treatmentHealthUnit>1</treatmentHealthUnit>
+		<medicineStorage>1</medicineStorage>
+		<changeEstimatedQuantity>1</changeEstimatedQuantity>
+		<receivingFromSource>0</receivingFromSource>
+		<medicineSupplier>0</medicineSupplier>
+		<tbHealthUnit>0</tbHealthUnit>
+		<mdrHealthUnit>1</mdrHealthUnit>
+		<notifHealthUnit>1</notifHealthUnit>
+		<patientDispensing>0</patientDispensing>
+		<ntmHealthUnit>0</ntmHealthUnit>
+		<active>1</active>
+		<orderOverMinimum>0</orderOverMinimum>
+		<numDaysOrder>120</numDaysOrder>
+		<medManStartDate>2013-12-31T00:00:00-0200</medManStartDate>
+	</tbunit>
+	<tbunit id="942205" legacyId="">
+		<name1>OGUN</name1>
+		<adminunit>950660</adminunit>
+		<healthSystem>902</healthSystem>
+		<address/>
+		<addressCont/>
+		<zipCode/>
+		<phoneNumber/>
+		<batchControl>1</batchControl>
+		<treatmentHealthUnit>1</treatmentHealthUnit>
+		<medicineStorage>1</medicineStorage>
+		<changeEstimatedQuantity>1</changeEstimatedQuantity>
+		<receivingFromSource>0</receivingFromSource>
+		<medicineSupplier>0</medicineSupplier>
+		<tbHealthUnit>0</tbHealthUnit>
+		<mdrHealthUnit>1</mdrHealthUnit>
+		<notifHealthUnit>1</notifHealthUnit>
+		<patientDispensing>0</patientDispensing>
+		<ntmHealthUnit>0</ntmHealthUnit>
+		<active>1</active>
+		<orderOverMinimum>0</orderOverMinimum>
+		<numDaysOrder>120</numDaysOrder>
+		<medManStartDate>2013-12-31T00:00:00-0200</medManStartDate>
+	</tbunit>
+	<tbunit id="942206" legacyId="">
+		<name1>LAGOS</name1>
+		<adminunit>950660</adminunit>
+		<healthSystem>902</healthSystem>
+		<address/>
+		<addressCont/>
+		<zipCode/>
+		<phoneNumber/>
+		<batchControl>1</batchControl>
+		<treatmentHealthUnit>1</treatmentHealthUnit>
+		<medicineStorage>1</medicineStorage>
+		<changeEstimatedQuantity>1</changeEstimatedQuantity>
+		<receivingFromSource>0</receivingFromSource>
+		<medicineSupplier>0</medicineSupplier>
+		<tbHealthUnit>0</tbHealthUnit>
+		<mdrHealthUnit>1</mdrHealthUnit>
+		<notifHealthUnit>1</notifHealthUnit>
+		<patientDispensing>0</patientDispensing>
+		<ntmHealthUnit>0</ntmHealthUnit>
+		<active>1</active>
+		<orderOverMinimum>0</orderOverMinimum>
+		<numDaysOrder>120</numDaysOrder>
+		<medManStartDate>2013-12-31T00:00:00-0200</medManStartDate>
+	</tbunit>
+	<tbunit id="942207" legacyId="">
+		<name1>CRS</name1>
+		<adminunit>950660</adminunit>
+		<healthSystem>902</healthSystem>
+		<address/>
+		<addressCont/>
+		<zipCode/>
+		<phoneNumber/>
+		<batchControl>1</batchControl>
+		<treatmentHealthUnit>1</treatmentHealthUnit>
+		<medicineStorage>1</medicineStorage>
+		<changeEstimatedQuantity>1</changeEstimatedQuantity>
+		<receivingFromSource>0</receivingFromSource>
+		<medicineSupplier>0</medicineSupplier>
+		<tbHealthUnit>0</tbHealthUnit>
+		<mdrHealthUnit>1</mdrHealthUnit>
+		<notifHealthUnit>1</notifHealthUnit>
+		<patientDispensing>0</patientDispensing>
+		<ntmHealthUnit>0</ntmHealthUnit>
+		<active>1</active>
+		<orderOverMinimum>0</orderOverMinimum>
+		<numDaysOrder>120</numDaysOrder>
+		<medManStartDate>2013-12-31T00:00:00-0200</medManStartDate>
+	</tbunit>
+	<tbunit id="942208" legacyId="">
+		<name1>UCH</name1>
+		<adminunit>950660</adminunit>
+		<healthSystem>902</healthSystem>
+		<address/>
+		<addressCont/>
+		<zipCode/>
+		<phoneNumber/>
+		<batchControl>1</batchControl>
+		<treatmentHealthUnit>1</treatmentHealthUnit>
+		<medicineStorage>1</medicineStorage>
+		<changeEstimatedQuantity>1</changeEstimatedQuantity>
+		<receivingFromSource>0</receivingFromSource>
+		<medicineSupplier>0</medicineSupplier>
+		<tbHealthUnit>0</tbHealthUnit>
+		<mdrHealthUnit>1</mdrHealthUnit>
+		<notifHealthUnit>1</notifHealthUnit>
+		<patientDispensing>0</patientDispensing>
+		<ntmHealthUnit>0</ntmHealthUnit>
+		<active>1</active>
+		<orderOverMinimum>0</orderOverMinimum>
+		<numDaysOrder>120</numDaysOrder>
+		<medManStartDate>2013-01-31T00:00:00-0200</medManStartDate>
+	</tbunit>
+	<tbunit id="942209" legacyId="">
+		<name1>JERICHO</name1>
+		<adminunit>950660</adminunit>
+		<healthSystem>902</healthSystem>
+		<address/>
+		<addressCont/>
+		<zipCode/>
+		<phoneNumber/>
+		<batchControl>1</batchControl>
+		<treatmentHealthUnit>1</treatmentHealthUnit>
+		<medicineStorage>1</medicineStorage>
+		<changeEstimatedQuantity>1</changeEstimatedQuantity>
+		<receivingFromSource>0</receivingFromSource>
+		<medicineSupplier>0</medicineSupplier>
+		<tbHealthUnit>0</tbHealthUnit>
+		<mdrHealthUnit>1</mdrHealthUnit>
+		<notifHealthUnit>1</notifHealthUnit>
+		<patientDispensing>0</patientDispensing>
+		<ntmHealthUnit>0</ntmHealthUnit>
+		<active>1</active>
+		<orderOverMinimum>0</orderOverMinimum>
+		<numDaysOrder>120</numDaysOrder>
+		<medManStartDate>2014-01-01T00:00:00-0200</medManStartDate>
+	</tbunit>
+	<tbunit id="942210" legacyId="">
+		<name1>UUTH</name1>
+		<adminunit>950660</adminunit>
+		<healthSystem>902</healthSystem>
+		<address/>
+		<addressCont/>
+		<zipCode/>
+		<phoneNumber/>
+		<batchControl>1</batchControl>
+		<treatmentHealthUnit>1</treatmentHealthUnit>
+		<medicineStorage>1</medicineStorage>
+		<changeEstimatedQuantity>1</changeEstimatedQuantity>
+		<receivingFromSource>0</receivingFromSource>
+		<medicineSupplier>0</medicineSupplier>
+		<tbHealthUnit>0</tbHealthUnit>
+		<mdrHealthUnit>1</mdrHealthUnit>
+		<notifHealthUnit>1</notifHealthUnit>
+		<patientDispensing>0</patientDispensing>
+		<ntmHealthUnit>0</ntmHealthUnit>
+		<active>1</active>
+		<orderOverMinimum>0</orderOverMinimum>
+		<numDaysOrder>120</numDaysOrder>
+		<medManStartDate>2013-12-31T00:00:00-0200</medManStartDate>
+	</tbunit>
+	<tbunit id="942211" legacyId="">
+		<name1>KANO</name1>
+		<adminunit>950660</adminunit>
+		<healthSystem>902</healthSystem>
+		<address/>
+		<addressCont/>
+		<zipCode/>
+		<phoneNumber/>
+		<batchControl>1</batchControl>
+		<treatmentHealthUnit>1</treatmentHealthUnit>
+		<medicineStorage>1</medicineStorage>
+		<changeEstimatedQuantity>1</changeEstimatedQuantity>
+		<receivingFromSource>0</receivingFromSource>
+		<medicineSupplier>0</medicineSupplier>
+		<tbHealthUnit>0</tbHealthUnit>
+		<mdrHealthUnit>1</mdrHealthUnit>
+		<notifHealthUnit>1</notifHealthUnit>
+		<patientDispensing>0</patientDispensing>
+		<ntmHealthUnit>0</ntmHealthUnit>
+		<active>1</active>
+		<orderOverMinimum>0</orderOverMinimum>
+		<numDaysOrder>120</numDaysOrder>
+		<medManStartDate>2014-01-28T00:00:00-0200</medManStartDate>
+	</tbunit>
+	
+	
+	
+	
+	<unit-link>
+		<unitId>1</unitId>
+		<authorizedId>942198</authorizedId>
+	</unit-link>
+	<unit-link>
+		<unitId>28857</unitId>
+		<firstLineSupplierId>1</firstLineSupplierId>
+		<secondLineSupplierId>1</secondLineSupplierId>
+	</unit-link>
+	<unit-link>
+		<unitId>941825</unitId>
+		<authorizedId>1</authorizedId>
+		<firstLineSupplierId>1</firstLineSupplierId>
+		<secondLineSupplierId>1</secondLineSupplierId>
+	</unit-link>
+	<unit-link>
+		<unitId>941834</unitId>
+		<firstLineSupplierId>1</firstLineSupplierId>
+		<secondLineSupplierId>1</secondLineSupplierId>
+	</unit-link>
+	<unit-link>
+		<unitId>942014</unitId>
+		<firstLineSupplierId>1</firstLineSupplierId>
+		<secondLineSupplierId>1</secondLineSupplierId>
+	</unit-link>
+	<unit-link>
+		<unitId>942015</unitId>
+		<authorizedId>942198</authorizedId>
+		<firstLineSupplierId>1</firstLineSupplierId>
+		<secondLineSupplierId>1</secondLineSupplierId>
+	</unit-link>
+	<unit-link>
+		<unitId>942092</unitId>
+		<firstLineSupplierId>1</firstLineSupplierId>
+		<secondLineSupplierId>1</secondLineSupplierId>
+	</unit-link>
+	<unit-link>
+		<unitId>942198</unitId>
+	</unit-link>
+	<unit-link>
+		<unitId>942202</unitId>
+		<firstLineSupplierId>1</firstLineSupplierId>
+		<secondLineSupplierId>1</secondLineSupplierId>
+	</unit-link>
+	<unit-link>
+		<unitId>942203</unitId>
+		<firstLineSupplierId>1</firstLineSupplierId>
+		<secondLineSupplierId>1</secondLineSupplierId>
+	</unit-link>
+	<unit-link>
+		<unitId>942204</unitId>
+		<firstLineSupplierId>1</firstLineSupplierId>
+		<secondLineSupplierId>1</secondLineSupplierId>
+	</unit-link>
+	<unit-link>
+		<unitId>942205</unitId>
+		<firstLineSupplierId>1</firstLineSupplierId>
+		<secondLineSupplierId>1</secondLineSupplierId>
+	</unit-link>
+	<unit-link>
+		<unitId>942206</unitId>
+		<firstLineSupplierId>1</firstLineSupplierId>
+		<secondLineSupplierId>1</secondLineSupplierId>
+	</unit-link>
+	<unit-link>
+		<unitId>942207</unitId>
+		<firstLineSupplierId>1</firstLineSupplierId>
+		<secondLineSupplierId>1</secondLineSupplierId>
+	</unit-link>
+	<unit-link>
+		<unitId>942208</unitId>
+		<firstLineSupplierId>1</firstLineSupplierId>
+		<secondLineSupplierId>1</secondLineSupplierId>
+	</unit-link>
+	<unit-link>
+		<unitId>942209</unitId>
+		<firstLineSupplierId>1</firstLineSupplierId>
+		<secondLineSupplierId>1</secondLineSupplierId>
+	</unit-link>
+	<unit-link>
+		<unitId>942210</unitId>
+		<firstLineSupplierId>1</firstLineSupplierId>
+		<secondLineSupplierId>1</secondLineSupplierId>
+	</unit-link>
+	<unit-link>
+		<unitId>942211</unitId>
+		<firstLineSupplierId>1</firstLineSupplierId>
+		<secondLineSupplierId>1</secondLineSupplierId>
+	</unit-link>
+	<substance id="24156">
+		<name1>ethambutol</name1>
+		<name2>ethambutol</name2>
+		<abbrevname1>E</abbrevname1>
+		<abbrevname2>E</abbrevname2>
+		<line>FIRST_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>2</prevTreatmentOrder>
+	</substance>
+	<substance id="24157">
+		<name1>rifampicin</name1>
+		<name2>rifampicin</name2>
+		<abbrevname1>R</abbrevname1>
+		<abbrevname2>R</abbrevname2>
+		<line>FIRST_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>1</prevTreatmentOrder>
+	</substance>
+	<substance id="24158">
+		<name1>isoniazid</name1>
+		<name2>isoniazid</name2>
+		<abbrevname1>H</abbrevname1>
+		<abbrevname2>H</abbrevname2>
+		<line>FIRST_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>1</prevTreatmentOrder>
+	</substance>
+	<substance id="24185">
+		<name1>pyrazinamide</name1>
+		<name2>pyrazinamide</name2>
+		<abbrevname1>Z</abbrevname1>
+		<abbrevname2>Z</abbrevname2>
+		<line>FIRST_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>3</prevTreatmentOrder>
+	</substance>
+	<substance id="24186">
+		<name1>streptomycin</name1>
+		<name2>streptomycin</name2>
+		<abbrevname1>S</abbrevname1>
+		<abbrevname2>S</abbrevname2>
+		<line>FIRST_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>5</prevTreatmentOrder>
+	</substance>
+	<substance id="28788">
+		<name1>amikacin</name1>
+		<name2>amikacin</name2>
+		<abbrevname1>Am</abbrevname1>
+		<abbrevname2>Am</abbrevname2>
+		<line>SECOND_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>7</prevTreatmentOrder>
+	</substance>
+	<substance id="28789">
+		<name1>kanamycin</name1>
+		<name2>kanamycin</name2>
+		<abbrevname1>Km</abbrevname1>
+		<abbrevname2>Km</abbrevname2>
+		<line>SECOND_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>6</prevTreatmentOrder>
+	</substance>
+	<substance id="28790">
+		<name1>capreomycin</name1>
+		<name2>capreomycin</name2>
+		<abbrevname1>Cm</abbrevname1>
+		<abbrevname2>cm</abbrevname2>
+		<line>SECOND_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>8</prevTreatmentOrder>
+	</substance>
+	<substance id="28792">
+		<name1>ofloxacin</name1>
+		<name2>ofloxacin</name2>
+		<abbrevname1>Ofx</abbrevname1>
+		<abbrevname2>Ofx</abbrevname2>
+		<line>SECOND_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>11</prevTreatmentOrder>
+	</substance>
+	<substance id="28793">
+		<name1>ethionamide</name1>
+		<name2>ethionamide</name2>
+		<abbrevname1>Eto</abbrevname1>
+		<abbrevname2>Eto</abbrevname2>
+		<line>SECOND_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>14</prevTreatmentOrder>
+	</substance>
+	<substance id="28794">
+		<name1>cycloserine</name1>
+		<name2>cycloserine</name2>
+		<abbrevname1>Cs</abbrevname1>
+		<abbrevname2>Cs</abbrevname2>
+		<line>SECOND_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>16</prevTreatmentOrder>
+	</substance>
+	<substance id="28795">
+		<name1>p-aminosalicylic acid</name1>
+		<name2>p-aminosalicylic acid</name2>
+		<abbrevname1>PAS</abbrevname1>
+		<abbrevname2>PAS</abbrevname2>
+		<line>SECOND_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>18</prevTreatmentOrder>
+	</substance>
+	<substance id="940663">
+		<name1>rifabutin</name1>
+		<name2>rifabutin</name2>
+		<abbrevname1>Rfb</abbrevname1>
+		<abbrevname2>Rfb</abbrevname2>
+		<line>FIRST_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>5</prevTreatmentOrder>
+	</substance>
+	<substance id="940664">
+		<name1>levofloxacin</name1>
+		<name2>levofloxacin</name2>
+		<abbrevname1>Lfx</abbrevname1>
+		<abbrevname2>Lfx</abbrevname2>
+		<line>SECOND_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>9</prevTreatmentOrder>
+	</substance>
+	<substance id="940665">
+		<name1>moxifloxacin</name1>
+		<name2>moxifloxacin</name2>
+		<abbrevname1>Mfx</abbrevname1>
+		<abbrevname2>Mfx</abbrevname2>
+		<line>SECOND_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>10</prevTreatmentOrder>
+	</substance>
+	<substance id="940666">
+		<name1>ciprofloxacin</name1>
+		<name2>ciprofloxacin</name2>
+		<abbrevname1>Cfx</abbrevname1>
+		<abbrevname2>cfx</abbrevname2>
+		<line>SECOND_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>12</prevTreatmentOrder>
+	</substance>
+	<substance id="940667">
+		<name1>gatifloxacin</name1>
+		<name2>gatifloxacin</name2>
+		<abbrevname1>Gati</abbrevname1>
+		<abbrevname2>Gati</abbrevname2>
+		<line>SECOND_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>13</prevTreatmentOrder>
+	</substance>
+	<substance id="940668">
+		<name1>protionamide</name1>
+		<name2>protionamide</name2>
+		<abbrevname1>Pto</abbrevname1>
+		<abbrevname2>Pto</abbrevname2>
+		<line>SECOND_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>15</prevTreatmentOrder>
+	</substance>
+	<substance id="940669">
+		<name1>terizidone</name1>
+		<name2>terizidone</name2>
+		<abbrevname1>Trd</abbrevname1>
+		<abbrevname2>Trd</abbrevname2>
+		<line>SECOND_LINE</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>1</dstResultForm>
+		<prevTreatmentOrder>17</prevTreatmentOrder>
+	</substance>
+	<substance id="941004">
+		<name1>aspirin</name1>
+		<name2>aspirin</name2>
+		<abbrevname1>ASA</abbrevname1>
+		<abbrevname2>ASA</abbrevname2>
+		<line>OTHER</line>
+		<prevTreatmentForm>1</prevTreatmentForm>
+		<dstResultForm>0</dstResultForm>
+		<prevTreatmentOrder>20</prevTreatmentOrder>
+	</substance>
+	<substance id="941005">
+		<name1>ibuprofen</name1>
+		<name2>ibuprofen</name2>
+		<abbrevname1>IBU</abbrevname1>
+		<abbrevname2>IBU</abbrevname2>
+		<line>OTHER</line>
+		<prevTreatmentForm>0</prevTreatmentForm>
+		<dstResultForm>0</dstResultForm>
+		<prevTreatmentOrder>22</prevTreatmentOrder>
+	</substance>
+	<medicine id="22482" legacyId="">
+		<name1>Ethambutol</name1>
+		<name2>Ethambutol</name2>
+		<abbrevname>E</abbrevname>
+		<components>
+			<component id="1447" substance="24156" strength="400" />
+		</components>
+		<strength>400</strength>
+		<strengthUnit>mg</strengthUnit>
+		<dosageForm>Tablet</dosageForm>
+		<category>ORAL</category>
+		<line>FIRST_LINE</line>
+	</medicine>
+	<medicine id="22484">
+		<name1>Rifampicin</name1>
+		<name2>Rifampicin</name2>
+		<abbrevname>R</abbrevname>
+		<components>
+			<component id="1448" substance="24157" strength="300" />
+		</components>
+		<strength>300</strength>
+		<strengthUnit>mg</strengthUnit>
+		<dosageForm>Tablet or capsule</dosageForm>
+		<category>ORAL</category>
+		<line>FIRST_LINE</line>
+	</medicine>
+	<medicine id="22485">
+		<name1>Isoniazid</name1>
+		<name2>Isoniazid</name2>
+		<abbrevname>H</abbrevname>
+		<components>
+			<component id="1449" substance="24158" strength="100" />
+		</components>
+		<strength>100</strength>
+		<strengthUnit>mg</strengthUnit>
+		<dosageForm>Tablet</dosageForm>
+		<category>ORAL</category>
+		<line>FIRST_LINE</line>
+	</medicine>
+	<medicine id="22486">
+		<name1>Pyrazinamide</name1>
+		<name2>Pyrazinamide</name2>
+		<abbrevname>Z</abbrevname>
+		<components>
+			<component id="1450" substance="24185" strength="500" />
+		</components>
+		<strength>500</strength>
+		<strengthUnit>mg</strengthUnit>
+		<dosageForm>Tablet</dosageForm>
+		<category>ORAL</category>
+		<line>FIRST_LINE</line>
+	</medicine>
+	<medicine id="22487">
+		<name1>Streptomycin</name1>
+		<name2>Streptomycin</name2>
+		<abbrevname>S</abbrevname>
+		<components>
+			<component id="1451" substance="24186" strength="1000" />
+		</components>
+		<strength>1000</strength>
+		<strengthUnit>mg</strengthUnit>
+		<dosageForm>Powder/Vial</dosageForm>
+		<category>INJECTABLE</category>
+		<line>FIRST_LINE</line>
+	</medicine>
+	<medicine id="22488">
+		<name1>Isoniazid + Rifampicin</name1>
+		<name2>Isoniazid + Rifampicin</name2>
+		<abbrevname>HR</abbrevname>
+		<components>
+			<component id="1686" substance="24158" strength="75" />
+			<component id="1687" substance="24157" strength="150" />
+		</components>
+		<strength>75/150</strength>
+		<strengthUnit>mg</strengthUnit>
+		<dosageForm>Tablet</dosageForm>
+		<category>ORAL</category>
+		<line>FIRST_LINE</line>
+	</medicine>
+	<medicine id="28779" legacyId="AMI1000V">
+		<name1>Amikacin</name1>
+		<name2>Амикацин</name2>
+		<abbrevname>Am</abbrevname>
+		<components>
+			<component id="1464" substance="28788" strength="1000" />
+		</components>
+		<strength>1000</strength>
+		<strengthUnit>mg</strengthUnit>
+		<dosageForm>Powder/Vial</dosageForm>
+		<category>INJECTABLE</category>
+		<line>SECOND_LINE</line>
+	</medicine>
+	<medicine id="28780" legacyId="">
+		<name1>Kanamycin</name1>
+		<name2>kanamycin</name2>
+		<abbrevname>Km</abbrevname>
+		<components>
+			<component id="1465" substance="28789" strength="1000" />
+		</components>
+		<strength>1000</strength>
+		<strengthUnit>mg</strengthUnit>
+		<dosageForm>Powder/Vial</dosageForm>
+		<category>INJECTABLE</category>
+		<line>SECOND_LINE</line>
+	</medicine>
+	<medicine id="28781">
+		<name1>Capreomycin</name1>
+		<name2>Капреомицину</name2>
+		<abbrevname>Cm</abbrevname>
+		<components>
+			<component id="1466" substance="28790" strength="1000" />
+		</components>
+		<strength>1000</strength>
+		<strengthUnit>mg</strengthUnit>
+		<dosageForm>Powder/Vial</dosageForm>
+		<category>INJECTABLE</category>
+		<line>SECOND_LINE</line>
+	</medicine>
+	<medicine id="28782">
+		<name1>Ethionamide</name1>
+		<name2>Ethionamide</name2>
+		<abbrevname>Eto</abbrevname>
+		<components>
+			<component id="1467" substance="28793" strength="250" />
+		</components>
+		<strength>250</strength>
+		<strengthUnit>mg</strengthUnit>
+		<dosageForm>Tablets</dosageForm>
+		<category>ORAL</category>
+		<line>SECOND_LINE</line>
+	</medicine>
+	<medicine id="28783">
+		<name1>Ofloxacin</name1>
+		<name2>Ofloxacin</name2>
+		<abbrevname>Ofx</abbrevname>
+		<components>
+			<component id="1468" substance="28792" strength="400" />
+		</components>
+		<strength>400</strength>
+		<strengthUnit>mg</strengthUnit>
+		<dosageForm>Tablets</dosageForm>
+		<category>ORAL</category>
+		<line>SECOND_LINE</line>
+	</medicine>
+	<medicine id="28785">
+		<name1>Cycloserine</name1>
+		<name2>Cycloserine</name2>
+		<abbrevname>Cs</abbrevname>
+		<components>
+			<component id="1469" substance="28794" strength="250" />
+		</components>
+		<strength>250</strength>
+		<strengthUnit>mg</strengthUnit>
+		<dosageForm>Tablet or Capsule</dosageForm>
+		<category>ORAL</category>
+		<line>SECOND_LINE</line>
+	</medicine>
+	<medicine id="28786">
+		<name1>P-Aminosalicylic Acid</name1>
+		<name2>P-Aminosalicylic Acid</name2>
+		<abbrevname>PAS</abbrevname>
+		<components>
+			<component id="1470" substance="28795" strength="4000" />
+		</components>
+		<strength>4000</strength>
+		<strengthUnit>mg</strengthUnit>
+		<dosageForm>Granules/Packet</dosageForm>
+		<category>ORAL</category>
+		<line>SECOND_LINE</line>
+	</medicine>
+	<medicine id="940606">
+		<name1>Isoniazid + Rifampicin + Pirazinamide + Ethambutol</name1>
+		<name2>Isoniazid + Rifampicin + Pirazinamide + Ethambutol</name2>
+		<abbrevname>HRZE</abbrevname>
+		<components>
+			<component id="1688" substance="24156" strength="275" />
+			<component id="1689" substance="24158" strength="75" />
+			<component id="1690" substance="24185" strength="400" />
+			<component id="1691" substance="24157" strength="150" />
+		</components>
+		<strength>75/150/400/275</strength>
+		<strengthUnit>mg</strengthUnit>
+		<dosageForm>Tablet</dosageForm>
+		<category>ORAL</category>
+		<line>FIRST_LINE</line>
+	</medicine>
+	<medicine id="940609">
+		<name1>Levofloxacin</name1>
+		<abbrevname>Lfx</abbrevname>
+		<components>
+			<component id="1493" substance="940664" strength="500" />
+		</components>
+		<strength>500</strength>
+		<strengthUnit>mg</strengthUnit>
+		<dosageForm>Tablet</dosageForm>
+		<category>ORAL</category>
+		<line>SECOND_LINE</line>
+	</medicine>
+	<medicine id="941301" legacyId="">
+		<name1>Test</name1>
+		<abbrevname>T</abbrevname>
+		<components />
+		<strength>100</strength>
+		<strengthUnit>mg</strengthUnit>
+		<dosageForm>tab</dosageForm>
+		<category>ORAL</category>
+		<line>SECOND_LINE</line>
+	</medicine>
+	<regimen id="19182">
+		<medicines>
+			<medicine id="22507">
+				<medicine>22487</medicine>
+				<source>28796</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>5</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>2</monthsTreatment>
+			</medicine>
+			<medicine id="22508">
+				<medicine>22482</medicine>
+				<source>28796</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>5</monthsTreatment>
+			</medicine>
+			<medicine id="940593">
+				<medicine>940606</medicine>
+				<source>28796</source>
+				<defaultDoseUnit>4</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>3</monthsTreatment>
+			</medicine>
+			<medicine id="940594">
+				<medicine>22488</medicine>
+				<source>28796</source>
+				<defaultDoseUnit>4</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>5</monthsTreatment>
+			</medicine>
+		</medicines>
+		<name>Regimen II</name>
+		<caseClassification>TB</caseClassification>
+	</regimen>
+	<regimen id="22496">
+		<medicines>
+			<medicine id="940591">
+				<medicine>940606</medicine>
+				<source>28796</source>
+				<defaultDoseUnit>4</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>2</monthsTreatment>
+			</medicine>
+			<medicine id="940592">
+				<medicine>22488</medicine>
+				<source>28796</source>
+				<defaultDoseUnit>4</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>4</monthsTreatment>
+			</medicine>
+		</medicines>
+		<name>Category I</name>
+		<caseClassification>TB</caseClassification>
+	</regimen>
+	<regimen id="940590">
+		<medicines>
+			<medicine id="940714">
+				<medicine>28781</medicine>
+				<source>62</source>
+				<defaultDoseUnit>1</defaultDoseUnit>
+				<defaultFrequency>5</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940715">
+				<medicine>28785</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940716">
+				<medicine>28782</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940717">
+				<medicine>940609</medicine>
+				<source>62</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940718">
+				<medicine>28786</medicine>
+				<source>62</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940719">
+				<medicine>22486</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940720">
+				<medicine>28785</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>12</monthsTreatment>
+			</medicine>
+			<medicine id="940721">
+				<medicine>28782</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>12</monthsTreatment>
+			</medicine>
+			<medicine id="940722">
+				<medicine>940609</medicine>
+				<source>62</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>12</monthsTreatment>
+			</medicine>
+			<medicine id="940723">
+				<medicine>28786</medicine>
+				<source>62</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>12</monthsTreatment>
+			</medicine>
+		</medicines>
+		<name>Category IV - 1</name>
+		<caseClassification>DRTB</caseClassification>
+	</regimen>
+	<regimen id="940592">
+		<medicines>
+			<medicine id="940734">
+				<medicine>22488</medicine>
+				<source>28796</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>2</monthsTreatment>
+			</medicine>
+			<medicine id="940735">
+				<medicine>22486</medicine>
+				<source>28796</source>
+				<defaultDoseUnit>4</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>2</monthsTreatment>
+			</medicine>
+			<medicine id="940736">
+				<medicine>22488</medicine>
+				<source>28796</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>4</monthsTreatment>
+			</medicine>
+		</medicines>
+		<name>Regimen III</name>
+		<caseClassification>TB</caseClassification>
+	</regimen>
+	<regimen id="940593">
+		<medicines>
+			<medicine id="940737">
+				<medicine>28785</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940738">
+				<medicine>28782</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940739">
+				<medicine>28780</medicine>
+				<source>62</source>
+				<defaultDoseUnit>1</defaultDoseUnit>
+				<defaultFrequency>5</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940740">
+				<medicine>28783</medicine>
+				<source>62</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940741">
+				<medicine>22486</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940742">
+				<medicine>28785</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>12</monthsTreatment>
+			</medicine>
+			<medicine id="940743">
+				<medicine>28782</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>12</monthsTreatment>
+			</medicine>
+			<medicine id="940744">
+				<medicine>28783</medicine>
+				<source>62</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>12</monthsTreatment>
+			</medicine>
+		</medicines>
+		<name>Category IV - 2</name>
+		<caseClassification>DRTB</caseClassification>
+	</regimen>
+	<regimen id="940594">
+		<medicines>
+			<medicine id="940746">
+				<medicine>28785</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940747">
+				<medicine>22482</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940748">
+				<medicine>940609</medicine>
+				<source>62</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940749">
+				<medicine>22486</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940750">
+				<medicine>22487</medicine>
+				<source>62</source>
+				<defaultDoseUnit>1</defaultDoseUnit>
+				<defaultFrequency>5</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940751">
+				<medicine>28785</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>12</monthsTreatment>
+			</medicine>
+			<medicine id="940752">
+				<medicine>22482</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>12</monthsTreatment>
+			</medicine>
+			<medicine id="940753">
+				<medicine>940609</medicine>
+				<source>62</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>12</monthsTreatment>
+			</medicine>
+		</medicines>
+		<name>Category IV - 3</name>
+		<caseClassification>DRTB</caseClassification>
+	</regimen>
+	<regimen id="940595">
+		<medicines>
+			<medicine id="940754">
+				<medicine>28779</medicine>
+				<source>62</source>
+				<defaultDoseUnit>1</defaultDoseUnit>
+				<defaultFrequency>5</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940755">
+				<medicine>28785</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940756">
+				<medicine>28783</medicine>
+				<source>62</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940757">
+				<medicine>28786</medicine>
+				<source>62</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940758">
+				<medicine>22486</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940759">
+				<medicine>28785</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>12</monthsTreatment>
+			</medicine>
+			<medicine id="940760">
+				<medicine>28783</medicine>
+				<source>62</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>12</monthsTreatment>
+			</medicine>
+			<medicine id="940761">
+				<medicine>28786</medicine>
+				<source>62</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>12</monthsTreatment>
+			</medicine>
+		</medicines>
+		<name>Category IV - 4</name>
+		<caseClassification>DRTB</caseClassification>
+	</regimen>
+	<regimen id="940596">
+		<medicines>
+			<medicine id="940762">
+				<medicine>28781</medicine>
+				<source>62</source>
+				<defaultDoseUnit>1</defaultDoseUnit>
+				<defaultFrequency>5</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940763">
+				<medicine>28782</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940764">
+				<medicine>940609</medicine>
+				<source>62</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940765">
+				<medicine>28786</medicine>
+				<source>62</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="940766">
+				<medicine>28782</medicine>
+				<source>62</source>
+				<defaultDoseUnit>3</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>12</monthsTreatment>
+			</medicine>
+			<medicine id="940767">
+				<medicine>940609</medicine>
+				<source>62</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>12</monthsTreatment>
+			</medicine>
+			<medicine id="940768">
+				<medicine>28786</medicine>
+				<source>62</source>
+				<defaultDoseUnit>2</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>12</monthsTreatment>
+			</medicine>
+		</medicines>
+		<name>Category IV - 5</name>
+		<caseClassification>DRTB</caseClassification>
+	</regimen>
+	<regimen id="940906">
+		<medicines>
+			<medicine id="942996">
+				<medicine>22485</medicine>
+				<source>20305</source>
+				<defaultDoseUnit>1</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>3</monthsTreatment>
+			</medicine>
+			<medicine id="942997">
+				<medicine>22485</medicine>
+				<source>20305</source>
+				<defaultDoseUnit>1</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+			<medicine id="942998">
+				<medicine>22484</medicine>
+				<source>20305</source>
+				<defaultDoseUnit>1</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>INTENSIVE</phase>
+				<monthsTreatment>3</monthsTreatment>
+			</medicine>
+			<medicine id="942999">
+				<medicine>22484</medicine>
+				<source>20305</source>
+				<defaultDoseUnit>1</defaultDoseUnit>
+				<defaultFrequency>7</defaultFrequency>
+				<phase>CONTINUOUS</phase>
+				<monthsTreatment>6</monthsTreatment>
+			</medicine>
+		</medicines>
+		<name>Test</name>
+		<caseClassification>TB</caseClassification>
+	</regimen>
+	<lab id="935446" legacyId="">
+		<name>Laboratory 2</name>
+		<abbrevName>LAB 2</abbrevName>
+		<adminunit>10005</adminunit>
+		<healthsystem>902</healthsystem>
+	</lab>
+	<lab id="937355">
+		<name>Laboratory 3</name>
+		<abbrevName>LAB 3</abbrevName>
+		<adminunit>38814</adminunit>
+	</lab>
+	<lab id="942194">
+		<name>Laboratory 4</name>
+		<abbrevName>LAB 4</abbrevName>
+		<adminunit>950656</adminunit>
+	</lab>
+	<lab id="942195" legacyId="">
+		<name>Laboratory 5</name>
+		<abbrevName>LAB 5</abbrevName>
+		<adminunit>950666</adminunit>
+		<healthsystem>902</healthsystem>
+	</lab>
+	<lab id="942877" legacyId="">
+		<name>Laboratory 1</name>
+		<abbrevName>LAB 1</abbrevName>
+		<adminunit>10276</adminunit>
+		<healthsystem>902</healthsystem>
+	</lab>
+	<lab id="942936" legacyId="">
+		<name>Laboratory 6</name>
+		<abbrevName>LAB 6</abbrevName>
+		<adminunit>950660</adminunit>
+		<healthsystem>957</healthsystem>
+	</lab>
+	
+	
+	
+	
+	
+	<field id="938019" field="DST_METHOD" other="0" displayOrder="1" customId="">
+		<name1>Proportions</name1>
+		<shortname1>Proportions</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938020" field="DST_METHOD" other="0" displayOrder="2" customId="">
+		<name1>MGIT 960</name1>
+		<shortname1>MGIT 960</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938040" field="CULTURE_METHOD" other="0" displayOrder="1" customId="">
+		<name1>Lowenstein-Jensen</name1>
+		<shortname1>LJ</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938041" field="CULTURE_METHOD" other="0" displayOrder="2" customId="">
+		<name1>MGIT 960</name1>
+		<shortname1>MGIT 960</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938050" field="COMORBIDITY" other="0" displayOrder="5" customId="">
+		<name1>Cancer Disease</name1>
+		<shortname1>Cancer</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938056" field="COMORBIDITY" other="0" displayOrder="4" customId="">
+		<name1>Detained/Imprisoned</name1>
+		<shortname1>Detained/Imprisoned</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938067" field="SIDEEFFECT" other="0" displayOrder="25" customId="">
+		<name1>Seizures</name1>
+		<shortname1>Seizures</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938068" field="SIDEEFFECT" other="0" displayOrder="36" customId="">
+		<name1>Peripheral Neuropathy</name1>
+		<shortname1>Peripheral Neuropathy</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938069" field="SIDEEFFECT" other="0" displayOrder="15" customId="">
+		<name1>Impaired Hearing</name1>
+		<shortname1>Impaired Hearing</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938070" field="SIDEEFFECT" other="0" displayOrder="35" customId="">
+		<name1>Mental disorder</name1>
+		<shortname1>Mental disorder</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938072" field="SIDEEFFECT" other="0" displayOrder="33" customId="">
+		<name1>Hypothyroidism</name1>
+		<shortname1>Hypothyroidism</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938078" field="CONTACTCONDUCT" other="0" displayOrder="2" customId="">
+		<name1>Start TB treatment</name1>
+		<shortname1>TB</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938079" field="CONTACTCONDUCT" other="0" displayOrder="1" customId="">
+		<name1>Guidance/clarification</name1>
+		<shortname1>Guidance/clarification</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938080" field="CONTACTCONDUCT" other="0" displayOrder="3" customId="">
+		<name1>Start Chemoprophylaxis</name1>
+		<shortname1>Chemoprophylaxis</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938081" field="CONTACTTYPE" other="0" displayOrder="1" customId="">
+		<name1>Household</name1>
+		<shortname1>Household</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938083" field="CONTACTTYPE" other="0" displayOrder="6" customId="">
+		<name1>Work/School</name1>
+		<shortname1>Work/School</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938084" field="CONTACTTYPE" other="0" displayOrder="5" customId="">
+		<name1>Community </name1>
+		<shortname1>Community </shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938085" field="CONTACTTYPE" other="0" displayOrder="4" customId="">
+		<name1>Health Care Worker</name1>
+		<shortname1>HCW</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938086" field="CONTACTTYPE" other="0" displayOrder="2" customId="">
+		<name1>Nosocomial</name1>
+		<shortname1>Nosocomial</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938087" field="CONTACTTYPE" other="0" displayOrder="7" customId="">
+		<name1>Penitentiary</name1>
+		<shortname1>Penitentiary</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938088" field="CONTACTTYPE" other="0" displayOrder="3" customId="">
+		<name1>Institutional (asylum, shelter, orphanage, etc.)</name1>
+		<shortname1>Institutional </shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938089" field="SIDEEFFECT" other="0" displayOrder="32" customId="">
+		<name1>Gastro-intestinal intolerance</name1>
+		<shortname1>Gastro-intestinal intolerance</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938090" field="SIDEEFFECT" other="0" displayOrder="13" customId="">
+		<name1>Headache</name1>
+		<shortname1>Headache</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938091" field="SIDEEFFECT" other="0" displayOrder="38" customId="">
+		<name1>Visual disturbances</name1>
+		<shortname1>Visual disturbances</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938092" field="SIDEEFFECT" other="0" displayOrder="16" customId="">
+		<name1>Insomnia</name1>
+		<shortname1>Insomnia</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938093" field="SIDEEFFECT" other="0" displayOrder="34" customId="">
+		<name1>Joint pain</name1>
+		<shortname1>Joint pain</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938094" field="SIDEEFFECT" other="0" displayOrder="37" customId="">
+		<name1>Renal insufficiency</name1>
+		<shortname1>Renal insufficiency</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938095" field="COMORBIDITY" other="0" displayOrder="6" customId="">
+		<name1>Prolonged cortisone therapy</name1>
+		<shortname1>Cortisone therapy</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938096" field="COMORBIDITY" other="0" displayOrder="7" customId="">
+		<name1>Organ transplant</name1>
+		<shortname1>Transplant</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938097" field="SIDEEFFECT" other="0" displayOrder="10" customId="">
+		<name1>Dizziness</name1>
+		<shortname1>Dizziness</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938113" field="PULMONARY_TYPES" other="0" displayOrder="2" customId="">
+		<name1>Unilateral Cavitary</name1>
+		<shortname1>UC</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938115" field="PULMONARY_TYPES" other="0" displayOrder="1" customId="">
+		<name1>Unilateral Infiltrate</name1>
+		<shortname1>UI</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938117" field="PULMONARY_TYPES" other="0" displayOrder="5" customId="">
+		<name1>Destruction</name1>
+		<shortname1>D</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938118" field="PULMONARY_TYPES" other="0" displayOrder="6" customId="">
+		<name1>Normal</name1>
+		<shortname1>N</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938119" field="PULMONARY_TYPES" other="1" displayOrder="7" customId="">
+		<name1>Other</name1>
+		<shortname1>O</shortname1>
+		<otherDescription>Specify:</otherDescription>
+	</field>
+	<field id="938156" field="EXTRAPULMONARY_TYPES" other="0" displayOrder="2" customId="">
+		<name1>Pleura</name1>
+		<shortname1>P</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938157" field="EXTRAPULMONARY_TYPES" other="0" displayOrder="4" customId="">
+		<name1>Lymph Nodes</name1>
+		<shortname1>LN</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938158" field="EXTRAPULMONARY_TYPES" other="0" displayOrder="6" customId="">
+		<name1>Abdomen</name1>
+		<shortname1>Ab</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938159" field="EXTRAPULMONARY_TYPES" other="0" displayOrder="8" customId="">
+		<name1>Genitourinary Tract</name1>
+		<shortname1>GT</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938160" field="EXTRAPULMONARY_TYPES" other="0" displayOrder="9" customId="">
+		<name1>Skin</name1>
+		<shortname1>S</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938161" field="EXTRAPULMONARY_TYPES" other="0" displayOrder="7" customId="">
+		<name1>Joints and Bones</name1>
+		<shortname1>JB</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938162" field="EXTRAPULMONARY_TYPES" other="0" displayOrder="5" customId="">
+		<name1>Meninges</name1>
+		<shortname1>M</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938163" field="EXTRAPULMONARY_TYPES" other="0" displayOrder="3" customId="">
+		<name1>Tuberculous Intra-thoracic Lymphadenopathy</name1>
+		<shortname1>TIL</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938164" field="EXTRAPULMONARY_TYPES" other="0" displayOrder="1" customId="">
+		<name1>Tuberculous Pleural Effusion</name1>
+		<shortname1>TPE</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938165" field="EXTRAPULMONARY_TYPES" other="1" displayOrder="10" customId="">
+		<name1>Other</name1>
+		<shortname1>O</shortname1>
+		<otherDescription>Specify:</otherDescription>
+	</field>
+	<field id="938170" field="XRAYPRESENTATION" other="0" displayOrder="1" customId="">
+		<name1>Cavitary </name1>
+		<shortname1>Cavitary </shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938171" field="XRAYPRESENTATION" other="0" displayOrder="2" customId="">
+		<name1>Infiltrate </name1>
+		<shortname1>Infiltrate </shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938172" field="XRAYPRESENTATION" other="0" displayOrder="3" customId="">
+		<name1>Normal</name1>
+		<shortname1>Normal</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938173" field="XRAYPRESENTATION" other="1" displayOrder="4" customId="">
+		<name1>Other</name1>
+		<shortname1>Other</shortname1>
+		<otherDescription>Specify:</otherDescription>
+	</field>
+	<field id="938174" field="DST_METHOD" other="0" displayOrder="3" customId="">
+		<name1>MGIT 320</name1>
+		<shortname1>MGIT 320</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938175" field="DST_METHOD" other="0" displayOrder="4" customId="">
+		<name1>Line Probe Assay</name1>
+		<shortname1>LPA</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938176" field="CULTURE_METHOD" other="0" displayOrder="3" customId="">
+		<name1>MGIT 320</name1>
+		<shortname1>MGIT 320</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938588" field="SIDEEFFECT" other="1" displayOrder="31" customId="">
+		<name1>Other</name1>
+		<shortname1>Other</shortname1>
+		<otherDescription>Specify</otherDescription>
+	</field>
+	<field id="938600" field="COMORBIDITY" other="0" displayOrder="3" customId="">
+		<name1>Alcoholism</name1>
+		<shortname1>Alcoholism</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938601" field="COMORBIDITY" other="0" displayOrder="1" customId="">
+		<name1>HIV/AIDS</name1>
+		<shortname1>HIV/AIDS</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938603" field="COMORBIDITY" other="0" displayOrder="9" customId="">
+		<name1>Mental disorders</name1>
+		<shortname1>Mental disorders</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="938604" field="COMORBIDITY" other="1" displayOrder="10" customId="">
+		<name1>Other</name1>
+		<shortname1>Other</shortname1>
+		<otherDescription>Specify:</otherDescription>
+	</field>
+	<field id="938605" field="CULTURE_METHOD" other="0" displayOrder="4" customId="">
+		<name1>Line Probe Assay</name1>
+		<shortname1>LPA</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="939084" field="CULTURE_METHOD" other="0" displayOrder="5" customId="">
+		<name1>Ogawa-Kudoh</name1>
+		<shortname1>O-K</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="939085" field="CULTURE_METHOD" other="1" displayOrder="6" customId="">
+		<name1>Other</name1>
+		<shortname1>Other</shortname1>
+		<otherDescription>Specify:</otherDescription>
+	</field>
+	<field id="939381" field="COMORBIDITY" other="0" displayOrder="2" customId="">
+		<name1>Diabetes</name1>
+		<shortname1>Diabetes</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="939382" field="COMORBIDITY" other="0" displayOrder="8" customId="">
+		<name1>Neurologic Disorders</name1>
+		<shortname1>Neuro</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="939693" field="DST_METHOD" other="1" displayOrder="5" customId="">
+		<name1>Other</name1>
+		<shortname1>Other</shortname1>
+		<otherDescription>Specify:</otherDescription>
+	</field>
+	<field id="939803" field="ADJUSTMENT" other="0" displayOrder="3" customId="">
+		<name1>Moisture</name1>
+		<shortname1>M</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="939804" field="ADJUSTMENT" other="0" displayOrder="4" customId="">
+		<name1>Burning</name1>
+		<shortname1>B</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="939805" field="ADJUSTMENT" other="1" displayOrder="7" customId="">
+		<name1>Other</name1>
+		<shortname1>O</shortname1>
+		<otherDescription>Specify:</otherDescription>
+	</field>
+	<field id="939806" field="ADJUSTMENT" other="0" displayOrder="2" customId="">
+		<name1>Crushing</name1>
+		<shortname1>C</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="939819" field="ADJUSTMENT" other="0" displayOrder="1" customId="">
+		<name1>Physical Counts</name1>
+		<shortname1>PC</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940034" field="SIDEEFFECT" other="0" displayOrder="1" customId="">
+		<name1>Abdominal Pain</name1>
+		<shortname1>Abdominal Pain</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940035" field="SIDEEFFECT" other="0" displayOrder="2" customId="">
+		<name1>Anorexia</name1>
+		<shortname1>Anorexia</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940036" field="SIDEEFFECT" other="0" displayOrder="3" customId="">
+		<name1>Cardiac Arrythmias</name1>
+		<shortname1>Cardiac Arrythmias</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940037" field="SIDEEFFECT" other="0" displayOrder="4" customId="">
+		<name1>Change in Skin Texture</name1>
+		<shortname1>Change in Skin Texture</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940038" field="SIDEEFFECT" other="0" displayOrder="5" customId="">
+		<name1>Cold Intolerance</name1>
+		<shortname1>Cold Intolerance</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940039" field="SIDEEFFECT" other="0" displayOrder="6" customId="">
+		<name1>Constipation</name1>
+		<shortname1>Constipation</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940040" field="SIDEEFFECT" other="0" displayOrder="7" customId="">
+		<name1>Dark Urine</name1>
+		<shortname1>Dark Urine</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940041" field="SIDEEFFECT" other="0" displayOrder="8" customId="">
+		<name1>Depression</name1>
+		<shortname1>Depression</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940042" field="SIDEEFFECT" other="0" displayOrder="9" customId="">
+		<name1>Diarrhea</name1>
+		<shortname1>Diarrhea</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940043" field="SIDEEFFECT" other="0" displayOrder="11" customId="">
+		<name1>Fatigue</name1>
+		<shortname1>Fatigue</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940044" field="SIDEEFFECT" other="0" displayOrder="12" customId="">
+		<name1>Feet or Hand Numbness</name1>
+		<shortname1>Feet or Hand Numbness</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940045" field="SIDEEFFECT" other="0" displayOrder="14" customId="">
+		<name1>Hematuria</name1>
+		<shortname1>Hematuria</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940046" field="SIDEEFFECT" other="0" displayOrder="17" customId="">
+		<name1>Itch</name1>
+		<shortname1>Itch</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940047" field="SIDEEFFECT" other="0" displayOrder="18" customId="">
+		<name1>Leg Cramps</name1>
+		<shortname1>Leg Cramps</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940048" field="SIDEEFFECT" other="0" displayOrder="19" customId="">
+		<name1>Muscle Weakness</name1>
+		<shortname1>Muscle Weakness</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940049" field="SIDEEFFECT" other="0" displayOrder="20" customId="">
+		<name1>Nausea</name1>
+		<shortname1>Nausea</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940050" field="SIDEEFFECT" other="0" displayOrder="21" customId="">
+		<name1>Pins and Needles</name1>
+		<shortname1>Pins and Needles</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940051" field="SIDEEFFECT" other="0" displayOrder="22" customId="">
+		<name1>Psycosis</name1>
+		<shortname1>Psychosis</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940052" field="SIDEEFFECT" other="0" displayOrder="23" customId="">
+		<name1>Red Green Color Discrimination</name1>
+		<shortname1>Red Green Color Discrimination</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940053" field="SIDEEFFECT" other="0" displayOrder="24" customId="">
+		<name1>Severe Dermatitis</name1>
+		<shortname1>Severe Dermatitis</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940054" field="SIDEEFFECT" other="0" displayOrder="26" customId="">
+		<name1>Skin Rash</name1>
+		<shortname1>Skin Rash</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940055" field="SIDEEFFECT" other="0" displayOrder="27" customId="">
+		<name1>Tinnitus</name1>
+		<shortname1>Tinnitus</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940056" field="SIDEEFFECT" other="0" displayOrder="28" customId="">
+		<name1>Tremors</name1>
+		<shortname1>Tremors</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940057" field="SIDEEFFECT" other="0" displayOrder="29" customId="">
+		<name1>Vision Deterioration</name1>
+		<shortname1>Vision Deterioration</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940058" field="SIDEEFFECT" other="0" displayOrder="30" customId="">
+		<name1>Vomiting</name1>
+		<shortname1>Vomiting</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940081" field="PULMONARY_TYPES" other="0" displayOrder="4" customId="">
+		<name1>Bilateral Cavitary</name1>
+		<shortname1>BC</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940082" field="PULMONARY_TYPES" other="0" displayOrder="3" customId="">
+		<name1>Bilateral Infiltrate</name1>
+		<shortname1>BI</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940083" field="ADJUSTMENT" other="0" displayOrder="5" customId="">
+		<name1>Theft</name1>
+		<shortname1>T</shortname1>
+		<otherDescription/>
+	</field>
+	<field id="940084" field="CONTACTCONDUCT" other="1" displayOrder="4" customId="">
+		<name1>Other</name1>
+		<shortname1>Other</shortname1>
+		<otherDescription>Specify:</otherDescription>
+	</field>
+	<field id="940085" field="CONTACTTYPE" other="1" displayOrder="8" customId="">
+		<name1>Other</name1>
+		<shortname1>Other</shortname1>
+		<otherDescription>Specify:</otherDescription>
+	</field>
+	<field id="940156" field="ADJUSTMENT" other="0" displayOrder="6" customId="">
+		<name1>Expiring Medicine</name1>
+		<shortname1>EM</shortname1>
+		<otherDescription/>
+	</field>
+	
+	
+	
+	
+	<tag id="15" consistencyCheck="0" active="1" dailyUpdate="0">
+		<name1>Check treatment regimen</name1>
+	</tag>
+	<tag id="24" sqlCondition="state in (1,2) and endTreatmentDate &lt; curDate()" consistencyCheck="1" active="1" dailyUpdate="0">
+		<name1>Treatment period overdue without outcome</name1>
+	</tag>
+	<tag id="26" sqlCondition="(a.state in (1,2) and a.validationState&lt;>1)" consistencyCheck="1" active="1" dailyUpdate="0"><name1>On treatment and not validated</name1>
+	</tag>
+	<tag id="27" sqlCondition="(classification=1 &#xa;and diagnosisType=0 &#xa;and exists(select * from examdst where case_id=a.id))" consistencyCheck="1" active="1" dailyUpdate="0">
+		<name1>Suspect with DST result</name1>
+	</tag>
+	<tag id="28" sqlCondition="(a.diagnosisType=1 and a.classification=1&#xa;and not exists(select * from examdst where case_id=a.id))" consistencyCheck="1" active="1" dailyUpdate="0">
+		<name1>DR-TB Confirmed cases without DST recorded</name1>
+	</tag>
+	<tag id="29" sqlCondition="a.diagnosisType=0 and state in (1,2)" consistencyCheck="0" active="1" dailyUpdate="0">
+		<name1>Suspect on treatment</name1>
+	</tag>
+	<tag id="30" sqlCondition="(state &lt;=2&#xa;and drugResistanceType is null &#xa;and exists(select * from examdst where case_id=a.id))" consistencyCheck="1" active="1" dailyUpdate="0">
+		<name1>DST result recorded without type of drug resistance</name1>
+	</tag>
+	<tag id="31" sqlCondition="(a.classification=1 and drugResistanceType is not null and not exists(select * from examdst where case_id=a.id))" consistencyCheck="1" active="1" dailyUpdate="0">
+		<name1>Type of drug resistance recorded without DST</name1>
+	</tag>
+	<tag id="32" sqlCondition="(a.state=3 &#xa;and (exists(select * from examculture &#xa;  where result between 1 and 5 &#xa;  and dateCollected = (select max(dateCollected) from examculture&#xa;  where case_id=a.id) and case_id=a.id)&#xa;or exists (select * from exammicroscopy &#xa;  where result between 1 and 4 &#xa;  and dateCollected = (select max(dateCollected) from exammicroscopy&#xa;  where case_id=a.id) and case_id=a.id)))" consistencyCheck="1" active="1" dailyUpdate="0">
+		<name1>Recorded as cured but with last culture or microscopy positive</name1>
+	</tag>
+	<tag id="33" sqlCondition="(diagnosistype=1&#xa;and exists(select * from examhiv where result=0 and case_id=a.id)&#xa;and not exists(select * from casecomorbidity cm&#xa;join fieldvalue fv on fv.id=cm.comorbidity_id&#xa;where cm.case_id=a.id and fv.name1='HIV/AIDS'))" consistencyCheck="1" active="1" dailyUpdate="0">
+		<name1>HIV positive without AIDS as comorbidity</name1>
+	</tag>
+	<tag id="34" sqlCondition="(diagnosistype=1&#xa;and not exists(select * from examhiv where result=0 and case_id=a.id)&#xa;and exists(select * from casecomorbidity cm&#xa;join fieldvalue fv on fv.id=cm.comorbidity_id&#xa;where cm.case_id=a.id and fv.name1='HIV/AIDS'))" consistencyCheck="1" active="1" dailyUpdate="0">
+		<name1>AIDS as comorbidity without HIV result</name1>
+	</tag>
+	<tag id="37" sqlCondition="state>2 and not exists(select * from prescribedmedicine b&#xa;where b.case_id=a.id)" consistencyCheck="0" active="1" dailyUpdate="0"><name1>Closed without treatment</name1>
+	</tag>
+	<tag id="39" consistencyCheck="1" active="1" dailyUpdate="0">
+		<name1>Defaulter</name1>
+	</tag>
+	<tag id="40" consistencyCheck="0" active="1" dailyUpdate="0">
+		<name1>New culture result released</name1>
+	</tag>
+	<tag id="41" consistencyCheck="0" active="1" dailyUpdate="0">
+		<name1>New DST result released</name1>
+	</tag>
+	<tag id="66" consistencyCheck="0" active="1" dailyUpdate="0">
+		<name1>Pediatric</name1>
+	</tag>
+	<tag id="77" consistencyCheck="0" active="1" dailyUpdate="0">
+		<name1>Genexpert exams</name1>
+	</tag>
+	<tag id="78" sqlCondition="state&lt;=2&#xa;and exists(select * from examdst e join fieldvalue fv on fv.id=e.method_id where case_id=a.id and fv.name1='Xpert')" consistencyCheck="0" active="1" dailyUpdate="0">
+		<name1>DST result with method GeneXpert</name1>
+	</tag>
+	<tag id="105" sqlCondition="diagnosisType=1 and state in (1,2)" consistencyCheck="0" active="1" dailyUpdate="0">
+		<name1>Confirmed cases on treatment</name1>
+	</tag>
+	<tag id="198" sqlCondition="validationstate=0" consistencyCheck="0" active="1" dailyUpdate="0">
+		<name1>Not validated</name1>
+	</tag>
+	<tag id="234" sqlCondition="validationstate=0" consistencyCheck="1" active="1" dailyUpdate="0">
+		<name1>Not validated</name1>
+	</tag>
+	<tag id="297" sqlCondition="exists(select * from issue where case_id=a.id and closed=0)" consistencyCheck="1" active="1" dailyUpdate="0">
+		<name1>Cases with open issues</name1>
+	</tag>
+	<tag id="336" consistencyCheck="0" active="1" dailyUpdate="0">
+		<name1>Please Dr. validate this Case</name1>
+	</tag>
+
+	
+	
+	
+	<userws id="19448" tbunit="28857" profile="940352">
+		<user id="1" login="RICARDO">
+			<name>Ricardo Memória</name>
+			<password>5f4dcc3b5aa765d61d8327deb882cf99</password>
+			<email>rmemoria@msh.org</email>
+			<state>ACTIVE</state>
+			<language>en_NA</language>
+			<timeZone>America/Bahia</timeZone>
+			<comments>MSH Brazil</comments>
+			<sendSystemMessages>1</sendSystemMessages>
+			<ulaAccepted>1</ulaAccepted>
+		</user>
+		<view>COUNTRY</view>
+		<playOtherUnits>1</playOtherUnits>
+	</userws>
+
+
+	<tbcase id="1051498" classification="DRTB" state="DIED" patientType="RELAPSE" diagnosisType="CONFIRMED" infectionSite="PULMONARY" ownerunit="28857">
+		<patient id="1036527">
+			<name>Cecil Pawlowski</name>
+			<motherName>Nina Pawlowski</motherName>
+			<birthDate>1981-09-28T00:00:00-0300</birthDate>
+			<recordNumber>14006</recordNumber>
+			<gender>MALE</gender>
+		</patient>
+		<iniTreatDate>2003-01-06T00:00:00-0200</iniTreatDate>
+		<endTreatDate>2003-05-06T00:00:00-0300</endTreatDate>
+		<regimen>940593</regimen>
+		<pulmonaryType>938113</pulmonaryType>
+		<notificationUnit>28857</notificationUnit>
+		<caseNumber>2</caseNumber>
+		<suspectClassification>DRTB</suspectClassification>
+		<age>21</age>
+		<registrationDate>2002-12-08T00:00:00-0200</registrationDate>
+		<diagnosisDate>2002-12-29T00:00:00-0200</diagnosisDate>
+		<outcomeDate>2003-05-06T00:00:00-0300</outcomeDate>
+		<iniContinuousPhase>2003-07-06T00:00:00-0300</iniContinuousPhase>
+		<validationState>VALIDATED</validationState>
+		<drugResistanceType>MULTIDRUG_RESISTANCE</drugResistanceType>
+		<nationality>NATIVE</nationality>
+		<notifAddressChanged>0</notifAddressChanged>
+		<tbContact>0</tbContact>
+		<notifAddress>
+			<adminunit>10005</adminunit>
+			<address>XPTO Street</address>
+			<localityType>URBAN</localityType>
+		</notifAddress>
+		<currentAddress>
+			<adminunit>10005</adminunit>
+			<address>XPTO Street</address>
+			<localityType>URBAN</localityType>
+		</currentAddress>
+		<issueCounter>0</issueCounter>
+	</tbcase>
+	
+	
+	
+	<tbcase id="1258504" classification="DRTB" state="WAITING_TREATMENT" diagnosisType="SUSPECT" ownerunit="28857">
+		<patient id="1227694">
+			<name>Ede</name>
+			<middleName>Kenneth</middleName>
+			<lastName>Nwafor</lastName>
+			<securityNumber>003-2001</securityNumber>
+			<motherName/>
+			<birthDate>1975-04-20T00:00:00-0300</birthDate>
+			<gender>MALE</gender>
+		</patient>
+		<notificationUnit>28857</notificationUnit>
+		<age>38</age>
+		<registrationDate>2013-01-03T00:00:00-0200</registrationDate>
+		<validationState>WAITING_VALIDATION</validationState>
+		<nationality>NATIVE</nationality>
+		<notifAddressChanged>0</notifAddressChanged>
+		<tbContact>0</tbContact>
+		<notifAddress>
+			<adminunit>970578</adminunit>
+			<address>Oyieke Amezor Nkalagu Ishielu LGA Ebonyi</address>
+			<complement/>
+			<zipCode/>
+		</notifAddress>
+		<currentAddress>
+			<adminunit>970578</adminunit>
+			<address>Oyieke Amezor Nkalagu Ishielu LGA Ebonyi</address>
+			<complement/>
+			<zipCode/>
+		</currentAddress>
+		<phoneNumber/>
+		<mobileNumber/>
+		<issueCounter>0</issueCounter>
+	</tbcase>
+	
+	
+	<presc-med id="1051310" tbcase="1051498" medicine="28785" endDate="2003-05-06T00:00:00-0300" doseUnit="3" frequency="7">
+		<iniDate>2003-01-06T00:00:00-0200</iniDate>
+		<source>62</source>
+	</presc-med>
+	<presc-med id="1051311" tbcase="1051498" medicine="28782" endDate="2003-05-06T00:00:00-0300" doseUnit="3" frequency="7">
+		<iniDate>2003-01-06T00:00:00-0200</iniDate>
+		<source>62</source>
+	</presc-med>
+	<presc-med id="1051312" tbcase="1051498" medicine="28780" endDate="2003-05-06T00:00:00-0300" doseUnit="1" frequency="5">
+		<iniDate>2003-01-06T00:00:00-0200</iniDate>
+		<source>62</source>
+	</presc-med>
+	<presc-med id="1051313" tbcase="1051498" medicine="28783" endDate="2003-05-06T00:00:00-0300" doseUnit="2" frequency="7">
+		<iniDate>2003-01-06T00:00:00-0200</iniDate>
+		<source>62</source>
+	</presc-med>
+	<presc-med id="1051314" tbcase="1051498" medicine="22486" endDate="2003-05-06T00:00:00-0300" doseUnit="3" frequency="7">
+		<iniDate>2003-01-06T00:00:00-0200</iniDate>
+		<source>62</source>
+	</presc-med>
+	<healthunit id="980350" tbcase="1051498" tbunit="28857" transf="0">
+		<iniDate>2003-01-06T00:00:00-0200</iniDate>
+		<endDate>2003-05-06T00:00:00-0300</endDate>
+	</healthunit>
+	
+	
+	<examculture id="1060599" tbcase="1051498" dateCollected="2002-11-17T00:00:00-0200" result="PLUS2" lab="937355" />
+	<examculture id="1060600" tbcase="1051498" dateCollected="2003-01-15T00:00:00-0200" result="PLUS2" lab="937355" />
+	<examculture id="1060601" tbcase="1051498" dateCollected="2003-03-13T00:00:00-0300" result="PLUS2" lab="937355" />
+	<exammicroscopy id="1244513" tbcase="1051498" result="PLUS2" dateCollected="2002-12-20T00:00:00-0200" lab="935446" />
+	<exammicroscopy id="1244514" tbcase="1051498" result="PLUS2" dateCollected="2003-01-19T00:00:00-0200" lab="935446" />
+	<exammicroscopy id="1244515" tbcase="1051498" result="PLUS2" dateCollected="2003-02-18T00:00:00-0300" lab="935446" />
+	<exammicroscopy id="1244516" tbcase="1051498" result="NEGATIVE" dateCollected="2003-03-20T00:00:00-0300" lab="935446" />
+	<exammicroscopy id="1244517" tbcase="1051498" result="NEGATIVE" dateCollected="2003-04-19T00:00:00-0300" lab="935446" />
+	<medexam id="984612" tbcase="1051498">
+		<weight>56.0</weight>
+		<appointmentType>SCHEDULLED</appointmentType>
+		<usingPrescMedicines>YES</usingPrescMedicines>
+		<responsible>Dr. Antony Olszewski</responsible>
+		<date>2002-12-26T00:00:00-0200</date>
+	</medexam>
+	
+	
+	<examhiv id="985273" tbcase="1051498" result="NEGATIVE">
+		<date>2002-11-24T00:00:00-0200</date>
+	</examhiv>
+	
+	
+	<examdst id="984037" tbcase="1051498" dateCollected="2002-11-25T00:00:00-0200" lab="935446" />
+	
+	
+	
+	<dstresult id="1444491" exam="984037" substance="24157" result="RESISTANT" />
+	<dstresult id="1444492" exam="984037" substance="24158" result="RESISTANT" />
+	<dstresult id="1444493" exam="984037" substance="24185" result="RESISTANT" />
+	<dstresult id="1444494" exam="984037" substance="24156" result="RESISTANT" />
+	<dstresult id="1444495" exam="984037" substance="24186" result="SUSCEPTIBLE" />
+	<dstresult id="1444496" exam="984037" substance="28793" result="SUSCEPTIBLE" />
+	<dstresult id="1444497" exam="984037" substance="28792" result="SUSCEPTIBLE" />
+	<dstresult id="1444498" exam="984037" substance="28789" result="RESISTANT" />
+	<dstresult id="1444499" exam="984037" substance="28788" result="RESISTANT" />
+	<dstresult id="1444500" exam="984037" substance="28795" result="RESISTANT" />
+	<dstresult id="1444501" exam="984037" substance="28790" result="RESISTANT" />
+	<dstresult id="1444502" exam="984037" substance="28794" result="SUSCEPTIBLE" />
+
+	
+	<treatmonitoring id="952271" tbcase="1051498">
+		<month>6</month>
+		<year>2012</year>
+		<day1>NOT_TAKEN</day1>
+		<day2>NOT_TAKEN</day2>
+		<day3>NOT_TAKEN</day3>
+		<day4>NOT_TAKEN</day4>
+		<day5>NOT_TAKEN</day5>
+		<day6>NOT_TAKEN</day6>
+		<day7>NOT_TAKEN</day7>
+		<day8>NOT_TAKEN</day8>
+		<day9>NOT_TAKEN</day9>
+		<day10>NOT_TAKEN</day10>
+		<day11>NOT_TAKEN</day11>
+		<day12>NOT_TAKEN</day12>
+		<day13>NOT_TAKEN</day13>
+		<day14>NOT_TAKEN</day14>
+		<day15>NOT_TAKEN</day15>
+		<day16>NOT_TAKEN</day16>
+		<day17>NOT_TAKEN</day17>
+		<day18>NOT_TAKEN</day18>
+		<day19>NOT_TAKEN</day19>
+		<day20>NOT_TAKEN</day20>
+		<day21>NOT_TAKEN</day21>
+		<day22>NOT_TAKEN</day22>
+		<day23>NOT_TAKEN</day23>
+		<day24>NOT_TAKEN</day24>
+		<day25>NOT_TAKEN</day25>
+		<day26>NOT_TAKEN</day26>
+		<day27>NOT_TAKEN</day27>
+		<day28>NOT_TAKEN</day28>
+		<day29>NOT_TAKEN</day29>
+		<day30>NOT_TAKEN</day30>
+		<day31>NOT_TAKEN</day31>
+	</treatmonitoring>
+	<treatmonitoring id="960046" tbcase="1051498">
+		<month>8</month>
+		<year>2012</year>
+		<day1>NOT_TAKEN</day1>
+		<day2>NOT_TAKEN</day2>
+		<day3>NOT_TAKEN</day3>
+		<day4>NOT_TAKEN</day4>
+		<day5>NOT_TAKEN</day5>
+		<day6>NOT_TAKEN</day6>
+		<day7>NOT_TAKEN</day7>
+		<day8>NOT_TAKEN</day8>
+		<day9>NOT_TAKEN</day9>
+		<day10>NOT_TAKEN</day10>
+		<day11>NOT_TAKEN</day11>
+		<day12>NOT_TAKEN</day12>
+		<day13>NOT_TAKEN</day13>
+		<day14>NOT_TAKEN</day14>
+		<day15>NOT_TAKEN</day15>
+		<day16>NOT_TAKEN</day16>
+		<day17>NOT_TAKEN</day17>
+		<day18>NOT_TAKEN</day18>
+		<day19>NOT_TAKEN</day19>
+		<day20>NOT_TAKEN</day20>
+		<day21>NOT_TAKEN</day21>
+		<day22>NOT_TAKEN</day22>
+		<day23>NOT_TAKEN</day23>
+		<day24>NOT_TAKEN</day24>
+		<day25>NOT_TAKEN</day25>
+		<day26>NOT_TAKEN</day26>
+		<day27>NOT_TAKEN</day27>
+		<day28>NOT_TAKEN</day28>
+		<day29>NOT_TAKEN</day29>
+		<day30>NOT_TAKEN</day30>
+		<day31>NOT_TAKEN</day31>
+	</treatmonitoring>
+	<casetag caseId="1258504" tagId="198" />
+	<casetag caseId="1258504" tagId="234" />
+	<version entity="CountryStructure" number="1049436" />
+	<version entity="AdministrativeUnit" number="1088928" />
+	<version entity="HealthSystem" number="1043196" />
+	<version entity="Source" number="986593" />
+	<version entity="Tbunit" number="1097984" />
+	<version entity="Substance" number="1002584" />
+	<version entity="Medicine" number="1051279" />
+	<version entity="Regimen" number="1056106" />
+	<version entity="Laboratory" number="1049455" />
+	<version entity="FieldValue" number="1093480" />
+	<version entity="Tag" number="1094122" />
+	<version entity="TbCase" number="1101837" />
+	<version entity="ExamCulture" number="1101480" />
+	<version entity="ExamMicroscopy" number="1101478" />
+	<version entity="MedicalExamination" number="1101477" />
+	<version entity="ExamHIV" number="1101483" />
+	<version entity="ExamXRay" number="1101484" />
+	<version entity="ExamDST" number="1101481" />
+	<version entity="TbContact" number="1094085" />
+</dataset>

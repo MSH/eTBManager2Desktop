@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.etbmanager.org/xview" xmlns:tns="http://www.etbmanager.org/xview" elementFormDefault="qualified">
+
+    <element name="form" >
+    	<complexType>
+    		<sequence>
+    			<element name="id" type="string" />
+    			<element name="title" type="string" />
+    			<element name="tags" type="string" />
+    			<element name="sections" type="tns:section">
+    			</element>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <complexType name="section">
+   		<sequence>
+   			<element name="id" type="string" />
+   			<element name="title" type="string" />
+   			<element name="tags" type="string" />
+   			<element name="columnCount" type="int" />
+   			<element name="visible" type="string" />
+   			<element name="components">
+   				<complexType>
+   					<sequence minOccurs="0" maxOccurs="unbounded">
+   						<element name="section" type="tns:section" />
+   						<element name="field" type="tns:field" />
+   						<element name="text" type="tns:text" />
+   					</sequence>
+   				</complexType>
+   			</element>
+   		</sequence>
+    </complexType>
+
+    <complexType name="text">
+    	<sequence>
+    		<element name="text" type="string" />
+    	</sequence>
+    </complexType>
+
+    <complexType name="field">
+    	<sequence>
+    		<element name="id" type="string" />
+    		<element name="caption" type="string" />
+    		<element name="hint" type="string" />
+    		<element name="visible" type="string" />
+    		<element name="readonly" type="string" />
+    		<element name="required" type="string" />
+    	</sequence>
+    </complexType>
+</schema>

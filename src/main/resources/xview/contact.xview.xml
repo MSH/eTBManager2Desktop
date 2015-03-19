@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form column-count="2">
+	<field value="contact.gender" label="@Gender" required="true" />
+	<field value="contact.age" label="@TbCase.age"  >
+		<param name="min" value="0" />
+		<param name="max" value="150" />
+	</field>
+	<field value="contact.contactType" label="@TbField.CONTACTTYPE" />
+	<field value="contact.examinated" label="@TbContact.examined" handler="yesno"/>
+	<field value="contact.conduct" label="@TbField.CONTACTCONDUCT" />
+	<field value="contact.comments" label="@global.comments" force-new-row="true"/>
+</form>

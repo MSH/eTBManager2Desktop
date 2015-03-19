@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+		<section title="@PatientSample.identification" column-count="2">
+			<field value="examxpert.dateCollected" label="@PatientSample.dateCollected" required="true" />
+			<field value="examxpert.sampleNumber" label="@PatientSample.sampleNumber" width="200" maxchars="100" />
+			<field value="examxpert.laboratory" label="@Laboratory" required="true" />
+
+		</section>
+		<section title="@cases.exams.results"  column-count="2">
+			<field value="examxpert.dateRelease" label="@cases.exams.dateRelease" >
+				<validation rule="${examxpert.dateRelease > examxpert.dateCollected}" 
+					enabled-if="${not empty examxpert.dateRelease}" 
+					message="@cases.exams.datereleasebeforecol"/>
+			</field>
+			<field value="examxpert.result" label="@cases.details.result" />
+			<field value="examxpert.rifResult" label="@cases.details.result" handler="combo" visible="${examxpert.result == 'TB_DETECTED'}">
+			</field>
+			<field value="examxpert.comments" label="@global.comments" handler="text" />
+		</section>
+</form>

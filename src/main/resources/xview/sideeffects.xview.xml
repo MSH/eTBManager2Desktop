@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form readonly="true">
+	<table values="${tbcase.sideEffects}" var="it" row-selection="SINGLE">
+	    <column title="@cases.sideeffects.desc">
+			<field value="it.sideEffect.value" />
+	    </column>
+	    <column title="@cases.sideeffects.month">
+	    	<field value="it.month" />
+	    </column>
+	    <column title="@Substance">
+	        <field value="it.substance" />
+	    </column>
+	    <column title="@global.comments">
+	        <field value="it.comment" />
+	    </column>
+	</table>
+</form>

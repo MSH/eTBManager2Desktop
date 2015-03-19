@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly>
+  <id>bin</id>
+  <formats>
+<!-- 
+    <format>tar.gz</format>
+    <format>tar.bz2</format>
+ -->
+    <format>zip</format>
+  </formats>
+  <fileSets>
+    <fileSet>
+      <includes>
+        <include>README*</include>
+        <include>LICENSE*</include>
+        <include>NOTICE*</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>target</directory>
+      <outputDirectory></outputDirectory>
+      <includes>
+        <include>etbmapp-${project.version}.jar</include>
+        <include>etbmapp-${project.version}.exe</include>
+        <include>lib\*.jar</include>
+        <include>app.inf</include>
+        <include></include>
+        </includes>
+    </fileSet>
+  </fileSets>
+</assembly>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form column-count="2"  readonly="true">
+	<table values="${tbcase.comorbidities}" var="it" colspan="2">
+	    <column title="@form.name">
+			<field value="it.comorbidity.name" />
+	    </column>
+	    <column title="@Regimen.months">
+			<field value="it.duration" />
+	    </column>
+	    <column title="@global.comments">
+			<field value="it.comment" />
+	    </column>
+	</table>
+	<field value="tbcase.tbContact" label="@TbCase.tbContact" handler="yesno"/>
+	<field value="tbcase.patientContactName" label="@TbCase.patientContactName" visible="tbcase.tbContact" />
+</form>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<section column-count="2">
+	    <field value="tbcase.patient.fullName" label="@Patient.name" readonly="true" />
+	    <field value="controller.status" label="@DiagnosisType" 
+	        options="${controller.followupOptions}" handler="radio"/>
+	</section>
+	
+	<section column-count="2" title="@DiagnosisType.CONFIRMED" visible="${controller.status == 'CONFIRMED'}">
+	    <field value="controller.classification" label="@CaseClassification" options="${globalLists.caseClassifications}" 
+	        required="true" handler="radio"/>
+	    <field value="controller.diagnosisDate" label="@TbCase.diagnosisDate" required="true" />
+	    <field value="controller.drugResistanceType" label="@DrugResistanceType" 
+	        options="${globalLists.drugResistanceTypes}" required="true" />
+	    <field value="controller.patientType" label="@PatientType" 
+	        options="${globalLists.patientTypes}" required="true" />
+	    <field value="controller.patientTypeOther" label="@TbCase.patientTypeOther" 
+	        visible="${controller.patientType == 'OTHER'}" required="true" />
+	    <field value="controller.infectionSite" label="@InfectionSite" 
+	        options="${globalLists.infectionSite}" required="${controller.confirmed}" />
+	    <field value="controller.pulmonary" label="@TbField.PULMONARY_TYPES" 
+	        options="#{fieldsOptions.pulmonaryTypes}" visible="#{controller.infectionSite == 'PULMONARY'}"/>
+	    <field value="controller.extrapulmonary1" label="@TbField.EXTRAPULMONARY_TYPES"
+	        options="#{fieldsOptions.extrapulmonaryTypes}" visible="#{controller.infectionSite == 'EXTRAPULMONARY'}"/>
+	    <field value="controller.extrapulmonary2" label="@TbField.EXTRAPULMONARY_TYPES"
+	        options="#{fieldsOptions.extrapulmonaryTypes}" visible="#{controller.infectionSite == 'EXTRAPULMONARY'}"/>
+	</section>
+	
+	<section column-count="2" title="@CaseState.NOT_CONFIRMED" visible="${controller.status == 'NOT_CONFIRMED'}">
+	    <field value="controller.outcomeDate" label="@TbCase.outcomeDate" required="true" />
+	    <field value="controller.outcome" label="@cases.outcome" required="true" 
+	        options="#{outcomeOptions}" handler="radio" />
+	</section>
+	
+</form>

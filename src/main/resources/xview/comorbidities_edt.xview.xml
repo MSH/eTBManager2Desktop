@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form column-count="2">
+	<table values="${comorbidities.list}" var="it" row-selection="MULTIPLE" colspan="2" checkbox-column-field="it.selected">
+		<column title="@form.name">
+			<field value="it.item.comorbidity.name" readonly="true" />
+		</column>
+		<column title="@Regimen.months">
+			<field value="it.item.duration" width="100"
+				maxchars="100" visible="${row.selected}" required="true" />
+		</column>
+		<column title="@global.comments">
+			<field value="it.item.comment" width="250"
+				maxchars="100" visible="${row.selected}" />
+		</column>
+	</table>
+		
+	<field value="tbcase.tbContact" label="@TbCase.tbContact" />
+		
+	<field value="tbcase.patientContactName" label="@TbCase.patientContactName" width="300" visible="${tbcase.tbContact}"/>
+</form>

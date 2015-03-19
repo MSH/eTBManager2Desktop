@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <section title="@RegimenPhase.INTENSIVE" column-count="2">
+	    <field value="controller.iniDate" label="@Period.iniDate" required="true" 
+	        readonly="${controller.iniDateEditable}" />
+    </section>
+
+    <section title="@RegimenPhase.CONTINUOUS" column-count="2">
+    	<field value="controller.iniContinuousPhase" label="@Period.iniDate" required="true" >
+			<validation 
+			    rule="${(controller.iniContinuousPhase gt controller.iniDate) or (controller.iniContinuousPhase lt controller.endDate)}" 
+				message="@cases.treat.contdateerror" />
+    	</field>
+
+    	<field value="controller.endDate" label="@Period.endDate" required="true" >
+    	    <validation 
+    	        rule="${controller.endDate gt controller.iniDate}"
+    	        message="@global.finalinitialdateerror" />
+    	</field>
+    </section>
+</form>

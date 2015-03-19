@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+		<section title="@PatientSample.identification" column-count="2">
+			<field value="examculture.dateCollected" label="@PatientSample.dateCollected" required="true" />
+			<field value="examculture.sampleNumber" label="@PatientSample.sampleNumber" width="200" maxchars="100" />
+			<field value="examculture.laboratory" label="@Laboratory" required="true" />
+
+		</section>
+		<section title="@cases.exams.results"  column-count="2">
+			<field value="examculture.dateRelease" label="@cases.exams.dateRelease" >
+				<validation rule="${examculture.dateRelease > examculture.dateCollected}" 
+					enabled-if="${not empty examculture.dateRelease}" 
+					message="@cases.exams.datereleasebeforecol"/>
+			</field>
+			<field value="examculture.result" label="@cases.details.result" options="${globalLists.cultureResults}"/>
+			<field value="examculture.numberOfColonies" label="@ExamCulture.numberOfColonies" 
+			    handler="combo" visible="${examculture.result=='POSITIVE'}">
+				<param name="min" value="1" />
+				<param name="max" value="9" />
+			</field>
+			<field value="examculture.method" label="@cases.exams.method" handler="combo" options="${fieldsOptions.cultureMethods}">
+			</field>
+			<field value="examculture.comments" label="@global.comments" handler="text" />
+		</section>
+</form>
