@@ -4,7 +4,7 @@
 
 	<groupId>org.msh.etbm</groupId>
 	<artifactId>desktop</artifactId>
-	<version>0.8.1</version>
+	<version>0.8.2</version>
 	<packaging>jar</packaging>
 
 	<name>eTB Manager Desktop</name>
@@ -40,6 +40,7 @@
 	</repositories>
 
 	<build>
+        <finalName>etbmdesktop</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -113,6 +114,7 @@
                             <artifact-version>${project.version}</artifact-version>
                         </manifestEntries>
                     </archive>
+                    <finalName>${project.build.finalName}</finalName>
 				</configuration>
 			</plugin>
 
@@ -183,8 +185,8 @@
 						<configuration>
 							<icon>resources/logo.ico</icon>
 							<headerType>gui</headerType>
-							<outfile>target/etbmapp-${project.version}.exe</outfile>
-							<jar>target/etbmapp-${project.version}.jar</jar>
+							<outfile>target/${project.build.finalName}.exe</outfile>
+							<jar>target/${project.build.finalName}.jar</jar>
 							<errTitle>eTBManager: Error</errTitle>
 							<classPath>
 								<mainClass>org.msh.etbm.desktop.app.MainWindow</mainClass>

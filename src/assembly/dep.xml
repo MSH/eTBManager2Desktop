@@ -20,8 +20,8 @@
       <directory>target</directory>
       <outputDirectory></outputDirectory>
       <includes>
-        <include>etbmapp-${project.version}.jar</include>
-        <include>etbmapp-${project.version}.exe</include>
+        <include>${project.build.finalName}.jar</include>
+        <include>${project.build.finalName}.exe</include>
         <include>lib\*.jar</include>
         <include>app.inf</include>
         <include></include>
