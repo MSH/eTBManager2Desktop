@@ -6,7 +6,6 @@ package org.msh.etbm.test.desktop.customdata;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import org.junit.Test;
 import org.msh.customdata.CustomObjectDAO;
 import org.msh.customdata.CustomObjectSchema;
 import org.msh.customdata.CustomPropertySchema;
@@ -16,6 +15,8 @@ import org.msh.etbm.entities.TbCase;
 import org.msh.etbm.test.desktop.AppTestStartup;
 import org.msh.springframework.persistence.ActionCallback;
 import org.msh.springframework.persistence.EntityManagerUtils;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 /**
  * This is a test of the custom property library. The custom property allows an
@@ -48,7 +49,7 @@ public class CrudTest {
 	/**
 	 * Test the insert, load, update and delete operation of the custom object
 	 */
-	@Test
+//	@Test
 	public void crudTest() {
 		AppTestStartup.instance().initialize();
 		createSchema();

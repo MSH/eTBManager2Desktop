@@ -166,8 +166,9 @@ public class ServerServices {
 	 * Download the desktop initialization file from the server using the given user token
 	 * @param server
 	 * @param userToken
+     * @return instance of {@link java.io.File} pointing to the downloaded file
 	 */
-	public void downloadIniFile(String server, String userToken, DownloadProgressListener listener) {
+	public File downloadIniFile(String server, String userToken, DownloadProgressListener listener) {
         File file;
 		try {
 			URL url = new URL(checkServerAddress(server) + "/sync/downloadinifile.seam?tk=" + userToken);
@@ -180,6 +181,8 @@ public class ServerServices {
             throw new RuntimeException("There was an error in e-TB Manager web server. " +
                     "Please inform your system administrator");
         }
+
+        return file;
 	}
 
 	
