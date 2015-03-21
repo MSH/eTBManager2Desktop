@@ -168,11 +168,11 @@ public class ServerServices {
 	 * @param userToken
      * @return instance of {@link java.io.File} pointing to the downloaded file
 	 */
-	public File downloadIniFile(String server, String userToken, DownloadProgressListener listener) {
+	public File downloadIniFile(String server, String userToken, File dest, DownloadProgressListener listener) {
         File file;
 		try {
 			URL url = new URL(checkServerAddress(server) + "/sync/downloadinifile.seam?tk=" + userToken);
-			file = downloadFromURL(url, listener);
+			file = downloadFromURL(url, dest, listener);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -196,7 +196,7 @@ public class ServerServices {
         File file;
 		try {
 			URL url = new URL(checkServerAddress(server) + "/sync/downloadanswerfile.seam?tk=" + fileToken);
-            file = downloadFromURL(url, listener);
+            file = downloadFromURL(url, null, listener);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -212,11 +212,15 @@ public class ServerServices {
 	/**
 	 * Download a file from an URL using a listener to get information about the download progress
 	 * @param url is the URL to download the file from
+     * @param dest instance of {@link java.io.File} representing a directory or a file. If it's a directory,
+     *             the file will be saved to the directory, using the file name from the download information.
+     *             If it's a file, the downloaded file will be saved to the given file.
+     *             If dest is null, the file will be saved in the application working directory
 	 * @param listener instance of {@link DownloadProgressListener} to get information about download progress
 	 * @return instance of {@link File} pointing to the downloaded file 
 	 * @throws Exception
 	 */
-	protected File downloadFromURL(URL url, DownloadProgressListener listener) throws Exception  {
+	protected File downloadFromURL(URL url, File dest, DownloadProgressListener listener) throws Exception  {
 		HttpURLConnection conn = (HttpURLConnection)url.openConnection();
 		try {
 			int responseCode = conn.getResponseCode();
@@ -241,7 +245,21 @@ public class ServerServices {
 			System.out.println(filename);
 			
 			InputStream in = conn.getInputStream();
-			File file = new File(App.getWorkingDirectory().getPath(), filename);
+
+            // get the destination file name
+            File file;
+            if (dest != null) {
+                if (dest.isDirectory()) {
+                    file = new File(dest, filename);
+                }
+                else {
+                    file = dest;
+                }
+            }
+            else {
+                file = new File(App.getWorkingDirectory().getPath(), filename);
+            }
+
 			if (listener != null)
 				listener.onInitDownload(file);
 

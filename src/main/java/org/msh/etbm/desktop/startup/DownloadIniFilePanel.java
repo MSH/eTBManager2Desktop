@@ -92,7 +92,7 @@ public class DownloadIniFilePanel extends JPanel implements Refreshable, CloseLi
 				txtFilename.setText(s);
 
                 try {
-                    conn.downloadIniFile(credentials.getServer(), credentials.getToken(), new DownloadProgressListener() {
+                    conn.downloadIniFile(credentials.getServer(), credentials.getToken(), null, new DownloadProgressListener() {
                         @Override
                         public void onUpdateProgress(double perc) {
                             setProgress((int)perc);

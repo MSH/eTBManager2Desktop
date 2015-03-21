@@ -76,17 +76,6 @@ public class AppTestStartup {
             throw new RuntimeException("Error trying to log into " + ETBM_SERVER + " with user " + ETBM_USER);
         }
 
-        File downloadFile = srv.downloadIniFile(ETBM_SERVER, token, new DownloadProgressListener() {
-            @Override
-            public void onUpdateProgress(double perc) {
-                //
-            }
-
-            @Override
-            public void onInitDownload(File file) {
-                System.out.println("Downloading " + file);
-            }
-        });
     }
 
 	/**

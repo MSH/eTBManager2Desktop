@@ -194,8 +194,10 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 	
 	@Lob
 	private String comments;
-	
-	@Embedded
+
+    private PatientType previouslyTreatedType;
+
+    @Embedded
 	@AttributeOverrides({
 		@AttributeOverride(name="address", column=@Column(name="NOTIF_ADDRESS")),
 		@AttributeOverride(name="complement", column=@Column(name="NOTIF_COMPLEMENT")),
@@ -1331,8 +1333,15 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 		return customProperties;
 	}
 
+    public PatientType getPreviouslyTreatedType() {
+        return previouslyTreatedType;
+    }
 
-	/** {@inheritDoc}
+    public void setPreviouslyTreatedType(PatientType previouslyTreatedType) {
+        this.previouslyTreatedType = previouslyTreatedType;
+    }
+
+    /** {@inheritDoc}
 	 */
 	@Override
 	public Object getCustomPropertiesId() {

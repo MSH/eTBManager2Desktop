@@ -16,6 +16,9 @@ import java.io.File;
 import java.util.List;
 
 /**
+ * Requirements for testing execution - Create the database, download the file
+ * from the testing server and read the initialization file
+ *
  * Created by rmemoria on 19/3/15.
  */
 public class AppInitTest {
@@ -73,14 +76,14 @@ public class AppInitTest {
         ServerServices srv = App.getComponent(ServerServices.class);
         TestData data = TestData.instance();
         String token = data.getToken();
-        File downloadFile = srv.downloadIniFile(ETBM_SERVER, token, new DownloadProgressListener() {
+        File downloadFile = srv.downloadIniFile(ETBM_SERVER, token, new File("target"), new DownloadProgressListener() {
             private int prog = 0;
             @Override
             public void onUpdateProgress(double perc) {
                 perc = Math.round(perc / 10);
                 if (perc > prog) {
-                    prog = (int)perc;
-                    System.out.println((prog * 10) + '%');
+                    prog = ((int)perc) * 10;
+                    System.out.println(prog + '%');
                 }
             }
 
