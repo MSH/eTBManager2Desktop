@@ -308,6 +308,7 @@
 				</configuration>
       		</plugin>
 
+
 			<!-- Generate javadoc for the project -->
 			<plugin>
 		        <artifactId>maven-javadoc-plugin</artifactId>
