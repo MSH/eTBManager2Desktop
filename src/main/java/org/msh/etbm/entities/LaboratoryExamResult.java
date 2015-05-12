@@ -17,6 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.validator.NotNull;
 
+import org.msh.etbm.entities.enums.ExamStatus;
 import org.msh.utils.FieldLog;
 
 
@@ -58,6 +59,8 @@ public abstract class LaboratoryExamResult extends SynchronizableEntity implemen
 	@JoinColumn(name="METHOD_ID")
 	@FieldLog(key="cases.exams.method")
 	private FieldValue method;
+
+	private ExamStatus status;
 
 	/**
 	 * Return month of treatment based on the start treatment date and the collected date
@@ -196,5 +199,13 @@ public abstract class LaboratoryExamResult extends SynchronizableEntity implemen
 
 	public void setSampleNumber(String sampleNumber) {
 		this.sampleNumber = sampleNumber;
+	}
+
+	public ExamStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(ExamStatus status) {
+		this.status = status;
 	}
 }
