@@ -41,15 +41,7 @@ import org.msh.customdata.CustomObject;
 import org.msh.customdata.CustomProperties;
 import org.msh.customdata.CustomPropertiesImpl;
 import org.msh.etbm.desktop.app.App;
-import org.msh.etbm.entities.enums.CaseClassification;
-import org.msh.etbm.entities.enums.CaseState;
-import org.msh.etbm.entities.enums.DiagnosisType;
-import org.msh.etbm.entities.enums.DisplayCaseNumber;
-import org.msh.etbm.entities.enums.DrugResistanceType;
-import org.msh.etbm.entities.enums.InfectionSite;
-import org.msh.etbm.entities.enums.Nationality;
-import org.msh.etbm.entities.enums.PatientType;
-import org.msh.etbm.entities.enums.ValidationState;
+import org.msh.etbm.entities.enums.*;
 import org.msh.utils.FieldLog;
 import org.msh.utils.date.Period;
 import org.msh.utils.date.DateUtils;
@@ -279,6 +271,8 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 			inverseJoinColumns={@JoinColumn(name="TAG_ID")})
 	private List<Tag> tags = new ArrayList<Tag>();
 
+
+	private CaseDefinition caseDefinition;
 	
 	/** {@inheritDoc}
 	 * @see java.lang.Object#toString()
@@ -1138,7 +1132,7 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 
 
 	/**
-	 * @param issueCounter the issueCounter to set
+	 * @param issueCount the issueCounter to set
 	 */
 	public void setIssueCounter(int issueCount) {
 		this.issueCounter = issueCount;
@@ -1346,5 +1340,13 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 	@Override
 	public Object getCustomPropertiesId() {
 		return id;
+	}
+
+	public CaseDefinition getCaseDefinition() {
+		return caseDefinition;
+	}
+
+	public void setCaseDefinition(CaseDefinition caseDefinition) {
+		this.caseDefinition = caseDefinition;
 	}
 }
