@@ -54,6 +54,7 @@
             <property name="examsMicroscopy" use="IGNORE" />
             <property name="examsDST" use="IGNORE" />
             <property name="tags" use="IGNORE" />
+            <property name="customProperties" use="IGNORE" />
         </objectGraph>
         
         <objectGraph name="examdst" class="org.msh.etbm.entities.ExamDST">

@@ -179,7 +179,7 @@ public class PrevTBTreatmentHome {
 	/**
 	 * Add an item to the previous tb treatment list 
 	 * @param prev
-	 * @return
+	 * @return object Item representing the added object
 	 */
 	protected Item addItem(PrevTBTreatment prev) {
 		Item item = new Item();
