@@ -117,11 +117,20 @@ public class StartupPanel extends JPanel implements Refreshable, CloseListener, 
 	protected void initializeComboLanguage() {
 		// initialize combo of languages
 		SelectItem selitem = null;
+		String lang = Locale.getDefault().getLanguage();
+		String country = Locale.getDefault().getCountry();
+		if (country == null) {
+			country = "";
+		}
+
 		for (Locale locale: Messages.getAvailableLocales()) {
 			SelectItem item = new SelectItem(locale, locale.getDisplayName(locale));
 			cbLanguage.addItem(item);
-			if (locale.getLanguage().equals(Locale.getDefault().getLanguage()))
-				selitem = item;
+			if (locale.getLanguage().equals(lang)) {
+                if ((country.equals(locale.getCountry())) || (selitem == null)) {
+                    selitem = item;
+                }
+			}
 		}
 		cbLanguage.setSelectedItem(selitem);
 		// action called when language is changed

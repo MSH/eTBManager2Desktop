@@ -94,7 +94,7 @@ public class FieldUI extends ViewUI<XField> {
 						label = new LabelUI();
 						label.setText(getView().getLabel());
 						label.setForceNewRow(getView().isForceNewRow());
-						if (fieldComponent != null && fieldComponent.isRequired()) {
+						if (fieldComponent != null && fieldComponent.isRequired() && (!fieldComponent.isReadOnly())) {
                             label.setShowRedAsterisk(true);
                         }
 						addChild(0, label);
