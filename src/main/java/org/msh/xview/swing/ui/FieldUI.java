@@ -94,6 +94,9 @@ public class FieldUI extends ViewUI<XField> {
 						label = new LabelUI();
 						label.setText(getView().getLabel());
 						label.setForceNewRow(getView().isForceNewRow());
+						if (fieldComponent != null && fieldComponent.isRequired()) {
+                            label.setShowRedAsterisk(true);
+                        }
 						addChild(0, label);
 						((JXLabel)label.getComponent()).setMaximumSize(new Dimension(280, 1000));
 					}

@@ -59,7 +59,6 @@ public class FormUI extends ComponentUI<XForm> {
 	}
 
 	/** {@inheritDoc}
-	 * @see org.msh.xview.swing_old.ui.ViewUI#getDataModel()
 	 */
 	@Override
 	public FormDataModel getDataModel() {
@@ -67,7 +66,6 @@ public class FormUI extends ComponentUI<XForm> {
 	}
 	
 	/** {@inheritDoc}
-	 * @see org.msh.xview.swing_old.ui.ViewUI#setWidth(int)
 	 */
 	@Override
 	public void setWidth(int width) {
@@ -76,7 +74,6 @@ public class FormUI extends ComponentUI<XForm> {
 	}
 	
 	/** {@inheritDoc}
-	 * @see org.msh.xview.swing_old.ui.ViewUI#getFormContext()
 	 */
 	@Override
 	public SwingFormContext getFormContext() {

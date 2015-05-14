@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
-		<section title="@PatientSample.identification" column-count="2">
-			<field value="examdst.dateCollected" label="@PatientSample.dateCollected" required="true" />
-			<field value="examdst.sampleNumber" label="@PatientSample.sampleNumber" width="200" maxchars="100" />
-			<field value="examdst.laboratory" label="@Laboratory" required="true" />
-		</section>
+	<section title="@PatientSample.identification" column-count="2">
+		<field value="examdst.dateCollected" label="@PatientSample.dateCollected" required="true" />
+		<field value="examdst.sampleNumber" label="@PatientSample.sampleNumber" width="200" maxchars="100" />
+		<field value="examdst.laboratory" label="@Laboratory" required="true" />
+	</section>
 
-		<section title="@cases.exams.results" column-count="2">
-			<field value="examdst.dateRelease" label="@cases.exams.dateRelease" >
-				<validation rule="examdst.dateRelease > examdst.dateCollected" 
-					enabled-if="not empty examdst.dateRelease" 
-					message="@cases.exams.datereleasebeforecol"/>
-			</field>
+	<section title="@cases.exams.results" column-count="2">
+		<field value="examdst.dateRelease" label="@cases.exams.dateRelease" >
+			<validation rule="examdst.dateRelease >= examdst.dateCollected"
+						enabled-if="not empty examdst.dateRelease"
+						message="@cases.exams.datereleasebeforecol"/>
+		</field>
 
-			<field value="examdst.method" label="@cases.exams.method" handler="combo" options="${fieldsOptions.dstMethods}" />
-			<field value="examdst.comments" label="@global.comments" handler="text" />
+		<field value="examdst.method" label="@cases.exams.method" handler="combo" options="${fieldsOptions.dstMethods}" />
+		<field value="examdst.comments" label="@global.comments" handler="text" />
 
-			<table values="${examdst.results}" var="v" colspan="2">
-			    <column title="@Medicine">
-			        <field value="v.substance.name.name1" readonly="true" />
-			    </column>
-			    <column title="@cases.details.result">
-					<field value="v.result" options="${globalLists.dstResults}"/>
-			    </column>
-			</table>
-		</section>
+		<table values="${examdst.results}" var="v" colspan="2">
+			<column title="@Medicine">
+				<field value="v.substance.name.name1" readonly="true" />
+			</column>
+			<column title="@cases.details.result">
+				<field value="v.result" options="${globalLists.dstResults}"/>
+			</column>
+		</table>
+	</section>
 </form>

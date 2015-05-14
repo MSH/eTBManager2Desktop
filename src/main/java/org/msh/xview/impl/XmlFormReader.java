@@ -147,7 +147,6 @@ public class XmlFormReader {
 
 	/**
 	 * Read form attributes by its XML element
-	 * @param frm
 	 * @param el
 	 * @return
 	 */

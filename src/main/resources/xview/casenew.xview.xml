@@ -32,11 +32,11 @@
 	<section title="@cases.generaldata" column-count="2">
 		<field value="tbcase.notificationUnit" label="@TbCase.notificationUnit" required="true" />
 		<field value="tbcase.registrationDate" label="@TbCase.registrationDate" required="true" />
-		<field value="tbcase.diagnosisType" label="@DiagnosisType" required="true" colspan="3" readonly="true"/>
+		<field value="tbcase.diagnosisType" label="@DiagnosisType" required="true" readonly="true"/>
 		<region visible="${tbcase.diagnosisType == 'CONFIRMED'}">
-			<field value="tbcase.diagnosisDate" label="@TbCase.diagnosisDate" colspan="3" required="true" />
-			<field value="tbcase.patientType" label="@PatientType" colspan="3" required="true" />
-			<field value="tbcase.infectionSite" label="@InfectionSite" colspan="3" />
+			<field value="tbcase.diagnosisDate" label="@TbCase.diagnosisDate" required="true" />
+			<field value="tbcase.patientType" label="@PatientType" required="true" />
+			<field value="tbcase.infectionSite" label="@InfectionSite"  />
 			<field value="tbcase.pulmonaryType" label="@TbField.PULMONARY_TYPES"
 		    	options="${fieldsOptions.pulmonaryTypes}"
 			    colspan="3" visible="${tbcase.infectionSite == 'PULMONARY' or tbcase.infectionSite == 'BOTH'}">

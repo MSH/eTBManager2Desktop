@@ -20,7 +20,8 @@ public class AbstractTextUI<E extends XText> extends ComponentUI<XText> {
 
 	private String text;
 	private ExpressionWrapper<String> expLabel;
-	
+    private boolean showRedAsterisk;
+
 
 	/**
 	 * Return the label to be displayed
@@ -89,6 +90,9 @@ public class AbstractTextUI<E extends XText> extends ComponentUI<XText> {
 		if (isVisible()) {
 			text.setVisible(true);
 			String s = getText();
+            if (showRedAsterisk) {
+                s = "<html>" + s + "<span style='color:red'>*</span></html>";
+            }
 			text.setText(s);
 		}
 		else text.setVisible(false);
@@ -103,4 +107,12 @@ public class AbstractTextUI<E extends XText> extends ComponentUI<XText> {
 		return ((FormUI)getRootView());
 	}
 
+    public boolean isShowRedAsterisk() {
+        return showRedAsterisk;
+    }
+
+    public void setShowRedAsterisk(boolean showRedAsterisk) {
+        this.showRedAsterisk = showRedAsterisk;
+        update();
+    }
 }

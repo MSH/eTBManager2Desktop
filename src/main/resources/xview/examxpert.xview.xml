@@ -8,7 +8,7 @@
 		</section>
 		<section title="@cases.exams.results"  column-count="2">
 			<field value="examxpert.dateRelease" label="@cases.exams.dateRelease" >
-				<validation rule="${examxpert.dateRelease > examxpert.dateCollected}" 
+				<validation rule="${examxpert.dateRelease >= examxpert.dateCollected}"
 					enabled-if="${not empty examxpert.dateRelease}" 
 					message="@cases.exams.datereleasebeforecol"/>
 			</field>
