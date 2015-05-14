@@ -31,6 +31,7 @@ import org.msh.etbm.desktop.common.PatientNameCellRenderer;
 import org.msh.etbm.desktop.components.JDatePicker;
 import org.msh.etbm.desktop.components.JPersonNameEdit;
 import org.msh.etbm.entities.Patient;
+import org.msh.etbm.entities.PersonNameComponent;
 import org.msh.etbm.entities.enums.DiagnosisType;
 import org.msh.etbm.services.cases.PatientData;
 import org.msh.etbm.services.cases.PatientServices;
@@ -56,6 +57,7 @@ public class NewNotificationDlg extends GenericDialog {
 	private JLabel txtCount;
 	private JCheckBox chkNewPatient;
 	private Patient patient;
+    private JButton btnSearch;
 
 	/**
 	 * Launch the new notification form
@@ -81,8 +83,9 @@ public class NewNotificationDlg extends GenericDialog {
 		else setTitle(Messages.getString("cases.newsusp"));
 		
 		GuiUtils.prepareTable(table);
-		
-		
+
+        btnSearch.setEnabled(false);
+
 		if (!showModal())
 			return null;
 
@@ -94,7 +97,7 @@ public class NewNotificationDlg extends GenericDialog {
 			patient.setName(edtName.getPersonName());
 			patient.setBirthDate(edtBirthDate.getDate());
 		}
-		
+
 		return patient;
 	}
 
@@ -187,12 +190,18 @@ public class NewNotificationDlg extends GenericDialog {
 		JLabel lblNewLabel_1 = new JLabel(Messages.getString("Patient.birthDate")); //$NON-NLS-1$
 		
 		edtName = new JPersonNameEdit();
+        edtName.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                updateSearchButtonState();
+            }
+        });
 //		edtName.setColumns(10);
 		
 		edtBirthDate = new JDatePicker();
 		
-		JButton btnNewButton = new JButton(Messages.getString("form.search")); //$NON-NLS-1$
-		btnNewButton.addActionListener(new ActionListener() {
+		btnSearch = new JButton(Messages.getString("form.search")); //$NON-NLS-1$
+		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnSearchClick();
 			}
@@ -225,7 +234,7 @@ public class NewNotificationDlg extends GenericDialog {
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 								.addComponent(edtName, GroupLayout.PREFERRED_SIZE, edtName.getWidth(), GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnSearch, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE)
 								.addComponent(edtBirthDate, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap())
 		);
@@ -241,7 +250,7 @@ public class NewNotificationDlg extends GenericDialog {
 						.addComponent(lblNewLabel_1)
 						.addComponent(edtBirthDate, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(btnNewButton)
+					.addComponent(btnSearch)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(chkNewPatient)
@@ -272,7 +281,7 @@ public class NewNotificationDlg extends GenericDialog {
 				{null, null, null, null, null},
 			},
 			new String[] {
-				"Patient.name", "Patient.recordNumber", "Patient.motherName", "Patient.birthDate", "cases.sit.current"
+				"@Patient.name", "@Patient.recordNumber", "@Patient.motherName", "@Patient.birthDate", "@cases.sit.current"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
@@ -288,8 +297,13 @@ public class NewNotificationDlg extends GenericDialog {
 		table.getColumnModel().getColumn(3).setPreferredWidth(110);
 		table.getColumnModel().getColumn(4).setPreferredWidth(300);
 		scrollPane.setViewportView(table);
-	}
+    }
 
+
+    protected void updateSearchButtonState() {
+        boolean hasName = !edtName.getPersonName().isEmpty();
+        btnSearch.setEnabled(hasName);
+    }
 
 	protected void newPatientSelected() {
 		table.getSelectionModel().clearSelection();

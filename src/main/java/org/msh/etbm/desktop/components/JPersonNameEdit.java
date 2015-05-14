@@ -64,8 +64,8 @@ public class JPersonNameEdit extends JPanel {
 	
 	/**
 	 * Add a text field box to the panel
-	 * @param width
-	 * @return
+	 * @param columns number of columns
+	 * @return instance of the JTextFieldEx
 	 */
 	private JTextFieldEx addTextField(int columns) {
 		JTextFieldEx edt = new JTextFieldEx();

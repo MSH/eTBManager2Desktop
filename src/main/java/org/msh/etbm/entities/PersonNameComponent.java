@@ -20,6 +20,15 @@ public class PersonNameComponent {
 	@Column(length=100, name="lastName")
 	private String lastName;
 
+	/**
+	 * Check if the name was provided
+	 * @return
+	 */
+	public boolean isEmpty() {
+		return (name == null || name.trim().isEmpty()) &&
+				(middleName == null || middleName.trim().isEmpty()) &&
+				(lastName == null || lastName.trim().isEmpty());
+	}
 	
 	/**
 	 * Return the name to be displayed using the workspace name composition
