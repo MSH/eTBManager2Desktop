@@ -6,7 +6,7 @@
 		<field value="patient.securityNumber" label="@Patient.securityNumber" maxchars="20" charCase="UPPER" />
 		<field value="patient.gender" label="@Gender" required="true" />
 		<field value="patient.birthDate" label="@Patient.birthDate" />
-		<field value="tbcase.age" label="@TbCase.age" />
+		<field value="tbcase.age" label="@TbCase.age" required="true"/>
 		<field value="patient.motherName" label="@Patient.motherName" width="350" maxchars="100" colspan="3" charCase="UPPER" />
 		<field value="tbcase.nationality" label="@Nationality" options="${globalLists.nationalities}"/>
 	</section>

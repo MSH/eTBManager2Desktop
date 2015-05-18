@@ -137,8 +137,10 @@ public class NewCasePanel extends JPanel implements Refreshable {
 			@Override
 			public void execute(Object data) {
 				TbCase tbcase = (TbCase)formContext.getValue("tbcase");
+				Patient p = (Patient)formContext.getValue("patient");
+                tbcase.setPatient(p);
 				System.out.println(tbcase.getId());
-				Patient p = tbcase.getPatient();
+//				Patient p = tbcase.getPatient();
 				System.out.println(p.getId());
 				System.out.println(p.getBirthDate());
 				

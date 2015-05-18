@@ -33,7 +33,6 @@ public class CaseServices extends EntityServicesImpl<TbCase> {
 	}
 
 	/** {@inheritDoc}
-	 * @see org.msh.etbm.services.core.EntityServices#validate(org.msh.xview.FormContext)
 	 */
 	@Override
 	public boolean validate(TbCase tbcase, FormContext form) {
@@ -43,7 +42,6 @@ public class CaseServices extends EntityServicesImpl<TbCase> {
 	
 
 	/** {@inheritDoc}
-	 * @see org.msh.etbm.services.core.EntityServices#save(org.msh.xview.FormContext)
 	 */
 	@Override
 	public void save(TbCase tbcase) {
