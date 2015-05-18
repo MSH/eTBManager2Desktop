@@ -53,7 +53,9 @@ public class CaseEditDlg extends GenericDialog {
 		EntityManagerUtils.doInTransaction(new ActionCallback<Integer>(caseid) {
 			@Override
 			public void execute(Integer caseid) {
-				form.getDataModel().setValue("tbcase", CaseServices.instance().findEntity(caseid));
+                TbCase tbcase = CaseServices.instance().findEntity(caseid);
+				form.getDataModel().setValue("tbcase", tbcase);
+//                form.getDataModel().setValue("patient", tbcase.getPatient());
 				form.getDataModel().setValue("medicalexamination", new MedicalExamination());
 				form.getFormUI().setPreferredWidth(700);
 				form.getFormUI().update();
@@ -81,10 +83,10 @@ public class CaseEditDlg extends GenericDialog {
 			@Override
 			public void execute(Object data) {
 				TbCase tbcase = (TbCase)form.getDataModel().getValue("tbcase");
-				Patient patient = tbcase.getPatient();
-				
+				Patient patient = (Patient)form.getDataModel().getValue("patient");
+
+                patient = App.getEntityManager().merge(patient);
 				tbcase = App.getEntityManager().merge(tbcase);
-				patient = App.getEntityManager().merge(patient);
 
 				CaseServices.instance().save(tbcase);
 			}

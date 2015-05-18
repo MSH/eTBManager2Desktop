@@ -26,11 +26,11 @@ public class PersonNameFieldUI extends FieldComponentUI {
 
 		// add listener
 		edt.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				nameChanged();
-			}
-		});
+            @Override
+            public void keyReleased(KeyEvent e) {
+                nameChanged();
+            }
+        });
 		return edt;
 	}
 
@@ -39,7 +39,7 @@ public class PersonNameFieldUI extends FieldComponentUI {
 	 */
 	protected void nameChanged() {
 		JPersonNameEdit edt = (JPersonNameEdit)getComponent();
-		setValue( edt.getName() );
+		setValue(edt.getPersonName());
 	}
 
 	/** {@inheritDoc}
