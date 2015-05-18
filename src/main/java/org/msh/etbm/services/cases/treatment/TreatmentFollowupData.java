@@ -9,8 +9,10 @@ import java.util.List;
 
 import org.msh.etbm.entities.TbCase;
 import org.msh.etbm.entities.TreatmentMonitoring;
+import org.msh.etbm.entities.Workspace;
 import org.msh.etbm.entities.enums.TreatmentDayOption;
 import org.msh.utils.date.DateUtils;
+import org.msh.utils.date.Period;
 
 /**
  * Store temporary information about the treatment follow-up of the case.
@@ -26,15 +28,19 @@ public class TreatmentFollowupData {
 	private TbCase tbcase;
 	private List<TreatmentMonitoring> disps;
 	private List<TreatmentMonitoring> updatedDisps;
+    private Workspace workspace;
+    // just to speed up the process
+	private TreatmentMonitoring current;
 	
 	/**
 	 * Protected constructor, only available for the {@link TreatmentFollowupServices} class
 	 * @param tbcase instance of {@link TbCase} 
-	 * @param disps list of {@link CaseDispensing} containing information about treatment follow-up
+	 * @param disps list of {@link TreatmentMonitoring} containing information about treatment follow-up
 	 */
-	protected TreatmentFollowupData(TbCase tbcase, List<TreatmentMonitoring> disps) {
+	protected TreatmentFollowupData(TbCase tbcase, List<TreatmentMonitoring> disps, Workspace ws) {
 		this.tbcase = tbcase;
 		this.disps = disps;
+        this.workspace = ws;
 	}
 	
 	/**
@@ -53,6 +59,15 @@ public class TreatmentFollowupData {
 
 		return tm.getDay(DateUtils.dayOf(dt));
 	}
+
+    /**
+     * Return true if the given day is planned for prescription
+     * @param dt the date to check in
+     * @return true if the date must have medicine prescription
+     */
+    public boolean isDayPrescription(Date dt) {
+        return tbcase.isDayPrescription(dt);
+    }
 	
 	
 	/**
@@ -90,16 +105,23 @@ public class TreatmentFollowupData {
 		int month = DateUtils.monthOf(dt) + 1;
 		int year = DateUtils.yearOf(dt);
 
+        // check if the last searched is the one
+        if (current != null && current.getMonth() == month && current.getYear() == year) {
+            return current;
+        }
+
 		for (TreatmentMonitoring tm: disps) {
-			if ((tm.getMonth() == month) && (tm.getYear() == year)) 
-				return tm;
+			if ((tm.getMonth() == month) && (tm.getYear() == year)) {
+                current = tm;
+                return tm;
+            }
 		}
 		return null;
 	}
 	
 	/**
 	 * Return the list of treatment follow-up months that were updated and must be saved
-	 * @return list of {@link CaseDispensing}
+	 * @return list of {@link TreatmentMonitoring}
 	 */
 	protected List<TreatmentMonitoring> getUpdatedData() {
 		return updatedDisps;

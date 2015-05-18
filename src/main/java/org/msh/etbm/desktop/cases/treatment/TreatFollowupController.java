@@ -22,6 +22,7 @@ import org.msh.etbm.desktop.app.UiConstants;
 import org.msh.etbm.desktop.common.GuiUtils;
 import org.msh.etbm.desktop.common.MigLayoutPanel;
 import org.msh.etbm.entities.TbCase;
+import org.msh.etbm.entities.TreatmentMonitoring;
 import org.msh.etbm.entities.enums.RegimenPhase;
 import org.msh.etbm.entities.enums.TreatmentDayOption;
 import org.msh.etbm.services.cases.treatment.TreatmentFollowupData;
@@ -66,16 +67,19 @@ public class TreatFollowupController {
 	}
 	
 	/**
-	 * Create the label to be displayed in the titles
-	 * @param value
-	 * @return
+	 * Create the label to be displayed in the treatment follow-up table
+	 * @param value type of treatment followup
+	 * @return instance of JLabel configured to be displayed as a title
 	 */
 	private JLabel newLabel(TreatmentDayOption value) {
 		return new JLabel(App.getMessage(value.getMessageKey()), TreatTableCellRenderer.getIcon(value), JLabel.LEFT);
 	}
 	
 	/**
-	 * @param tbl
+     * Create medicine intake follow-up panel to be displayed to the user
+	 * @param period the period in dates
+	 * @param phase The phase of the regimen
+     * @return Panel to be displayed with information about intake medicine follow-up
 	 */
 	@SuppressWarnings("serial")
 	public JScrollPane createIntakeTable(Period period, RegimenPhase phase) {
@@ -98,6 +102,7 @@ public class TreatFollowupController {
 					return false;
 				}
 			});
+
 		table.getColumnModel().getColumn(0).setPreferredWidth(90);
 		TreatTableCellRenderer renderer = new TreatTableCellRenderer(tbcase, phase, data);
 		for (int i = 1; i <= 31; i++) {
@@ -114,7 +119,28 @@ public class TreatFollowupController {
 		while (dt.before(period.getEndDate())) {
 			Object vals[] = new Object[34];
 			vals[0] = sdf.format(dt);
-			model.addRow(vals);
+
+            // set information about treatment for every day
+            int month = DateUtils.monthOf(dt);
+            int year = DateUtils.yearOf(dt);
+            int planned = 0;
+            int executed = 0;
+            for (int day = 1; day <= DateUtils.daysInAMonth(year, month); day++) {
+                Date dt2 = DateUtils.newDate(year, month, day);
+                TreatmentDayOption opt = data.getTreatmentDay(dt2);
+
+                if (opt == TreatmentDayOption.DOTS || opt == TreatmentDayOption.SELF_ADMIN) {
+                    executed++;
+                }
+
+                if (data.isDayPrescription(dt2)) {
+                    planned++;
+                }
+            }
+            vals[32] = planned == 0? "-": Integer.toString(planned);
+            vals[33] = executed == 0? "-": Integer.toString(executed);
+
+            model.addRow(vals);
 			dt = DateUtils.incMonths(dt, 1);
 		}
 
@@ -144,8 +170,7 @@ public class TreatFollowupController {
 	}
 
 	/**
-	 * @param selectedColumn
-	 * @param selectedRow
+	 * @param table
 	 */
 	protected void handleCellClick(JTable table) {
 		if (!tbcase.isOpen())
@@ -156,35 +181,39 @@ public class TreatFollowupController {
 		if ((col < 1) || (col > 31))
 			return;
 
+        // get the treatment period
 		Period p;
 		if (table == tblIntensive)
 			 p = tbcase.getIntensivePhasePeriod();
 		else p = tbcase.getContinuousPhasePeriod();
-		
+
 		Date dt = p.getIniDate();
 		if (row > 0)
 			dt = DateUtils.incMonths(dt, row);
 
+        // calculate the date of the selected cell in the table
 		int month = DateUtils.monthOf(dt);
 		int year = DateUtils.yearOf(dt);
 		int mdays = DateUtils.daysInAMonth(year, month);
 		if (col > mdays)
 			return;
-		
+
 		dt = DateUtils.newDate(year, month, col);
 		
 		if (!p.isDateInside(dt))
 			return;
 
 		TreatmentDayOption status = data.getTreatmentDay(dt);
-		if ((status == null) || (status == TreatmentDayOption.NOT_TAKEN))
-			status = TreatmentDayOption.SELF_ADMIN;
-		else
-			if (status == TreatmentDayOption.SELF_ADMIN)
-				status = TreatmentDayOption.DOTS;
-			else if (status == TreatmentDayOption.DOTS)
-				status = TreatmentDayOption.NOT_TAKEN;
-		
+		if ((status == null) || (status == TreatmentDayOption.NOT_TAKEN)) {
+            status = TreatmentDayOption.SELF_ADMIN;
+        }
+		else {
+            if (status == TreatmentDayOption.SELF_ADMIN)
+                status = TreatmentDayOption.DOTS;
+            else if (status == TreatmentDayOption.DOTS)
+                status = TreatmentDayOption.NOT_TAKEN;
+        }
+
 		data.setTreatmentDay(dt, status);
 		EntityManagerUtils.doInTransaction(new ActionCallback<TreatmentFollowupData>(data) {
 			@Override
@@ -192,6 +221,20 @@ public class TreatFollowupController {
 				getService().saveTreatmentFollowup(treatData);
 			}
 		});
+
+        // update executed number of days
+        int tot = 0;
+        for (int i = 1; i <= mdays; i++) {
+            Date d = DateUtils.newDate(year, month, i);
+            TreatmentDayOption opt = data.getTreatmentDay(d);
+            if (opt == TreatmentDayOption.SELF_ADMIN || opt == TreatmentDayOption.DOTS) {
+                tot++;
+            }
+        }
+        String s = tot == 0? "-": Integer.toString(tot);
+        DefaultTableModel model = (DefaultTableModel)table.getModel();
+        model.setValueAt(s, row, 33);
+        model.fireTableDataChanged();
 	}
 	
 	/**

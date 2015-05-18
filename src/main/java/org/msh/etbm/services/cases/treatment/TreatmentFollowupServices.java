@@ -33,7 +33,8 @@ public class TreatmentFollowupServices {
 				"where c.tbcase.id = :id ")
 				.setParameter("id", tbcase.getId())
 				.getResultList();
-		return new TreatmentFollowupData(tbcase, lst);
+		tbcase.getPrescribedMedicines();
+		return new TreatmentFollowupData(tbcase, lst, tbcase.getPatient().getWorkspace());
 	}
 	
 	/**
