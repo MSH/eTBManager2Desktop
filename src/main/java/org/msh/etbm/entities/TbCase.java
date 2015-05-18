@@ -271,6 +271,13 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 			inverseJoinColumns={@JoinColumn(name="TAG_ID")})
 	private List<Tag> tags = new ArrayList<Tag>();
 
+	private SecDrugsReceived secDrugsReceived;
+
+	@Temporal(TemporalType.DATE)
+	private Date lastBmuDateTbRegister;
+
+	@Column(length=50)
+	private String lastBmuTbRegistNumber;
 
 	private CaseDefinition caseDefinition;
 	
@@ -374,7 +381,6 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 	
 	/**
 	 * Returns a key related to the system messages to display the month
-	 * @param tbcase object representing the TB Case
 	 * @param dt reference date for the month display
 	 * @return String value to be displayed to the user
 	 */
@@ -1348,5 +1354,29 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 
 	public void setCaseDefinition(CaseDefinition caseDefinition) {
 		this.caseDefinition = caseDefinition;
+	}
+
+	public SecDrugsReceived getSecDrugsReceived() {
+		return secDrugsReceived;
+	}
+
+	public void setSecDrugsReceived(SecDrugsReceived secDrugsReceived) {
+		this.secDrugsReceived = secDrugsReceived;
+	}
+
+	public Date getLastBmuDateTbRegister() {
+		return lastBmuDateTbRegister;
+	}
+
+	public void setLastBmuDateTbRegister(Date lastBmuDateTbRegister) {
+		this.lastBmuDateTbRegister = lastBmuDateTbRegister;
+	}
+
+	public String getLastBmuTbRegistNumber() {
+		return lastBmuTbRegistNumber;
+	}
+
+	public void setLastBmuTbRegistNumber(String lastBmuTbRegistNumber) {
+		this.lastBmuTbRegistNumber = lastBmuTbRegistNumber;
 	}
 }
