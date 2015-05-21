@@ -7,6 +7,7 @@ import javax.persistence.Table;
 
 import org.msh.etbm.entities.enums.MicroscopyResult;
 import org.msh.etbm.entities.enums.SampleType;
+import org.msh.etbm.entities.enums.VisualAppearance;
 
 @Entity
 @Table(name="exammicroscopy")
@@ -19,6 +20,8 @@ public class ExamMicroscopy extends LaboratoryExamResult implements Serializable
 
 
 	private SampleType sampleType;
+
+	private VisualAppearance visualAppearance;
 	
 	public MicroscopyResult getResult() {
 		return result;
@@ -55,4 +58,12 @@ public class ExamMicroscopy extends LaboratoryExamResult implements Serializable
 	public void setSampleType(SampleType sampleType) {
 		this.sampleType = sampleType;
 	}
+
+    public VisualAppearance getVisualAppearance() {
+        return visualAppearance;
+    }
+
+    public void setVisualAppearance(VisualAppearance visualAppearance) {
+        this.visualAppearance = visualAppearance;
+    }
 }
