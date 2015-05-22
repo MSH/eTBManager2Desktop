@@ -64,7 +64,10 @@
 					</execution>
 				</executions>
 				<configuration>
-					<shortRevisionLength>5</shortRevisionLength>
+                    <format>{0,number}</format>
+                    <items>
+                        <item>buildNumber</item>
+                    </items>
 					<doCheck>false</doCheck>
 					<doUpdate>false</doUpdate>
 				</configuration>
