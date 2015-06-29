@@ -33,6 +33,8 @@ public class Tag extends WSObject implements Serializable {
 	
 	private boolean dailyUpdate;
 
+    private boolean summary;
+
 	/**
 	 * Return true if tag is auto generated and maintained by the system
 	 * @return
@@ -140,4 +142,12 @@ public class Tag extends WSObject implements Serializable {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+
+    public boolean isSummary() {
+        return summary;
+    }
+
+    public void setSummary(boolean summary) {
+        this.summary = summary;
+    }
 }

@@ -151,15 +151,16 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 	@FieldLog(key="TbField.PULMONARY_TYPES")
 	private FieldValue pulmonaryType;
 
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="EXTRAPULMONARY_ID")
-	@FieldLog(key="TbField.EXTRAPULMONARY_TYPES")
-	private FieldValue extrapulmonaryType;
 
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="EXTRAPULMONARY2_ID")
-	@FieldLog(key="TbField.EXTRAPULMONARY_TYPES")
-	private FieldValue extrapulmonaryType2;
+    @Embedded
+    @AssociationOverrides({ @AssociationOverride(name = "value", joinColumns = @JoinColumn(name = "EXTRAPULMONARY_ID")) })
+    @AttributeOverrides({ @AttributeOverride(name = "complement", column = @Column(name = "otherExtrapulmonary")) })
+    private FieldValueComponent extrapulmonaryType;
+
+    @Embedded
+    @AssociationOverrides({ @AssociationOverride(name = "value", joinColumns = @JoinColumn(name = "EXTRAPULMONARY2_ID")) })
+    @AttributeOverrides({ @AttributeOverride(name = "complement", column = @Column(name = "otherExtrapulmonary2")) })
+    private FieldValueComponent extrapulmonaryType2;
 	
 	@Column(length=100)
 	private String patientTypeOther;
@@ -186,6 +187,10 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 	
 	@Lob
 	private String comments;
+
+    private TreatmentCategory treatmentCategory;
+
+    private Boolean initialRegimenWithSecondLineDrugs;
 
     private PatientType previouslyTreatedType;
 
@@ -1033,39 +1038,46 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 	}
 
 
-	/**
-	 * @return the extrapulmonaryType
-	 */
-	public FieldValue getExtrapulmonaryType() {
-		return extrapulmonaryType;
-	}
+
+    /**
+     * @return the extrapulmonaryType
+     */
+    public FieldValueComponent getExtrapulmonaryType() {
+        if (extrapulmonaryType == null) {
+            extrapulmonaryType = new FieldValueComponent();
+        }
+        return extrapulmonaryType;
+    }
 
 
-	/**
-	 * @param extrapulmonaryType the extrapulmonaryType to set
-	 */
-	public void setExtrapulmonaryType(FieldValue extrapulmonaryType) {
-		this.extrapulmonaryType = extrapulmonaryType;
-	}
+    /**
+     * @param extrapulmonaryType the extrapulmonaryType to set
+     */
+    public void setExtrapulmonaryType(FieldValueComponent extrapulmonaryType) {
+        this.extrapulmonaryType = extrapulmonaryType;
+    }
 
 
-	/**
-	 * @return the extrapulmonaryType2
-	 */
-	public FieldValue getExtrapulmonaryType2() {
-		return extrapulmonaryType2;
-	}
+    /**
+     * @return the extrapulmonaryType2
+     */
+    public FieldValueComponent getExtrapulmonaryType2() {
+        if (extrapulmonaryType2 == null) {
+            extrapulmonaryType2 = new FieldValueComponent();
+        }
+        return extrapulmonaryType2;
+    }
 
 
-	/**
-	 * @param extrapulmonaryType2 the extrapulmonaryType2 to set
-	 */
-	public void setExtrapulmonaryType2(FieldValue extrapulmonaryType2) {
-		this.extrapulmonaryType2 = extrapulmonaryType2;
-	}
+    /**
+     * @param extrapulmonaryType2 the extrapulmonaryType2 to set
+     */
+    public void setExtrapulmonaryType2(FieldValueComponent extrapulmonaryType2) {
+        this.extrapulmonaryType2 = extrapulmonaryType2;
+    }
 
 
-	/**
+    /**
 	 * @return the daysTreatPlanned
 	 */
 	public Integer getDaysTreatPlanned() {
@@ -1379,4 +1391,20 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 	public void setLastBmuTbRegistNumber(String lastBmuTbRegistNumber) {
 		this.lastBmuTbRegistNumber = lastBmuTbRegistNumber;
 	}
+
+    public TreatmentCategory getTreatmentCategory() {
+        return treatmentCategory;
+    }
+
+    public void setTreatmentCategory(TreatmentCategory treatmentCategory) {
+        this.treatmentCategory = treatmentCategory;
+    }
+
+    public Boolean getInitialRegimenWithSecondLineDrugs() {
+        return initialRegimenWithSecondLineDrugs;
+    }
+
+    public void setInitialRegimenWithSecondLineDrugs(Boolean initialRegimenWithSecondLineDrugs) {
+        this.initialRegimenWithSecondLineDrugs = initialRegimenWithSecondLineDrugs;
+    }
 }

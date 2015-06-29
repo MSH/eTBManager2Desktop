@@ -11,6 +11,7 @@ import org.msh.etbm.desktop.app.App;
 import org.msh.etbm.desktop.app.Messages;
 import org.msh.etbm.desktop.common.GenericFormDialog;
 import org.msh.etbm.entities.FieldValue;
+import org.msh.etbm.entities.FieldValueComponent;
 import org.msh.etbm.entities.TbCase;
 import org.msh.etbm.entities.enums.CaseClassification;
 import org.msh.etbm.entities.enums.CaseState;
@@ -58,8 +59,8 @@ public class SuspectFollowupDlg extends GenericFormDialog {
 	private String patientTypeOther;
 	private InfectionSite infectionSite;
 	private FieldValue pulmonary;
-	private FieldValue extrapulmonary1;
-	private FieldValue extrapulmonary2;
+	private FieldValueComponent extrapulmonary1;
+	private FieldValueComponent extrapulmonary2;
 	private Date outcomeDate;
 	private CaseState outcome;
 	private TbCase tbcase;
@@ -242,28 +243,28 @@ public class SuspectFollowupDlg extends GenericFormDialog {
 	/**
 	 * @return the extrapulmonary1
 	 */
-	public FieldValue getExtrapulmonary1() {
+	public FieldValueComponent getExtrapulmonary1() {
 		return extrapulmonary1;
 	}
 
 	/**
 	 * @param extrapulmonary1 the extrapulmonary1 to set
 	 */
-	public void setExtrapulmonary1(FieldValue extrapulmonary1) {
+	public void setExtrapulmonary1(FieldValueComponent extrapulmonary1) {
 		this.extrapulmonary1 = extrapulmonary1;
 	}
 
 	/**
 	 * @return the extrapulmonary2
 	 */
-	public FieldValue getExtrapulmonary2() {
+	public FieldValueComponent getExtrapulmonary2() {
 		return extrapulmonary2;
 	}
 
 	/**
 	 * @param extrapulmonary2 the extrapulmonary2 to set
 	 */
-	public void setExtrapulmonary2(FieldValue extrapulmonary2) {
+	public void setExtrapulmonary2(FieldValueComponent extrapulmonary2) {
 		this.extrapulmonary2 = extrapulmonary2;
 	}
 
