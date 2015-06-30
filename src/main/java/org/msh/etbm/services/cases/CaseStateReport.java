@@ -76,9 +76,10 @@ public class CaseStateReport {
 		String condByCase = generateSQLConditionByCase();
 
 		Integer hsID = null;
-		if (uw.getHealthSystem() != null)
-			hsID = uw.getHealthSystem().getId();
-		
+		if (uw.getHealthSystem() != null) {
+            hsID = uw.getHealthSystem().getId();
+        }
+
 		Workspace defaultWorkspace = UserSession.getWorkspace();
 
 		String sql = "select c.state, c.validationState, c.diagnosisType, count(*) " +

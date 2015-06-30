@@ -39,6 +39,10 @@ public class Authenticator {
         		return false;
 
         	UserWorkspace userWorkspace = selectWorkspace(user, workspaceId);
+            if (userWorkspace.getHealthSystem() != null) {
+                userWorkspace.getHealthSystem().getId();
+            }
+
         	if (userWorkspace == null)
         		return false;
         	
