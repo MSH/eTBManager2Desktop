@@ -108,6 +108,7 @@ public class SynchronizeDialog extends JDialog {
 	
 	public void closeForm() {
 		setVisible(false);
+
 	}
 	
 	/**

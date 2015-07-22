@@ -98,7 +98,7 @@ public class EntityManagerImplWrapper implements EntityManager {
 	 */
 	public void persist(Object obj) {
 		// check if entity must store information about its change
-		if (obj instanceof Synchronizable) {
+		if ((obj instanceof Synchronizable) && (!App.instance().isSynchronizing())) {
 			SynchronizationData data = ((Synchronizable)obj).getSyncData();
 			if (data == null)
 				data = new SynchronizationData();
@@ -119,7 +119,7 @@ public class EntityManagerImplWrapper implements EntityManager {
 
 	public void remove(Object obj) {
 		// check if it's a synchronized entity
-		if (obj instanceof Synchronizable) {
+		if ((obj instanceof Synchronizable) && (!App.instance().isSynchronizing())) {
 			SynchronizationData data = ((Synchronizable)obj).getSyncData();
 			if (data.getServerId() != null) {
 				DeletedEntity ent = new DeletedEntity();

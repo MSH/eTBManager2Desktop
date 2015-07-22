@@ -18,7 +18,6 @@ import org.msh.springframework.persistence.EntityManagerUtils;
  *
  */
 public abstract class CaseTabPanel extends JPanel implements Refreshable {
-	private static final long serialVersionUID = -6566468804932866749L;
 
 	/**
 	 * ID of the case in use

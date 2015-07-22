@@ -34,6 +34,9 @@ public class App
     // flag to avoid app being initialized twice
     private boolean initialized;
 
+    // if true, the app is synchronizing its data with the server
+    private boolean synchronizing;
+
 	
 	/**
 	 * Read the MANIFEST.MF properties loaded in a {@link Properties} object
@@ -190,4 +193,12 @@ public class App
 	public String getBuildNumber() {
 		return buildNumber;
 	}
+
+    public boolean isSynchronizing() {
+        return synchronizing;
+    }
+
+    public void setSynchronizing(boolean synchronizing) {
+        this.synchronizing = synchronizing;
+    }
 }

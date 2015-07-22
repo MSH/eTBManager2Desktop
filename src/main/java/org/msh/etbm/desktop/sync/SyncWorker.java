@@ -51,6 +51,7 @@ public class SyncWorker extends SwingWorker<Boolean, Object> implements EventBus
 		EventBusService.observeEvent(SyncFileDeliverEvent.TRANSMITTING, this);
 		EventBusService.observeEvent(SyncFileDeliverEvent.WAITING_ANSWER, this);
 
+        App.instance().setSynchronizing(true);
 		try {
 			try {
 				notifyNextStep();
@@ -73,6 +74,7 @@ public class SyncWorker extends SwingWorker<Boolean, Object> implements EventBus
 			
 		} finally {
 			EventBusService.removeObserverHandler(this);
+            App.instance().setSynchronizing(false);
 		}
 
 		return null;
