@@ -92,11 +92,11 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 		btnDeleteCase = new JTransactionalButton(Messages.getString("form.casedelete"));
 		btnDeleteCase.setIcon(new AwesomeIcon(AwesomeIcon.ICON_REMOVE_SIGN, btnDeleteCase));
 		btnDeleteCase.addActionListener(new ActionListener() {
-		    @Override
-			public void actionPerformed(ActionEvent e) {
-				deleteCase();
-			}
-		});
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deleteCase();
+            }
+        });
 		
 		btnSuspectFollowup = new JTransactionalButton(Messages.getString("cases.suspect.followup"));
 		btnSuspectFollowup.setIcon(new AwesomeIcon(AwesomeIcon.ICON_CHEVRON_RIGHT, btnSuspectFollowup));
@@ -128,32 +128,32 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 		btnTags = new JButton(Messages.getString("admin.tags"));
 		GroupLayout gl_pnlLeft = new GroupLayout(pnlLeft);
 		gl_pnlLeft.setHorizontalGroup(
-			gl_pnlLeft.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlLeft.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_pnlLeft.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnSuspectFollowup, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnDeleteCase, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnCloseCase, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnReopen, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnTags, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(30, Short.MAX_VALUE))
-		);
+                gl_pnlLeft.createParallelGroup(Alignment.LEADING)
+                        .addGroup(gl_pnlLeft.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(gl_pnlLeft.createParallelGroup(Alignment.LEADING)
+                                        .addComponent(btnSuspectFollowup, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnDeleteCase, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnCloseCase, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnReopen, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnTags, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(30, Short.MAX_VALUE))
+        );
 		gl_pnlLeft.setVerticalGroup(
-			gl_pnlLeft.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlLeft.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnSuspectFollowup)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnDeleteCase)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnCloseCase)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnReopen)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnTags)
-					.addContainerGap(360, Short.MAX_VALUE))
-		);
+                gl_pnlLeft.createParallelGroup(Alignment.LEADING)
+                        .addGroup(gl_pnlLeft.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnSuspectFollowup)
+                                .addPreferredGap(ComponentPlacement.RELATED)
+                                .addComponent(btnDeleteCase)
+                                .addPreferredGap(ComponentPlacement.RELATED)
+                                .addComponent(btnCloseCase)
+                                .addPreferredGap(ComponentPlacement.RELATED)
+                                .addComponent(btnReopen)
+                                .addPreferredGap(ComponentPlacement.RELATED)
+                                .addComponent(btnTags)
+                                .addContainerGap(360, Short.MAX_VALUE))
+        );
 		pnlLeft.setLayout(gl_pnlLeft);
 		
 		pnlContent = new JPanel();
@@ -173,14 +173,14 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 		txtState.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(txtName, GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(txtState)
-					.addContainerGap())
-		);
+                gl_panel.createParallelGroup(Alignment.LEADING)
+                        .addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(txtName, GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
+                                .addPreferredGap(ComponentPlacement.UNRELATED)
+                                .addComponent(txtState)
+                                .addContainerGap())
+        );
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
@@ -194,12 +194,12 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 		
 		tabsCase = new JTabbedPane(JTabbedPane.TOP);
 		tabsCase.addChangeListener(new ChangeListener() {
-		    @Override
-			public void stateChanged(ChangeEvent e) {
-				JTabbedPane tab = (JTabbedPane)e.getSource();
-				updateTabChanged(tab);
-			}
-		});
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                JTabbedPane tab = (JTabbedPane) e.getSource();
+                updateTabChanged(tab);
+            }
+        });
 		tabsCase.setBorder(new EmptyBorder(4, 4, 4, 4));
 		pnlContent.add(tabsCase, BorderLayout.CENTER);
 		
@@ -216,25 +216,25 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 		JButton btnEditCase = new JButton(Messages.getString("form.edit") + "..."); //$NON-NLS-1$
 		btnEditCase.setIcon(new AwesomeIcon(AwesomeIcon.ICON_EDIT, btnEditCase));
 		btnEditCase.addActionListener(new ActionListener() {
-		    @Override
-			public void actionPerformed(ActionEvent e) {
-				editCase();
-			}
-		});
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                editCase();
+            }
+        });
 		pnlEdit.add(btnEditCase);
 		
 		pnlExams = new JPanel();
 		tabsCase.addTab(Messages.getString("cases.details.exams"), null, pnlExams, null); //$NON-NLS-1$
 		tabsCase.setMnemonicAt(1, 1);
-		
-		pnlMedExams = new JPanel();
-		tabsCase.addTab(Messages.getString("cases.details.medexam"), null, pnlMedExams, null);
-		tabsCase.setMnemonicAt(2, 2);
-		
+
 		pnlTreatment = new JPanel();
 		tabsCase.addTab(Messages.getString("cases.details.treatment"), null, pnlTreatment, null);
-		tabsCase.setMnemonicAt(3, 3);
-		
+		tabsCase.setMnemonicAt(2, 2);
+
+        pnlMedExams = new JPanel();
+        tabsCase.addTab(Messages.getString("cases.details.medexam"), null, pnlMedExams, null);
+        tabsCase.setMnemonicAt(3, 3);
+
 		pnlOthers = new JPanel();
 		tabsCase.addTab(Messages.getString("cases.details.otherinfo"), null, pnlOthers, null);
 		tabsCase.setMnemonicAt(4, 4);
@@ -301,14 +301,14 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 				content = new TabExamsPanel();
 				break;
 
-			case 2: // medical examination
+            case 2: // treatment panel
+                content = new TabTreatmentPanel();
+                break;
+
+			case 3: // medical examination
 				content = new TabMedExamsPanel();
 				break;
-				
-			case 3: // treatment panel
-				content = new TabTreatmentPanel();
-				break;
-				
+
 			case 4: // other information
 				content = new TabOtherInfoPanel();
 				break;

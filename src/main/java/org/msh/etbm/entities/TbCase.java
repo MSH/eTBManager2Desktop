@@ -278,6 +278,9 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 
 	private SecDrugsReceived secDrugsReceived;
 
+    @Column(length=50)
+    private String suspectRegistrationCode;
+
 	@Temporal(TemporalType.DATE)
 	private Date lastBmuDateTbRegister;
 
@@ -1406,5 +1409,13 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 
     public void setInitialRegimenWithSecondLineDrugs(Boolean initialRegimenWithSecondLineDrugs) {
         this.initialRegimenWithSecondLineDrugs = initialRegimenWithSecondLineDrugs;
+    }
+
+    public String getSuspectRegistrationCode() {
+        return suspectRegistrationCode;
+    }
+
+    public void setSuspectRegistrationCode(String suspectRegistrationCode) {
+        this.suspectRegistrationCode = suspectRegistrationCode;
     }
 }

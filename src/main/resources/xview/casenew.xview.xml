@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form id="casenew" title="New notification">
 
+    <section column-count="4">
+        <field value="tbcase.suspectRegistrationCode" label="@TbCase.registrationCode" />
+        <field value="tbcase.registrationDate" label="@TbCase.registrationDate" required="true"/>
+    </section>
 	<section id="sec1" title="@cases.patientdata" column-count="4">
 		<field value="patient.name" label="@Patient.name" colspan="3" required="true" />
 		<field value="patient.securityNumber" label="@Patient.securityNumber" maxchars="20" charCase="UPPER" />
 		<field value="patient.gender" label="@Gender" required="true" />
 		<field value="patient.birthDate" label="@Patient.birthDate" />
-		<field value="tbcase.age" label="@TbCase.age" required="true"/>
+		<field value="tbcase.age" label="@TbCase.age" required="true">
+            <validation rule="${tbcase.age &gt; 0 and tbcase.age &lt; 150}"
+                        message="@javax.faces.component.UISelectOne.INVALID" />
+        </field>
 		<field value="patient.motherName" label="@Patient.motherName" width="350" maxchars="100" colspan="3" charCase="UPPER" />
 		<field value="tbcase.nationality" label="@Nationality" options="${globalLists.nationalities}"/>
 	</section>
 		
 	<section title="@cases.details.addressnotif" column-count="4">
-		<field value="tbcase.notifAddress.address" label="@Address" colspan="3" maxchars="200" width="300" />
+		<field value="tbcase.notifAddress.address" label="@Address.address" colspan="3" maxchars="200" width="300" required="true" />
 		<field value="tbcase.notifAddress.complement" label="@Address.complement" colspan="3" maxSize="200" width="300" />
 		<field value="tbcase.notifAddress.adminUnit" label="@AdministrativeUnit" colspan="3" required="true"/>
 		<field value="tbcase.notifAddress.zipCode" label="@Address.zipCode" colspan="3"  />
@@ -31,11 +38,10 @@
 		
 	<section title="@cases.generaldata" column-count="2">
 		<field value="tbcase.notificationUnit" label="@TbCase.notificationUnit" required="true" />
-		<field value="tbcase.registrationDate" label="@TbCase.registrationDate" required="true" />
 		<field value="tbcase.diagnosisType" label="@DiagnosisType" required="true" readonly="true"/>
 		<region visible="${tbcase.diagnosisType == 'CONFIRMED'}">
 			<field value="tbcase.diagnosisDate" label="@TbCase.diagnosisDate" required="true" />
-			<field value="tbcase.patientType" label="@PatientType" required="true" />
+			<field value="tbcase.patientType" label="@PatientType"  required="true" />
 			<field value="tbcase.infectionSite" label="@InfectionSite"  />
 			<field value="tbcase.pulmonaryType" label="@TbField.PULMONARY_TYPES"
 		    	options="${fieldsOptions.pulmonaryTypes}"
