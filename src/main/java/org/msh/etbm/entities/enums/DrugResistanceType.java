@@ -11,7 +11,11 @@ public enum DrugResistanceType {
     //Bangladesh
     UNKNOWN,
     //Cambodia
-    RIF_RESISTANCE;
+    RIF_RESISTANCE,
+    // New WHO Recommendations 05-14-2015
+    MONO_RESISTANCE_RIF,
+    POLY_RESISTANCE_RIF
+    ;
 
 	public String getKey() {
 		return getClass().getSimpleName().concat("." + name());
