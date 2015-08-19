@@ -66,9 +66,9 @@ public class PrescribedMedicineDlg extends GenericFormDialog {
 	 */
 	@Override
 	public boolean showModal() {
-		setFormSize(new Dimension(680,420));
-		getForm().getFormUI().setWidth(650);
-		setTitle(App.getMessage("PrescribedMedicine") + " - " + App.getMessage("form.edit"));
+		setFormSize(new Dimension(750,500));
+		getForm().getFormUI().setWidth(720);
+		setTitle(App.getMessage("PrescribedMedicine") + " - " + (this.prescribedMedID != null ? App.getMessage("form.edit") : App.getMessage("form.new")));
 		return super.showModal();
 	}
 	
