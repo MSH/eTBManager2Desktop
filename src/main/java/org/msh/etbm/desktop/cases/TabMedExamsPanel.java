@@ -78,8 +78,8 @@ public class TabMedExamsPanel extends CaseTabPanel {
 				{null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"", "cases.details.date", "cases.sideeffects.month", "MedicalExamination.weight", 
-				"MedicalExamination.BMI", "MedicalExamination.usingPrescMedicines", "MedicalExamination.responsible"
+				"", "@cases.details.date", "@cases.sideeffects.month", "@MedicalExamination.weight",
+				"@MedicalExamination.BMI", "@MedicalExamination.usingPrescMedicines", "@MedicalExamination.responsible"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {

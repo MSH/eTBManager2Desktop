@@ -4,7 +4,10 @@
 		<section column-count="2">
 			<field value="medicalexamination.date" label="@cases.details.date" required="true" />
 			<field value="medicalexamination.appointmentType" label="@MedAppointmentType" required="true" />
-			<field value="medicalexamination.weight" label="@MedicalExamination.weight" required="true"/>
+			<field value="medicalexamination.weight" label="@MedicalExamination.weight" required="true">
+				<validation rule="${medicalexamination.weight &gt; 0}"
+							message="@javax.faces.component.UISelectOne.INVALID" />
+			</field>
 			<field value="medicalexamination.height" label="@MedicalExamination.height" />
 			<field value="medicalexamination.usingPrescMedicines" label="@MedicalExamination.usingPrescMedicines" required="true"/>
 			<field value="medicalexamination.reasonNotUsingPrescMedicines" label="@MedicalExamination.reasonNotUsingPrescMedicines" 

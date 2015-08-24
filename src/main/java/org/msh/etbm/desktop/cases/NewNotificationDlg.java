@@ -32,6 +32,7 @@ import org.msh.etbm.desktop.components.JDatePicker;
 import org.msh.etbm.desktop.components.JPersonNameEdit;
 import org.msh.etbm.entities.Patient;
 import org.msh.etbm.entities.PersonNameComponent;
+import org.msh.etbm.entities.enums.CaseClassification;
 import org.msh.etbm.entities.enums.DiagnosisType;
 import org.msh.etbm.services.cases.PatientData;
 import org.msh.etbm.services.cases.PatientServices;
@@ -62,26 +63,28 @@ public class NewNotificationDlg extends GenericDialog {
 	/**
 	 * Launch the new notification form
 	 */
-	public static Patient execute(DiagnosisType diagtype) {
+	public static Patient execute(DiagnosisType diagtype, CaseClassification classification) {
 		NewNotificationDlg dialog = new NewNotificationDlg();
-		return dialog.openDialog(diagtype);
+		return dialog.openDialog(diagtype, classification);
 	}
 
-	
+
 	/**
 	 * Open the new notification dialog box and prepare form
 	 * @return
 	 */
-	protected Patient openDialog(DiagnosisType diagtype) {
+	protected Patient openDialog(DiagnosisType diagtype, CaseClassification classification) {
 		scrollPane.setVisible(false);
 		setBounds(getX(), getY(), getWidth(), getHeight() - 180);
 		getOkButton().setEnabled(false);
 		chkNewPatient.setVisible(false);
-	
+
+		setTitle(Messages.getString("cases.newnotif"));
+
 		if (diagtype == DiagnosisType.CONFIRMED)
-			 setTitle(Messages.getString("cases.new"));
-		else setTitle(Messages.getString("cases.newsusp"));
-		
+			setTitle(getTitle() + " - " + Messages.getString(classification.getKey()));
+		else setTitle(getTitle() + " - " + Messages.getString(classification.getKeySuspect()));
+
 		GuiUtils.prepareTable(table);
 
         btnSearch.setEnabled(false);

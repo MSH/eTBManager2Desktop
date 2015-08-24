@@ -132,7 +132,7 @@ public class TreatmentPopup {
 	protected void removePrescribedMedicine(PrescribedMedicine pm) {
 		if (JOptionPane.showConfirmDialog(MainWindow.instance().getFrame(), 
 				Messages.getString("form.confirm_remove"), 
-				Messages.getString("form.casedelete"), JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION)
+				Messages.getString("cases.regimens.remmed"), JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION)
 			return;
 
 		// remove the prescription inside a transaction

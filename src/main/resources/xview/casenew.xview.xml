@@ -3,7 +3,8 @@
 
     <section column-count="4">
         <field value="tbcase.suspectRegistrationCode" label="@TbCase.registrationCode" />
-        <field value="tbcase.registrationDate" label="@TbCase.registrationDate" required="true"/>
+		<field value="tbcase.registrationDate" label="@TbCase.registrationDate.TB" required="true" visible="${tbcase.classification == 'TB'}"/>
+		<field value="tbcase.registrationDate" label="@TbCase.registrationDate.DRTB" required="true" visible="${tbcase.classification == 'DRTB'}"/>
     </section>
 	<section id="sec1" title="@cases.patientdata" column-count="4">
 		<field value="patient.name" label="@Patient.name" colspan="3" required="true" />
@@ -37,11 +38,13 @@
 	</section>
 		
 	<section title="@cases.generaldata" column-count="2">
-		<field value="tbcase.notificationUnit" label="@TbCase.notificationUnit" required="true" />
+		<field value="tbcase.notificationUnit" label="@TbCase.notificationUnit" required="true" readonly="true"/>
 		<field value="tbcase.diagnosisType" label="@DiagnosisType" required="true" readonly="true"/>
 		<region visible="${tbcase.diagnosisType == 'CONFIRMED'}">
 			<field value="tbcase.diagnosisDate" label="@TbCase.diagnosisDate" required="true" />
 			<field value="tbcase.patientType" label="@PatientType"  required="true" />
+			<field value="tbcase.drugResistanceType" options="${globalLists.drugResistanceTypes}" label="@DrugResistanceType"
+				   visible="${tbcase.classification == 'DRTB'}"/>
 			<field value="tbcase.infectionSite" label="@InfectionSite"  />
 			<field value="tbcase.pulmonaryType" label="@TbField.PULMONARY_TYPES"
 		    	options="${fieldsOptions.pulmonaryTypes}"

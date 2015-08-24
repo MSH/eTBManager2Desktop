@@ -167,10 +167,11 @@ public class GlobalLists {
 	
 	private static final DrugResistanceType drugResistanceTypes[] = {
 		DrugResistanceType.MONO_RESISTANCE,
+		DrugResistanceType.MONO_RESISTANCE_RIF,
 		DrugResistanceType.POLY_RESISTANCE,
+		DrugResistanceType.POLY_RESISTANCE_RIF,
 		DrugResistanceType.MULTIDRUG_RESISTANCE,
 		DrugResistanceType.EXTENSIVEDRUG_RESISTANCE
-		
 	};
 	
 	/**

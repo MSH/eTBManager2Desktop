@@ -7,6 +7,7 @@ import org.msh.etbm.entities.Patient;
 import org.msh.etbm.entities.TbCase;
 import org.msh.etbm.entities.enums.CaseClassification;
 import org.msh.etbm.entities.enums.DiagnosisType;
+import org.msh.etbm.services.login.UserSession;
 import org.msh.eventbus.EventBusService;
 import org.springframework.stereotype.Component;
 
@@ -38,7 +39,7 @@ public class NewNotificationFlow {
 			return;
 		}
 		
-		Patient p = NewNotificationDlg.execute(diagnosisType);
+		Patient p = NewNotificationDlg.execute(diagnosisType, classification);
 		
 		if (p != null) {
 			System.out.println(p.getId());
@@ -54,6 +55,7 @@ public class NewNotificationFlow {
 			TbCase tbcase = new TbCase();
 			tbcase.setDiagnosisType(diagnosisType);
 			tbcase.setClassification(classification);
+			tbcase.setNotificationUnit(UserSession.getUserWorkspace().getTbunit());
 			tbcase.setPatient(p);
 			pnl.setTbcase(tbcase);
 			MainWindow.instance().addPanel(pnl, s, true);
