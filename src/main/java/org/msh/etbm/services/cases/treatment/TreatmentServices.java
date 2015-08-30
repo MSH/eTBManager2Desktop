@@ -67,6 +67,13 @@ public class TreatmentServices {
 		
 		em.persist(pm);
 		em.flush();
+
+		if(checkregimenMovedToIndivid(tbcase)){
+			tbcase.setRegimen(null);
+			em.persist(tbcase);
+			em.flush();
+		}
+
 		return pm;
 	}
 
@@ -87,6 +94,12 @@ public class TreatmentServices {
 		tbcase.setRegimen(null);
 		updateTreatmentPeriod(tbcase);
 		em.flush();
+
+		if(checkregimenMovedToIndivid(tbcase)){
+			tbcase.setRegimen(null);
+			em.persist(tbcase);
+			em.flush();
+		}
 	}
 
 
@@ -143,6 +156,11 @@ public class TreatmentServices {
 		tbcase.setOwnerUnit(tbcase.getNotificationUnit());
 
 		em.persist(tbcase);
+		em.flush();
+
+		em.createQuery("delete from TreatmentMonitoring tm where tm.tbcase.id = :caseId")
+				.setParameter("caseId", tbcase.getId())
+				.executeUpdate();
 	}
 
 	

@@ -123,7 +123,7 @@ public class TabExamsPanel extends CaseTabPanel {
 				{null, null, null, null, null, null},
 			},
 			new String[] {
-				"", "@cases.details.exams", "@cases.exams.date", "@cases.sideeffects.month", "@cases.details.result", "@Laboratory"
+				"", "@cases.details.exams", "@cases.exams.date", "@ExamStatus" , "@cases.sideeffects.month", "@cases.details.result", "@Laboratory"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
@@ -408,8 +408,9 @@ public class TabExamsPanel extends CaseTabPanel {
 						exam.getSyncData(),
 						new TableCellID(exam, type),
 						LocaleDateConverter.getDisplayDate( exam.getDateCollected(), false ) ,
+						(exam.getStatus() != null ? Messages.getString(exam.getStatus().getKey()) : ""),
 						exam.getMonthDisplay(),
-						Messages.getString( exam.getResult().getKey() ),
+						(exam.getResult() != null ? Messages.getString( exam.getResult().getKey()) : ""),
 						exam.getLaboratory()};
 				model.addRow(vals);
 			}
@@ -424,8 +425,9 @@ public class TabExamsPanel extends CaseTabPanel {
 						exam.getSyncData(),
 						new TableCellID(exam, type),
 						LocaleDateConverter.getDisplayDate( exam.getDateCollected(), false ) ,
+						(exam.getStatus() != null ? Messages.getString(exam.getStatus().getKey()) : ""),
 						exam.getMonthDisplay(),
-						Messages.getString( exam.getResult().getKey() ),
+						(exam.getResult() != null ? Messages.getString( exam.getResult().getKey()) : ""),
 						exam.getLaboratory()};
 				model.addRow(vals);
 			}
@@ -440,8 +442,9 @@ public class TabExamsPanel extends CaseTabPanel {
 						exam.getSyncData(),
 						new TableCellID(exam, type),
 						LocaleDateConverter.getDisplayDate( exam.getDateCollected(), false ) ,
+						(exam.getStatus() != null ? Messages.getString(exam.getStatus().getKey()) : ""),
 						exam.getMonthDisplay(),
-						Messages.getString( exam.getResult().getKey() ),
+						(exam.getResult() != null ? Messages.getString( exam.getResult().getKey()) : ""),
 						exam.getLaboratory()};
 				model.addRow(vals);
 			}
@@ -456,6 +459,7 @@ public class TabExamsPanel extends CaseTabPanel {
 						exam.getSyncData(),
 						new TableCellID(exam, type),
 						LocaleDateConverter.getDisplayDate( exam.getDateCollected(), false ) ,
+						(exam.getStatus() != null ? Messages.getString(exam.getStatus().getKey()) : ""),
 						exam.getMonthDisplay(),
 						null,
 						exam.getLaboratory()};
@@ -472,6 +476,7 @@ public class TabExamsPanel extends CaseTabPanel {
 						exam.getSyncData(),
 						new TableCellID(exam, type),
 						LocaleDateConverter.getDisplayDate( exam.getDate(), false ) ,
+						null,
 					 	exam.getMonthDisplay(),
 						Messages.getString( exam.getEvolution() != null? exam.getEvolution().getKey() : "" ),
 						null};
@@ -488,8 +493,9 @@ public class TabExamsPanel extends CaseTabPanel {
 						exam.getSyncData(),
 						new TableCellID(exam, type),
 						LocaleDateConverter.getDisplayDate( exam.getDate(), false ) ,
+						null,
 						exam.getMonthDisplay(),
-						Messages.getString( exam.getResult().getKey() ),
+						(exam.getResult() != null ? Messages.getString( exam.getResult().getKey()) : ""),
 						exam.getLaboratory()};
 				model.addRow(vals);
 			}

@@ -6,39 +6,7 @@ import java.util.List;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.msh.etbm.desktop.app.App;
 import org.msh.etbm.entities.Workspace;
-import org.msh.etbm.entities.enums.BufferStockMeasure;
-import org.msh.etbm.entities.enums.CaseClassification;
-import org.msh.etbm.entities.enums.CaseState;
-import org.msh.etbm.entities.enums.CultureResult;
-import org.msh.etbm.entities.enums.DiagnosisType;
-import org.msh.etbm.entities.enums.DispensingFrequency;
-import org.msh.etbm.entities.enums.DisplayCaseNumber;
-import org.msh.etbm.entities.enums.DrugResistanceType;
-import org.msh.etbm.entities.enums.DstResult;
-import org.msh.etbm.entities.enums.ExtraOutcomeInfo;
-import org.msh.etbm.entities.enums.ForecastNewCaseFreq;
-import org.msh.etbm.entities.enums.Gender;
-import org.msh.etbm.entities.enums.HIVResult;
-import org.msh.etbm.entities.enums.InfectionSite;
-import org.msh.etbm.entities.enums.LocalityType;
-import org.msh.etbm.entities.enums.MedAppointmentType;
-import org.msh.etbm.entities.enums.MedicineLine;
-import org.msh.etbm.entities.enums.MicroscopyResult;
-import org.msh.etbm.entities.enums.NameComposition;
-import org.msh.etbm.entities.enums.Nationality;
-import org.msh.etbm.entities.enums.PatientType;
-import org.msh.etbm.entities.enums.PrevTBTreatmentOutcome;
-import org.msh.etbm.entities.enums.RegimenPhase;
-import org.msh.etbm.entities.enums.SampleType;
-import org.msh.etbm.entities.enums.TbCategory;
-import org.msh.etbm.entities.enums.TbField;
-import org.msh.etbm.entities.enums.UserState;
-import org.msh.etbm.entities.enums.UserView;
-import org.msh.etbm.entities.enums.ValidationState;
-import org.msh.etbm.entities.enums.XRayBaseline;
-import org.msh.etbm.entities.enums.XRayEvolution;
-import org.msh.etbm.entities.enums.XRayResult;
-import org.msh.etbm.entities.enums.YesNoType;
+import org.msh.etbm.entities.enums.*;
 import org.msh.etbm.services.login.UserSession;
 import org.springframework.stereotype.Component;
 
@@ -52,15 +20,49 @@ import org.springframework.stereotype.Component;
 public class GlobalLists {
 
 //	private List<SelectItem> numberOfAFBs;
-	
+
 	private static final PatientType patientTypes[] = {
-		PatientType.NEW,
-		PatientType.TRANSFER_IN,
-		PatientType.RELAPSE,
-		PatientType.AFTER_DEFAULT,
-		PatientType.FAILURE_FT,
-		PatientType.FAILURE_RT,
-		PatientType.OTHER
+			PatientType.NEW,
+			PatientType.TRANSFER_IN,
+			PatientType.RELAPSE,
+			PatientType.AFTER_DEFAULT,
+			PatientType.FAILURE_FT,
+			PatientType.FAILURE_RT,
+			PatientType.RESISTANCE_PATTERN_CHANGED,
+			PatientType.OTHER
+	};
+
+	private static final PatientType patientTypesDRTB[] = {
+			PatientType.NEW,
+			PatientType.RELAPSE,
+			PatientType.AFTER_DEFAULT,
+			PatientType.FAILURE_FT,
+			PatientType.FAILURE_RT,
+			PatientType.OTHER
+	};
+
+	private static final PatientType patientTypesTB[] = {
+			PatientType.NEW,
+			PatientType.PREVIOUSLY_TREATED,
+			PatientType.UNKNOWN_PREVIOUS_TB_TREAT
+	};
+
+	private static final PatientType patientTypesALL[] = {
+			PatientType.NEW,
+			PatientType.PREVIOUSLY_TREATED,
+			PatientType.UNKNOWN_PREVIOUS_TB_TREAT,
+			PatientType.RELAPSE,
+			PatientType.AFTER_DEFAULT,
+			PatientType.FAILURE_FT,
+			PatientType.FAILURE_RT,
+			PatientType.OTHER
+	};
+
+	private static final PatientType prevTreatedTypes[] = {
+			PatientType.RELAPSE,
+			PatientType.TREATMENT_AFTER_FAILURE,
+			PatientType.TREATMENT_AFTER_LOSS_FOLLOW_UP,
+			PatientType.OTHER_PREVIOUSLY_TREATED
 	};
 	
 	private static final CaseState caseStates[] = {
@@ -172,6 +174,23 @@ public class GlobalLists {
 		DrugResistanceType.POLY_RESISTANCE_RIF,
 		DrugResistanceType.MULTIDRUG_RESISTANCE,
 		DrugResistanceType.EXTENSIVEDRUG_RESISTANCE
+	};
+
+	private static final SampleType microscopySampleTypes[] = {
+			SampleType.SPUTUM,
+			SampleType.OTHER
+	};
+
+	private static final VisualAppearance microscopyVisualAppearence[] = {
+			VisualAppearance.BLOOD_STAINED,
+			VisualAppearance.MUCOPURULENT,
+			VisualAppearance.SALIVA
+	};
+
+	private static final ExamStatus examStatusOptions[] = {
+			ExamStatus.REQUESTED,
+			ExamStatus.ONGOING,
+			ExamStatus.PERFORMED
 	};
 	
 	/**
@@ -335,10 +354,6 @@ public class GlobalLists {
 		return nationalities;
 	}
 	
-	public PatientType[] getPatientTypes() {
-		return getComponentValueWorkspace("patientTypes", PatientType[].class, patientTypes);
-	}
-	
 	public InfectionSite[] getInfectionSite() {
 		return InfectionSite.values();
 	}
@@ -491,11 +506,40 @@ public class GlobalLists {
 	public MicroscopyResult[] getMicroscopyNotifOptions() {
 		return microscopyNotifOptions;
 	}
-	
-	
 
+	public SampleType[] getMicroscopySampleTypes() {
+		return getComponentValueWorkspace("microscopySampleTypes", SampleType[].class, microscopySampleTypes);
+	}
+
+	public VisualAppearance[] getMicroscopyVisualAppearence() {
+		return getComponentValueWorkspace("microscopyVisualAppearence", VisualAppearance[].class, microscopyVisualAppearence);
+	}
+
+	public ExamStatus[] getExamStatusOptions() {
+		return examStatusOptions;
+	}
 
 	public static GlobalLists instance(){
 		return (GlobalLists)App.getComponent(GlobalLists.class);
+	}
+
+	public PatientType[] getPatientTypes() {
+		return getComponentValueWorkspace("patientTypes", PatientType[].class, patientTypes);
+	}
+
+	public PatientType[] getPatientTypesTB() {
+		return getComponentValueWorkspace("patientTypesTB", PatientType[].class, patientTypesTB);
+	}
+
+	public PatientType[] getPatientTypesDRTB() {
+		return getComponentValueWorkspace("patientTypesDRTB", PatientType[].class, patientTypesDRTB);
+	}
+
+	public PatientType[] getPatientTypesALL() {
+		return getComponentValueWorkspace("patientTypesALL", PatientType[].class, patientTypesALL);
+	}
+
+	public PatientType[] getPrevTreatedTypes() {
+		return getComponentValueWorkspace("prevTreatedTypes", PatientType[].class, prevTreatedTypes);
 	}
 }

@@ -2,17 +2,20 @@
 <form>
 		<section title="@PatientSample.identification" column-count="2">
 			<field value="exammicroscopy.dateCollected" label="@PatientSample.dateCollected" required="true" />
+			<field value="exammicroscopy.sampleType" label="@SpecimenType" handler="combo" options="${globalLists.microscopySampleTypes}"/>
 			<field value="exammicroscopy.sampleNumber" label="@PatientSample.sampleNumber" width="200" maxchars="100" />
+			<field value="exammicroscopy.visualAppearance" label="@VisualAppearance" handler="combo" options="${globalLists.microscopyVisualAppearence}"/>
 			<field value="exammicroscopy.laboratory" label="@Laboratory" required="true" />
-
+			<field value="exammicroscopy.status" label="@ExamStatus" handler="combo" options="${globalLists.examStatusOptions}" required="true"/>
 		</section>
-		<section title="@cases.exams.results" column-count="2">
+
+		<section title="@cases.exams.results" column-count="2" visible="${exammicroscopy.status == 'PERFORMED' || exammicroscopy.result != null}">
 			<field value="exammicroscopy.dateRelease" label="@cases.exams.dateRelease" >
 				<validation rule="${exammicroscopy.dateRelease >= exammicroscopy.dateCollected}"
-					enabled-if="${not empty exammicroscopy.dateRelease}" 
+					enabled-if="${not empty exammicroscopy.dateRelease}"
 					message="@cases.exams.datereleasebeforecol"/>
 			</field>
-			<field value="exammicroscopy.result" label="@cases.details.result" options="${globalLists.microscopyResults}" />
+			<field value="exammicroscopy.result" label="@cases.details.result" options="${globalLists.microscopyResults}" required="true" />
 			<field value="exammicroscopy.numberOfAFB" label="@cases.exams.afb" visible="${exammicroscopy.result == 'POSITIVE'}" handler="combo">
 				<param name="min" value="1" />
 				<param name="max" value="9" />

@@ -4,9 +4,10 @@
 		<field value="examdst.dateCollected" label="@PatientSample.dateCollected" required="true" />
 		<field value="examdst.sampleNumber" label="@PatientSample.sampleNumber" width="200" maxchars="100" />
 		<field value="examdst.laboratory" label="@Laboratory" required="true" />
+		<field value="examdst.status" label="@ExamStatus" handler="combo" options="${globalLists.examStatusOptions}" required="true"/>
 	</section>
 
-	<section title="@cases.exams.results" column-count="2">
+	<section title="@cases.exams.results" column-count="2" visible="${examdst.status == 'PERFORMED' || (examdst.numResistant > 0 || examdst.numSusceptible > 0 || examdst.numContaminated > 0 )}">
 		<field value="examdst.dateRelease" label="@cases.exams.dateRelease" >
 			<validation rule="examdst.dateRelease >= examdst.dateCollected"
 						enabled-if="not empty examdst.dateRelease"

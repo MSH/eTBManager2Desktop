@@ -7,6 +7,8 @@ import org.msh.etbm.desktop.app.App;
 import org.msh.etbm.entities.ExamXpert;
 import org.msh.etbm.services.cases.ExamXpertServices;
 
+import java.awt.*;
+
 
 /**
  * @author Ricardo Memoria
@@ -29,6 +31,16 @@ public class ExamXpertEditDlg  extends CaseDataEditDlg<ExamXpert> {
 	@Override
 	public String getEntityTitle() {
 		return App.getMessage("cases.examxpert");
+	}
+
+	/** {@inheritDoc}
+	 * @see org.msh.etbm.desktop.cases.CaseDataEditDlg#getFormDimension()
+	 */
+	@Override
+	protected Dimension getFormSize() {
+		Dimension d = super.getFormSize();
+		d.setSize(650, 510);
+		return d;
 	}
 
 }

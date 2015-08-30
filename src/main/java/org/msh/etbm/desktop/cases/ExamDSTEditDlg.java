@@ -1,13 +1,16 @@
 package org.msh.etbm.desktop.cases;
 
+import java.awt.*;
 import java.util.List;
 
+import org.msh.etbm.desktop.app.App;
 import org.msh.etbm.desktop.app.Messages;
 import org.msh.etbm.entities.ExamDST;
 import org.msh.etbm.entities.ExamDSTResult;
 import org.msh.etbm.entities.Substance;
 import org.msh.etbm.entities.enums.DstResult;
 import org.msh.etbm.services.SubstanceServices;
+import org.msh.etbm.services.cases.CaseCloseService;
 import org.msh.etbm.services.cases.ExamDSTServices;
 import org.msh.xview.FormDataModel;
 
@@ -60,6 +63,29 @@ public class ExamDSTEditDlg extends CaseDataEditDlg<ExamDST>{
 				exam.getResults().add(res);
 			}
 		}
+	}
+
+	/** {@inheritDoc}
+	 */
+	@Override
+	protected boolean saveFormData(FormDataModel dataModel) {
+		ExamDSTServices srv = App.getComponent(ExamDSTServices.class);
+		ExamDST exam = (ExamDST)dataModel.getValue("examdst");
+
+		if (!srv.validate(exam, getForm()))
+			return false;
+
+		return super.saveFormData(dataModel);
+	}
+
+	/** {@inheritDoc}
+	 * @see org.msh.etbm.desktop.cases.CaseDataEditDlg#getFormDimension()
+	 */
+	@Override
+	protected Dimension getFormSize() {
+		Dimension d = super.getFormSize();
+		d.setSize(650, 580);
+		return d;
 	}
 
 

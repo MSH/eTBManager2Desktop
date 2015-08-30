@@ -4,6 +4,8 @@ import org.msh.etbm.desktop.app.Messages;
 import org.msh.etbm.entities.ExamMicroscopy;
 import org.msh.etbm.services.cases.ExamMicroscopyServices;
 
+import java.awt.*;
+
 /**
  * Dialog window to display the microscopy exam result form for editing
  * of a result of a case or inserting a new one
@@ -24,6 +26,16 @@ public class ExamMicroscopyEditDlg extends CaseDataEditDlg<ExamMicroscopy> {
 	@Override
 	public String getEntityTitle() {
 		return Messages.getString("cases.exammicroscopy");
+	}
+
+	/** {@inheritDoc}
+	 * @see org.msh.etbm.desktop.cases.CaseDataEditDlg#getFormDimension()
+	 */
+	@Override
+	protected Dimension getFormSize() {
+		Dimension d = super.getFormSize();
+		d.setSize(650, 580);
+		return d;
 	}
 
 

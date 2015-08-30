@@ -42,10 +42,17 @@
 		<field value="tbcase.diagnosisType" label="@DiagnosisType" required="true" readonly="true"/>
 		<region visible="${tbcase.diagnosisType == 'CONFIRMED'}">
 			<field value="tbcase.diagnosisDate" label="@TbCase.diagnosisDate" required="true" />
-			<field value="tbcase.patientType" label="@PatientType"  required="true" />
+
+			<!--registration groups-->
+			<field value="tbcase.patientType" label="@PatientType"  required="true" options="${globalLists.patientTypesDRTB}" visible="${tbcase.classification == 'DRTB'}"/>
+			<field value="tbcase.patientType" label="@PatientType"  required="true" options="${globalLists.patientTypesTB}" visible="${tbcase.classification == 'TB'}"/>
+			<field value="tbcase.previouslyTreatedType" label="@PatientType.PREVIOUSLY_TREATED"  required="true" options="${globalLists.prevTreatedTypes}"
+				   visible="${tbcase.classification == 'TB' and tbcase.patientType == 'PREVIOUSLY_TREATED'}"/>
+			<!--registration groups-->
+
 			<field value="tbcase.drugResistanceType" options="${globalLists.drugResistanceTypes}" label="@DrugResistanceType"
 				   visible="${tbcase.classification == 'DRTB'}"/>
-			<field value="tbcase.infectionSite" label="@InfectionSite"  />
+			<field value="tbcase.infectionSite" label="@InfectionSite"  required="${tbcase.validated}"/>
 			<field value="tbcase.pulmonaryType" label="@TbField.PULMONARY_TYPES"
 		    	options="${fieldsOptions.pulmonaryTypes}"
 			    colspan="3" visible="${tbcase.infectionSite == 'PULMONARY' or tbcase.infectionSite == 'BOTH'}">
@@ -65,7 +72,10 @@
 		<field value="medicalexamination.date" label="@cases.details.date" required="true" />
 		<field value="medicalexamination.responsible" label="@MedicalExamination.responsible" required="true" maxchars="100" width="300" />
 		<field value="medicalexamination.height" label="@MedicalExamination.height" />
-		<field value="medicalexamination.weight" label="@MedicalExamination.weight" />
+		<field value="medicalexamination.weight" label="@MedicalExamination.weight" required="true">
+			<validation rule="${medicalexamination.weight &gt; 0}"
+						message="@javax.faces.component.UISelectOne.INVALID" />
+		</field>
 		<field value="medicalexamination.comments" label="@global.comments" handler="text" />
 	</section>
 </form>
