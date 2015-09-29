@@ -7,7 +7,10 @@
 		<field value="tbcase.registrationDate" label="@TbCase.registrationDate.DRTB" required="true" visible="${tbcase.classification == 'DRTB'}"/>
     </section>
 	<section id="sec1" title="@cases.patientdata" column-count="4">
-		<field value="patient.name" label="@Patient.name" colspan="3" required="true" />
+		<field value="patient.name" label="@Patient.name" colspan="3">
+			<validation rule="${!patient.name.isEmpty()}"
+						message="@javax.faces.component.UIInput.REQUIRED"/>
+		</field>
 		<field value="patient.securityNumber" label="@Patient.securityNumber" maxchars="20" charCase="UPPER" />
 		<field value="patient.gender" label="@Gender" required="true" />
 		<field value="patient.birthDate" label="@Patient.birthDate" />

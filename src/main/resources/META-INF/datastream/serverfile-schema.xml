@@ -202,6 +202,18 @@
             <property name="comorbidity.id" elementName="comorbidity" use="REQUIRED" xmlAttribute="true"/>
         	<property name="duration" xmlAttribute="true" />
         </objectGraph>
+
+        <objectGraph name="entityKey" class="org.msh.etbm.sync.EntityKey">
+            <property name="entityName" elementName="entity" xmlAttribute="true" />
+            <property name="serverId" xmlAttribute="true" />
+            <property name="clientId" xmlAttribute="true" />
+            <property name="action" xmlAttribute="true" />
+        </objectGraph>
+
+        <objectGraph name="deleted-entity" class="org.msh.etbm.entities.DeletedEntity">
+            <property name="entityName" elementName="entity" xmlAttribute="true" />
+            <property name="id" xmlAttribute="true" />
+        </objectGraph>
         
     </objectCollection>
 </graphSchema>
