@@ -64,6 +64,7 @@ public class SuspectFollowupDlg extends GenericFormDialog {
 	private Date outcomeDate;
 	private CaseState outcome;
 	private TbCase tbcase;
+	private PatientType previouslyTreatedType;
 
 	
 	/**
@@ -324,4 +325,11 @@ public class SuspectFollowupDlg extends GenericFormDialog {
 		this.status = status;
 	}
 
+	public PatientType getPreviouslyTreatedType() {
+		return previouslyTreatedType;
+	}
+
+	public void setPreviouslyTreatedType(PatientType previouslyTreatedType) {
+		this.previouslyTreatedType = previouslyTreatedType;
+	}
 }

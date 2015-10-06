@@ -2,7 +2,7 @@
 <form>
 	<section column-count="2">
 	    <field value="tbcase.patient.fullName" label="@Patient.name" readonly="true" />
-	    <field value="controller.status" label="@DiagnosisType" 
+	    <field value="controller.status" label="@DiagnosisType"
 	        options="${controller.followupOptions}" handler="radio"/>
 	</section>
 	
@@ -12,11 +12,16 @@
 	    <field value="controller.diagnosisDate" label="@TbCase.diagnosisDate" required="true" />
 	    <field value="controller.drugResistanceType" label="@DrugResistanceType" 
 	        options="${globalLists.drugResistanceTypes}" required="true" />
-	    <field value="controller.patientType" label="@PatientType" 
-	        options="${globalLists.patientTypes}" required="true" />
-	    <field value="controller.patientTypeOther" label="@TbCase.patientTypeOther" 
-	        visible="${controller.patientType == 'OTHER'}" required="true" />
-	    <field value="controller.infectionSite" label="@InfectionSite" 
+
+		<!--registration groups-->
+		<field value="controller.patientType" label="@PatientType"  required="true" options="${globalLists.patientTypesDRTB}" visible="${controller.classification == 'DRTB'}"/>
+		<field value="controller.patientType" label="@PatientType"  required="true" options="${globalLists.patientTypesTB}" visible="${controller.classification == 'TB'}"/>
+		<field value="controller.previouslyTreatedType" label="@PatientType.PREVIOUSLY_TREATED"  required="true" options="${globalLists.prevTreatedTypes}"
+			   visible="${controller.classification == 'TB' and controller.patientType == 'PREVIOUSLY_TREATED'}"/>
+		<field value="controller.patientTypeOther" label="@TbCase.patientTypeOther"
+			   visible="${controller.patientType == 'OTHER'}" required="true" />
+		<!--registration groups-->
+		<field value="controller.infectionSite" label="@InfectionSite"
 	        options="${globalLists.infectionSite}" required="${controller.confirmed}" />
 	    <field value="controller.pulmonary" label="@TbField.PULMONARY_TYPES" 
 	        options="#{fieldsOptions.pulmonaryTypes}" visible="#{controller.infectionSite == 'PULMONARY'}"/>

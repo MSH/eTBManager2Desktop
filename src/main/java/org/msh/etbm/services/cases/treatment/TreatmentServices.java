@@ -7,13 +7,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import org.msh.etbm.desktop.app.App;
-import org.msh.etbm.entities.Medicine;
-import org.msh.etbm.entities.PrescribedMedicine;
-import org.msh.etbm.entities.Regimen;
-import org.msh.etbm.entities.Source;
-import org.msh.etbm.entities.TbCase;
-import org.msh.etbm.entities.Tbunit;
-import org.msh.etbm.entities.TreatmentHealthUnit;
+import org.msh.etbm.entities.*;
 import org.msh.etbm.entities.enums.CaseState;
 import org.msh.etbm.entities.enums.MedicineLine;
 import org.msh.etbm.entities.enums.RegimenPhase;
@@ -147,7 +141,27 @@ public class TreatmentServices {
 		tbcase.setRegimen(null);
 
 		EntityManager em = App.getEntityManager();
+
+		List<PrescribedMedicine> pms = em.createQuery(" from PrescribedMedicine where tbcase.id = " + tbcase.getId().toString()).getResultList();
+		for(PrescribedMedicine pm : pms) {
+			if (pm.getSyncData()!= null && pm.getSyncData().getServerId() != null){
+				DeletedEntity ent = new DeletedEntity();
+				ent.setEntityId(pm.getSyncData().getServerId());
+				ent.setEntityName(pm.getClass().getSimpleName());
+				App.getEntityManager().persist(ent);
+			}
+		}
 		em.createQuery("delete from PrescribedMedicine where tbcase.id = " + tbcase.getId().toString()).executeUpdate();
+
+		List<TreatmentHealthUnit> thus = em.createQuery(" from TreatmentHealthUnit where tbcase.id = " + tbcase.getId().toString()).getResultList();
+		for(TreatmentHealthUnit thu : thus){
+			if (thu.getSyncData()!= null && thu.getSyncData().getServerId() != null) {
+				DeletedEntity ent = new DeletedEntity();
+				ent.setEntityId(thu.getSyncData().getServerId());
+				ent.setEntityName(thu.getClass().getSimpleName());
+				App.getEntityManager().persist(ent);
+			}
+		}
 		em.createQuery("delete from TreatmentHealthUnit where tbcase.id = " + tbcase.getId().toString()).executeUpdate();
 		
 		tbcase.getHealthUnits().clear();
