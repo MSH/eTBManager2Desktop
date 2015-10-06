@@ -5,6 +5,14 @@
         <field value="tbcase.suspectRegistrationCode" label="@TbCase.registrationCode" />
 		<field value="tbcase.registrationDate" label="@TbCase.registrationDate.TB" required="true" visible="${tbcase.classification == 'TB'}"/>
 		<field value="tbcase.registrationDate" label="@TbCase.registrationDate.DRTB" required="true" visible="${tbcase.classification == 'DRTB'}"/>
+
+		<field value="tbcase.lastBmuTbRegistNumber" label="@DisplayCaseNumber.TB"
+			   visible="${tbcase.classification == 'DRTB' and tbcase.diagnosisType == 'CONFIRMED'}"/>
+		<field value="tbcase.lastBmuDateTbRegister" label="@TbCase.registrationDate.TB"
+			   visible="${tbcase.classification == 'DRTB' and tbcase.diagnosisType == 'CONFIRMED'}">
+			<validation rule="${tbcase.registrationDate >= tbcase.lastBmuDateTbRegister}"
+						message="@cases.details.valerror2"/>
+		</field>
     </section>
 	<section id="sec1" title="@cases.patientdata" column-count="4">
 		<field value="patient.name" label="@Patient.name" colspan="3">
@@ -72,7 +80,7 @@
 		</region>
 	</section>
 
-	<section title="@cases.details.medexam" visible="${empty tbcase.id}" column-count="2">
+	<section title="@cases.details.medexam" visible="${empty tbcase.id and tbcase.diagnosisType == 'CONFIRMED'}" column-count="2">
 		<field value="medicalexamination.date" label="@cases.details.date" required="true" />
 		<field value="medicalexamination.responsible" label="@MedicalExamination.responsible" required="true" maxchars="100" width="300" />
 		<field value="medicalexamination.height" label="@MedicalExamination.height" />
