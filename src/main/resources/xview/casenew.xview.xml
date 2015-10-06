@@ -51,6 +51,7 @@
 			<field value="tbcase.patientType" label="@PatientType"  required="true" options="${globalLists.patientTypesTB}" visible="${tbcase.classification == 'TB'}"/>
 			<field value="tbcase.previouslyTreatedType" label="@PatientType.PREVIOUSLY_TREATED"  required="true" options="${globalLists.prevTreatedTypes}"
 				   visible="${tbcase.classification == 'TB' and tbcase.patientType == 'PREVIOUSLY_TREATED'}"/>
+			<field value="tbcase.patientTypeOther" label="@TbCase.patientTypeOther" visible="${tbcase.patientType == 'OTHER'}" required="true" />
 			<!--registration groups-->
 
 			<field value="tbcase.drugResistanceType" options="${globalLists.drugResistanceTypes}" label="@DrugResistanceType"
