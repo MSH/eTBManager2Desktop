@@ -516,6 +516,7 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.2.5</version>
 		</dependency>
+        <!-- Marshall/unmarshall object to/from XML -->
 		<dependency>
 			<groupId>com.rmemoria</groupId>
 			<artifactId>datastream</artifactId>
