@@ -139,6 +139,9 @@ public class TreatmentServices {
 		tbcase.setOwnerUnit(null);
 		tbcase.setIniContinuousPhase(null);
 		tbcase.setRegimen(null);
+		tbcase.setRegimenIni(null);
+		tbcase.setInitialRegimenWithSecondLineDrugs(null);
+		tbcase.setTreatmentCategory(null);
 
 		EntityManager em = App.getEntityManager();
 
