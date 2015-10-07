@@ -11,7 +11,7 @@
 		<field value="tbcase.lastBmuDateTbRegister" label="@TbCase.registrationDate.TB"
 			   visible="${tbcase.classification == 'DRTB' and tbcase.diagnosisType == 'CONFIRMED'}">
 			<validation rule="${tbcase.registrationDate >= tbcase.lastBmuDateTbRegister}"
-						message="@cases.details.valerror2"/>
+						message="@cases.details.valerror2" enabled-if="${not empty tbcase.lastBmuDateTbRegister}" />
 		</field>
     </section>
 	<section id="sec1" title="@cases.patientdata" column-count="4">
