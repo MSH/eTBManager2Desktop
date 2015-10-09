@@ -76,7 +76,7 @@
             <property name="id" xmlAttribute="true" use="REQUIRED" />
             <property name="name.name1" elementName="name1" use="REQUIRED" />
             <property name="name.name2" elementName="name2" />
-            <property name="adminUnit.id" elementName="adminunit" />
+            <property name="adminUnit.id" elementName="adminunit" use="NOT_REQUIRED"/>
             <property name="firstLineSupplier.id" elementName="firstlinesupplier" />
             <property name="secondLineSupplier.id" elementName="secondlinesupplier" />
             <property name="authorizerUnit.id" elementName="authorizer" />

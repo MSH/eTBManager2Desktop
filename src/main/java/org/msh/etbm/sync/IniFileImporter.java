@@ -128,7 +128,7 @@ public class IniFileImporter {
 			return lst.size() > 0? lst.get(0): null;
 		}
 
-        if (objectType == AdministrativeUnit.class) {
+        if (objectType == Tbunit.class) {
             System.out.println("Test");
         }
 

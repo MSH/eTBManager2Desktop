@@ -21,8 +21,16 @@ public class ExamMicroscopy extends LaboratoryExamResult implements Serializable
 
 	private SampleType sampleType;
 
+    private String otherSampleType;
+
 	private VisualAppearance visualAppearance;
-	
+
+    /**
+     * Indicate the number of samples collected to perform microscopy
+     */
+    private Integer numberSamplesCollected;
+
+
 	public MicroscopyResult getResult() {
 		return result;
 	}
@@ -65,5 +73,21 @@ public class ExamMicroscopy extends LaboratoryExamResult implements Serializable
 
     public void setVisualAppearance(VisualAppearance visualAppearance) {
         this.visualAppearance = visualAppearance;
+    }
+
+    public String getOtherSampleType() {
+        return otherSampleType;
+    }
+
+    public void setOtherSampleType(String otherSampleType) {
+        this.otherSampleType = otherSampleType;
+    }
+
+    public Integer getNumberSamplesCollected() {
+        return numberSamplesCollected;
+    }
+
+    public void setNumberSamplesCollected(Integer numberSamplesCollected) {
+        this.numberSamplesCollected = numberSamplesCollected;
     }
 }
