@@ -4,7 +4,7 @@
 		<field value="startTreatmentController.treatmentUnit" label="@FilterHealthUnit.TREATMENT_UNIT" required="true" />
 		<field value="startTreatmentController.iniTreatmentDate" label="@cases.details.date" required="true" />
 		<field value="startTreatmentController.regimen" label="@Regimen" required="true"
-		    options="${startTreatmentController.regimens}" handler="combo">
+		    options="${startTreatmentController.getRegimens(tbcase.classification)}" handler="combo">
 		</field>
 	</section>
 	<section column-count="2" title="@RegimenPhase.INTENSIVE" visible="${not empty startTreatmentController.regimen}">

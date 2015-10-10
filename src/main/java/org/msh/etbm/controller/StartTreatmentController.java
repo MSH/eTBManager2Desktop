@@ -11,6 +11,7 @@ import org.msh.etbm.entities.Medicine;
 import org.msh.etbm.entities.Regimen;
 import org.msh.etbm.entities.TbCase;
 import org.msh.etbm.entities.Tbunit;
+import org.msh.etbm.entities.enums.CaseClassification;
 import org.msh.etbm.entities.enums.RegimenPhase;
 import org.msh.etbm.services.RegimenServices;
 import org.msh.etbm.services.cases.treatment.MedicineTreatmentInfo;
@@ -149,9 +150,9 @@ public class StartTreatmentController {
 	/**
 	 * @return the regimens
 	 */
-	public List<Regimen> getRegimens() {
+	public List<Regimen> getRegimens(CaseClassification c) {
 		if (regimens == null)
-			regimens = regimenServices.getRegimens();
+			regimens = regimenServices.getRegimens(c);
 		return regimens;
 	}
 
