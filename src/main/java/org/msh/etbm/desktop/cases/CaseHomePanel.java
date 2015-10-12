@@ -63,6 +63,7 @@ import org.msh.etbm.services.cases.CaseStateReport.TagItem;
 import org.msh.etbm.services.cases.CaseStateReport.ValidationItem;
 import org.msh.etbm.services.cases.CasesQuery;
 import org.msh.etbm.services.login.UserSession;
+import org.msh.etbm.services.misc.CaseDefinitionFieldIntelligence;
 import org.msh.eventbus.EventBusService;
 
 
@@ -553,6 +554,11 @@ public class CaseHomePanel extends ClientPanel implements Refreshable {
 		EventBusService.observeEvent(AppEvent.CASE_DELETED, this);
 		EventBusService.observeEvent(AppEvent.CASE_MODIFIED, this);
 		EventBusService.observeEvent(AppEvent.CASES_REFRESH, this);
+
+		CaseDefinitionFieldIntelligence cdIntel = new CaseDefinitionFieldIntelligence();
+		EventBusService.observeEvent(AppEvent.NEW_CASE, cdIntel);
+		EventBusService.observeEvent(AppEvent.CASE_MODIFIED, cdIntel);
+		EventBusService.observeEvent(AppEvent.EXAMS_MODIFIED, cdIntel);
 	}
 	
 

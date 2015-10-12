@@ -30,6 +30,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import org.msh.etbm.desktop.app.App;
+import org.msh.etbm.desktop.app.AppEvent;
 import org.msh.etbm.desktop.app.Messages;
 import org.msh.etbm.desktop.app.UiConstants;
 import org.msh.etbm.desktop.common.GuiUtils;
@@ -54,6 +55,7 @@ import org.msh.etbm.services.cases.ExamMicroscopyServices;
 import org.msh.etbm.services.cases.ExamXRayServices;
 import org.msh.etbm.services.cases.ExamXpertServices;
 import org.msh.etbm.services.core.EntityServices;
+import org.msh.eventbus.EventBusService;
 import org.msh.springframework.persistence.ActionCallback;
 import org.msh.springframework.persistence.EntityManagerUtils;
 import org.msh.utils.date.LocaleDateConverter;
@@ -256,6 +258,8 @@ public class TabExamsPanel extends CaseTabPanel {
 				entity = App.getEntityManager().merge(entity);
 				App.getEntityManager().remove(entity);
 				refresh();
+				if(entity instanceof LaboratoryExamResult)
+					EventBusService.raiseEvent(AppEvent.EXAMS_MODIFIED, entity);
 			}
 		});
 		panel.add(btnDelete);

@@ -18,5 +18,6 @@ public enum AppEvent {
 	NEW_CASE,			// A new case was included
 	TREATMENT_REFRESH,  // the treatment for the patient must be refreshed
 	CASES_REFRESH,		// refresh the list of cases in the main page
-	SYNC_EXECUTED;		// The synchronization between client and server was just executed
+	SYNC_EXECUTED,		// The synchronization between client and server was just executed
+	EXAMS_MODIFIED;		// Any kind of exam was added, edited or removed from a case
 }

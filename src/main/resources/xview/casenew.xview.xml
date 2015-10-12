@@ -74,9 +74,11 @@
 		    	visible="${tbcase.infectionSite == 'EXTRAPULMONARY' or tbcase.infectionSite == 'BOTH'}">
 			</field>
 			<field value="tbcase.extrapulmonaryType2" label="@TbField.EXTRAPULMONARY_TYPES"
-		    	options="${fieldsOptions.extrapulmonaryTypes}"
-		    	visible="${tbcase.infectionSite == 'EXTRAPULMONARY' or tbcase.infectionSite == 'BOTH'}">
+				   options="${fieldsOptions.extrapulmonaryTypes}"
+				   visible="${tbcase.infectionSite == 'EXTRAPULMONARY' or tbcase.infectionSite == 'BOTH'}">
 			</field>
+			<field value="tbcase.caseDefinition" label="@CaseDefinition" readonly="true"
+				   visible="${tbcase.caseDefinition != null}"/>
 		</region>
 	</section>
 
