@@ -14,6 +14,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
 import org.msh.etbm.desktop.app.App;
+import org.msh.etbm.desktop.app.AppEvent;
 import org.msh.etbm.desktop.app.MainWindow;
 import org.msh.etbm.desktop.app.Messages;
 import org.msh.etbm.desktop.common.GuiUtils;
@@ -24,6 +25,7 @@ import org.msh.etbm.entities.Patient;
 import org.msh.etbm.entities.TbCase;
 import org.msh.etbm.services.cases.CaseServices;
 import org.msh.etbm.services.cases.MedicalExaminationServices;
+import org.msh.eventbus.EventBusService;
 import org.msh.springframework.persistence.ActionCallback;
 import org.msh.springframework.persistence.EntityManagerUtils;
 import org.msh.xview.FormManager;
@@ -166,6 +168,8 @@ public class NewCasePanel extends JPanel implements Refreshable {
 		GuiUtils.openCaseDetailPage( (Integer)formContext.getDataModel().getValue("tbcase.id") );
 
 		MainWindow.instance().removePanel(this);
+
+		EventBusService.raiseEvent(AppEvent.NEW_CASE_SAVED, tbcase);
 	}
 
 

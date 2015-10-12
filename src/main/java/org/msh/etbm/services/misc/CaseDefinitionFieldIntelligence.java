@@ -40,9 +40,11 @@ public class CaseDefinitionFieldIntelligence implements EventBusListener {
         EntityManagerUtils.doInTransaction(new ActionCallback<Integer>(tbcase.getId()) {
             @Override
             public void execute(Integer caseId) {
+                if(caseId == null)
+                    return;
+
                 CaseServices caseSrv = App.getComponent(CaseServices.class);
                 TbCase tbcase = caseSrv.findEntity(caseId);
-
                 updateCaseDefinitionField(tbcase);
             }
 

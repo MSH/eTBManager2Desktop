@@ -79,6 +79,8 @@
 			</field>
 			<field value="tbcase.caseDefinition" label="@CaseDefinition" readonly="true"
 				   visible="${tbcase.caseDefinition != null}"/>
+			<field value="tbcase.secDrugsReceived" label="@TbCase.seclineDrugsReceived" readonly="true"
+				   visible="${tbcase.secDrugsReceived != null}"/>
 		</region>
 	</section>
 
