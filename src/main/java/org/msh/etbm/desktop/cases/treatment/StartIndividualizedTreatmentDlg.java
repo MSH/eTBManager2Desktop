@@ -8,11 +8,13 @@ import java.util.List;
 
 import org.msh.etbm.controller.StartTreatmentController;
 import org.msh.etbm.desktop.app.App;
+import org.msh.etbm.desktop.app.AppEvent;
 import org.msh.etbm.desktop.common.GenericFormDialog;
 import org.msh.etbm.entities.Medicine;
 import org.msh.etbm.entities.TbCase;
 import org.msh.etbm.entities.enums.RegimenPhase;
 import org.msh.etbm.services.cases.CaseServices;
+import org.msh.eventbus.EventBusService;
 import org.msh.xview.FormDataModel;
 
 /**
@@ -127,6 +129,7 @@ public class StartIndividualizedTreatmentDlg extends GenericFormDialog {
 		StartTreatmentController controller = getForm().getDataModel().getVariable(StartTreatmentController.class);
 		TbCase tbcase = getForm().getDataModel().getVariable(TbCase.class);
 		controller.startStandardTreatmentRegimen(tbcase);
+		EventBusService.raiseEvent(AppEvent.TREATMENT_STARTED, tbcase);
 		return true;
 	}
 

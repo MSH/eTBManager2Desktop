@@ -15,10 +15,11 @@ public enum AppEvent {
 	LANGUAGE_CHANGED,	// Language was changed
 	CASE_MODIFIED,		// Case was modified
 	CASE_DELETED,		// Case was deleted
-	NEW_CASE,			// A new case was included
+	NEW_CASE,			// A new case was included - this is raised before case is saved
 	TREATMENT_REFRESH,  // the treatment for the patient must be refreshed
 	CASES_REFRESH,		// refresh the list of cases in the main page
 	SYNC_EXECUTED,		// The synchronization between client and server was just executed
 	EXAMS_MODIFIED,		// Any kind of exam was added, edited or removed from a case
-	NEW_CASE_SAVED;			// A new case was saved
+	NEW_CASE_SAVED,		// A new case was saved - this is raised after case is saved
+	TREATMENT_STARTED;	// The treatment was started.
 }

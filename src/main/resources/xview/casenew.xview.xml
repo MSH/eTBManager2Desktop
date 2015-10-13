@@ -81,6 +81,8 @@
 				   visible="${tbcase.caseDefinition != null}"/>
 			<field value="tbcase.secDrugsReceived" label="@TbCase.seclineDrugsReceived" readonly="true"
 				   visible="${tbcase.secDrugsReceived != null}"/>
+			<field value="tbcase.treatmentCategory" label="@TreatmentCategory" readonly="true"
+				   visible="${tbcase.treatmentCategory != null}"/>
 		</region>
 	</section>
 
