@@ -18,12 +18,7 @@ import org.msh.etbm.desktop.app.App;
 import org.msh.etbm.desktop.app.AppEvent;
 import org.msh.etbm.desktop.app.Messages;
 import org.msh.etbm.desktop.app.UiConstants;
-import org.msh.etbm.desktop.cases.treatment.ChangeTreatPeriodDlg;
-import org.msh.etbm.desktop.cases.treatment.PrescribedMedicineDlg;
-import org.msh.etbm.desktop.cases.treatment.StartIndividualizedTreatmentDlg;
-import org.msh.etbm.desktop.cases.treatment.StartStandardTreatmentDlg;
-import org.msh.etbm.desktop.cases.treatment.TreatFollowupController;
-import org.msh.etbm.desktop.cases.treatment.TreatmentTablePanel;
+import org.msh.etbm.desktop.cases.treatment.*;
 import org.msh.etbm.desktop.common.AncestorAdapter;
 import org.msh.etbm.desktop.common.JButtonEx;
 import org.msh.etbm.desktop.common.JWarningLabel;
@@ -344,8 +339,14 @@ public class TabTreatmentPanel extends CaseTabPanel implements EventBusListener 
 	 * 
 	 */
 	protected void changeRegimen() {
-		// TODO Auto-generated method stub
-		
+		EntityManagerUtils.doInTransaction(new ActionCallback<Integer>(tbcase.getId()) {
+			@Override
+			public void execute(Integer caseId) {
+				if (ChangeRegimenDlg.execute(caseId)){
+					requestCaseRefresh();
+				}
+			}
+		});
 	}
 
 

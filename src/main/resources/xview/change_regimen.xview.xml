@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form action="startTreatmentController.start">
+	<section column-count="2">
+		<field value="startTreatmentController.regimen" label="@Regimen" required="true"
+			   options="${startTreatmentController.getRegimens(tbcase.classification)}" handler="combo">
+		</field>
+	</section>
+	<section column-count="2" title="@RegimenPhase.INTENSIVE" visible="${not empty startTreatmentController.regimen}">
+		<field value="startTreatmentController.regimen.monthsIntensivePhase" label="@global.period" readonly="true"/>
+		<table values="${startTreatmentController.medicinesIntensivePhase}" var="it" colspan="2">
+			<column title="@Medicine">
+				<field value="it.medicine" readonly="true"/>
+			</column>
+			<column title="@PrescribedMedicine.doseUnit">
+				<field value="it.doseUnit" required="true" handler="combo">
+					<param name="min" value="1" />
+					<param name="max" value="6" />
+				</field>
+			</column>
+			<column title="@PrescribedMedicine.frequency">
+				<field value="it.frequency" required="true" handler="combo">
+					<param name="min" value="1" />
+					<param name="max" value="7" />
+				</field>
+			</column>
+			<column title="@Source">
+				<field value="it.source" required="true" options="${sourceServices.sources}"
+					   optionLabel="abbrevName" handler="combo"/>
+			</column>
+		</table>
+	</section>
+	<section column-count="2" title="@RegimenPhase.CONTINUOUS" visible="${not empty startTreatmentController.regimen}">
+		<field value="startTreatmentController.regimen.monthsContinuousPhase" label="@global.period" readonly="true"/>
+		<table values="${startTreatmentController.medicinesContinuousPhase}" var="it" colspan="2">
+			<column title="@Medicine">
+				<field value="it.medicine" readonly="true"/>
+			</column>
+			<column title="@PrescribedMedicine.doseUnit">
+				<field value="it.doseUnit" required="true" handler="combo">
+					<param name="min" value="1" />
+					<param name="max" value="6" />
+				</field>
+			</column>
+			<column title="@PrescribedMedicine.frequency">
+				<field value="it.frequency" required="true" handler="combo">
+					<param name="min" value="1" />
+					<param name="max" value="7" />
+				</field>
+			</column>
+			<column title="@Source">
+				<field value="it.source" required="true" options="${sourceServices.sources}"
+					   optionLabel="abbrevName" handler="combo"/>
+			</column>
+		</table>
+	</section>
+</form>

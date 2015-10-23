@@ -11,6 +11,7 @@ import org.msh.etbm.entities.*;
 import org.msh.etbm.entities.enums.CaseState;
 import org.msh.etbm.entities.enums.MedicineLine;
 import org.msh.etbm.entities.enums.RegimenPhase;
+import org.msh.etbm.services.cases.CaseServices;
 import org.msh.utils.date.DateUtils;
 import org.msh.utils.date.Period;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -189,15 +190,21 @@ public class TreatmentServices {
 	 */
 	public void changeTreatmentRegimen(TbCase tbcase, Regimen regimen, List<MedicineTreatmentInfo> medsIntPhase, 
 			List<MedicineTreatmentInfo> medsContPhase) {
-		if ((tbcase.getState() != CaseState.ONTREATMENT) || (tbcase.getState() != CaseState.TRANSFERRING))
+		if ((tbcase.getState() != CaseState.ONTREATMENT) && (tbcase.getState() != CaseState.TRANSFERRING))
 			throw new IllegalArgumentException("Treatment cannot be change if case is not on treatment");
 
 		Tbunit treatmentUnit = tbcase.getOwnerUnit();
 		Date iniDate = tbcase.getTreatmentPeriod().getIniDate();
+		Regimen iniRegimen = tbcase.getRegimen();
+
 		undoTreatment(tbcase);
-		
+
 		StartTreatmentServices srv = App.getComponent(StartTreatmentServices.class);
 		srv.startStandardRegimen(tbcase, treatmentUnit, iniDate, regimen, medsIntPhase, medsContPhase);
+
+		tbcase.setRegimenIni(iniRegimen);
+		CaseServices.instance().save(tbcase);
+		em.flush();
 	}
 
 
