@@ -520,7 +520,7 @@
 		<dependency>
 			<groupId>com.rmemoria</groupId>
 			<artifactId>datastream</artifactId>
-			<version>1.2.6</version>
+			<version>1.2.7</version>
 		</dependency>
 		<dependency>
 			<groupId>de.odysseus.juel</groupId>
