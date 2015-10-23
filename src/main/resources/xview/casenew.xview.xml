@@ -53,6 +53,8 @@
 		<field value="tbcase.diagnosisType" label="@DiagnosisType" required="true" readonly="true"/>
 		<region visible="${tbcase.diagnosisType == 'CONFIRMED'}">
 			<field value="tbcase.diagnosisDate" label="@TbCase.diagnosisDate" required="true" />
+			<field value="tbcase.drugResistanceType" options="${globalLists.drugResistanceTypes}" label="@DrugResistanceType"
+				   visible="${tbcase.classification == 'DRTB'}"/>
 
 			<!--registration groups-->
 			<field value="tbcase.patientType" label="@PatientType"  required="true" options="${globalLists.patientTypesDRTB}" visible="${tbcase.classification == 'DRTB'}"/>
@@ -62,8 +64,6 @@
 			<field value="tbcase.patientTypeOther" label="@TbCase.patientTypeOther" visible="${tbcase.patientType == 'OTHER'}" required="true" />
 			<!--registration groups-->
 
-			<field value="tbcase.drugResistanceType" options="${globalLists.drugResistanceTypes}" label="@DrugResistanceType"
-				   visible="${tbcase.classification == 'DRTB'}"/>
 			<field value="tbcase.infectionSite" label="@InfectionSite"  required="${tbcase.validated}"/>
 			<field value="tbcase.pulmonaryType" label="@TbField.PULMONARY_TYPES"
 		    	options="${fieldsOptions.pulmonaryTypes}"
