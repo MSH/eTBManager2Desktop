@@ -71,10 +71,11 @@ public class ChangeRegimenDlg extends GenericFormDialog {
 	 */
 	@Override
 	protected boolean saveFormData(FormDataModel dataModel) {
-		// start the treatment
+		// change regimen
+		//ChangeRegimenController controller = getForm().getDataModel().getVariable(ChangeRegimenController.class);
 		StartTreatmentController controller = getForm().getDataModel().getVariable(StartTreatmentController.class);
 		TbCase tbcase = getForm().getDataModel().getVariable(TbCase.class);
-		controller.startStandardTreatmentRegimen(tbcase);
+		controller.changeRegimen(tbcase);
 		EventBusService.raiseEvent(AppEvent.TREATMENT_STARTED, tbcase);
 		return true;
 	}

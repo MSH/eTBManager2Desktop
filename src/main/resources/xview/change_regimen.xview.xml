@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form action="changeRegimenController.start">
+<form action="startTreatmentController.start">
 	<section column-count="2">
-		<field value="changeRegimenController.treatmentUnit" label="@FilterHealthUnit.TREATMENT_UNIT" required="true" />
-		<field value="changeRegimenController.iniTreatmentDate" label="@cases.details.date" required="true" />
-		<field value="changeRegimenController.regimen" label="@Regimen" required="true"
-			   options="${changeRegimenController.getRegimens(tbcase.classification)}" handler="combo">
+		<field value="startTreatmentController.regimen" label="@Regimen" required="true"
+			   options="${startTreatmentController.getRegimens(tbcase.classification)}" handler="combo">
 		</field>
 	</section>
-	<section column-count="2" title="@RegimenPhase.INTENSIVE" visible="${not empty changeRegimenController.regimen}">
-		<field value="changeRegimenController.regimen.monthsIntensivePhase" label="@global.period" readonly="true"/>
-		<table values="${changeRegimenController.medicinesIntensivePhase}" var="it" colspan="2">
+	<section column-count="2" title="@RegimenPhase.INTENSIVE" visible="${not empty startTreatmentController.regimen}">
+		<field value="startTreatmentController.regimen.monthsIntensivePhase" label="@global.period" readonly="true"/>
+		<table values="${startTreatmentController.medicinesIntensivePhase}" var="it" colspan="2">
 			<column title="@Medicine">
 				<field value="it.medicine" readonly="true"/>
 			</column>
@@ -31,9 +29,9 @@
 			</column>
 		</table>
 	</section>
-	<section column-count="2" title="@RegimenPhase.CONTINUOUS" visible="${not empty changeRegimenController.regimen}">
-		<field value="changeRegimenController.regimen.monthsContinuousPhase" label="@global.period" readonly="true"/>
-		<table values="${changeRegimenController.medicinesContinuousPhase}" var="it" colspan="2">
+	<section column-count="2" title="@RegimenPhase.CONTINUOUS" visible="${not empty startTreatmentController.regimen}">
+		<field value="startTreatmentController.regimen.monthsContinuousPhase" label="@global.period" readonly="true"/>
+		<table values="${startTreatmentController.medicinesContinuousPhase}" var="it" colspan="2">
 			<column title="@Medicine">
 				<field value="it.medicine" readonly="true"/>
 			</column>

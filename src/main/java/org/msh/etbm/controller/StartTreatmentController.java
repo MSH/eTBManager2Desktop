@@ -17,6 +17,7 @@ import org.msh.etbm.services.RegimenServices;
 import org.msh.etbm.services.cases.treatment.MedicineTreatmentInfo;
 import org.msh.etbm.services.cases.treatment.StartTreatmentServices;
 import org.msh.etbm.services.cases.treatment.PrescribedMedicineLists;
+import org.msh.etbm.services.cases.treatment.TreatmentServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -40,6 +41,7 @@ public class StartTreatmentController {
 
 	@Autowired RegimenServices regimenServices;
 	@Autowired StartTreatmentServices startTreatmentServices;
+	@Autowired TreatmentServices treatmentServices;
 	
 	/**
 	 * Start the standard treatment regimen
@@ -57,6 +59,14 @@ public class StartTreatmentController {
 		// call service to start the treatment
 		startTreatmentServices.startStandardRegimen(tbcase, treatmentUnit, iniTreatmentDate, 
 				regimen, medicinesIntensivePhase, medicinesContinuousPhase);
+	}
+
+	/**
+	 * Start the standard treatment regimen
+	 */
+	public void changeRegimen(TbCase tbcase) {
+		// call service to change regimen
+		treatmentServices.changeTreatmentRegimen(tbcase, regimen, medicinesIntensivePhase, medicinesContinuousPhase);
 	}
 	
 	/**

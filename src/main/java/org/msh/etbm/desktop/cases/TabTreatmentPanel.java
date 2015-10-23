@@ -339,10 +339,14 @@ public class TabTreatmentPanel extends CaseTabPanel implements EventBusListener 
 	 * 
 	 */
 	protected void changeRegimen() {
-		tbcase = App.getEntityManager().merge(tbcase);
-		if (ChangeRegimenDlg.execute(tbcase.getId())) {
-			requestCaseRefresh();
-		}
+		EntityManagerUtils.doInTransaction(new ActionCallback<Integer>(tbcase.getId()) {
+			@Override
+			public void execute(Integer caseId) {
+				if (ChangeRegimenDlg.execute(caseId)){
+					requestCaseRefresh();
+				}
+			}
+		});
 	}
 
 
