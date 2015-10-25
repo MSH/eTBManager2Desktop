@@ -69,11 +69,11 @@
 		    	options="${fieldsOptions.pulmonaryTypes}"
 			    colspan="3" visible="${tbcase.infectionSite == 'PULMONARY' or tbcase.infectionSite == 'BOTH'}">
 			</field>
-			<field value="tbcase.extrapulmonaryType" label="@TbField.EXTRAPULMONARY_TYPES"
+			<field value="tbcase.extrapulmonaryType.value" label="@TbField.EXTRAPULMONARY_TYPES"
 			    options="${fieldsOptions.extrapulmonaryTypes}" 
 		    	visible="${tbcase.infectionSite == 'EXTRAPULMONARY' or tbcase.infectionSite == 'BOTH'}">
 			</field>
-			<field value="tbcase.extrapulmonaryType2" label="@TbField.EXTRAPULMONARY_TYPES"
+			<field value="tbcase.extrapulmonaryType2.value" label="@TbField.EXTRAPULMONARY_TYPES"
 				   options="${fieldsOptions.extrapulmonaryTypes}"
 				   visible="${tbcase.infectionSite == 'EXTRAPULMONARY' or tbcase.infectionSite == 'BOTH'}">
 			</field>
