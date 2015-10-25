@@ -122,6 +122,8 @@
             <property name="tbcase.syncData.serverId" elementName="tbcase" xmlAttribute="true" includeNullValues="false" />
             <property name="tbcase.id" elementName="cl_case" xmlAttribute="true" use="REQUIRED"/>
             <property name="result" xmlAttribute="true" />
+            <property name="ARTstarted" use="IGNORE"/>
+            <property name="CPTstarted" use="IGNORE"/>
         </objectGraph>
         
         <objectGraph name="treatmonitoring" class="org.msh.etbm.entities.TreatmentMonitoring" >
