@@ -23,6 +23,7 @@ import org.msh.etbm.desktop.components.AwesomeIcon;
 import org.msh.etbm.entities.MedicalExamination;
 import org.msh.etbm.entities.Patient;
 import org.msh.etbm.entities.TbCase;
+import org.msh.etbm.entities.enums.DiagnosisType;
 import org.msh.etbm.services.cases.CaseServices;
 import org.msh.etbm.services.cases.MedicalExaminationServices;
 import org.msh.eventbus.EventBusService;
@@ -156,7 +157,7 @@ public class NewCasePanel extends JPanel implements Refreshable {
 
 				// save medical examination
 				MedicalExamination medexam = (MedicalExamination)formContext.getValue("medicalexamination");
-				if (medexam != null) {
+				if (DiagnosisType.CONFIRMED.equals(tbcase.getDiagnosisType()) && medexam != null) {
 					MedicalExaminationServices srv = App.getComponent(MedicalExaminationServices.class);
 					medexam.setTbcase(tbcase);
 					srv.save(medexam);
