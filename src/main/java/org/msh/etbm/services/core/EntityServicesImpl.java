@@ -152,10 +152,16 @@ public class EntityServicesImpl<E> implements EntityServices<E> {
 	 */
 	@Override
 	public void delete(Object id) {
-		getEntityManager()
+		/*getEntityManager()
 			.createQuery("delete from " + getEntityClass().getName() + " where id = :id")
 			.setParameter("id", id)
-			.executeUpdate();
+			.executeUpdate();*/
+
+		Object o = getEntityManager()
+					.createQuery(" from " + getEntityClass().getName() + " where id = :id")
+					.setParameter("id", id)
+					.getSingleResult();
+		getEntityManager().remove(o);
 	}
 
 	

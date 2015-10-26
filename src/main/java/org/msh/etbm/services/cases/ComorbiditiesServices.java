@@ -69,6 +69,14 @@ public class ComorbiditiesServices {
 				App.getEntityManager().persist(item);
 			}
 		}
+
+		//Set edited itens to be sync
+		for (CaseComorbidity item: comorbidities.getSelectedItems()) {
+			if (tbcase.getComorbidities().contains(item)) {
+				item.getSyncData().setChanged(true);
+				App.getEntityManager().merge(item);
+			}
+		}
 	}
 
 }

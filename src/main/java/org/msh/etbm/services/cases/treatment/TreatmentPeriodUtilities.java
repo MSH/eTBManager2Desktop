@@ -266,6 +266,9 @@ public class TreatmentPeriodUtilities {
 
 				// cut period if end date is after
 				pm.getPeriod().intersect(newperiod);
+
+				// Mask as changed entity that needs sync
+				pm.getSyncData().setChanged(true);
 				
 				if (pm.getPeriod().getDays() <= 1)
 					deletedItems.add(pm);

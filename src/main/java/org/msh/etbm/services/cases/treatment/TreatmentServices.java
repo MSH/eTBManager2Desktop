@@ -307,6 +307,7 @@ public class TreatmentServices {
 		
 		TreatmentHealthUnit healthUnit = tbcase.getHealthUnits().get(tbcase.getHealthUnits().size() - 1);
 		healthUnit.setPeriod(p);
+		healthUnit.getSyncData().setChanged(true);
 
 		em.persist(tbcase);
 	}
