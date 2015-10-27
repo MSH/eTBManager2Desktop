@@ -3,6 +3,7 @@
 		<section title="@PatientSample.identification" column-count="2">
 			<field value="exammicroscopy.dateCollected" label="@PatientSample.dateCollected" required="true" />
 			<field value="exammicroscopy.sampleType" label="@SpecimenType" handler="combo" options="${globalLists.microscopySampleTypes}"/>
+			<field value="exammicroscopy.otherSampleType" label="@CaseState.OTHER" width="200" maxchars="100" visible="${exammicroscopy.sampleType == 'OTHER'}" />
 			<field value="exammicroscopy.sampleNumber" label="@PatientSample.sampleNumber" width="200" maxchars="100" />
 			<field value="exammicroscopy.visualAppearance" label="@VisualAppearance" handler="combo" options="${globalLists.microscopyVisualAppearence}"/>
 			<field value="exammicroscopy.laboratory" label="@Laboratory" required="true" />
@@ -19,8 +20,6 @@
 			<field value="exammicroscopy.numberOfAFB" label="@cases.exams.afb" visible="${exammicroscopy.result == 'POSITIVE'}" handler="combo">
 				<param name="min" value="1" />
 				<param name="max" value="9" />
-			</field>
-			<field value="exammicroscopy.method" label="@cases.exams.method" handler="combo" options="${fieldsOptions.cultureMethods}">
 			</field>
 			<field value="exammicroscopy.comments" label="@global.comments" handler="text" />
 		</section>
