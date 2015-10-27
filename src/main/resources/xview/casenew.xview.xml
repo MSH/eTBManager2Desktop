@@ -2,7 +2,6 @@
 <form id="casenew" title="New notification">
 
     <section column-count="4">
-        <field value="tbcase.suspectRegistrationCode" label="@TbCase.registrationCode" />
 		<field value="tbcase.registrationDate" label="@TbCase.registrationDate.TB" required="true" visible="${tbcase.classification == 'TB'}"/>
 		<field value="tbcase.registrationDate" label="@TbCase.registrationDate.DRTB" required="true" visible="${tbcase.classification == 'DRTB'}"/>
 
