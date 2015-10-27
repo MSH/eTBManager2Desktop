@@ -191,6 +191,7 @@ public class StartTreatmentServices {
 			MedicineTreatmentInfo item = new MedicineTreatmentInfo();
 			// set default values
 			item.setMedicine(mr.getMedicine());
+			item.setDoseUnit(mr.getDefaultDoseUnit());
 			item.setSource(mr.getDefaultSource());
 			item.setFrequency(mr.getDefaultFrequency());
 
