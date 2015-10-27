@@ -264,6 +264,14 @@
             <property name="laboratory.id" elementName="lab" xmlAttribute="true"/>
             <property name="method.id" elementName="method" xmlAttribute="true"/>
         </objectGraph>
+
+        <objectGraph name="examxpert" class="org.msh.etbm.entities.ExamXpert">
+            <property name="syncData.serverId" elementName="id" xmlAttribute="true" use="REQUIRED"/>
+            <property name="tbcase.syncData.serverId" elementName="tbcase" use="REQUIRED" xmlAttribute="true" />
+            <property name="dateCollected" xmlAttribute="true" />
+            <property name="result" xmlAttribute="true" />
+            <property name="laboratory.id" elementName="lab" xmlAttribute="true"/>
+        </objectGraph>
         
         <objectGraph name="examhiv" class="org.msh.etbm.entities.ExamHIV">
             <property name="syncData.serverId" elementName="id" xmlAttribute="true" use="REQUIRED" />
