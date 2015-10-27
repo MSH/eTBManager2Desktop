@@ -68,18 +68,19 @@
             <property name="numResistant" use="IGNORE" />
             <property name="numContaminated" use="IGNORE" />
             <property name="numSusceptible" use="IGNORE" />
-            <property name="results" >
-        		<objectGraph name="dstresult" class="org.msh.etbm.entities.ExamDSTResult" parentProperty="exam">
-            		<property name="id" elementName="cl_id" xmlAttribute="true" use="REQUIRED" />
-            		<property name="syncData.serverId" elementName="id" xmlAttribute="true" />
-            		<property name="substance.id" elementName="substance" use="REQUIRED" xmlAttribute="true"/>
-            		<property name="result" use="REQUIRED" xmlAttribute="true"/>
-        		</objectGraph>
-            </property>
+            <property name="results" use="IGNORE"/>
             <property name="laboratory.id" elementName="lab" xmlAttribute="true"/>
             <property name="method.id" elementName="method" xmlAttribute="true"/>
         </objectGraph>
-        
+
+        <objectGraph name="dstresult" class="org.msh.etbm.entities.ExamDSTResult">
+            <property name="id" elementName="cl_id" xmlAttribute="true" use="REQUIRED" />
+            <property name="syncData.serverId" elementName="id" xmlAttribute="true" includeNullValues="false"/>
+            <property name="exam.id" elementName="cl_exam" xmlAttribute="true" use="REQUIRED"/>
+            <property name="exam.syncData.serverId" elementName="exam" xmlAttribute="true" includeNullValues="false"/>
+            <property name="substance.id" elementName="substance" use="REQUIRED" xmlAttribute="true"/>
+            <property name="result" use="REQUIRED" xmlAttribute="true"/>
+        </objectGraph>
         
         <objectGraph name="exammicroscopy" class="org.msh.etbm.entities.ExamMicroscopy">
             <property name="id" elementName="cl_id" xmlAttribute="true" use="REQUIRED" />

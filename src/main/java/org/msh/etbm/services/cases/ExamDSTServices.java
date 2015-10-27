@@ -53,6 +53,7 @@ public class ExamDSTServices extends LaboratoryExamServices<ExamDST> {
 			exam.setNumResistant(0);
 			exam.setNumSusceptible(0);
 			for (ExamDSTResult res : exam.getResults()) {
+				res.getSyncData().setChanged(true);
 				switch (res.getResult()) {
 					case CONTAMINATED:
 						exam.setNumContaminated(exam.getNumContaminated() + 1);
