@@ -356,7 +356,7 @@
         
         <objectGraph name="deleted-entity" class="org.msh.etbm.entities.DeletedEntity">
             <property name="entityName" elementName="entity" xmlAttribute="true" />
-            <property name="id" xmlAttribute="true" />
+            <property name="entityId" elementName="serverId" xmlAttribute="true" />
         </objectGraph>
         
     </objectCollection>

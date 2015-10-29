@@ -273,9 +273,14 @@ public class IniFileImporter {
 			updateTBUnitLinks((TBUnitLinks)obj);
 			return;
 		}
-		
+
 		if (obj instanceof EntityKey) {
 			handleEntityKey((EntityKey)obj);
+			return;
+		}
+
+		if (obj instanceof DeletedEntity) {
+			handleDeletedEntity((DeletedEntity) obj);
 			return;
 		}
 		
@@ -324,6 +329,15 @@ public class IniFileImporter {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Delete entities deleted on the desktop
+	 * @param obj
+	 */
+	protected void handleDeletedEntity(DeletedEntity obj){
+		EntityManager em = App.getEntityManager();
+		em.createQuery("delete from " + obj.getEntityName() + " where syncData.serverId = " + obj.getEntityId()).executeUpdate();
 	}
 	
 	
