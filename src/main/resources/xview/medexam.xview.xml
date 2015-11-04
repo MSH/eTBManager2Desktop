@@ -9,7 +9,7 @@
 							message="@javax.faces.component.UISelectOne.INVALID" />
 			</field>
 			<field value="medicalexamination.height" label="@MedicalExamination.height" />
-			<field value="medicalexamination.usingPrescMedicines" label="@MedicalExamination.usingPrescMedicines" required="true"/>
+			<field value="medicalexamination.usingPrescMedicines" label="@MedicalExamination.usingPrescMedicines" required="true"  visible="${medicalexamination.tbcase.state=='ONTREATMENT'}"/>
 			<field value="medicalexamination.reasonNotUsingPrescMedicines" label="@MedicalExamination.reasonNotUsingPrescMedicines" 
 				width="300" maxchars="100" visible="${medicalexamination.usingPrescMedicines == 'NO'}" required="true"/>
 			<field value="medicalexamination.responsible" label="@MedicalExamination.responsible" required="true" maxchars="100" width="300" />
