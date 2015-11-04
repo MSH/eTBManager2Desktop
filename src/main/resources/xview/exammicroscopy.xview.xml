@@ -17,10 +17,7 @@
 					message="@cases.exams.datereleasebeforecol"/>
 			</field>
 			<field value="exammicroscopy.result" label="@cases.details.result" options="${globalLists.microscopyResults}" required="true" />
-			<field value="exammicroscopy.numberOfAFB" label="@cases.exams.afb" visible="${exammicroscopy.result == 'POSITIVE'}" handler="combo">
-				<param name="min" value="1" />
-				<param name="max" value="9" />
-			</field>
+			<field value="exammicroscopy.numberOfAFB" label="@cases.exams.afb" visible="${exammicroscopy.result == 'POSITIVE'}"/>
 			<field value="exammicroscopy.comments" label="@global.comments" handler="text" />
 		</section>
 </form>
