@@ -79,6 +79,8 @@ public abstract class ViewUI<E extends XView> {
 
 	
 	protected abstract void doUpdate();
+
+    protected abstract boolean isComponentVisible();
 	
 	/**
 	 * Update the state of the component. Create the control, update its value, children and content.
@@ -92,6 +94,9 @@ public abstract class ViewUI<E extends XView> {
 		// if it's not visible, so it's not necessary to update
 		boolean bVisible = isVisible();
 		if (!bVisible) {
+            if (isComponentVisible()) {
+                doUpdate();
+            }
 			return;
 		}
 		

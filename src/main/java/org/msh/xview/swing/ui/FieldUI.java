@@ -34,11 +34,32 @@ public class FieldUI extends ViewUI<XField> {
 	 */
 	@Override
 	protected void doUpdate() {
-		// DO NOTHING
+//        if (fieldComponent != null) {
+//            fieldComponent.doUpdate();
+//        }
+//
+        boolean b = isVisible();
+        if (fieldComponent != null) {
+            fieldComponent.getComponent().setVisible(b);
+        }
+
+        if (label != null) {
+            label.getComponent().setVisible(b);
+        }
 	}
 
-	
-	/**
+    @Override
+    protected boolean isComponentVisible() {
+        if (delegLabel != null) {
+            return delegLabel != null?  delegLabel.isComponentVisible(): false;
+        }
+        else {
+            return fieldComponent != null? fieldComponent.isComponentVisible(): false;
+        }
+    }
+
+
+    /**
 	 * Create the field component that will handle the value to
 	 * be displayed/edited
 	 */

@@ -3,11 +3,12 @@
  */
 package org.msh.xview.swing.ui.fields;
 
-import java.awt.Dimension;
+import java.awt.*;
 
 import javax.swing.JComponent;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -29,7 +30,7 @@ public class NumberFieldUI extends FieldComponentUI {
 	protected JComponent createEditComponent() {
 		JSpinner edt;
 		edt = new JSpinner(createNumberModel());
-		
+
 		Integer width = getView().getWidth();
 		if (width == null) {
 			width = 80;

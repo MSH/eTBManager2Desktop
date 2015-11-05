@@ -46,7 +46,12 @@ public class ColumnUI extends ViewUI<XColumn> {
 		// do nothing by now
 	}
 
-	/** {@inheritDoc}
+    @Override
+    protected boolean isComponentVisible() {
+        return true;
+    }
+
+    /** {@inheritDoc}
 	 */
 	@Override
 	public void createChildren() {

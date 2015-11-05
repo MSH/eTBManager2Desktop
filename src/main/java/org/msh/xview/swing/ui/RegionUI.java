@@ -21,4 +21,9 @@ public class RegionUI extends ViewUI<XRegion>{
 		// do nothing
 	}
 
+    @Override
+    protected boolean isComponentVisible() {
+        return true;
+    }
+
 }

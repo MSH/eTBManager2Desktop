@@ -89,8 +89,13 @@ public class RepeatUI extends ViewUI<XRepeat>{
 		}
 	}
 
+    @Override
+    protected boolean isComponentVisible() {
+        return true;
+    }
 
-	/** {@inheritDoc}
+
+    /** {@inheritDoc}
 	 */
 	@Override
 	public void createChildren() {

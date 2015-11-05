@@ -33,4 +33,9 @@ public class LocalModelViewUI extends ViewUI<XView>{
 	protected void doUpdate() {
 		// do nothing
 	}
+
+    @Override
+    protected boolean isComponentVisible() {
+        return true;
+    }
 }

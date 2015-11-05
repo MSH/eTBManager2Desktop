@@ -14,6 +14,7 @@ import javax.swing.JComponent;
 import org.jdesktop.swingx.JXLabel;
 import org.msh.xview.components.XView;
 import org.msh.xview.swing.XViewUtils;
+import org.msh.xview.swing.ui.fields.NumberFieldUI;
 
 /**
  * Define visual swing components from the {@link XView} library
@@ -222,8 +223,14 @@ public abstract class ComponentUI<E extends XView> extends ViewUI<E>{
 	
 	protected abstract void doComponentUpdate();
 
-	
-	/** {@inheritDoc}
+
+    @Override
+    protected boolean isComponentVisible() {
+        JComponent comp = getComponent();
+        return comp != null? comp.isVisible(): false;
+    }
+
+    /** {@inheritDoc}
 	 */
 	@Override
 	protected void doUpdate() {
