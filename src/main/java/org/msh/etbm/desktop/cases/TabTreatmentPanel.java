@@ -299,10 +299,12 @@ public class TabTreatmentPanel extends CaseTabPanel implements EventBusListener 
 		it.addActionListener(actionListener);
 		menuTreat.add(it);
 
+		/* Will not be implemented at this first moment.
 		it = new JMenuItem(Messages.getString("cases.move") + "...");
 		it.setActionCommand(ACT_TRANSFER_OUT);
 		it.addActionListener(actionListener);
 		menuTreat.add(it);
+		*/
 
 		it = new JMenuItem(Messages.getString("Regimen.add") + "...");
 		it.setActionCommand(ACT_ADD_MEDICINE);
