@@ -8,12 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 import org.jdesktop.swingx.JXLabel;
+import org.msh.etbm.desktop.app.UiConstants;
 import org.msh.etbm.desktop.common.GuiUtils;
 import org.msh.etbm.entities.AdministrativeUnit;
 import org.msh.etbm.services.adminunit.AdminUnitsUtils;
@@ -226,7 +225,8 @@ public class AdminUnitFieldUI extends FieldComponentUI {
 		int index = 1;
 		if (isReadOnly()) {
 			for (JXLabel txt: getLabels()) {
-				txt.setVisible( index <= level );
+				//txt.setVisible( index <= level );
+                txt.setVisible(true);
 				index++;
 			}
 		}
@@ -287,7 +287,7 @@ public class AdminUnitFieldUI extends FieldComponentUI {
 
 
 	/**
-	 * @param jComboBox
+	 * @param cb
 	 * @param adm
 	 */
 	private void fillComboBox(JComboBox cb, AdministrativeUnit adm) {
@@ -314,7 +314,6 @@ public class AdminUnitFieldUI extends FieldComponentUI {
 	@Override
 	protected JComponent createReadOnlyComponent() {
 		JPanel pnl = new JPanel();
-        pnl.setBorder(new LineBorder(Color.RED));
 		pnl.setLayout(null);
 
 		String[] names = AdminUnitsUtils.getCountryStructureLabels();
@@ -322,6 +321,10 @@ public class AdminUnitFieldUI extends FieldComponentUI {
 		// create combos and labels
 		for (int i = 0; i < names.length; i++) {
 			JXLabel lb = new JXLabel();
+            lb.setLineWrap(true);
+            lb.setVerticalAlignment(SwingConstants.TOP);
+            lb.setFont( UiConstants.fieldValue );
+            lb.setMinimumSize(new Dimension(100, 16));
 			pnl.add(lb);
 		}
 		return pnl;
@@ -358,6 +361,7 @@ public class AdminUnitFieldUI extends FieldComponentUI {
 		}
 		// height doesn't matter now
 		getComponent().setSize(w, 16);
+
 	}
 
 
