@@ -170,6 +170,9 @@ public class IniFileImporter {
 	 * @param params params from the o
 	 */
 	private void checkObjectCollection(Object o, Map<String, Object> params){
+		if(o==null || params == null)
+			return;
+
 		List<String> lst = new ArrayList<String>();
 
 		for(String s : params.keySet()){
