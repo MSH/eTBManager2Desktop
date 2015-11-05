@@ -3,7 +3,7 @@
  */
 package org.msh.xview.swing.ui.fields;
 
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -11,6 +11,7 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import org.jdesktop.swingx.JXLabel;
 import org.msh.etbm.desktop.common.GuiUtils;
@@ -313,6 +314,7 @@ public class AdminUnitFieldUI extends FieldComponentUI {
 	@Override
 	protected JComponent createReadOnlyComponent() {
 		JPanel pnl = new JPanel();
+        pnl.setBorder(new LineBorder(Color.RED));
 		pnl.setLayout(null);
 
 		String[] names = AdminUnitsUtils.getCountryStructureLabels();

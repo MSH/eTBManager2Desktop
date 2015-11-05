@@ -128,11 +128,7 @@ public class IniFileImporter {
 			return lst.size() > 0? lst.get(0): null;
 		}
 
-        if (objectType == Tbunit.class) {
-            System.out.println("Test");
-        }
-
-		// check if it's an object that will be synchronized with the server 
+		// check if it's an object that will be synchronized with the server
 		if (Synchronizable.class.isAssignableFrom(objectType)) {
 			Integer serverId = (Integer)params.get("syncData.serverId");
 			if (serverId == null)
