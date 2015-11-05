@@ -65,7 +65,6 @@ public class ServerFileGenerator implements ObjectProvider, DataInterceptor {
 		hqls.add("from ExamHIV a join fetch a.tbcase where a.syncData.changed=true");
 		hqls.add("from ExamXRay a join fetch a.tbcase left join fetch a.presentation where a.syncData.changed=true");
 		hqls.add("from ExamDST a join fetch a.tbcase where a.syncData.changed=true");
-		hqls.add("from ExamDSTResult a join fetch a.substance join fetch a.exam where a.syncData.changed=true");
 		hqls.add("from TreatmentMonitoring a join fetch a.tbcase where a.syncData.changed=true");
 		hqls.add("from TbContact a join fetch a.tbcase left join fetch a.contactType left join fetch a.conduct where a.syncData.changed=true");
 		hqls.add("from CaseSideEffect a join fetch a.tbcase left join fetch a.substance left join fetch a.substance2 where a.syncData.changed=true");
