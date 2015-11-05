@@ -8,12 +8,14 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
 import javax.persistence.EntityManager;
 
+import org.apache.commons.beanutils.PropertyUtils;
 import org.msh.etbm.desktop.app.App;
 import org.msh.etbm.desktop.databases.DatabaseManager;
 import org.msh.etbm.desktop.databases.TBUnitLinks;
@@ -137,7 +139,13 @@ public class IniFileImporter {
 			List lst = App.getEntityManager().createQuery(hql)
 					.setParameter("id", serverId)
 					.getResultList();
-			return lst.size() > 0? lst.get(0): null;
+
+			Object o = lst.size() > 0? lst.get(0): null;
+
+			if(o!=null)
+				checkObjectCollection(o, params);
+
+			return o;
 		}
 		
 		Integer id = (Integer)params.get("id");
@@ -150,9 +158,41 @@ public class IniFileImporter {
             throw new RuntimeException("User role was not found = " + id);
         }
 
+		checkObjectCollection(entity, params);
+
         return entity;
 	}
 
+	/**
+	 * It will check if any param of the object is a list, if it is, it will get each object from the list and
+	 * will delete it.
+	 * @param o object to have its params checked
+	 * @param params params from the o
+	 */
+	private void checkObjectCollection(Object o, Map<String, Object> params){
+		List<String> lst = new ArrayList<String>();
+
+		for(String s : params.keySet()){
+			Object value = params.get(s);
+			if(value instanceof Collection){
+				lst.add(s);
+			}
+		}
+
+		for(String s : lst){
+			try{
+				Collection c = (Collection)PropertyUtils.getProperty(o, s);
+				if(c!=null){
+					for(Object item : c){
+						App.getEntityManager().remove(item);
+					}
+					c.clear();
+				}
+			}catch(Exception e){
+				throw new RuntimeException(e);
+			}
+		}
+	}
 
 	/**
 	 * Uncompress a file compressed with {@link GZIPInputStream}
