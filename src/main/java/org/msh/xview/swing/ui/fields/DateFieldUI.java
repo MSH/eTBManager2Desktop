@@ -4,6 +4,8 @@
 package org.msh.xview.swing.ui.fields;
 
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.SimpleDateFormat;
@@ -11,6 +13,7 @@ import java.util.Date;
 
 import javax.swing.JComponent;
 
+import com.toedter.calendar.JTextFieldDateEditor;
 import org.msh.etbm.desktop.app.Messages;
 
 import com.toedter.calendar.JDateChooser;
@@ -34,6 +37,16 @@ public class DateFieldUI extends FieldComponentUI {
 				notifyValueChange();
 			}
 		});
+
+        edt.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if ("value".equals(evt.getPropertyName())) {
+                    JTextFieldDateEditor edt = (JTextFieldDateEditor)evt.getSource();
+                    notifyValueChange();
+                }
+            }
+        });
 		edt.setSize(140, edt.getPreferredSize().height);
 		edt.setPreferredSize(new Dimension(140, edt.getPreferredSize().height));
 		return edt;
@@ -54,7 +67,8 @@ public class DateFieldUI extends FieldComponentUI {
 	 */
 	protected void notifyValueChange() {
 		JDateChooser edt = (JDateChooser)getComponent();
-		setValue(edt.getDate());
+        Date dt = edt.getDate();
+		setValue(dt);
 	}
 
 
