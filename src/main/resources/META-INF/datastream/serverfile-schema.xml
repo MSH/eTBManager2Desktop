@@ -43,14 +43,39 @@
             <property name="extrapulmonaryType2.value" elementName="extrapulmonaryType2" />
             <property name="extrapulmonaryType2.complement" elementName="extrapulmonaryType2Compl" />
             <property name="notificationUnit.id" elementName="notificationUnit" />
-            <property name="healthUnits" use="IGNORE" />
-            <property name="prescribedMedicines" use="IGNORE" />
+            <property name="healthUnits">
+                <objectGraph name="healthunit" class="org.msh.etbm.entities.TreatmentHealthUnit" parentProperty="tbcase">
+                    <property name="id" use="IGNORE" />
+                    <property name="tbunit.id" elementName="tbunit" use="REQUIRED" xmlAttribute="true"/>
+                    <property name="transferring" elementName="transf" xmlAttribute="true" />
+                    <property name="period.iniDate" elementName="iniDate" use="REQUIRED" />
+                    <property name="period.endDate" elementName="endDate" use="REQUIRED" />
+                    <property name="syncData.serverId" use="IGNORE"/>
+                </objectGraph>
+            </property>
+            <property name="prescribedMedicines">
+                <objectGraph name="presc-med" class="org.msh.etbm.entities.PrescribedMedicine" parentProperty="tbcase">
+                    <property name="id" use="IGNORE"/>
+                    <property name="medicine.id" elementName="medicine" use="REQUIRED" xmlAttribute="true"/>
+                    <property name="period.iniDate" elementName="iniDate" use="REQUIRED" />
+                    <property name="period.endDate" elementName="endDate" use="REQUIRED" xmlAttribute="true"/>
+                    <property name="source.id" elementName="source" use="REQUIRED" />
+                    <property name="doseUnit" use="REQUIRED" xmlAttribute="true"/>
+                    <property name="frequency" use="REQUIRED" xmlAttribute="true"/>
+                    <property name="syncData.serverId" use="IGNORE" />
+                </objectGraph>
+            </property>
             <property name="sideEffects" use="IGNORE" />
             <property name="comorbidities" use="IGNORE" />
             <property name="examinations" use="IGNORE" />
             <property name="resXRay" use="IGNORE" />
             <property name="contacts" use="IGNORE" />
-            <property name="treatmentMonitoring" use="IGNORE" />
+            <property name="treatmentMonitoring">
+                <objectGraph name="treatmonitoring" class="org.msh.etbm.entities.TreatmentMonitoring" parentProperty="tbcase">
+                    <property name="id" use="IGNORE"/>
+                    <property name="syncData.serverId" use="IGNORE" />
+                </objectGraph>
+            </property>
             <property name="resHIV" use="IGNORE" />
             <property name="examsCulture" use="IGNORE" />
             <property name="examsMicroscopy" use="IGNORE" />
@@ -70,10 +95,10 @@
             <property name="numSusceptible" use="IGNORE" />
             <property name="results">
                 <objectGraph name="dstresult" class="org.msh.etbm.entities.ExamDSTResult" parentProperty="exam">
-                    <property name="id" elementName="cl_id" xmlAttribute="true" use="IGNORE" />
-                    <property name="syncData.serverId" elementName="id" xmlAttribute="true" use="IGNORE"/>
+                    <property name="id" xmlAttribute="true" use="IGNORE"/>
                     <property name="substance.id" elementName="substance" use="REQUIRED" xmlAttribute="true"/>
                     <property name="result" use="REQUIRED" xmlAttribute="true"/>
+                    <property name="syncData.serverId" use="IGNORE" />
                 </objectGraph>
             </property>
             <property name="laboratory.id" elementName="lab" xmlAttribute="true"/>
@@ -131,18 +156,7 @@
             <property name="tbcase.syncData.serverId" elementName="tbcase" xmlAttribute="true" includeNullValues="false" />
             <property name="tbcase.id" elementName="cl_case" xmlAttribute="true" use="REQUIRED"/>
         </objectGraph>
-        
-        <objectGraph name="healthunit" class="org.msh.etbm.entities.TreatmentHealthUnit" >
-            <property name="id" elementName="cl_id" xmlAttribute="true" use="REQUIRED" />
-            <property name="syncData.serverId" elementName="id" xmlAttribute="true" includeNullValues="false"/>
-            <property name="tbcase.syncData.serverId" elementName="tbcase" xmlAttribute="true" includeNullValues="false" />
-            <property name="tbcase.id" elementName="cl_case" xmlAttribute="true" use="REQUIRED"/>
-            <property name="tbunit.id" elementName="tbunit" use="REQUIRED" xmlAttribute="true"/>
-            <property name="transferring" elementName="transf" xmlAttribute="true" />
-            <property name="period.iniDate" elementName="iniDate" use="REQUIRED" />
-            <property name="period.endDate" elementName="endDate" use="REQUIRED" />
-        </objectGraph>
-        
+
         <objectGraph name="presc-med" class="org.msh.etbm.entities.PrescribedMedicine" >
             <property name="id" elementName="cl_id" xmlAttribute="true" use="REQUIRED" />
             <property name="syncData.serverId" elementName="id" xmlAttribute="true" includeNullValues="false"/>
