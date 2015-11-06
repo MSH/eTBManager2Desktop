@@ -8,6 +8,8 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.msh.etbm.entities.Workspace;
+import org.msh.etbm.services.login.UserSession;
 import org.msh.xview.FormContext;
 import org.msh.xview.FormInterceptor;
 import org.msh.xview.FormManager;
@@ -80,7 +82,20 @@ public class LocalResourceFormManager implements FormManager {
 	 * @return
 	 */
 	public XForm loadFormFromLocalResource(String resourceName) {
-		InputStream stream = this.getClass().getResourceAsStream(resourceName);
+        InputStream stream = null;
+
+        // check if there is any customization for the workspace
+        Workspace ws = UserSession.getWorkspace();
+        if (ws.getExtension() != null) {
+            String s = "/xview/" + ws.getExtension() + "/";
+            s = resourceName.replace("/xview/", s);
+            stream = this.getClass().getResourceAsStream(s);
+        }
+
+        // no customization found? get generic
+        if (stream == null) {
+            stream = this.getClass().getResourceAsStream(resourceName);
+        }
 
 		StringBuilder builder = new StringBuilder();
 		Reader reader = new BufferedReader(new InputStreamReader(stream));
