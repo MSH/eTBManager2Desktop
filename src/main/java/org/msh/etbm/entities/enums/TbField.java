@@ -2,7 +2,7 @@ package org.msh.etbm.entities.enums;
 
 
 /**
- * Field 
+ * Field
  * @author Ricardo
  *
  */
@@ -24,7 +24,7 @@ public enum TbField {
 	PULMONARY_TYPES,
 	EXTRAPULMONARY_TYPES,
 	// Brazilian custom variables
-	SKINCOLOR,PREGNANCE_PERIOD,EDUCATIONAL_DEGREE,CONTAG_PLACE, SCHEMA_TYPES, 
+	SKINCOLOR,PREGNANCE_PERIOD,EDUCATIONAL_DEGREE,CONTAG_PLACE, SCHEMA_TYPES,
 	RESISTANCE_TYPES, MICOBACTERIOSE, MOLECULARBIOLOGY_METHOD,
 	// ukraine
 	REGISTRATION_CATEGORY,
@@ -48,9 +48,21 @@ public enum TbField {
 	//Cambodia
 	IDENTIFICATION,
 	//Brazil
-	TREATMENT_OUTCOME_ILTB;
-	;
-	
+	TREATMENT_OUTCOME_ILTB,
+	//Indonesia
+	SUSPECT_CRITERIA,
+	//Ukraine
+	CAUSE_OF_CHANGE,
+	MANUFACTURER,
+	//Bangladesh
+	MEDEXAM_DOTTYPE,
+	MEDEXAM_REFTOTYPE,
+	SOURCE_REFERRAL,
+	OCCUPATION,
+	REASON_XPERT_EXAM,
+	DOT_PROVIDER,
+	SIDEEFECT_TB;
+
 	public String getKey() {
 		return getClass().getSimpleName().concat("." + name());
 	}
