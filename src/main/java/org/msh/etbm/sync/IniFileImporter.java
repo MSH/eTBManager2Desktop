@@ -130,6 +130,8 @@ public class IniFileImporter {
 			return lst.size() > 0? lst.get(0): null;
 		}
 
+        Object entity;
+
 		// check if it's an object that will be synchronized with the server
 		if (Synchronizable.class.isAssignableFrom(objectType)) {
 			Integer serverId = (Integer)params.get("syncData.serverId");
@@ -140,25 +142,27 @@ public class IniFileImporter {
 					.setParameter("id", serverId)
 					.getResultList();
 
-			Object o = lst.size() > 0? lst.get(0): null;
+			entity = lst.size() > 0? lst.get(0): null;
 
-			if(o!=null)
-				checkObjectCollection(o, params);
-
-			return o;
+			if (entity != null) {
+                checkObjectCollection(entity, params);
+            }
 		}
-		
-		Integer id = (Integer)params.get("id");
-		System.out.println(objectType + " -> " + id);
-		if (id == null)
-			return null;
+        else {
+            Integer id = (Integer)params.get("id");
+            System.out.println(objectType + " -> " + id);
+            if (id == null)
+                return null;
 
-        Object entity = App.getEntityManager().find(objectType, id);
-        if ((objectType == UserRole.class) && (entity == null)) {
-            throw new RuntimeException("User role was not found = " + id);
+            entity = App.getEntityManager().find(objectType, id);
+            if ((objectType == UserRole.class) && (entity == null)) {
+                throw new RuntimeException("User role was not found = " + id);
+            }
+
+            checkObjectCollection(entity, params);
         }
 
-		checkObjectCollection(entity, params);
+        // IF ENTITITY IS NULL, USE ETB.newWorkspaceObject
 
         return entity;
 	}
