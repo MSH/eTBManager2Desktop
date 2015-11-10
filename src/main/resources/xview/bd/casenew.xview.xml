@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form id="casenew" title="New notification">
+
+    <section column-count="4">
+		<field value="tbcase.registrationDate" label="@TbCase.registrationDate.TB" required="true"
+			   visible="${tbcase.classification == 'TB' and tbcase.diagnosisType == 'CONFIRMED'}"/>
+		<field value="tbcase.registrationDate" label="@TbCase.registrationDate.DRTB" required="true"
+			   visible="${tbcase.classification == 'DRTB' and tbcase.diagnosisType == 'CONFIRMED'}"/>
+		<field value="tbcase.registrationDate" label="@TbCase.registrationDate" required="true"
+			   visible="${tbcase.diagnosisType == 'SUSPECT'}"/>
+
+		<field value="tbcase.lastBmuTbRegistNumber" label="@DisplayCaseNumber.TB"
+			   visible="${tbcase.classification == 'DRTB' and tbcase.diagnosisType == 'CONFIRMED'}"/>
+		<field value="tbcase.lastBmuDateTbRegister" label="@TbCase.registrationDate.TB"
+			   visible="${tbcase.classification == 'DRTB' and tbcase.diagnosisType == 'CONFIRMED'}">
+			<validation rule="${tbcase.registrationDate >= tbcase.lastBmuDateTbRegister}"
+						message="@cases.details.valerror2" enabled-if="${not empty tbcase.lastBmuDateTbRegister}" />
+		</field>
+    </section>
+
+	<section id="sec1" title="@cases.patientdata" column-count="4">
+		<field value="patient.name" label="@Patient.name" colspan="3">
+			<validation rule="${!patient.name.isEmpty()}"
+						message="@javax.faces.component.UIInput.REQUIRED"/>
+		</field>
+		<field value="patient.securityNumber" label="@Patient.securityNumber" maxchars="20" charCase="UPPER" />
+		<field value="patient.gender" label="@Gender" required="true" />
+		<field value="patient.birthDate" label="@Patient.birthDate" />
+		<field value="tbcase.age" label="@TbCase.age" required="true">
+            <validation rule="${tbcase.age &gt; 0 and tbcase.age &lt; 150}"
+                        message="@javax.faces.component.UISelectOne.INVALID" />
+        </field>
+		<field value="patient.motherName" label="@Patient.motherName" width="350" maxchars="100" colspan="3" charCase="UPPER" />
+		<field value="tbcase.nationality" label="@Nationality" options="${globalLists.nationalities}"/>
+	</section>
+		
+	<section title="@cases.details.addressnotif" column-count="4">
+		<field value="tbcase.notifAddress.address" label="@Address.address" colspan="3" maxchars="200" width="300" required="true" />
+		<field value="tbcase.notifAddress.complement" label="@Address.complement" colspan="3" maxSize="200" width="300" />
+		<field value="tbcase.notifAddress.adminUnit" label="@AdministrativeUnit" colspan="3" required="true"/>
+		<field value="tbcase.notifAddress.zipCode" label="@Address.zipCode" colspan="3"  />
+			
+		<label colspan="3">@TbCase.notifAddressChanged</label>
+		<field value="tbcase.notifAddressChanged" handler="yesno" colspan="3"/>
+		<section title="@cases.details.addresscurr" colspan="4" column-count="2" visible="${tbcase.notifAddressChanged and not empty tbcase.currentAddress}">
+			<field value="tbcase.currentAddress.address" label="@Address" colspan="3" maxchars="200" width="300" />
+			<field value="tbcase.currentAddress.complement" label="@Address.complement" colspan="3" maxSize="200" width="300" />
+			<field value="tbcase.currentAddress.adminUnit" label="@AdministrativeUnit" colspan="3" required="true"/>
+			<field value="tbcase.currentAddress.zipCode" label="@Address.zipCode" colspan="3"  />
+		</section>
+		<field value="tbcase.phoneNumber" label="@TbCase.phoneNumber" />
+		<field value="tbcase.mobileNumber" label="@TbCase.mobileNumber" />
+	</section>
+		
+	<section title="@cases.generaldata" column-count="2">
+		<field value="tbcase.notificationUnit" label="@TbCase.notificationUnit" required="true" readonly="true"/>
+		<field value="tbcase.diagnosisType" label="@DiagnosisType" required="true" readonly="true"/>
+		<region visible="${tbcase.diagnosisType == 'CONFIRMED'}">
+			<field value="tbcase.diagnosisDate" label="@TbCase.diagnosisDate" required="true" />
+			<field value="tbcase.drugResistanceType" options="${globalLists.drugResistanceTypes}" label="@DrugResistanceType"
+				   visible="${tbcase.classification == 'DRTB'}"/>
+
+			<!--registration groups-->
+			<field value="tbcase.patientType" label="@PatientType"  required="true" options="${globalLists.patientTypesDRTB}" visible="${tbcase.classification == 'DRTB'}"/>
+			<field value="tbcase.patientType" label="@PatientType"  required="true" options="${globalLists.patientTypesTB}" visible="${tbcase.classification == 'TB'}"/>
+			<field value="tbcase.previouslyTreatedType" label="@PatientType.PREVIOUSLY_TREATED"  required="true" options="${globalLists.prevTreatedTypes}"
+				   visible="${tbcase.classification == 'TB' and tbcase.patientType == 'PREVIOUSLY_TREATED'}"/>
+			<field value="tbcase.patientTypeOther" label="@TbCase.patientTypeOther" visible="${tbcase.patientType == 'OTHER'}" required="true" />
+			<!--registration groups-->
+
+			<field value="tbcase.infectionSite" label="@InfectionSite"  required="${tbcase.validated}"/>
+			<field value="tbcase.pulmonaryType" label="@TbField.PULMONARY_TYPES"
+		    	options="${fieldsOptions.pulmonaryTypes}"
+			    colspan="3" visible="${tbcase.infectionSite == 'PULMONARY' or tbcase.infectionSite == 'BOTH'}">
+			</field>
+			<field value="tbcase.extrapulmonaryType.value" label="@TbField.EXTRAPULMONARY_TYPES"
+			    options="${fieldsOptions.extrapulmonaryTypes}" 
+		    	visible="${tbcase.infectionSite == 'EXTRAPULMONARY' or tbcase.infectionSite == 'BOTH'}">
+			</field>
+			<field value="tbcase.extrapulmonaryType2.value" label="@TbField.EXTRAPULMONARY_TYPES"
+				   options="${fieldsOptions.extrapulmonaryTypes}"
+				   visible="${tbcase.infectionSite == 'EXTRAPULMONARY' or tbcase.infectionSite == 'BOTH'}">
+			</field>
+			<field value="tbcase.caseDefinition" label="@CaseDefinition" readonly="true"/>
+		</region>
+		<field value="tbcase.secDrugsReceived" label="@TbCase.seclineDrugsReceived" readonly="true"
+			   visible="${tbcase.classification != 'DRTB'}"/>
+		<field value="tbcase.treatmentCategory" label="@TreatmentCategory" readonly="true"/>
+	</section>
+
+	<section title="@cases.details.medexam" visible="${empty tbcase.id and tbcase.diagnosisType == 'CONFIRMED'}" column-count="2">
+		<field value="medicalexamination.date" label="@cases.details.date" required="true" />
+		<field value="medicalexamination.responsible" label="@MedicalExamination.responsible" required="true" maxchars="100" width="300" />
+		<field value="medicalexamination.height" label="@MedicalExamination.height" />
+		<field value="medicalexamination.weight" label="@MedicalExamination.weight" required="true">
+			<validation rule="${medicalexamination.weight &gt; 0}"
+						message="@javax.faces.component.UISelectOne.INVALID" />
+		</field>
+		<field value="medicalexamination.comments" label="@global.comments" handler="text" />
+	</section>
+</form>
