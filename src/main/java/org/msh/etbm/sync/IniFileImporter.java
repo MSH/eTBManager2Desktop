@@ -21,6 +21,7 @@ import org.msh.etbm.desktop.databases.DatabaseManager;
 import org.msh.etbm.desktop.databases.TBUnitLinks;
 import org.msh.etbm.entities.*;
 import org.msh.etbm.services.login.ServerSignatureServices;
+import org.msh.etbm.services.misc.ETB;
 import org.msh.springframework.persistence.TransactionController;
 import org.msh.utils.DataStreamUtils;
 
@@ -147,8 +148,7 @@ public class IniFileImporter {
 			if (entity != null) {
                 checkObjectCollection(entity, params);
             }
-		}
-        else {
+		}else{
             Integer id = (Integer)params.get("id");
             System.out.println(objectType + " -> " + id);
             if (id == null)
@@ -161,8 +161,12 @@ public class IniFileImporter {
 
             checkObjectCollection(entity, params);
         }
-
-        // IF ENTITITY IS NULL, USE ETB.newWorkspaceObject
+/*APAGAR QUANDO FUNCIONAR
+		if(TbCase.class.equals(objectType) && entity == null)
+			System.out.println("sdf");
+*/
+        if(entity == null)
+			entity = ETB.newWorkspaceObject(objectType, workspace);
 
         return entity;
 	}
