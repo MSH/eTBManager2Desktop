@@ -161,10 +161,7 @@ public class IniFileImporter {
 
             checkObjectCollection(entity, params);
         }
-/*APAGAR QUANDO FUNCIONAR
-		if(TbCase.class.equals(objectType) && entity == null)
-			System.out.println("sdf");
-*/
+
         if(entity == null)
 			entity = ETB.newWorkspaceObject(objectType, workspace);
 
