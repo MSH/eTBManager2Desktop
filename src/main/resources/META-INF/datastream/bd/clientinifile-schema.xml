@@ -318,9 +318,10 @@
             <property name="presentation.id" elementName="presentation" />
         </objectGraph>
         
-        <objectGraph name="medexam" class="org.msh.etbm.entities.MedicalExamination" >
+        <objectGraph name="medexam" class="org.msh.etbm.custom.bd.entities.MedicalExaminationBd" >
             <property name="syncData.serverId" elementName="id" xmlAttribute="true" use="REQUIRED" />
             <property name="tbcase.syncData.serverId" elementName="tbcase" use="REQUIRED" xmlAttribute="true" />
+            <property name="dotTypeFv.id" elementName="dotTypeFv" />
         </objectGraph>
         
         <objectGraph name="sideEffect" class="org.msh.etbm.entities.CaseSideEffect" >
