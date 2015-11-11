@@ -30,7 +30,7 @@ public class CaseSideEffectBD extends CaseSideEffect {
 
 	@Temporal(TemporalType.DATE)
 	private Date effectEnd;
-	
+
 	//private String comments;	
 	
 	public Integer getMonthOfTreatment(){
