@@ -10,6 +10,7 @@ import org.msh.etbm.entities.MedicalExamination;
 import org.msh.etbm.entities.Patient;
 import org.msh.etbm.entities.TbCase;
 import org.msh.etbm.services.cases.CaseServices;
+import org.msh.etbm.services.misc.ETB;
 import org.msh.springframework.persistence.ActionCallback;
 import org.msh.springframework.persistence.EntityManagerUtils;
 import org.msh.xview.swing.SwingFormContext;
@@ -56,7 +57,7 @@ public class CaseEditDlg extends GenericDialog {
                 TbCase tbcase = CaseServices.instance().findEntity(caseid);
 				form.getDataModel().setValue("tbcase", tbcase);
 //                form.getDataModel().setValue("patient", tbcase.getPatient());
-				form.getDataModel().setValue("medicalexamination", new MedicalExamination());
+				form.getDataModel().setValue("medicalexamination", ETB.newWorkspaceObject(MedicalExamination.class));
 				form.getFormUI().setPreferredWidth(700);
 				form.getFormUI().update();
 			}

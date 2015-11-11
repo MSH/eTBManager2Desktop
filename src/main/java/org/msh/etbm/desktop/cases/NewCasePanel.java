@@ -26,6 +26,7 @@ import org.msh.etbm.entities.TbCase;
 import org.msh.etbm.entities.enums.DiagnosisType;
 import org.msh.etbm.services.cases.CaseServices;
 import org.msh.etbm.services.cases.MedicalExaminationServices;
+import org.msh.etbm.services.misc.ETB;
 import org.msh.eventbus.EventBusService;
 import org.msh.springframework.persistence.ActionCallback;
 import org.msh.springframework.persistence.EntityManagerUtils;
@@ -188,7 +189,7 @@ public class NewCasePanel extends JPanel implements Refreshable {
 		formContext.setValue("patient", patient);
 		formContext.setValue("tbcase", tbcase);
 		
-		MedicalExamination medexam = new MedicalExamination();
+		MedicalExamination medexam = ETB.newWorkspaceObject(MedicalExamination.class);
 		formContext.setValue("medicalexamination", medexam);
 
 		JScrollPane scrollpane = new JScrollPane(formContext.getFormUI().getComponent());

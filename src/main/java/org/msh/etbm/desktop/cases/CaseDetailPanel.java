@@ -41,6 +41,7 @@ import org.msh.etbm.entities.enums.Gender;
 import org.msh.etbm.services.cases.CaseCloseService;
 import org.msh.etbm.services.cases.CasePermissionServices;
 import org.msh.etbm.services.cases.CaseServices;
+import org.msh.etbm.services.misc.ETB;
 import org.msh.eventbus.EventBusListener;
 import org.msh.eventbus.EventBusService;
 import org.msh.springframework.persistence.ActionCallback;
@@ -439,7 +440,7 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 		pnlEdit.setVisible(tbcase.isOpen());
 		
 		formData.getDataModel().setValue("tbcase", tbcase);
-		formData.getDataModel().setValue("medicalexamination", new MedicalExamination());
+		formData.getDataModel().setValue("medicalexamination", ETB.newWorkspaceObject(MedicalExamination.class));
 		formData.getFormUI().setPreferredWidth(600);
 		
 		formData.getFormUI().setBackgroundColor(Color.WHITE);

@@ -12,6 +12,7 @@ import org.msh.etbm.entities.SynchronizableEntity;
 import org.msh.etbm.entities.SynchronizationData;
 import org.msh.etbm.entities.WSObject;
 import org.msh.etbm.entities.Workspace;
+import org.msh.etbm.services.misc.ETB;
 import org.msh.xview.FormContext;
 
 /**
@@ -140,7 +141,7 @@ public class EntityServicesImpl<E> implements EntityServices<E> {
 	protected E createEntityInstance()  {
 		try {
 			Class clazz = getEntityClass();
-			return (E)clazz.newInstance();
+			return (E)ETB.getWorkspaceClass(clazz).newInstance();
 		} catch (Exception e) {
 			throw new IllegalArgumentException(e);
 		}
@@ -179,7 +180,7 @@ public class EntityServicesImpl<E> implements EntityServices<E> {
 	public E newEntity() {
 		try {
 			Class<E> clazz = getEntityClass();
-			return clazz.newInstance();
+			return (E)ETB.getWorkspaceClass(clazz).newInstance();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
