@@ -161,7 +161,8 @@ public class StartupWizard extends JPanel implements Refreshable  {
 				JOptionPane.showMessageDialog(this, Messages.getString("desktop.invalidfile"));
 				return;
 			}
-			EventBusService.raiseEvent(StartupEvent.EXECUTE_INIFILE, file);
+			//TODO:Set selectedWorkspace in LoadPackagePanel, the way below is not working
+			EventBusService.raiseEvent(StartupEvent.EXECUTE_INIFILE, file, selectedWorkspace);
 		}
 		
 		// user entered login and password, so check the workspaces available

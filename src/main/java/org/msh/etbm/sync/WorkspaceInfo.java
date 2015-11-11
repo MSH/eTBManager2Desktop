@@ -16,6 +16,7 @@ public class WorkspaceInfo {
 	private String name1;
 	private String name2;
 	private String healthUnitName;
+	private String extension;
 	
 	public WorkspaceInfo() {
 		super();
@@ -79,4 +80,11 @@ public class WorkspaceInfo {
 		this.healthUnitName = healthUnitName;
 	}
 
+	public String getExtension() {
+		return extension;
+	}
+
+	public void setExtension(String extension) {
+		this.extension = extension;
+	}
 }

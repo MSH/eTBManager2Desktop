@@ -50,6 +50,7 @@ public class IniFileImporter {
 	private String errorMessage;
 	// list of cases that had its tags updated
 	private List<Integer> caseTagsUpdated = new ArrayList<Integer>();
+	private WorkspaceInfo selectedWorkspace;
 
 	/**
 	 * Data interceptor to load entities
@@ -236,7 +237,9 @@ public class IniFileImporter {
 	 * @param in instance of {@link InputStream}
 	 */
 	private void importData(InputStream in) {
-		StreamContext context = DataStreamUtils.createContext("clientinifile-schema.xml");
+		//TODO:After solve selectedWorkpace setting remove the line where "bd" is hard coded
+		//StreamContext context = DataStreamUtils.createContext("clientinifile-schema.xml", (getSelectedWorkspace() == null ? null : getSelectedWorkspace().getExtension()));
+		StreamContext context = DataStreamUtils.createContext("clientinifile-schema.xml", "bd");
 
 		// add the interceptor
 		context.addInterceptor(interceptor);
@@ -526,5 +529,13 @@ public class IniFileImporter {
 	 */
 	public String getErrorMessage() {
 		return errorMessage;
+	}
+
+	public WorkspaceInfo getSelectedWorkspace() {
+		return selectedWorkspace;
+	}
+
+	public void setSelectedWorkspace(WorkspaceInfo selectedWorkspace) {
+		this.selectedWorkspace = selectedWorkspace;
 	}
 }
