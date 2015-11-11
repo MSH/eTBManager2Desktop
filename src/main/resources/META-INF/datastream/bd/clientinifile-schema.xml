@@ -184,7 +184,7 @@
 
 
         <!-- TB CASES -->
-        <objectGraph name="tbcase" class="org.msh.etbm.entities.TbCaseBD">
+        <objectGraph name="tbcase" class="org.msh.etbm.custom.bd.entities.TbCaseBD">
             <property name="syncData.serverId" elementName="id" xmlAttribute="true" use="REQUIRED" />
             <property name="version" use="IGNORE" />
             <property name="patient" >
@@ -249,6 +249,7 @@
             <property name="examsMicroscopy" use="IGNORE" />
             <property name="examsDST" use="IGNORE" />
             <property name="tags" use="IGNORE" />
+            <property name="patientRefToFv.id" elementName="patientRefToFv" />
         </objectGraph>
         
         <objectGraph name="examdst" class="org.msh.etbm.entities.ExamDST">
