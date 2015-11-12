@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+		<section title="@PatientSample.identification" column-count="2">
+			<field value="examskin.dateCollected" label="@PatientSample.dateCollected" required="true" />
+			<field value="examskin.sampleNumber" label="@PatientSample.sampleNumber" width="200" maxchars="100" />
+			<field value="examskin.laboratory" label="@Laboratory" required="true" />
+		</section>
+
+		<section title="@cases.exams.results"  column-count="2">
+			<field value="examskin.dateRelease" label="@cases.exams.dateRelease" >
+				<validation rule="${examskin.dateRelease >= examskin.dateCollected}"
+					enabled-if="${not empty examskin.dateRelease}" 
+					message="@cases.exams.datereleasebeforecol"/>
+			</field>
+			<field value="examskin.result" label="@cases.details.result" options="${globalLists_bd.skinTestResult}" required="true"/>
+			<field value="examskin.comments" label="@global.comments" handler="text" />
+		</section>
+</form>

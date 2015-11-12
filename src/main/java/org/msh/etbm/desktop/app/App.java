@@ -87,7 +87,8 @@ public class App
     	vr.addFieldLink("examdst.tbcase", "tbcase");
     	vr.addFieldLink("examhiv.tbcase", "tbcase");
     	vr.addFieldLink("examxray.tbcase", "tbcase");
-    	vr.addFieldLink("examxpert.tbcase", "tbcase");
+		vr.addFieldLink("examxpert.tbcase", "tbcase");
+		vr.addFieldLink("examskin.tbcase", "tbcase");
     	vr.addFieldLink("contact.tbcase", "tbcase");
     	vr.addFieldLink("sideeffect.tbcase", "tbcase");
     	vr.addFieldLink("startTreatmentService.tbcase", "tbcase");

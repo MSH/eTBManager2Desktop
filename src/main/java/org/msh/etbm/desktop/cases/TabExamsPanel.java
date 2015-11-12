@@ -29,6 +29,9 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
+import org.msh.etbm.custom.bd.ExamSkinEditDlg;
+import org.msh.etbm.custom.bd.ExamSkinServices;
+import org.msh.etbm.custom.bd.entities.ExamSkin;
 import org.msh.etbm.desktop.app.App;
 import org.msh.etbm.desktop.app.AppEvent;
 import org.msh.etbm.desktop.app.Messages;
@@ -55,6 +58,7 @@ import org.msh.etbm.services.cases.ExamMicroscopyServices;
 import org.msh.etbm.services.cases.ExamXRayServices;
 import org.msh.etbm.services.cases.ExamXpertServices;
 import org.msh.etbm.services.core.EntityServices;
+import org.msh.etbm.services.login.UserSession;
 import org.msh.eventbus.EventBusService;
 import org.msh.springframework.persistence.ActionCallback;
 import org.msh.springframework.persistence.EntityManagerUtils;
@@ -78,7 +82,8 @@ public class TabExamsPanel extends CaseTabPanel {
 	private JCheckBox chkDST;
 	private JCheckBox chkXRay;
 	private JCheckBox chkXpert;
-	
+	private JCheckBox chkSkin;
+
 	private Map<String, SwingFormContext> forms = new HashMap<String, SwingFormContext>();
 	private JLabel txtCount;
 	private JPopupMenu popupMenu;
@@ -88,6 +93,7 @@ public class TabExamsPanel extends CaseTabPanel {
 	private JMenuItem cmdDst;
 	private JMenuItem cmdXRay;
 	private JMenuItem cmdXpert;
+	private JMenuItem cmdSkin;
 	private JButton btnNew;
 	private JButton btnEdit;
 	private JLabel lblExamTitle;
@@ -191,6 +197,9 @@ public class TabExamsPanel extends CaseTabPanel {
 				else
 				if (e.getSource() == cmdXpert)
 					dlg = createEditDialog(ExamXpert.class);
+				else
+				if(e.getSource() == cmdSkin)
+					dlg = createEditDialog(ExamSkin.class);
 						
 				
 				if (dlg == null)
@@ -224,6 +233,12 @@ public class TabExamsPanel extends CaseTabPanel {
 		cmdHiv = new JMenuItem(Messages.getString("cases.examhiv") + "..."); //$NON-NLS-1$
 		popupMenu.add(cmdHiv);
 		cmdHiv.addActionListener(cmdNewListener);
+
+		if("bd".equals(UserSession.getWorkspace().getExtension())){
+			cmdSkin = new JMenuItem(Messages.getString("cases.examskintest") + "..."); //$NON-NLS-1$
+			popupMenu.add(cmdSkin);
+			cmdSkin.addActionListener(cmdNewListener);
+		}
 		
 		btnEdit = new JButton(Messages.getString("form.edit") + "...");
 		btnEdit.setIcon(new AwesomeIcon(AwesomeIcon.ICON_EDIT, btnEdit));
@@ -308,6 +323,13 @@ public class TabExamsPanel extends CaseTabPanel {
 		chkHIV.setSelected(true);
 		chkHIV.addItemListener(checkboxListener);
 		panel_3.add(chkHIV);
+
+		if("bd".equals(UserSession.getWorkspace().getExtension())){
+			chkSkin = new JCheckBox(Messages.getString("cases.examskintest"));
+			chkSkin.setSelected(true);
+			chkSkin.addItemListener(checkboxListener);
+			panel_3.add(chkSkin);
+		}
 		
 		GuiUtils.prepareTable(table);
 		table.getColumnModel().getColumn(0).setCellRenderer(new SyncCellRenderer());
@@ -353,9 +375,12 @@ public class TabExamsPanel extends CaseTabPanel {
 
 		if (clazz.isAssignableFrom(ExamXRay.class))
 			return new ExamXRayEditDlg();
-		
+
 		if (clazz.isAssignableFrom(ExamXpert.class))
 			return new ExamXpertEditDlg();
+
+		if (clazz.isAssignableFrom(ExamSkin.class))
+			return new ExamSkinEditDlg();
 
 		throw new IllegalArgumentException("No edit window supported to class " + clazz.getName());
 	}
@@ -503,6 +528,24 @@ public class TabExamsPanel extends CaseTabPanel {
 						exam.getLaboratory()};
 				model.addRow(vals);
 			}
+
+		}
+
+		// is ExamSkin selected ?
+		if (chkSkin.isSelected()) {
+			List<ExamSkin> lst = (new ExamSkinServices()).getList(getCaseId());
+			String type = Messages.getString("cases.examskintest");
+			for (ExamSkin exam: lst) {
+				Object[] vals = {
+						exam.getSyncData(),
+						new TableCellID(exam, type),
+						LocaleDateConverter.getDisplayDate( exam.getDateCollected(), false ) ,
+						(exam.getStatus() != null ? Messages.getString(exam.getStatus().getKey()) : ""),
+						exam.getMonthDisplay(),
+						(exam.getResult() != null ? Messages.getString( exam.getResult().getKey()) : ""),
+						exam.getLaboratory()};
+				model.addRow(vals);
+			}
 		}
 
 		if (model.getRowCount() == 0) {
@@ -585,6 +628,11 @@ public class TabExamsPanel extends CaseTabPanel {
 					varname = "examxpert";
 					serviceClass = ExamXpertServices.class;
 					title = App.getMessage("cases.examxpert");
+				}else if (exam instanceof ExamSkin) {
+					// initialize skin form
+					varname = "examskin";
+					serviceClass = ExamSkinServices.class;
+					title = App.getMessage("cases.examskintest");
 				}
 
 				// get an instance of the form
