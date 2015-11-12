@@ -238,7 +238,9 @@ public class IniFileImporter {
 	 */
 	private void importData(InputStream in) {
 		WorkspaceInfo selectedWorkspace = UserSession.instance().getWorkspaceInfo();
-		StreamContext context = DataStreamUtils.createContext("clientinifile-schema.xml", (selectedWorkspace == null ? null : selectedWorkspace.getExtension()));
+		//TODO: When sync, not nitializing, workspaceinfo is empty, try another way.
+		//StreamContext context = DataStreamUtils.createContext("clientinifile-schema.xml", (selectedWorkspace == null ? null : selectedWorkspace.getExtension()));
+		StreamContext context = DataStreamUtils.createContext("clientinifile-schema.xml", "bd");
 
 		// add the interceptor
 		context.addInterceptor(interceptor);
