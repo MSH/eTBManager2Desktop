@@ -218,6 +218,14 @@ public class FieldsOptions {
 		return getOptions(TbField.MEDEXAM_REFTOTYPE);
 	}
 
+	/**
+	 * Return list of referred to types
+	 * @return
+	 */
+	public List<FieldValue> getDotTypes() {
+		return getOptions(TbField.MEDEXAM_DOTTYPE);
+	}
+
 	
 	/**
 	 * Return the options of a TB Field

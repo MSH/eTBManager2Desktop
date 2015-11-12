@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <h3>@cases.details.medexam</h3>
+		<section column-count="2">
+			<field value="medicalexamination.date" label="@cases.details.date" required="true" />
+			<field value="medicalexamination.appointmentType" label="@MedAppointmentType" />
+			<field value="medicalexamination.weight" label="@MedicalExamination.weight" required="true">
+				<validation rule="${medicalexamination.weight &gt; 0}"
+							message="@javax.faces.component.UISelectOne.INVALID" />
+			</field>
+			<field value="medicalexamination.height" label="@MedicalExamination.height" />
+			<field value="medicalexamination.usingPrescMedicines" label="@MedicalExamination.usingPrescMedicines" required="true"  visible="${medicalexamination.tbcase.state=='ONTREATMENT'}"/>
+			<field value="medicalexamination.reasonNotUsingPrescMedicines" label="@MedicalExamination.reasonNotUsingPrescMedicines" 
+				width="300" maxchars="100" visible="${medicalexamination.usingPrescMedicines == 'NO'}" required="true"/>
+			<field value="medicalexamination.responsible" label="@MedicalExamination.responsible" required="true" maxchars="100" width="300" />
+			<field value="medicalexamination.dotTypeFv" label="@MedicalExamination.DOTProviderType" options="${fieldsOptions.dotTypes}"/>
+			<field value="medicalexamination.dotProvName" label="@MedicalExamination.DOTProviderName" visible="${medicalexamination.dotTypeFv != null}"/>
+			<field value="medicalexamination.dotPhoneNumber" label="@MedicalExamination.DOTProviderPhoneNumber" visible="${medicalexamination.dotTypeFv != null}"/>
+			<field value="medicalexamination.comments" label="@global.comments" handler="text" />
+		</section>
+</form>

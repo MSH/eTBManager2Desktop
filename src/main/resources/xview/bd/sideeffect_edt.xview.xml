@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form column-count="2">
+	<field value="sideeffect.sideEffect.value" label="@cases.sideeffects.desc" required="true"
+		handler="combo" options="${fieldsOptions.sideEffects}" />
+	<field value="sideeffect.substance" label="@Substance" handler="combo" options="${substances}"/>
+	<field value="sideeffect.substance2" label="@Substance" handler="combo" options="${substances}"/>
+	<field value="sideeffect.effectSt" label="@sideeffect.inidate"/>
+	<field value="sideeffect.grade" label="@cases.sideeffects.grade"  options="${globalLists_bd.getSideEffectGradings()}"/>
+	<field value="sideeffect.seriousness" label="@cases.sideeffects.seriousness"  options="${globalLists_bd.getSideEffectSeriousnesses()}"/>
+	<field value="sideeffect.actionTaken" label="@cases.sideeffects.action"  options="${globalLists_bd.getSideEffectActions()}"/>
+	<field value="sideeffect.outcome" label="@cases.sideeffects.outcome"  options="${globalLists_bd.getSideEffectOutcomes()}"/>
+	<field value="sideeffect.effectEnd" label="@sideeffect.enddate"/>
+	<field value="sideeffect.comment" label="@global.comments" handler="text" />
+</form>
