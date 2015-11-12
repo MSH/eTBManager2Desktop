@@ -231,16 +231,23 @@ public class IniFileImporter {
 		
 	}
 
+	public String getSelectedWorkspaceExtension(){
+		WorkspaceInfo selectedWorkspace = UserSession.instance().getWorkspaceInfo();
+		if(selectedWorkspace != null && (!selectedWorkspace.getExtension().isEmpty())){
+			return selectedWorkspace.getExtension();
+		}else if(UserSession.getWorkspace() != null){
+			return UserSession.getWorkspace().getExtension();
+		}
+
+		return null;
+	}
 	
 	/**
 	 * Read the input stream provided and initialize the records in the database
 	 * @param in instance of {@link InputStream}
 	 */
 	private void importData(InputStream in) {
-		WorkspaceInfo selectedWorkspace = UserSession.instance().getWorkspaceInfo();
-		//TODO: When sync, not nitializing, workspaceinfo is empty, try another way.
-		//StreamContext context = DataStreamUtils.createContext("clientinifile-schema.xml", (selectedWorkspace == null ? null : selectedWorkspace.getExtension()));
-		StreamContext context = DataStreamUtils.createContext("clientinifile-schema.xml", "bd");
+		StreamContext context = DataStreamUtils.createContext("clientinifile-schema.xml", getSelectedWorkspaceExtension());
 
 		// add the interceptor
 		context.addInterceptor(interceptor);
