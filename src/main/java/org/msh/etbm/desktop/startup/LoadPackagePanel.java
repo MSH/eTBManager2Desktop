@@ -50,7 +50,6 @@ public class LoadPackagePanel extends JPanel implements Refreshable, CloseListen
 	private File file;
 	private IniFileImporter dbstarter;
 	private SystemLogo logo;
-	private WorkspaceInfo selectedWorkspace;
 
 	/**
 	 * Default constructor
@@ -118,8 +117,6 @@ public class LoadPackagePanel extends JPanel implements Refreshable, CloseListen
 			@Override
 			protected Boolean doInBackground() throws Exception {
 				IniFileImporter starter = new IniFileImporter();
-				//TODO:Set selectedWorkspace in LoadPackagePanel, the way below is not working
-				starter.setSelectedWorkspace(getSelectedWorkspace());
 				dbstarter = starter;
 				String s = MessageFormat.format(Messages.getString("desktop.readfile"), file.getName());
 				txtFilename.setText(s);
@@ -221,13 +218,5 @@ public class LoadPackagePanel extends JPanel implements Refreshable, CloseListen
 		String s = MessageFormat.format(Messages.getString("desktop.readfile"), file.getName());
 		txtFilename.setText(s);
 		logo.updateLanguage();
-	}
-
-	public WorkspaceInfo getSelectedWorkspace() {
-		return selectedWorkspace;
-	}
-
-	public void setSelectedWorkspace(WorkspaceInfo selectedWorkspace) {
-		this.selectedWorkspace = selectedWorkspace;
 	}
 }

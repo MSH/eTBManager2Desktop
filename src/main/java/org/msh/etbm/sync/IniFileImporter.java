@@ -21,6 +21,7 @@ import org.msh.etbm.desktop.databases.DatabaseManager;
 import org.msh.etbm.desktop.databases.TBUnitLinks;
 import org.msh.etbm.entities.*;
 import org.msh.etbm.services.login.ServerSignatureServices;
+import org.msh.etbm.services.login.UserSession;
 import org.msh.etbm.services.misc.ETB;
 import org.msh.springframework.persistence.TransactionController;
 import org.msh.utils.DataStreamUtils;
@@ -50,7 +51,6 @@ public class IniFileImporter {
 	private String errorMessage;
 	// list of cases that had its tags updated
 	private List<Integer> caseTagsUpdated = new ArrayList<Integer>();
-	private WorkspaceInfo selectedWorkspace;
 
 	/**
 	 * Data interceptor to load entities
@@ -237,9 +237,8 @@ public class IniFileImporter {
 	 * @param in instance of {@link InputStream}
 	 */
 	private void importData(InputStream in) {
-		//TODO:After solve selectedWorkpace setting remove the line where "bd" is hard coded
-		//StreamContext context = DataStreamUtils.createContext("clientinifile-schema.xml", (getSelectedWorkspace() == null ? null : getSelectedWorkspace().getExtension()));
-		StreamContext context = DataStreamUtils.createContext("clientinifile-schema.xml", "bd");
+		WorkspaceInfo selectedWorkspace = UserSession.instance().getWorkspaceInfo();
+		StreamContext context = DataStreamUtils.createContext("clientinifile-schema.xml", (selectedWorkspace == null ? null : selectedWorkspace.getExtension()));
 
 		// add the interceptor
 		context.addInterceptor(interceptor);
@@ -529,13 +528,5 @@ public class IniFileImporter {
 	 */
 	public String getErrorMessage() {
 		return errorMessage;
-	}
-
-	public WorkspaceInfo getSelectedWorkspace() {
-		return selectedWorkspace;
-	}
-
-	public void setSelectedWorkspace(WorkspaceInfo selectedWorkspace) {
-		this.selectedWorkspace = selectedWorkspace;
 	}
 }

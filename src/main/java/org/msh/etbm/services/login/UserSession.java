@@ -12,6 +12,7 @@ import org.msh.etbm.entities.UserProfile;
 import org.msh.etbm.entities.UserWorkspace;
 import org.msh.etbm.entities.Workspace;
 import org.msh.etbm.entities.enums.CaseClassification;
+import org.msh.etbm.sync.WorkspaceInfo;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +27,8 @@ public class UserSession {
 	private String lastToken;
 	private Tbunit tbunit;
 	private Map<String, Object> values = new HashMap<String, Object>();
+	//To be used only during the initialization
+	private WorkspaceInfo workspaceInfo;
 
 	/**
 	 * Register data about the user logged in
@@ -364,5 +367,13 @@ public class UserSession {
 	 */
 	public Object getValue(String key) {
 		return values.get(key);
+	}
+
+	public WorkspaceInfo getWorkspaceInfo() {
+		return workspaceInfo;
+	}
+
+	public void setWorkspaceInfo(WorkspaceInfo workspaceInfo) {
+		this.workspaceInfo = workspaceInfo;
 	}
 }

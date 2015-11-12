@@ -38,6 +38,7 @@ import org.msh.etbm.desktop.common.MigLayoutPanel;
 import org.msh.etbm.desktop.common.Refreshable;
 import org.msh.etbm.desktop.common.SystemLogo;
 import org.msh.etbm.desktop.components.AwesomeIcon;
+import org.msh.etbm.services.login.UserSession;
 import org.msh.etbm.sync.ServerServices;
 import org.msh.etbm.sync.WorkspaceInfo;
 import org.msh.eventbus.EventBusService;
@@ -161,8 +162,7 @@ public class StartupWizard extends JPanel implements Refreshable  {
 				JOptionPane.showMessageDialog(this, Messages.getString("desktop.invalidfile"));
 				return;
 			}
-			//TODO:Set selectedWorkspace in LoadPackagePanel, the way below is not working
-			EventBusService.raiseEvent(StartupEvent.EXECUTE_INIFILE, file, selectedWorkspace);
+			EventBusService.raiseEvent(StartupEvent.EXECUTE_INIFILE, file);
 		}
 		
 		// user entered login and password, so check the workspaces available
@@ -187,6 +187,7 @@ public class StartupWizard extends JPanel implements Refreshable  {
 			}
 			else {
 				selectedWorkspace = workspaces.get(lbWorkspaces.getSelectedIndex());
+				UserSession.instance().setWorkspaceInfo(selectedWorkspace);
 				requestFileDownload();
 				return;
 			}
@@ -225,6 +226,7 @@ public class StartupWizard extends JPanel implements Refreshable  {
 		List<WorkspaceInfo> lst = conn.getWorkspaces(edtServer.getText(), edtUser.getText(), edtPassword.getText());
 		if (lst.size() == 1) {
 			selectedWorkspace = lst.get(0);
+			UserSession.instance().setWorkspaceInfo(selectedWorkspace);
 			return;
 		}
 		
