@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form id="casenew" title="New notification">
 
-    <section column-count="4">
-		<field value="tbcase.registrationDate" label="@TbCase.registrationDate.TB" required="true"
-			   visible="${tbcase.classification == 'TB' and tbcase.diagnosisType == 'CONFIRMED'}"/>
-		<field value="tbcase.registrationDate" label="@TbCase.registrationDate.DRTB" required="true"
-			   visible="${tbcase.classification == 'DRTB' and tbcase.diagnosisType == 'CONFIRMED'}"/>
-		<field value="tbcase.registrationDate" label="@TbCase.registrationDate" required="true"
-			   visible="${tbcase.diagnosisType == 'SUSPECT'}"/>
-
-		<field value="tbcase.lastBmuTbRegistNumber" label="@DisplayCaseNumber.TB"
-			   visible="${tbcase.classification == 'DRTB' and tbcase.diagnosisType == 'CONFIRMED'}"/>
-		<field value="tbcase.lastBmuDateTbRegister" label="@TbCase.registrationDate.TB"
-			   visible="${tbcase.classification == 'DRTB' and tbcase.diagnosisType == 'CONFIRMED'}">
+    <section column-count="4" visible="${tbcase.classification == 'DRTB' and tbcase.diagnosisType == 'CONFIRMED'}">
+		<field value="tbcase.lastBmuTbRegistNumber" label="@DisplayCaseNumber.TB"/>
+		<field value="tbcase.lastBmuDateTbRegister" label="@TbCase.registrationDate.TB">
 			<validation rule="${tbcase.registrationDate >= tbcase.lastBmuDateTbRegister}"
 						message="@cases.details.valerror2" enabled-if="${not empty tbcase.lastBmuDateTbRegister}" />
 		</field>
@@ -30,6 +21,7 @@
             <validation rule="${tbcase.age &gt; 0 and tbcase.age &lt; 150}"
                         message="@javax.faces.component.UISelectOne.INVALID" />
         </field>
+		<field value="patient.fatherName" label="@Patient.fatherName" width="350" maxchars="100" colspan="3" charCase="UPPER" />
 		<field value="patient.motherName" label="@Patient.motherName" width="350" maxchars="100" colspan="3" charCase="UPPER" />
 		<field value="tbcase.nationality" label="@Nationality" options="${globalLists.nationalities}"/>
 	</section>
@@ -50,12 +42,15 @@
 		</section>
 		<field value="tbcase.phoneNumber" label="@TbCase.phoneNumber" />
 		<field value="tbcase.mobileNumber" label="@TbCase.mobileNumber" />
+		<field value="tbcase.occupation" label="@Patient.occupation"  options="${globalLists_bd.occupationList}"/>
+		<field value="tbcase.salary" label="@Patient.salary"  options="${globalLists_bd.salaryRangeList}"/>
 	</section>
 		
 	<section title="@cases.generaldata" column-count="2">
 		<field value="tbcase.notificationUnit" label="@TbCase.notificationUnit" required="true" readonly="true"/>
 		<field value="tbcase.diagnosisType" label="@DiagnosisType" required="true" readonly="true"/>
 		<region visible="${tbcase.diagnosisType == 'CONFIRMED'}">
+			<field value="tbcase.registrationDate" label="@TbCase.registrationDate" required="true"/>
 			<field value="tbcase.diagnosisDate" label="@TbCase.diagnosisDate" required="true" />
 			<field value="tbcase.drugResistanceType" options="${globalLists.drugResistanceTypes}" label="@DrugResistanceType"
 				   visible="${tbcase.classification == 'DRTB'}"/>
@@ -68,7 +63,7 @@
 			<field value="tbcase.patientTypeOther" label="@TbCase.patientTypeOther" visible="${tbcase.patientType == 'OTHER'}" required="true" />
 			<!--registration groups-->
 
-			<field value="tbcase.infectionSite" label="@InfectionSite"  required="${tbcase.validated}"/>
+			<field value="tbcase.infectionSite" label="@InfectionSite"  required="${tbcase.validated}" options="${globalLists.infectionSite}"/>
 			<field value="tbcase.pulmonaryType" label="@TbField.PULMONARY_TYPES"
 		    	options="${fieldsOptions.pulmonaryTypes}"
 			    colspan="3" visible="${tbcase.infectionSite == 'PULMONARY' or tbcase.infectionSite == 'BOTH'}">
@@ -86,6 +81,11 @@
 		<field value="tbcase.secDrugsReceived" label="@TbCase.seclineDrugsReceived" readonly="true"
 			   visible="${tbcase.classification != 'DRTB'}"/>
 		<field value="tbcase.treatmentCategory" label="@TreatmentCategory" readonly="true"/>
+		<field value="tbcase.patientRefToFv" label="@MedicalExamination.ReferredTo"
+			   options="${fieldsOptions.refToTypes}">
+		</field>
+		<field value="tbcase.referredToUnitName" label="@MedicalExamination.RefToUnit" visible="${tbcase.patientRefToFv != null}"/>
+		<field value="tbcase.refToDate" label="@MedicalExamination.RefToDate" visible="${tbcase.patientRefToFv != null}"/>
 	</section>
 
 	<section title="@cases.details.medexam" visible="${empty tbcase.id and tbcase.diagnosisType == 'CONFIRMED'}" column-count="2">

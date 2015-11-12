@@ -348,6 +348,12 @@ public class GlobalLists {
 		Nationality.NATIVE,
 		Nationality.FOREIGN
 	};
+
+	public static final InfectionSite infectionSite[] =  {
+			InfectionSite.PULMONARY,
+			InfectionSite.EXTRAPULMONARY,
+			InfectionSite.BOTH
+	};
 	
 	
 	public Nationality[] getNationalities() {
@@ -355,7 +361,7 @@ public class GlobalLists {
 	}
 	
 	public InfectionSite[] getInfectionSite() {
-		return InfectionSite.values();
+		return getComponentValueWorkspace("infectionSite", InfectionSite[].class, infectionSite);
 	}
 
 	

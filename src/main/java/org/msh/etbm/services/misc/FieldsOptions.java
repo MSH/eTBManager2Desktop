@@ -208,7 +208,15 @@ public class FieldsOptions {
 	 */
 	public List<FieldValue> getARTRegimens() {
 		return getOptions(TbField.ART_REGIMEN);		
-	}	
+	}
+
+	/**
+	 * Return list of referred to types
+	 * @return
+	 */
+	public List<FieldValue> getRefToTypes() {
+		return getOptions(TbField.MEDEXAM_REFTOTYPE);
+	}
 
 	
 	/**
