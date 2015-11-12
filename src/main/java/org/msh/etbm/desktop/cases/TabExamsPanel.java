@@ -29,8 +29,11 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
+import org.msh.etbm.custom.bd.ExamBiopsyEditDlg;
+import org.msh.etbm.custom.bd.ExamBiopsyServices;
 import org.msh.etbm.custom.bd.ExamSkinEditDlg;
 import org.msh.etbm.custom.bd.ExamSkinServices;
+import org.msh.etbm.custom.bd.entities.ExamBiopsy;
 import org.msh.etbm.custom.bd.entities.ExamSkin;
 import org.msh.etbm.desktop.app.App;
 import org.msh.etbm.desktop.app.AppEvent;
@@ -83,6 +86,7 @@ public class TabExamsPanel extends CaseTabPanel {
 	private JCheckBox chkXRay;
 	private JCheckBox chkXpert;
 	private JCheckBox chkSkin;
+	private JCheckBox chkBiopsy;
 
 	private Map<String, SwingFormContext> forms = new HashMap<String, SwingFormContext>();
 	private JLabel txtCount;
@@ -94,6 +98,7 @@ public class TabExamsPanel extends CaseTabPanel {
 	private JMenuItem cmdXRay;
 	private JMenuItem cmdXpert;
 	private JMenuItem cmdSkin;
+	private JMenuItem cmdBiopsy;
 	private JButton btnNew;
 	private JButton btnEdit;
 	private JLabel lblExamTitle;
@@ -200,6 +205,9 @@ public class TabExamsPanel extends CaseTabPanel {
 				else
 				if(e.getSource() == cmdSkin)
 					dlg = createEditDialog(ExamSkin.class);
+				else
+				if(e.getSource() == cmdBiopsy)
+					dlg = createEditDialog(ExamBiopsy.class);
 						
 				
 				if (dlg == null)
@@ -238,6 +246,10 @@ public class TabExamsPanel extends CaseTabPanel {
 			cmdSkin = new JMenuItem(Messages.getString("cases.examskintest") + "..."); //$NON-NLS-1$
 			popupMenu.add(cmdSkin);
 			cmdSkin.addActionListener(cmdNewListener);
+
+			cmdBiopsy = new JMenuItem(Messages.getString("cases.exambiopsy") + "..."); //$NON-NLS-1$
+			popupMenu.add(cmdBiopsy);
+			cmdBiopsy.addActionListener(cmdNewListener);
 		}
 		
 		btnEdit = new JButton(Messages.getString("form.edit") + "...");
@@ -329,6 +341,11 @@ public class TabExamsPanel extends CaseTabPanel {
 			chkSkin.setSelected(true);
 			chkSkin.addItemListener(checkboxListener);
 			panel_3.add(chkSkin);
+
+			chkBiopsy = new JCheckBox(Messages.getString("cases.exambiopsy"));
+			chkBiopsy.setSelected(true);
+			chkBiopsy.addItemListener(checkboxListener);
+			panel_3.add(chkBiopsy);
 		}
 		
 		GuiUtils.prepareTable(table);
@@ -381,6 +398,9 @@ public class TabExamsPanel extends CaseTabPanel {
 
 		if (clazz.isAssignableFrom(ExamSkin.class))
 			return new ExamSkinEditDlg();
+
+		if (clazz.isAssignableFrom(ExamBiopsy.class))
+			return new ExamBiopsyEditDlg();
 
 		throw new IllegalArgumentException("No edit window supported to class " + clazz.getName());
 	}
@@ -548,6 +568,23 @@ public class TabExamsPanel extends CaseTabPanel {
 			}
 		}
 
+		// is ExamBiopsy selected ?
+		if (chkBiopsy.isSelected()) {
+			List<ExamBiopsy> lst = (new ExamBiopsyServices()).getList(getCaseId());
+			String type = Messages.getString("cases.exambiopsy");
+			for (ExamBiopsy exam: lst) {
+				Object[] vals = {
+						exam.getSyncData(),
+						new TableCellID(exam, type),
+						LocaleDateConverter.getDisplayDate( exam.getDateCollected(), false ) ,
+						(exam.getStatus() != null ? Messages.getString(exam.getStatus().getKey()) : ""),
+						exam.getMonthDisplay(),
+						(exam.getResult() != null ? Messages.getString( exam.getResult().getKey()) : ""),
+						exam.getLaboratory()};
+				model.addRow(vals);
+			}
+		}
+
 		if (model.getRowCount() == 0) {
 			splitPane.setVisible(false);
 			model.setRowCount(0);
@@ -633,6 +670,11 @@ public class TabExamsPanel extends CaseTabPanel {
 					varname = "examskin";
 					serviceClass = ExamSkinServices.class;
 					title = App.getMessage("cases.examskintest");
+				}else if (exam instanceof ExamBiopsy) {
+					// initialize biopsy form
+					varname = "exambiopsy";
+					serviceClass = ExamBiopsyServices.class;
+					title = App.getMessage("cases.exambiopsy");
 				}
 
 				// get an instance of the form

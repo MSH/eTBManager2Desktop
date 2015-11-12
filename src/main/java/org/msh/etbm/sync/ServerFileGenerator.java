@@ -77,6 +77,7 @@ public class ServerFileGenerator implements ObjectProvider, DataInterceptor {
 		//Specific entities of Bangladesh
 		if("bd".equals(UserSession.getWorkspace().getExtension())){
 			hqls.add("from ExamSkin a join fetch a.tbcase left join fetch a.method left join fetch a.laboratory where a.syncData.changed=true");
+			hqls.add("from ExamBiopsy a join fetch a.tbcase left join fetch a.method left join fetch a.laboratory where a.syncData.changed=true");
 		}
 	}
 

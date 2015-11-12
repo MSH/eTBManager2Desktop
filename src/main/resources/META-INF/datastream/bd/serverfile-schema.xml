@@ -253,6 +253,16 @@
             <property name="method.id" elementName="method" xmlAttribute="true"/>
         </objectGraph>
 
-        
+        <objectGraph name="exambiopsy" class="org.msh.etbm.custom.bd.entities.ExamBiopsy" >
+            <property name="id" elementName="cl_id" xmlAttribute="true" use="REQUIRED" />
+            <property name="syncData.serverId" elementName="id" xmlAttribute="true" includeNullValues="false"/>
+            <property name="tbcase.syncData.serverId" elementName="tbcase" xmlAttribute="true" includeNullValues="false" />
+            <property name="tbcase.id" elementName="cl_case" xmlAttribute="true" use="REQUIRED"/>
+            <property name="dateCollected" xmlAttribute="true" />
+            <property name="result" xmlAttribute="true" />
+            <property name="laboratory.id" elementName="lab" xmlAttribute="true"/>
+            <property name="method.id" elementName="method" xmlAttribute="true"/>
+        </objectGraph>
+
     </objectCollection>
 </graphSchema>

@@ -64,9 +64,13 @@
 			<!--registration groups-->
 
 			<field value="tbcase.infectionSite" label="@InfectionSite"  required="${tbcase.validated}" options="${globalLists.infectionSite}"/>
+			<field value="tbcase.pulmonaryTypesBD" label="@TbField.PULMONARY_TYPES"
+				   options="${globalLists_bd.getPulmonaryTypesBD()}"
+				   colspan="3" visible="${tbcase.infectionSite == 'PULMONARY' or tbcase.infectionSite == 'BOTH'}">
+			</field>
 			<field value="tbcase.pulmonaryType" label="@TbField.PULMONARY_TYPES"
-		    	options="${fieldsOptions.pulmonaryTypes}"
-			    colspan="3" visible="${tbcase.infectionSite == 'PULMONARY' or tbcase.infectionSite == 'BOTH'}">
+				   options="${fieldsOptions.pulmonaryTypes}"
+				   colspan="3" visible="${tbcase.pulmonaryTypesBD == 'NEGATIVE'}">
 			</field>
 			<field value="tbcase.extrapulmonaryType.value" label="@TbField.EXTRAPULMONARY_TYPES"
 			    options="${fieldsOptions.extrapulmonaryTypes}" 
