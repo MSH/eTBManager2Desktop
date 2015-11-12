@@ -349,6 +349,15 @@
             <property name="entityName" elementName="entity" xmlAttribute="true" />
             <property name="entityId" elementName="serverId" xmlAttribute="true" />
         </objectGraph>
+
+        <objectGraph name="examskin" class="org.msh.etbm.custom.bd.entities.ExamSkin" >
+            <property name="syncData.serverId" elementName="id" xmlAttribute="true" use="REQUIRED" />
+            <property name="tbcase.syncData.serverId" elementName="tbcase" use="REQUIRED" xmlAttribute="true" />
+            <property name="dateCollected" xmlAttribute="true" />
+            <property name="result" xmlAttribute="true" />
+            <property name="laboratory.id" elementName="lab" xmlAttribute="true"/>
+            <property name="method.id" elementName="method" xmlAttribute="true"/>
+        </objectGraph>
         
     </objectCollection>
 </graphSchema>
