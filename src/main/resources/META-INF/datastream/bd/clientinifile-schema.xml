@@ -358,6 +358,15 @@
             <property name="laboratory.id" elementName="lab" xmlAttribute="true"/>
             <property name="method.id" elementName="method" xmlAttribute="true"/>
         </objectGraph>
+
+        <objectGraph name="exambiopsy" class="org.msh.etbm.custom.bd.entities.ExamBiopsy" >
+            <property name="syncData.serverId" elementName="id" xmlAttribute="true" use="REQUIRED" />
+            <property name="tbcase.syncData.serverId" elementName="tbcase" use="REQUIRED" xmlAttribute="true" />
+            <property name="dateCollected" xmlAttribute="true" />
+            <property name="result" xmlAttribute="true" />
+            <property name="laboratory.id" elementName="lab" xmlAttribute="true"/>
+            <property name="method.id" elementName="method" xmlAttribute="true"/>
+        </objectGraph>
         
     </objectCollection>
 </graphSchema>
