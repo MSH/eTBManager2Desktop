@@ -234,14 +234,15 @@ public class IniFileImporter {
 	}
 
 	public String getSelectedWorkspaceExtension(){
-		WorkspaceInfo selectedWorkspace = UserSession.instance().getWorkspaceInfo();
+		/*WorkspaceInfo selectedWorkspace = UserSession.instance().getWorkspaceInfo();
 		if(selectedWorkspace != null && (!selectedWorkspace.getExtension().isEmpty())){
 			return selectedWorkspace.getExtension();
 		}else if(UserSession.getWorkspace() != null){
 			return UserSession.getWorkspace().getExtension();
 		}
-
-		return null;
+		TODO: quando inicializa com arquivo workspaceinfo nao é setado dai ocorre uma exception aqui!!! buscar solução!
+		return null;*/
+		return "bd";
 	}
 	
 	/**
