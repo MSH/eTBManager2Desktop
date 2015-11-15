@@ -12,7 +12,7 @@
         </objectGraph>
         
         <!-- TB CASES -->
-        <objectGraph name="tbcase" class="org.msh.etbm.entities.TbCase">
+        <objectGraph name="tbcase" class="org.msh.etbm.custom.bd.entities.TbCaseBD">
             <property name="id" elementName="cl_id" xmlAttribute="true" use="REQUIRED" />
             <property name="syncData.serverId" elementName="id" xmlAttribute="true" includeNullValues="false"/>
             <property name="version" use="IGNORE" />
@@ -198,14 +198,14 @@
             <property name="presentation.id" elementName="presentation" />
         </objectGraph>
         
-        <objectGraph name="medexam" class="org.msh.etbm.entities.MedicalExamination" >
+        <objectGraph name="medexam" class="org.msh.etbm.custom.bd.entities.MedicalExaminationBD" >
             <property name="id" elementName="cl_id" xmlAttribute="true" use="REQUIRED" />
             <property name="syncData.serverId" elementName="id" xmlAttribute="true" includeNullValues="false"/>
             <property name="tbcase.syncData.serverId" elementName="tbcase" xmlAttribute="true" includeNullValues="false" />
             <property name="tbcase.id" elementName="cl_case" xmlAttribute="true" use="REQUIRED"/>
         </objectGraph>
         
-        <objectGraph name="sideEffect" class="org.msh.etbm.entities.CaseSideEffect" >
+        <objectGraph name="sideEffect" class="org.msh.etbm.custom.bd.entities.CaseSideEffectBD" >
             <property name="id" elementName="cl_id" xmlAttribute="true" use="REQUIRED" />
             <property name="syncData.serverId" elementName="id" xmlAttribute="true" includeNullValues="false"/>
             <property name="tbcase.syncData.serverId" elementName="tbcase" xmlAttribute="true" includeNullValues="false" />

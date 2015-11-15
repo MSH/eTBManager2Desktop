@@ -23,6 +23,8 @@ import org.msh.etbm.entities.*;
 import org.msh.etbm.services.login.ServerSignatureServices;
 import org.msh.etbm.services.login.UserSession;
 import org.msh.etbm.services.misc.ETB;
+import org.msh.springframework.persistence.ActionCallback;
+import org.msh.springframework.persistence.EntityManagerUtils;
 import org.msh.springframework.persistence.TransactionController;
 import org.msh.utils.DataStreamUtils;
 
@@ -401,13 +403,13 @@ public class IniFileImporter {
 	 * @param key instance of {@link EntityKey}
 	 */
 	private void handleEntityKey(EntityKey key) {
-		App.getEntityManager().createQuery("update " + key.getEntityName() + 
+		/*App.getEntityManager().createQuery("update " + key.getEntityName() +
 				" set syncData.changed = false, syncData.serverId = :serverid where id = :id")
 				.setParameter("serverid", key.getServerId())
 				.setParameter("id", key.getClientId())
-				.executeUpdate();
+				.executeUpdate();*/
 
-/*		EntityManagerUtils.doInTransaction(new ActionCallback<EntityKey>(key) {
+		EntityManagerUtils.doInTransaction(new ActionCallback<EntityKey>(key) {
 			@Override
 			public void execute(EntityKey key) {
 				EntityManager em = App.getEntityManager();
@@ -416,27 +418,26 @@ public class IniFileImporter {
 				List lst = em.createQuery("from " + key.getEntityName() + " where id = :id")
 						.setParameter("id", key.getClientId())
 						.getResultList();
-				
+
 				// it was not found. Probably it was deleted
 				if (lst.size() == 0) {
 					throw new RuntimeException("Entity not found. Entity=" + key.getEntityName() + ", id=" + key.getClientId());
 				}
-				
+
 				// update entity
 				Object obj = lst.get(0);
 				if (obj instanceof Synchronizable) {
 					// update synchronization status
-					SynchronizationData data = ((Synchronizable)obj).getSyncData();
+					SynchronizationData data = ((Synchronizable) obj).getSyncData();
 					data.setServerId(key.getServerId());
 					data.setChanged(false);
-					
+
 					// save entity
 					em.persist(obj);
 					em.flush();
 				}
 			}
 		});
-*/
 	}
 
 
