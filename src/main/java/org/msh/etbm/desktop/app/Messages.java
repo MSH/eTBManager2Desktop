@@ -93,15 +93,15 @@ public class Messages {
 		if (instance.locales == null) {
 			List<Locale> lst = new ArrayList<Locale>();
 			lst.add(new Locale("en"));
-			lst.add(new Locale("in"));
-			lst.add(new Locale("pt", "BR"));
-			lst.add(new Locale("ru"));
-			lst.add(new Locale("uz"));
-			lst.add(new Locale("vi"));
+			//lst.add(new Locale("in"));
+			//lst.add(new Locale("pt", "BR"));
+			//lst.add(new Locale("ru"));
+			//lst.add(new Locale("uz"));
+			//lst.add(new Locale("vi"));
 			lst.add(new Locale("en", "BD"));
-			lst.add(new Locale("en", "KH"));
-			lst.add(new Locale("en", "NA"));
-			lst.add(new Locale("en", "NG"));
+			//lst.add(new Locale("en", "KH"));
+			//lst.add(new Locale("en", "NA"));
+			//lst.add(new Locale("en", "NG"));
 			instance.locales = lst;
 		}
 		

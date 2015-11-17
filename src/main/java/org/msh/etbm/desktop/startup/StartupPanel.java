@@ -123,8 +123,10 @@ public class StartupPanel extends JPanel implements Refreshable, CloseListener, 
 			country = "";
 		}
 
+		SelectItem firstItem = null;
 		for (Locale locale: Messages.getAvailableLocales()) {
 			SelectItem item = new SelectItem(locale, locale.getDisplayName(locale));
+			if(firstItem == null){firstItem = item;}
 			cbLanguage.addItem(item);
 			if (locale.getLanguage().equals(lang)) {
                 if ((country.equals(locale.getCountry())) || (selitem == null)) {
@@ -132,6 +134,10 @@ public class StartupPanel extends JPanel implements Refreshable, CloseListener, 
                 }
 			}
 		}
+
+		if(selitem == null)
+			selitem = firstItem;
+
 		cbLanguage.setSelectedItem(selitem);
 		// action called when language is changed
 		cbLanguage.addActionListener(new ActionListener() {
