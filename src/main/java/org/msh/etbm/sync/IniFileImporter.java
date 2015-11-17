@@ -240,7 +240,7 @@ public class IniFileImporter {
 		}else if(UserSession.getWorkspace() != null){
 			return UserSession.getWorkspace().getExtension();
 		}
-		TODO: quando inicializa com arquivo workspaceinfo nao é setado dai ocorre uma exception aqui!!! buscar solução!
+		TODO: [MAURICIO] quando inicializa com arquivo workspaceinfo nao é setado dai ocorre uma exception aqui!!! buscar solução!
 		return null;*/
 		return "bd";
 	}

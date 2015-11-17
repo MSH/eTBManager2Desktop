@@ -6,6 +6,8 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -55,8 +57,13 @@ public class ClassificationSelectionDlg extends GenericDialog {
 	protected void openWindow() {
 		
 		UserSession session = UserSession.instance();
-		
-		for (CaseClassification cla: CaseClassification.values()) {
+
+		//TODO: [MAURICIO] melhorar isso aqui
+		List<CaseClassification> lcc = new ArrayList<CaseClassification>();
+		lcc.add(CaseClassification.TB);
+		lcc.add(CaseClassification.DRTB);
+
+		for (CaseClassification cla: lcc) {
 			if (session.isCanEditCaseByClassification(cla)) {
 				String key = cla.getKey();
 				if (diagnosisType == DiagnosisType.SUSPECT)
