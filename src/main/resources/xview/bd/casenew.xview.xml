@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form id="casenew" title="New notification">
 
-    <section column-count="4" visible="${tbcase.classification == 'DRTB' and tbcase.diagnosisType == 'CONFIRMED'}">
-		<field value="tbcase.lastBmuTbRegistNumber" label="@DisplayCaseNumber.TB"/>
-		<field value="tbcase.lastBmuDateTbRegister" label="@TbCase.registrationDate.TB">
-			<validation rule="${tbcase.registrationDate >= tbcase.lastBmuDateTbRegister}"
-						message="@cases.details.valerror2" enabled-if="${not empty tbcase.lastBmuDateTbRegister}" />
-		</field>
-    </section>
-
 	<section id="sec1" title="@cases.patientdata" column-count="4">
 		<field value="patient.name" label="@Patient.name" colspan="3">
 			<validation rule="${!patient.name.isEmpty()}"
