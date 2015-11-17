@@ -81,7 +81,7 @@ public class AppFormTest extends JFrame {
 		App.initialize();
 		List<Workspace> lst = App.getEntityManager().createQuery("from Workspace").getResultList();
 		Authenticator auth = App.getComponent(Authenticator.class);
-		if (!auth.login("RICARDO", "doors21", lst.get(0).getId())) {
+		if (!"SUCCESS".equals(auth.login("RICARDO", "doors21", lst.get(0).getId()))) {
 			throw new RuntimeException("Authentication error");
 		}
 		createForm();

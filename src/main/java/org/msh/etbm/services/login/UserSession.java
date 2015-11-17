@@ -105,6 +105,11 @@ public class UserSession {
 //		return roles != null && roles.contains(rolename);
 	}
 
+	public boolean hasAccessToDesktop(){
+		boolean r = roles != null && roles.contains("DESKTOPACCESS");
+		return r;
+	}
+
 
 	/**
 	 * @return the password

@@ -107,7 +107,7 @@ public class AppTestStartup {
 	 */
 	protected void authenticate() {
 		Authenticator auth = App.getComponent(Authenticator.class);
-		if (!auth.login("RICARDO", "password", 1)) {
+		if (!"SUCCESS".equals(auth.login("RICARDO", "password", 1))) {
 			throw new RuntimeException("Authentication error");
 		}
 	}

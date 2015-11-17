@@ -187,13 +187,19 @@ public class LoginPanel extends JPanel implements Refreshable, EventBusListener 
  
  		// call authenticator service to log user or deny access
  		Authenticator auth = App.getComponent(Authenticator.class);
- 		if (!auth.login(edtUsername.getText(), passwd, null)) {
+
+		String s = auth.login(edtUsername.getText(), passwd, null);
+
+		if("DONTHAVEPERMISSION".equals(s)){
+			JOptionPane.showMessageDialog(this, "You are not authorized to access eTB-Manager Desktop. Please consult your system administrator.");
+			return;
+		}else if (!"SUCCESS".equals(s)) {
  			JOptionPane.showMessageDialog(this, Messages.getString("org.jboss.seam.loginFailed"));
  			return;
  		}
  
  		// notify observers that the user logged in
- 		EventBusService.raiseEvent(AppEvent.LOGGEDIN);
+		EventBusService.raiseEvent(AppEvent.LOGGEDIN);
  	}
 
  	

@@ -24,7 +24,7 @@ public class Authenticator {
 	 * @return
 	 */
 	@Transactional
-	public boolean login(String username, String password, Integer workspaceId) {
+	public String login(String username, String password, Integer workspaceId) {
     	String pwd = Passwords.hashPassword(password);
 
         try {
@@ -36,7 +36,7 @@ public class Authenticator {
         	System.out.println("Login de " + user.getLogin());
         	
         	if (user.getState() == UserState.BLOCKED)
-        		return false;
+        		return "BLOCKED";
 
         	UserWorkspace userWorkspace = selectWorkspace(user, workspaceId);
             if (userWorkspace.getHealthSystem() != null) {
@@ -44,10 +44,13 @@ public class Authenticator {
             }
 
         	if (userWorkspace == null)
-        		return false;
+        		return "ERROR";
         	
         	UserSession.instance().registerLogin(userWorkspace);
         	UserSession.instance().setPassword(password);
+
+			if(!UserSession.instance().hasAccessToDesktop())
+				return "DONTHAVEPERMISSION";
 
         	// check user workspace
 /*        	loadUserWorkspace();
@@ -94,10 +97,10 @@ public class Authenticator {
             	Redirect.instance().setViewId(null);
             }
 */
-        	return true;
+			return "SUCCESS";
         }
         catch (NoResultException e) {
-            return false;        	
+            return "EXCEPTION";
         }
 	}
 
