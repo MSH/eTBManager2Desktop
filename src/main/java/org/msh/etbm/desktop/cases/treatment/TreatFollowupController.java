@@ -117,7 +117,7 @@ public class TreatFollowupController {
 		SimpleDateFormat sdf = new SimpleDateFormat("MMM-yy");
 		Date dt = period.getIniDate();
 		//while (dt.before(period.getEndDate())) {
-		while (dt.compareTo(DateUtils.incDays(period.getEndDate(),1)) <= 0) {
+		while (dt.compareTo(DateUtils.incDays(period.getEndDate(),2)) <= 0) {
 			Object vals[] = new Object[34];
 			vals[0] = sdf.format(dt);
 
