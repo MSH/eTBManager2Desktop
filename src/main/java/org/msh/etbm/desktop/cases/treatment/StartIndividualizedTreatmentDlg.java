@@ -14,6 +14,7 @@ import org.msh.etbm.entities.Medicine;
 import org.msh.etbm.entities.TbCase;
 import org.msh.etbm.entities.enums.RegimenPhase;
 import org.msh.etbm.services.cases.CaseServices;
+import org.msh.etbm.services.login.UserSession;
 import org.msh.eventbus.EventBusService;
 import org.msh.xview.FormDataModel;
 
@@ -128,6 +129,7 @@ public class StartIndividualizedTreatmentDlg extends GenericFormDialog {
 		// start the treatment
 		StartTreatmentController controller = getForm().getDataModel().getVariable(StartTreatmentController.class);
 		TbCase tbcase = getForm().getDataModel().getVariable(TbCase.class);
+		controller.setTreatmentUnit(UserSession.getUserWorkspace().getTbunit());
 		controller.startStandardTreatmentRegimen(tbcase);
 		EventBusService.raiseEvent(AppEvent.TREATMENT_STARTED, tbcase);
 		return true;

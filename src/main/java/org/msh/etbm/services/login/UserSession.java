@@ -87,7 +87,7 @@ public class UserSession {
 	}
 
 	
-	protected UserWorkspace getUserWorkspaceRef() {
+	public UserWorkspace getUserWorkspaceRef() {
 		return userWorkspace;
 	}
 	

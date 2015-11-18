@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form action="startTreatmentController.start">
 	<section column-count="2">
-		<field value="startTreatmentController.treatmentUnit" label="@FilterHealthUnit.TREATMENT_UNIT" required="true" />
+		<field value="userSession.userWorkspaceRef.tbunit" label="@FilterHealthUnit.TREATMENT_UNIT" readonly="true" />
 		<field value="startTreatmentController.iniTreatmentDate" label="@cases.details.date" required="true" />
 		<field value="startTreatmentController.regimen" label="@Regimen" required="true"
 		    options="${startTreatmentController.getRegimens(tbcase.classification)}" handler="combo">
