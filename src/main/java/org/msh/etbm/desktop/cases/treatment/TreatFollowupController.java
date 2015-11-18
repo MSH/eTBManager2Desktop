@@ -219,7 +219,7 @@ public class TreatFollowupController {
 		EntityManagerUtils.doInTransaction(new ActionCallback<TreatmentFollowupData>(data) {
 			@Override
 			public void execute(TreatmentFollowupData treatData) {
-				getService().saveTreatmentFollowup(treatData);
+				getService().saveTreatmentFollowup(treatData, tbcase);
 			}
 		});
 

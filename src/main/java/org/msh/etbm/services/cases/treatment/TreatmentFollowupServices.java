@@ -8,8 +8,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import org.msh.etbm.desktop.app.App;
+import org.msh.etbm.desktop.app.AppEvent;
 import org.msh.etbm.entities.TbCase;
 import org.msh.etbm.entities.TreatmentMonitoring;
+import org.msh.eventbus.EventBusService;
 import org.springframework.stereotype.Component;
 
 /**
@@ -42,7 +44,7 @@ public class TreatmentFollowupServices {
 	 * @param data instance of {@link TreatmentFollowupData} containing data about
 	 * the case and its treatment data to be saved
 	 */
-	public void saveTreatmentFollowup(TreatmentFollowupData data) {
+	public void saveTreatmentFollowup(TreatmentFollowupData data, TbCase tbcase) {
 		List<TreatmentMonitoring> lst = data.getUpdatedData();
 
 		if (lst == null)
@@ -55,6 +57,14 @@ public class TreatmentFollowupServices {
 			data.replaceTreatmentMonitoringMonth(tm);
 		}
 		em.flush();
+
+		TbCase c = em.find(TbCase.class, tbcase.getId());
+		c.getSyncData().setChanged(true);
+		em.persist(c);
+		em.flush();
+
 		data.getUpdatedData().clear();
+
+		EventBusService.raiseEvent(AppEvent.CASES_REFRESH);
 	}
 }
