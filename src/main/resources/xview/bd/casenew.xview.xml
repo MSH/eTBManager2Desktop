@@ -73,6 +73,7 @@
 				   visible="${tbcase.infectionSite == 'EXTRAPULMONARY' or tbcase.infectionSite == 'BOTH'}">
 			</field>
 			<field value="tbcase.caseDefinition" label="@CaseDefinition" readonly="true"/>
+			<field value="tbcase.followUpSmearStatus" label="@SmearStatusTB12" readonly="true"/>
 		</region>
 		<field value="tbcase.secDrugsReceived" label="@TbCase.seclineDrugsReceived" readonly="true"
 			   visible="${tbcase.classification != 'DRTB'}"/>
