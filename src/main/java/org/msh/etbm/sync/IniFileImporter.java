@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.zip.GZIPInputStream;
 import javax.persistence.EntityManager;
 
 import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.beanutils.PropertyUtilsBean;
 import org.msh.etbm.desktop.app.App;
 import org.msh.etbm.desktop.databases.DatabaseManager;
 import org.msh.etbm.desktop.databases.TBUnitLinks;
@@ -184,10 +186,15 @@ public class IniFileImporter {
 		List<String> lst = new ArrayList<String>();
 
 		for(String s : params.keySet()){
-			Object value = params.get(s);
-			if(value instanceof Collection){
-				lst.add(s);
-			}
+            try {
+                Class clazz = PropertyUtils.getPropertyType(o, s);
+                if (Collection.class.isAssignableFrom(clazz)) {
+                    lst.add(s);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
 		}
 
 		for(String s : lst){
