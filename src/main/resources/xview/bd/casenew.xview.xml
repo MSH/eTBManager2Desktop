@@ -41,8 +41,8 @@
 	<section title="@cases.generaldata" column-count="2">
 		<field value="tbcase.notificationUnit" label="@TbCase.notificationUnit" required="true" readonly="true"/>
 		<field value="tbcase.diagnosisType" label="@DiagnosisType" required="true" readonly="true"/>
+		<field value="tbcase.registrationDate" label="@TbCase.registrationDate" required="true"/>
 		<region visible="${tbcase.diagnosisType == 'CONFIRMED'}">
-			<field value="tbcase.registrationDate" label="@TbCase.registrationDate" required="true"/>
 			<field value="tbcase.diagnosisDate" label="@TbCase.diagnosisDate" required="true" />
 			<field value="tbcase.drugResistanceType" options="${globalLists.drugResistanceTypes}" label="@DrugResistanceType"
 				   visible="${tbcase.classification == 'DRTB'}"/>
