@@ -187,9 +187,12 @@ public class IniFileImporter {
 
 		for(String s : params.keySet()){
             try {
-                Class clazz = PropertyUtils.getPropertyType(o, s);
-                if (Collection.class.isAssignableFrom(clazz)) {
-                    lst.add(s);
+                // check if it is not a nested property
+                if (!s.contains(".")) {
+                    Class clazz = PropertyUtils.getPropertyType(o, s);
+                    if (Collection.class.isAssignableFrom(clazz)) {
+                        lst.add(s);
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
