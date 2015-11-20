@@ -144,14 +144,14 @@ public class SyncFileDeliverer {
 		url = conn.addPageToUrl(url, "sync/syncstatus.seam?tk=" + fileToken);
 		String s = SYNC_ONGOING;
 		while (SYNC_ONGOING.equals(s)) {
-			s = conn.getServerContent(url);
-			System.out.println("Server response: " + s);
-
 			// wait 2 seconds to make another try
 			try {
 				Thread.sleep(2000);
 			} catch (Exception e) {
 			}
+
+			s = conn.getServerContent(url);
+			System.out.println("Server response: " + s);
 		}
 
 		// check if server responded with an error
