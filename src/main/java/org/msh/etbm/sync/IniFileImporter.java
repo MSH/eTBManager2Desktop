@@ -35,6 +35,7 @@ import com.rmemoria.datastream.DataInterceptor;
 import com.rmemoria.datastream.DataUnmarshaller;
 import com.rmemoria.datastream.ObjectConsumer;
 import com.rmemoria.datastream.StreamContext;
+import org.msh.utils.date.DateUtils;
 
 /**
  * @author Ricardo Memoria
@@ -111,6 +112,19 @@ public class IniFileImporter {
 			errorMessage = e.getMessage();
 			throw new RuntimeException(e);
 		}
+
+		EntityManagerUtils.doInTransaction(new ActionCallback() {
+			@Override
+			public void execute(Object data) {
+				ServerSignatureServices srv = App.getComponent(ServerSignatureServices.class);
+				ServerSignature sig = srv.getServerSignature();
+
+				sig.setLastSyncDate(DateUtils.getDate());
+
+				srv.updateServerSignature(sig);
+				App.getEntityManager().flush();
+			}
+		});
 	}
 
 

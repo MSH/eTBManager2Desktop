@@ -6,11 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.msh.etbm.desktop.app.App;
-import org.msh.etbm.entities.Tbunit;
-import org.msh.etbm.entities.User;
-import org.msh.etbm.entities.UserProfile;
-import org.msh.etbm.entities.UserWorkspace;
-import org.msh.etbm.entities.Workspace;
+import org.msh.etbm.entities.*;
 import org.msh.etbm.entities.enums.CaseClassification;
 import org.msh.etbm.sync.WorkspaceInfo;
 import org.springframework.transaction.annotation.Propagation;
@@ -232,6 +228,12 @@ public class UserSession {
 				((u.getFirstLineSupplier() != null) || (u.getSecondLineSupplier() != null));
 	}
 
+	public static ServerSignature getServerSignature(){
+		ServerSignatureServices srv = App.getComponent(ServerSignatureServices.class);
+		if(srv == null)
+			return null;
+		return srv.getServerSignature();
+	}
 
 	/**
 	 * Return the working unit of the current user

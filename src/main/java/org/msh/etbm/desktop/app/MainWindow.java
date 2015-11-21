@@ -43,6 +43,9 @@ import org.msh.etbm.entities.enums.DiagnosisType;
 import org.msh.etbm.services.login.UserSession;
 import org.msh.eventbus.EventBusListener;
 import org.msh.eventbus.EventBusService;
+import org.msh.utils.date.DateUtils;
+import org.msh.utils.date.LocaleDateConverter;
+import org.msh.utils.date.Period;
 import org.pushingpixels.substance.api.SubstanceLookAndFeel;
 import org.pushingpixels.substance.api.skin.SubstanceBusinessBlackSteelLookAndFeel;
 
@@ -63,6 +66,7 @@ public class MainWindow implements EventBusListener {
 
 	private JPanel pnlStatus;
 	private JLabel txtUser;
+	private JLabel txtLastSync;
 	private JLabel txtWorkspace;
 	private JTabbedPane tabbedPane;
 	private StartupPanel startupPanel;
@@ -177,6 +181,7 @@ public class MainWindow implements EventBusListener {
 
 		txtUser.setVisible(false);
 		txtWorkspace.setVisible(false);
+		txtLastSync.setVisible(false);
 
     	// prevent Substance of changing the colors 
 		pnlStatus.putClientProperty(SubstanceLookAndFeel.COLORIZATION_FACTOR, new Double(1));
@@ -290,9 +295,12 @@ public class MainWindow implements EventBusListener {
     protected void afterLogin() {
 		txtUser.setVisible(true);
 		txtWorkspace.setVisible(true);
+		txtLastSync.setVisible(true);
 
 		txtUser.setText(UserSession.getUser().getName());
-    	txtWorkspace.setText(UserSession.getWorkspace().getName().toString());
+		txtWorkspace.setText(UserSession.getWorkspace().getName().toString());
+		txtLastSync.setText(LocaleDateConverter.getDisplayDate(UserSession.getServerSignature().getLastSyncDate(), false) + " - "
+								+ LocaleDateConverter.getAsElapsedTime(new Period(UserSession.getServerSignature().getLastSyncDate(), DateUtils.getDate())));
 
     	// close login panel
     	startupPanel.closeHandler();
@@ -415,12 +423,18 @@ public class MainWindow implements EventBusListener {
 		pnlStatus.setBorder(new EmptyBorder(3, 3, 3, 3));
 		frame.getContentPane().add(pnlStatus, BorderLayout.SOUTH);
 		pnlStatus.setLayout(new GridLayout(0, 3, 0, 0));
-		
+
 		txtUser = new JLabel(); //$NON-NLS-1$ //$NON-NLS-1$
 		txtUser.setFont(txtUser.getFont().deriveFont(Font.BOLD));
 		txtUser.setForeground(new Color(255, 255, 255));
 		txtUser.setIcon(new ImageIcon(MainWindow.class.getResource("/resources/images/user.png")));
 		pnlStatus.add(txtUser);
+
+		txtLastSync = new JLabel(); //$NON-NLS-1$ //$NON-NLS-1$
+		txtLastSync.setFont(txtLastSync.getFont().deriveFont(Font.BOLD));
+		txtLastSync.setForeground(new Color(255, 255, 255));
+		txtLastSync.setIcon(new AwesomeIcon(AwesomeIcon.ICON_CLOUD_UPLOAD, Color.WHITE, 18));
+		pnlStatus.add(txtLastSync);
 		
 		txtWorkspace = new JLabel(); //$NON-NLS-1$
 		txtWorkspace.setForeground(new Color(255, 255, 255));

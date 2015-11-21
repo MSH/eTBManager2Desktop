@@ -6,6 +6,7 @@ package org.msh.etbm.entities;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 /**
  * Store information about the server that will be serialized to the client version.
@@ -30,6 +31,7 @@ public class ServerSignature {
 	private String adminMail;
 	private String serverUrl;
 	private boolean initialized;
+	private Date lastSyncDate;
 
 	/**
 	 * @return the systemURL
@@ -117,5 +119,13 @@ public class ServerSignature {
 	 */
 	public void setInitialized(boolean initialized) {
 		this.initialized = initialized;
+	}
+
+	public Date getLastSyncDate() {
+		return lastSyncDate;
+	}
+
+	public void setLastSyncDate(Date lastSyncDate) {
+		this.lastSyncDate = lastSyncDate;
 	}
 }

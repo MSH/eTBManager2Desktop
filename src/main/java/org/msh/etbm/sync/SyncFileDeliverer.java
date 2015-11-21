@@ -146,7 +146,7 @@ public class SyncFileDeliverer {
 		while (SYNC_ONGOING.equals(s)) {
 			// wait 2 seconds to make another try
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(3000);
 			} catch (Exception e) {
 			}
 
