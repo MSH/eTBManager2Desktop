@@ -178,6 +178,7 @@ public class SyncWorker extends SwingWorker<Boolean, Object> implements EventBus
 
 		IniFileImporter importer = new IniFileImporter();
 		importer.start(answerFile, null, true);
+		importer.cleanLocalDeletedEntityList();
 		addLog("Server answered back");
 		firePropertyChange(EVENT_EXEC_SUCCESS, null, null);
 	}

@@ -561,6 +561,16 @@ public class IniFileImporter {
 		txController.commitTransaction();
 	}
 
+	public void cleanLocalDeletedEntityList(){
+		EntityManagerUtils.doInTransaction(new ActionCallback<EntityKey>() {
+			@Override
+			public void execute(EntityKey data) {
+				EntityManager em = App.getEntityManager();
+				em.createQuery("delete from DeletedEntity").executeUpdate();
+			}
+		});
+	}
+
 	
 	/**
 	 * Return true if an error occurred during importing
