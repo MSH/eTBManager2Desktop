@@ -254,7 +254,7 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 		if (JOptionPane.showConfirmDialog(this, Messages.getString("form.confirm_remove"), Messages.getString("form.casedelete"), JOptionPane.YES_NO_OPTION) == 1)
 			return;
 
-		Object o = App.getEntityManager().createQuery("from TbCase where id = :id")
+		Object o = App.getEntityManager().createQuery("from " + ETB.getWsClassName(TbCase.class) + " where id = :id")
 					.setParameter("id", tbcaseId)
 					.getSingleResult();
 		App.getEntityManager().remove(o);

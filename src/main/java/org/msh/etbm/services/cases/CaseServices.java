@@ -4,12 +4,15 @@ import java.util.Date;
 
 import javax.persistence.EntityManager;
 
+import org.msh.etbm.custom.bd.entities.TbCaseBD;
 import org.msh.etbm.desktop.app.App;
 import org.msh.etbm.entities.Address;
 import org.msh.etbm.entities.Patient;
 import org.msh.etbm.entities.TbCase;
 import org.msh.etbm.entities.Workspace;
 import org.msh.etbm.entities.enums.CaseState;
+import org.msh.etbm.entities.enums.InfectionSite;
+import org.msh.etbm.entities.enums.PatientType;
 import org.msh.etbm.entities.enums.ValidationState;
 import org.msh.etbm.services.core.EntityServicesImpl;
 import org.msh.utils.date.DateUtils;
@@ -60,7 +63,9 @@ public class CaseServices extends EntityServicesImpl<TbCase> {
 			// set the patient's workspace
 			p.setWorkspace((Workspace)App.getComponent("defaultWorkspace"));
 		}
-		
+
+		clearHiddenFields(tbcase);
+
 		updatePatientAge(tbcase);
 
 		// set patient must be synchronized
@@ -70,6 +75,35 @@ public class CaseServices extends EntityServicesImpl<TbCase> {
 		em.persist(tbcase.getPatient());
 
 		super.save(tbcase);
+	}
+
+	public void clearHiddenFields(TbCase tbcase){
+		if(InfectionSite.PULMONARY.equals(tbcase.getInfectionSite())){
+			tbcase.setExtrapulmonaryType(null);
+			tbcase.setExtrapulmonaryType2(null);
+		} else if(InfectionSite.EXTRAPULMONARY.equals(tbcase.getInfectionSite())){
+			tbcase.setPulmonaryType(null);
+		}
+
+		if(!tbcase.isNotifAddressChanged()){
+			tbcase.setCurrentAddress(null);
+		}
+
+		if(!PatientType.PREVIOUSLY_TREATED.equals(tbcase.getInfectionSite())){
+			tbcase.setPreviouslyTreatedType(null);
+		}
+
+		if(tbcase instanceof TbCaseBD){
+			TbCaseBD tbcasebd = (TbCaseBD) tbcase;
+			if(InfectionSite.EXTRAPULMONARY.equals(tbcasebd.getInfectionSite())){
+				tbcasebd.setPulmonaryTypesBD(null);
+			}
+
+			if(tbcasebd.getPatientRefToFv() == null){
+				tbcasebd.setReferredToUnitName(null);
+				tbcasebd.setRefToDate(null);
+			}
+		}
 	}
 
 
