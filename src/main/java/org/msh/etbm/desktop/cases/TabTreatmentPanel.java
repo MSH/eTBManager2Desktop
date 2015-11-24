@@ -383,6 +383,7 @@ public class TabTreatmentPanel extends CaseTabPanel implements EventBusListener 
 		});
 
 		requestCaseRefresh();
+		EventBusService.raiseEvent(AppEvent.CASES_REFRESH);
 	}
 
 

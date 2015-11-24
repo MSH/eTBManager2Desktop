@@ -78,6 +78,7 @@ public class StartStandardTreatmentDlg extends GenericFormDialog {
 		controller.setTreatmentUnit(UserSession.getUserWorkspace().getTbunit());
 		controller.startStandardTreatmentRegimen(tbcase);
 		EventBusService.raiseEvent(AppEvent.TREATMENT_STARTED, tbcase);
+		EventBusService.raiseEvent(AppEvent.CASES_REFRESH);
 		return true;
 	}
 
