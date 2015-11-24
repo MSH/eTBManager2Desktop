@@ -265,6 +265,9 @@ public class IniFileImporter {
 			return UserSession.getWorkspace().getExtension();
 		}
 		TODO: [MAURICIO] quando inicializa com arquivo workspaceinfo nao é setado dai ocorre uma exception aqui!!! buscar solução!
+		Duas opções:
+		- Faz transformação do xml em 2 partes, na primeira transforma apenas a workspace, na segunda transforma o resto.
+		- Coloca no nome do arquivo a extensão da workspace, e antes de carregar o schema, pega a extensão no nome do arquivo.
 		return null;*/
 		return "bd";
 	}
