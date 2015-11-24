@@ -37,6 +37,11 @@ public class GlobalLists {
 		return PulmonaryTypesBD.values();
 	}
 
+	private CaseClassification caseClassifications[] = {
+			CaseClassification.TB,
+			CaseClassification.DRTB
+	};
+
 	private static final ReferredTo referredToTypes[] = {
 		ReferredTo.PP,
 		ReferredTo.GFS,
@@ -199,6 +204,10 @@ public class GlobalLists {
 
 	public InfectionSite[] getInfectionSite() {
 		return  infectionSite;
+	}
+
+	public CaseClassification[] getCaseClassifications() {
+		return  caseClassifications;
 	}
 
 	public static SampleType[] getSampletype() {

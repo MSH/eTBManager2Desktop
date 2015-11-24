@@ -15,12 +15,14 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import org.msh.etbm.desktop.app.App;
 import org.msh.etbm.desktop.app.Messages;
 import org.msh.etbm.desktop.common.DataActionListener;
 import org.msh.etbm.desktop.common.GenericDialog;
 import org.msh.etbm.entities.enums.CaseClassification;
 import org.msh.etbm.entities.enums.DiagnosisType;
 import org.msh.etbm.services.login.UserSession;
+import org.msh.etbm.services.misc.GlobalLists;
 
 /**
  * Display a dialog box to make the user select the case classification to be 
@@ -58,12 +60,7 @@ public class ClassificationSelectionDlg extends GenericDialog {
 		
 		UserSession session = UserSession.instance();
 
-		//TODO: [MAURICIO] melhorar isso aqui
-		List<CaseClassification> lcc = new ArrayList<CaseClassification>();
-		lcc.add(CaseClassification.TB);
-		lcc.add(CaseClassification.DRTB);
-
-		for (CaseClassification cla: lcc) {
+		for (CaseClassification cla: ((GlobalLists) App.getComponent("globalLists")).getCaseClassifications()) {
 			if (session.isCanEditCaseByClassification(cla)) {
 				String key = cla.getKey();
 				if (diagnosisType == DiagnosisType.SUSPECT)

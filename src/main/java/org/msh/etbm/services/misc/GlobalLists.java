@@ -150,7 +150,11 @@ public class GlobalLists {
 		MicroscopyResult.PLUS3
 	};
 
-	private CaseClassification caseClassifications[];
+	private CaseClassification caseClassifications[] = {
+		CaseClassification.TB,
+		CaseClassification.DRTB,
+		CaseClassification.NTM
+	};
 
 	private static final HIVResult hivResults[] = {
 		HIVResult.ONGOING,
@@ -366,11 +370,12 @@ public class GlobalLists {
 
 	
 	public CaseClassification[] getCaseClassifications() {
-		if (caseClassifications == null) {
+		return getComponentValueWorkspace("caseClassifications", CaseClassification[].class, caseClassifications);
+		/*if (caseClassifications == null) {
 			List lst = getUserCaseClassifications();
 			caseClassifications = (CaseClassification[])lst.toArray(new CaseClassification[lst.size()]);
 		}
-		return caseClassifications;
+		return caseClassifications;*/
 	}
 	
 	public List<CaseClassification> getUserCaseClassifications() {
