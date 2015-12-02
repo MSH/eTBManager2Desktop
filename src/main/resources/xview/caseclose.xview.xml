@@ -3,9 +3,10 @@
 	<section column-count="2">
 		<field value="controller.date" label="@cases.details.date" required="true" />
 		<field value="controller.state" label="@CaseState" required="true" handler="radio" options="${controller.outcomes}">
-			<validation rule="controller.state.ordinal > 2"	message="@javax.faces.component.UISelectMany.INVALID" />
+			<!--<validation rule="controller.state.ordinal > 2"	message="@javax.faces.component.UISelectMany.INVALID" />-->
 		</field>
-		<field value="controller.comment" label="@global.comments" 
+		<field value="controller.comment" label="@TbCase.otherOutcome"
 			maxChars="100" width="200" visible="${controller.state == 'OTHER'}"/>
+		<!--<field value="tbcase.movedSecondLineTreatment" label="@CaseState.MOVED_SECONDLINE" />-->
 	</section>
 </form>
