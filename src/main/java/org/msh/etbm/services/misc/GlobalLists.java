@@ -358,7 +358,12 @@ public class GlobalLists {
 			InfectionSite.EXTRAPULMONARY,
 			InfectionSite.BOTH
 	};
-	
+
+	private static final XpertResult xpertResults[] = {
+			XpertResult.TB_DETECTED,
+			XpertResult.TB_NOT_DETECTED,
+			XpertResult.INVALID_NORESULT_ERROR
+	};
 	
 	public Nationality[] getNationalities() {
 		return nationalities;
@@ -553,4 +558,9 @@ public class GlobalLists {
 	public PatientType[] getPrevTreatedTypes() {
 		return getComponentValueWorkspace("prevTreatedTypes", PatientType[].class, prevTreatedTypes);
 	}
+
+	public XpertResult[] getXpertResults(){
+		return getComponentValueWorkspace("xpertResults", XpertResult[].class, xpertResults);
+	}
+
 }

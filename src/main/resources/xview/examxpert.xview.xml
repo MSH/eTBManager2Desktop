@@ -13,7 +13,7 @@
 					enabled-if="${not empty examxpert.dateRelease}" 
 					message="@cases.exams.datereleasebeforecol"/>
 			</field>
-			<field value="examxpert.result" label="@cases.details.result" required="true" />
+			<field value="examxpert.result" label="@cases.details.result" required="true" handler="combo" options="${globalLists.xpertResults}" />
 			<field value="examxpert.rifResult" label="@cases.details.result" handler="combo" visible="${examxpert.result == 'TB_DETECTED'}" required="true">
 			</field>
 			<field value="examxpert.comments" label="@global.comments" handler="text" />
