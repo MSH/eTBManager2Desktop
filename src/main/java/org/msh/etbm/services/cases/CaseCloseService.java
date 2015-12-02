@@ -29,31 +29,31 @@ public class CaseCloseService {
 	
 */	
 	private static final CaseState[] outcomesMDR = {
-		CaseState.CURED, 
-		CaseState.DEFAULTED, 
-		CaseState.DIED, 
-		CaseState.FAILED,
+		CaseState.CURED,
 		CaseState.TREATMENT_COMPLETED,
-		CaseState.TRANSFERRED_OUT,
-		CaseState.DIAGNOSTIC_CHANGED,
-		CaseState.OTHER};
+		CaseState.FAILED,
+		CaseState.DIED,
+		CaseState.DEFAULTED,
+		CaseState.NOT_EVALUATED,
+		CaseState.OTHER
+	};
 
 	private static final CaseState[] outcomesTB = {
-		CaseState.CURED, 
-		CaseState.DEFAULTED, 
-		CaseState.DIED, 
-		CaseState.FAILED,
+		CaseState.CURED,
 		CaseState.TREATMENT_COMPLETED,
-		CaseState.TRANSFERRED_OUT,
-		CaseState.DIAGNOSTIC_CHANGED,
-		CaseState.MDR_CASE,
-		CaseState.OTHER};
+		CaseState.FAILED,
+		CaseState.DIED,
+		CaseState.DEFAULTED,
+		CaseState.NOT_EVALUATED,
+		CaseState.OTHER
+	};
 
 	private static final CaseState[] suspectOutcomes = {
-		CaseState.NOT_TB, 
-		CaseState.DIED, 
-		CaseState.DEFAULTED, 
-		CaseState.OTHER};
+		CaseState.NOT_TB,
+		CaseState.DIED,
+		CaseState.DEFAULTED,
+		CaseState.OTHER
+	};
 
 	/**
 	 * Closes an opened case, setting its outcome
