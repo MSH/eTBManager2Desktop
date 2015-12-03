@@ -258,18 +258,12 @@ public class IniFileImporter {
 	}
 
 	public String getSelectedWorkspaceExtension(){
-		/*WorkspaceInfo selectedWorkspace = UserSession.instance().getWorkspaceInfo();
+		WorkspaceInfo selectedWorkspace = UserSession.instance().getWorkspaceInfo();
 		if(selectedWorkspace != null && (!selectedWorkspace.getExtension().isEmpty())){
 			return selectedWorkspace.getExtension();
 		}else if(UserSession.getWorkspace() != null){
 			return UserSession.getWorkspace().getExtension();
 		}
-		TODO: [MAURICIO] quando inicializa com arquivo workspaceinfo nao é setado dai ocorre uma exception aqui!!! buscar solução!
-		CONCLUSAO DA CONVERSA COM O RICARDO: colocar a extensão no nome do arquivo.
-		Duas opções:
-		- Faz transformação do xml em 2 partes, na primeira transforma apenas a workspace, na segunda transforma o resto.
-		- Coloca no nome do arquivo a extensão da workspace, e antes de carregar o schema, pega a extensão no nome do arquivo.
-		return null;*/
 		return "bd";
 	}
 	

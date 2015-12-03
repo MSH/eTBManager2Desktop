@@ -162,6 +162,14 @@ public class StartupWizard extends JPanel implements Refreshable  {
 				JOptionPane.showMessageDialog(this, Messages.getString("desktop.invalidfile"));
 				return;
 			}
+
+			String workspaceExtension = file.getName().substring(file.getName().length() - 6, file.getName().length() - 4);
+			if("xx".equals(workspaceExtension))
+				workspaceExtension = null;
+			WorkspaceInfo sWorkspace = new WorkspaceInfo();
+			sWorkspace.setExtension(workspaceExtension);
+			UserSession.instance().setWorkspaceInfo(sWorkspace);
+
 			EventBusService.raiseEvent(StartupEvent.EXECUTE_INIFILE, file);
 		}
 		
