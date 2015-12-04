@@ -42,6 +42,7 @@ import org.msh.customdata.CustomProperties;
 import org.msh.customdata.CustomPropertiesImpl;
 import org.msh.etbm.desktop.app.App;
 import org.msh.etbm.entities.enums.*;
+import org.msh.etbm.sync.SyncClear;
 import org.msh.utils.FieldLog;
 import org.msh.utils.date.Period;
 import org.msh.utils.date.DateUtils;
@@ -120,10 +121,12 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 	
 	@OneToMany(cascade={CascadeType.ALL}, mappedBy="tbcase")
 	@FieldLog(ignore=true)
+	@SyncClear
 	private List<TreatmentHealthUnit> healthUnits = new ArrayList<TreatmentHealthUnit>();
 
 	@OneToMany(cascade={CascadeType.ALL}, mappedBy="tbcase", fetch=FetchType.LAZY)
 	@FieldLog(ignore=true)
+	@SyncClear
 	private List<PrescribedMedicine> prescribedMedicines = new ArrayList<PrescribedMedicine>();
 
 	@NotNull
@@ -232,6 +235,7 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 
 	@OneToMany(cascade={CascadeType.ALL}, mappedBy="tbcase")
 	@FieldLog(ignore=true)
+	@SyncClear
 	private List<CaseComorbidity> comorbidities = new ArrayList<CaseComorbidity>();
 	
 	@OneToMany(cascade={CascadeType.ALL}, mappedBy="tbcase")

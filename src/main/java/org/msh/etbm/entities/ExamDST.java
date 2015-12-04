@@ -1,5 +1,7 @@
 package org.msh.etbm.entities;
 
+import org.msh.etbm.sync.SyncClear;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,7 @@ public class ExamDST extends LaboratoryExamResult implements Serializable {
         
         
 	@OneToMany(cascade={CascadeType.ALL}, mappedBy="exam")
+	@SyncClear
 	private List<ExamDSTResult> results = new ArrayList<ExamDSTResult>();
 
 	private int numResistant;

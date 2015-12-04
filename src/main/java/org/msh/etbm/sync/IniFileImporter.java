@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,6 +16,7 @@ import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
 import javax.persistence.EntityManager;
+import javax.persistence.ManyToMany;
 
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.beanutils.PropertyUtilsBean;
@@ -157,6 +159,7 @@ public class IniFileImporter {
 			Integer serverId = (Integer)params.get("syncData.serverId");
 			if (serverId == null)
 				return null;
+
 			String hql = "from " + objectType.getCanonicalName() + " where syncData.serverId = :id";
 			List lst = App.getEntityManager().createQuery(hql)
 					.setParameter("id", serverId)
@@ -164,8 +167,8 @@ public class IniFileImporter {
 
 			entity = lst.size() > 0? lst.get(0): null;
 
-			if (entity != null) {
-                checkObjectCollection(entity, params);
+			if (entity != null && params.size() > 1) {
+                checkObjectCollection(entity);
             }
 		}else{
             Integer id = (Integer)params.get("id");
@@ -178,7 +181,9 @@ public class IniFileImporter {
                 throw new RuntimeException("User role was not found = " + id);
             }
 
-            checkObjectCollection(entity, params);
+			if (entity != null && params.size() > 1) {
+				checkObjectCollection(entity);
+			}
         }
 
         if(entity == null)
@@ -188,30 +193,24 @@ public class IniFileImporter {
 	}
 
 	/**
-	 * It will check if any param of the object is a list, if it is, it will get each object from the list and
-	 * will delete it.
+	 * The object will be checked if any field is annotated with @SyncClear, if the is any field anotated with this
+	 * type and if it is a list all objects from this list will be removed from the DB and the list will be cleared.
 	 * @param o object to have its params checked
-	 * @param params params from the o
 	 */
-	private void checkObjectCollection(Object o, Map<String, Object> params){
-		if(o==null || params == null)
-			return;
-
+	private void checkObjectCollection(Object o){
+		Class clazz = o.getClass();
 		List<String> lst = new ArrayList<String>();
 
-		for(String s : params.keySet()){
-            try {
-                // check if it is not a nested property
-                if (!s.contains(".")) {
-                    Class clazz = PropertyUtils.getPropertyType(o, s);
-                    if (Collection.class.isAssignableFrom(clazz)) {
-                        lst.add(s);
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                throw new RuntimeException(e);
-            }
+		while(clazz != null){
+			for(Field f : clazz.getDeclaredFields()){
+				if(f.getAnnotation(SyncClear.class) != null){
+					if(f.getAnnotation(ManyToMany.class) != null)
+						throw new RuntimeException("Sync Clear can not be assigned to a Many to Many field. Need to implement for those cases.");
+					lst.add(f.getName());
+				}
+			}
+
+			clazz = clazz.getSuperclass();
 		}
 
 		for(String s : lst){
