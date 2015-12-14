@@ -84,12 +84,15 @@ public class TreatFollowupController {
 	@SuppressWarnings("serial")
 	public JScrollPane createIntakeTable(Period period, RegimenPhase phase) {
 		JTable table = new JTable();
-		String[] titles = new String[34];
+		String[] titles = new String[37];
 		titles[0] = Messages.getString("global.month") + "/" + Messages.getString("global.year");
 		for (int i = 1; i <= 31; i++) 
 			titles[i] = Integer.toString(i);
 		titles[32] = Messages.getString("cases.treat.presc");
 		titles[33] = Messages.getString("cases.treat.disp");
+		titles[34] = "Set all as";
+		titles[35] = "Set all as";
+		titles[36] = "Set all as";
 
 		table.setModel(new DefaultTableModel(new Object[][] { }, titles) 
 		{
@@ -111,19 +114,25 @@ public class TreatFollowupController {
 		}
 		table.getColumnModel().getColumn(32).setPreferredWidth(130);
 		table.getColumnModel().getColumn(33).setPreferredWidth(130);
+		table.getColumnModel().getColumn(34).setPreferredWidth(73);
+		table.getColumnModel().getColumn(35).setPreferredWidth(73);
+		table.getColumnModel().getColumn(36).setPreferredWidth(73);
 		
 		DefaultTableModel model = (DefaultTableModel)table.getModel();
 		model.setRowCount(0);
 		SimpleDateFormat sdf = new SimpleDateFormat("MMM-yy");
-		Date dt = period.getIniDate();
-		//while (dt.before(period.getEndDate())) {
-		while (dt.compareTo(DateUtils.incDays(period.getEndDate(),31)) <= 0) {
-			Object vals[] = new Object[34];
-			vals[0] = sdf.format(dt);
+
+		Date iniMonth = period.getIniDate();
+		iniMonth = DateUtils.newDate(DateUtils.yearOf(iniMonth), DateUtils.monthOf(iniMonth), 1);
+		Date endMonth = period.getEndDate();
+		endMonth = DateUtils.newDate(DateUtils.yearOf(endMonth), DateUtils.monthOf(endMonth), 1);
+		while (iniMonth.compareTo(endMonth) <= 0) {
+			Object vals[] = new Object[37];
+			vals[0] = sdf.format(iniMonth);
 
             // set information about treatment for every day
-            int month = DateUtils.monthOf(dt);
-            int year = DateUtils.yearOf(dt);
+            int month = DateUtils.monthOf(iniMonth);
+            int year = DateUtils.yearOf(iniMonth);
             int planned = 0;
             int executed = 0;
             for (int day = 1; day <= DateUtils.daysInAMonth(year, month); day++) {
@@ -139,10 +148,13 @@ public class TreatFollowupController {
                 }
             }
             vals[32] = planned == 0? "-": Integer.toString(planned);
-            vals[33] = executed == 0? "-": Integer.toString(executed);
+			vals[33] = executed == 0? "-": Integer.toString(executed);
+			vals[34] = "DOTS";
+			vals[35] = "SELF ADM.";
+			vals[36] = "CLEAR";
 
             model.addRow(vals);
-			dt = DateUtils.incMonths(dt, 1);
+			iniMonth = DateUtils.incMonths(iniMonth, 1);
 		}
 
 		table.setPreferredScrollableViewportSize(new Dimension(500, 100));
@@ -179,43 +191,96 @@ public class TreatFollowupController {
 
 		int col = table.getSelectedColumn();
 		int row = table.getSelectedRow();
-		if ((col < 1) || (col > 31))
+
+		if(col < 1 || (col > 31 && col !=34 && col !=35 && col !=36))
 			return;
 
-        // get the treatment period
+		// get the treatment period
 		Period p;
 		if (table == tblIntensive)
-			 p = tbcase.getIntensivePhasePeriod();
+			p = tbcase.getIntensivePhasePeriod();
 		else p = tbcase.getContinuousPhasePeriod();
 
 		Date dt = p.getIniDate();
 		if (row > 0)
 			dt = DateUtils.incMonths(dt, row);
 
-        // calculate the date of the selected cell in the table
+		// calculate the date of the selected cell in the table
 		int month = DateUtils.monthOf(dt);
 		int year = DateUtils.yearOf(dt);
 		int mdays = DateUtils.daysInAMonth(year, month);
-		if (col > mdays)
-			return;
 
-		dt = DateUtils.newDate(year, month, col);
-		
-		if (!p.isDateInside(dt))
-			return;
+		//User is editing a single day
+		if((col >= 1) && (col <= 31)) {
+			if (col > mdays)
+				return;
 
-		TreatmentDayOption status = data.getTreatmentDay(dt);
-		if ((status == null) || (status == TreatmentDayOption.NOT_TAKEN)) {
-            status = TreatmentDayOption.SELF_ADMIN;
-        }
-		else {
-            if (status == TreatmentDayOption.SELF_ADMIN)
-                status = TreatmentDayOption.DOTS;
-            else if (status == TreatmentDayOption.DOTS)
-                status = TreatmentDayOption.NOT_TAKEN;
-        }
+			dt = DateUtils.newDate(year, month, col);
 
-		data.setTreatmentDay(dt, status);
+			if (!p.isDateInside(dt) || dt.after(DateUtils.getDate()))
+				return;
+
+			TreatmentDayOption status = data.getTreatmentDay(dt);
+			if ((status == null) || (status == TreatmentDayOption.NOT_TAKEN)) {
+				status = TreatmentDayOption.SELF_ADMIN;
+			} else {
+				if (status == TreatmentDayOption.SELF_ADMIN)
+					status = TreatmentDayOption.DOTS;
+				else if (status == TreatmentDayOption.DOTS)
+					status = TreatmentDayOption.NOT_TAKEN;
+			}
+
+			data.setTreatmentDay(dt, status);
+			save(month, year, mdays, row, table);
+		// User is editing a whole month setting as DOT
+		}else if(col == 34){
+			int iniDay = 1;
+			if(DateUtils.monthOf(dt) == DateUtils.monthOf(p.getIniDate()))
+				iniDay = DateUtils.dayOf(p.getIniDate());
+			dt = DateUtils.newDate(DateUtils.yearOf(dt), DateUtils.monthOf(dt), iniDay);
+
+			int currentMonth = DateUtils.monthOf(dt);
+			while(currentMonth == DateUtils.monthOf(dt)){
+				data.setTreatmentDay(dt, TreatmentDayOption.DOTS);
+				save(month, year, mdays, row, table);
+				dt = DateUtils.incDays(dt, 1);
+				if(dt.compareTo(p.getEndDate()) > 0 || dt.compareTo(DateUtils.getDate()) > 0)
+					break;
+			}
+		// User is editing a whole month setting as SELF
+		}else if(col == 35){
+			int iniDay = 1;
+			if(DateUtils.monthOf(dt) == DateUtils.monthOf(p.getIniDate()))
+				iniDay = DateUtils.dayOf(p.getIniDate());
+			dt = DateUtils.newDate(DateUtils.yearOf(dt), DateUtils.monthOf(dt), iniDay);
+
+			int currentMonth = DateUtils.monthOf(dt);
+			while(currentMonth == DateUtils.monthOf(dt)){
+				data.setTreatmentDay(dt, TreatmentDayOption.SELF_ADMIN);
+				save(month, year, mdays, row, table);
+				dt = DateUtils.incDays(dt, 1);
+				if(dt.compareTo(p.getEndDate()) > 0 || dt.compareTo(DateUtils.getDate()) > 0)
+					break;
+			}
+		// User is editing a whole month setting as NOT TAKEN
+		}else if(col == 36){
+			int iniDay = 1;
+			if(DateUtils.monthOf(dt) == DateUtils.monthOf(p.getIniDate()))
+				iniDay = DateUtils.dayOf(p.getIniDate());
+			dt = DateUtils.newDate(DateUtils.yearOf(dt), DateUtils.monthOf(dt), iniDay);
+
+			int currentMonth = DateUtils.monthOf(dt);
+			while(currentMonth == DateUtils.monthOf(dt)){
+				data.setTreatmentDay(dt, TreatmentDayOption.NOT_TAKEN);
+				save(month, year, mdays, row, table);
+				dt = DateUtils.incDays(dt, 1);
+				if(dt.compareTo(p.getEndDate()) > 0 || dt.compareTo(DateUtils.getDate()) > 0)
+					break;
+			}
+		}
+	}
+
+	private void save(int month, int year, int mdays, int row, JTable table){
 		EntityManagerUtils.doInTransaction(new ActionCallback<TreatmentFollowupData>(data) {
 			@Override
 			public void execute(TreatmentFollowupData treatData) {
@@ -223,21 +288,21 @@ public class TreatFollowupController {
 			}
 		});
 
-        // update executed number of days
-        int tot = 0;
-        for (int i = 1; i <= mdays; i++) {
-            Date d = DateUtils.newDate(year, month, i);
-            TreatmentDayOption opt = data.getTreatmentDay(d);
-            if (opt == TreatmentDayOption.SELF_ADMIN || opt == TreatmentDayOption.DOTS) {
-                tot++;
-            }
-        }
-        String s = tot == 0? "-": Integer.toString(tot);
-        DefaultTableModel model = (DefaultTableModel)table.getModel();
-        model.setValueAt(s, row, 33);
-        model.fireTableDataChanged();
+		// update executed number of days
+		int tot = 0;
+		for (int i = 1; i <= mdays; i++) {
+			Date d = DateUtils.newDate(year, month, i);
+			TreatmentDayOption opt = data.getTreatmentDay(d);
+			if (opt == TreatmentDayOption.SELF_ADMIN || opt == TreatmentDayOption.DOTS) {
+				tot++;
+			}
+		}
+		String s = tot == 0? "-": Integer.toString(tot);
+		DefaultTableModel model = (DefaultTableModel)table.getModel();
+		model.setValueAt(s, row, 33);
+		model.fireTableDataChanged();
 	}
-	
+
 	/**
 	 * Return the service to handle treatment follow-up
 	 * @return instance of {@link TreatmentFollowupServices}

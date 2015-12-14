@@ -184,6 +184,8 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 	private boolean notifAddressChanged;
 	
 	private boolean tbContact;
+
+	private boolean movedSecondLineTreatment;
 	
 	@Column(length=100)
 	private String patientContactName;
@@ -252,6 +254,7 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 	
 	@OneToMany(cascade={CascadeType.MERGE, CascadeType.PERSIST}, mappedBy="tbcase")
 	@FieldLog(ignore=true)
+	@SyncClear
 	private List<TreatmentMonitoring> treatmentMonitoring = new ArrayList<TreatmentMonitoring>();
 	
 
@@ -1422,4 +1425,12 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
     public void setSuspectRegistrationCode(String suspectRegistrationCode) {
         this.suspectRegistrationCode = suspectRegistrationCode;
     }
+
+	public boolean isMovedSecondLineTreatment() {
+		return movedSecondLineTreatment;
+	}
+
+	public void setMovedSecondLineTreatment(boolean movedSecondLineTreatment) {
+		this.movedSecondLineTreatment = movedSecondLineTreatment;
+	}
 }

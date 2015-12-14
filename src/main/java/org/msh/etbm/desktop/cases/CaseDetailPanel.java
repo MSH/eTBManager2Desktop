@@ -131,29 +131,29 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 		gl_pnlLeft.setHorizontalGroup(
                 gl_pnlLeft.createParallelGroup(Alignment.LEADING)
                         .addGroup(gl_pnlLeft.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(gl_pnlLeft.createParallelGroup(Alignment.LEADING)
-                                        .addComponent(btnSuspectFollowup, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnDeleteCase, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnCloseCase, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnReopen, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnTags, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(30, Short.MAX_VALUE))
+								.addContainerGap()
+								.addGroup(gl_pnlLeft.createParallelGroup(Alignment.LEADING)
+										.addComponent(btnSuspectFollowup, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+										.addComponent(btnDeleteCase, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+										.addComponent(btnCloseCase, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+										.addComponent(btnReopen, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+										.addComponent(btnTags, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+								.addContainerGap(30, Short.MAX_VALUE))
         );
 		gl_pnlLeft.setVerticalGroup(
                 gl_pnlLeft.createParallelGroup(Alignment.LEADING)
                         .addGroup(gl_pnlLeft.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(btnSuspectFollowup)
-                                .addPreferredGap(ComponentPlacement.RELATED)
-                                .addComponent(btnDeleteCase)
-                                .addPreferredGap(ComponentPlacement.RELATED)
-                                .addComponent(btnCloseCase)
-                                .addPreferredGap(ComponentPlacement.RELATED)
-                                .addComponent(btnReopen)
-                                .addPreferredGap(ComponentPlacement.RELATED)
-                                .addComponent(btnTags)
-                                .addContainerGap(360, Short.MAX_VALUE))
+								.addContainerGap()
+								.addComponent(btnSuspectFollowup)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(btnDeleteCase)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(btnCloseCase)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(btnReopen)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(btnTags)
+								.addContainerGap(360, Short.MAX_VALUE))
         );
 		pnlLeft.setLayout(gl_pnlLeft);
 		
@@ -176,20 +176,20 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 		gl_panel.setHorizontalGroup(
                 gl_panel.createParallelGroup(Alignment.LEADING)
                         .addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(txtName, GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
-                                .addPreferredGap(ComponentPlacement.UNRELATED)
-                                .addComponent(txtState)
-                                .addContainerGap())
+								.addContainerGap()
+								.addComponent(txtName, GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(txtState)
+								.addContainerGap())
         );
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(txtName)
-						.addComponent(txtState))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addContainerGap()
+						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(txtName)
+								.addComponent(txtState))
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 		
@@ -456,8 +456,8 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 			 res = "male_32x32.png";
 		else res = "female_32x32.png";
 		txtName.setIcon(new ImageIcon(CaseDetailPanel.class.getResource("/resources/images/" + res)));
-		
-		txtState.setText(Messages.getString(tbcase.getState().getKey()));
+
+		txtState.setText(Messages.getString(tbcase.getState().getKey()) + (tbcase.isMovedSecondLineTreatment() ? " - " + Messages.getString("CaseState.MOVED_SECONDLINE") : ""));
 		if ((tbcase.getState() == CaseState.ONTREATMENT) || (tbcase.getState() == CaseState.TRANSFERRING))
 			 txtState.setForeground(new Color(0xff6600));
 		else txtState.setForeground(new Color(34, 139, 34));

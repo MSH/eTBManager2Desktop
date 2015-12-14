@@ -7,6 +7,6 @@
 		</field>
 		<field value="controller.comment" label="@TbCase.otherOutcome"
 			maxChars="100" width="200" visible="${controller.state == 'OTHER'}"/>
-		<!--<field value="tbcase.movedSecondLineTreatment" label="@CaseState.MOVED_SECONDLINE" />-->
+		<field value="tbcase.movedSecondLineTreatment" label="@CaseState.MOVED_SECONDLINE" />
 	</section>
 </form>

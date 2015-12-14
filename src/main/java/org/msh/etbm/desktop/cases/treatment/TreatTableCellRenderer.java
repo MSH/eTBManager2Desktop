@@ -57,7 +57,7 @@ public class TreatTableCellRenderer extends DefaultTableCellRenderer {
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 		Date dt = getDate(row, column);
-		if (dt == null) {
+		if (dt == null || dt.after(DateUtils.getDate())) {
 			iconDisabled.setColor(new Color(230,230,230));
 			setIcon(iconDisabled);
 		}
