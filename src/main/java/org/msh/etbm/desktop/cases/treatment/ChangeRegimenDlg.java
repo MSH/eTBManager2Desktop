@@ -76,6 +76,7 @@ public class ChangeRegimenDlg extends GenericFormDialog {
 		TbCase tbcase = getForm().getDataModel().getVariable(TbCase.class);
 		controller.changeRegimen(tbcase);
 		EventBusService.raiseEvent(AppEvent.TREATMENT_STARTED, tbcase);
+		EventBusService.raiseEvent(AppEvent.CASES_REFRESH);
 		return true;
 	}
 

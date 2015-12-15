@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import javax.persistence.EntityManager;
 
 import org.msh.etbm.desktop.app.App;
+import org.msh.etbm.desktop.app.AppEvent;
 import org.msh.etbm.desktop.common.GenericFormDialog;
 import org.msh.etbm.entities.Medicine;
 import org.msh.etbm.entities.PrescribedMedicine;
@@ -15,6 +16,7 @@ import org.msh.etbm.entities.Source;
 import org.msh.etbm.entities.TbCase;
 import org.msh.etbm.services.cases.CaseServices;
 import org.msh.etbm.services.cases.treatment.TreatmentServices;
+import org.msh.eventbus.EventBusService;
 import org.msh.xview.FormDataModel;
 
 /**
@@ -116,6 +118,7 @@ public class PrescribedMedicineDlg extends GenericFormDialog {
 				source, 
 				pm.getComments());
 
+		EventBusService.raiseEvent(AppEvent.CASES_REFRESH);
 		return true;
 	}
 

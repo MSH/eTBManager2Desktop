@@ -145,6 +145,7 @@ public class TreatmentPopup {
 			}
 		});
 		refreshTreatment(pm.getTbcase().getId());
+		EventBusService.raiseEvent(AppEvent.CASES_REFRESH);
 	}
 	
 	/**

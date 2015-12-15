@@ -59,6 +59,7 @@ public class TreatmentServices {
 		pm.setSource(source);
 		pm.setComments(comments);
 		tbcase.getPrescribedMedicines().add(pm);
+		tbcase.getSyncData().setChanged(true);
 		
 		em.persist(pm);
 		em.flush();

@@ -10,6 +10,7 @@ import org.msh.etbm.services.cases.CaseServices;
 import org.msh.eventbus.EventBusListener;
 import org.msh.springframework.persistence.ActionCallback;
 import org.msh.springframework.persistence.EntityManagerUtils;
+import org.msh.utils.date.DateUtils;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -77,22 +78,19 @@ public class CaseDefinitionFieldIntelligence implements EventBusListener {
 
         value = CaseDefinition.CLINICALLY_DIAGNOSED;
 
-        //Check if positive on microscopy exam
-        ExamMicroscopy examMic = (ExamMicroscopy) getLastExam(tbcase, "ExamMicroscopy");
-        if (examMic != null && examMic.getResult() != null && examMic.getResult().isPositive())
+        //Check if positive on microscopy exams
+        if (isAnyExamPositive(getExams(tbcase, "ExamMicroscopy")))
             value = CaseDefinition.BACTERIOLOGICALLY_CONFIRMED;
 
         if (value.equals(CaseDefinition.CLINICALLY_DIAGNOSED)) {
-            //Check if positive on culture exam
-            ExamCulture examCul = (ExamCulture) getLastExam(tbcase, "ExamCulture");
-            if (examCul != null && examCul.getResult() != null && examCul.getResult().isPositive())
+            //Check if positive on culture exams
+            if (isAnyExamPositive(getExams(tbcase, "ExamCulture")))
                 value = CaseDefinition.BACTERIOLOGICALLY_CONFIRMED;
         }
 
         if (value.equals(CaseDefinition.CLINICALLY_DIAGNOSED)) {
-            //Check if positive on culture exam
-            ExamXpert examX = (ExamXpert) getLastExam(tbcase, "ExamXpert");
-            if (examX != null && examX.getResult() != null && examX.getResult().equals(XpertResult.TB_DETECTED))
+            //Check if positive on xpert exams
+            if (isAnyExamPositive(getExams(tbcase, "ExamXpert")))
                 value = CaseDefinition.BACTERIOLOGICALLY_CONFIRMED;
         }
 
@@ -105,40 +103,59 @@ public class CaseDefinitionFieldIntelligence implements EventBusListener {
     }
 
     /**
-     * This method will return the last exam according to the following condition:
-     * 1- If the case has treatment registered it will return the last exam before the treatment considering the date collected.
-     * 2- If the case doesn't have treatment registered it will return the last exam registered considering the date collected.
+     * This method will return exams according to the following condition:
+     * 1- If the case has treatment registered it will return all exams until 8 days before the end start of continuous phase of treatment.
+     * 2- If the case doesn't have treatment registered it will return all exams registered.
      * @param tbcase - The Tbcase that is beeing verificated
      * @param examEntityName - the name of the Exam Entity that will be searched.
-     * @return The last exam according to the conditions on the description of that method.
+     * @return The all exams of a type according to the conditions on the description of that method.
      */
-    private LaboratoryExamResult getLastExam(TbCase tbcase, String examEntityName){
-        EntityManager em =  App.getEntityManager();
-
-        LaboratoryExamResult result = null;
+    private List<LaboratoryExamResult> getExams(TbCase tbcase, String examEntityName){
         List<LaboratoryExamResult> list = null;
 
         if(tbcase.getTreatmentPeriod()==null || tbcase.getTreatmentPeriod().getIniDate() == null){
-            list = (List<LaboratoryExamResult>) em.createQuery(" from " + examEntityName + " e " +
+            list = (List<LaboratoryExamResult>) App.getEntityManager().createQuery(" from " + examEntityName + " e " +
                     " where e.tbcase.id = :caseId and e.result is not null " +
                     " order by e.dateCollected desc, e.id desc ")
                     .setParameter("caseId", tbcase.getId())
                     .getResultList();
-
-            if(list != null && list.size() > 0)
-                result = list.get(0);
         }else{
-            list = (List<LaboratoryExamResult>) em.createQuery(" from " + examEntityName + " e " +
-                    " where e.tbcase.id = :caseId and e.dateCollected <= :iniTreatDate and e.result is not null  " +
+            list = (List<LaboratoryExamResult>) App.getEntityManager().createQuery(" from " + examEntityName + " e " +
+                    " where e.tbcase.id = :caseId and e.dateCollected <= :date and e.result is not null  " +
                     " order by e.dateCollected desc, e.id desc ")
                     .setParameter("caseId", tbcase.getId())
-                    .setParameter("iniTreatDate", tbcase.getTreatmentPeriod().getIniDate())
+                    .setParameter("date", DateUtils.incDays(tbcase.getIntensivePhasePeriod().getEndDate(), -8))
                     .getResultList();
-
-            if(list != null && list.size() > 0)
-                result = list.get(0);
         }
 
-        return result;
+        return list;
+    }
+
+    /**
+     *
+     * @param list list of exams to be checked
+     * @return true if at least one exam on list is positive
+     */
+    private boolean isAnyExamPositive(List<LaboratoryExamResult> list){
+        if(list == null)
+            return false;
+
+        for(LaboratoryExamResult exam : list){
+            if(exam instanceof ExamMicroscopy){
+                ExamMicroscopy examMic = (ExamMicroscopy) exam;
+                if(examMic.getResult() != null && examMic.getResult().isPositive())
+                    return true;
+            }else if(exam instanceof ExamCulture){
+                ExamCulture examCul = (ExamCulture) exam;
+                if(examCul.getResult() != null && examCul.getResult().isPositive())
+                    return true;
+            }else if(exam instanceof ExamXpert){
+                ExamXpert examX = (ExamXpert) exam;
+                if(examX.getResult() != null && examX.getResult().equals(XpertResult.TB_DETECTED))
+                    return true;
+            }
+        }
+
+        return false;
     }
 }

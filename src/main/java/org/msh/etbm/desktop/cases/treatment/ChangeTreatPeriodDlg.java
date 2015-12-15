@@ -5,9 +5,11 @@ package org.msh.etbm.desktop.cases.treatment;
 
 import org.msh.etbm.controller.ChangeTreatPeriodController;
 import org.msh.etbm.desktop.app.App;
+import org.msh.etbm.desktop.app.AppEvent;
 import org.msh.etbm.desktop.app.Messages;
 import org.msh.etbm.desktop.common.GenericFormDialog;
 import org.msh.etbm.entities.TbCase;
+import org.msh.eventbus.EventBusService;
 import org.msh.xview.FormDataModel;
 
 /**
@@ -65,6 +67,7 @@ public class ChangeTreatPeriodDlg extends GenericFormDialog {
 	@Override
 	protected boolean saveFormData(FormDataModel dataModel) {
 		controller.changePeriod();
+		EventBusService.raiseEvent(AppEvent.CASES_REFRESH);
 		return true;
 	}
 
