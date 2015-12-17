@@ -12,6 +12,8 @@
 				<validation rule="${examculture.dateRelease >= examculture.dateCollected}"
 					enabled-if="${not empty examculture.dateRelease}" 
 					message="@cases.exams.datereleasebeforecol"/>
+                <validation rule="${examculture.dateRelease == now()}"
+                            message="Cannot be a future date"/>
 			</field>
 			<field value="examculture.result" label="@cases.details.result" options="${globalLists.cultureResults}" required="true"/>
 			<field value="examculture.numberOfColonies" label="@ExamCulture.numberOfColonies" 

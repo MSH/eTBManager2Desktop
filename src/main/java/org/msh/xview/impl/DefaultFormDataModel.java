@@ -1,10 +1,6 @@
 package org.msh.xview.impl;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import javax.el.ELContext;
 import javax.el.ExpressionFactory;
@@ -55,12 +51,20 @@ public class DefaultFormDataModel implements FormDataModel {
 		super();
 		initializeELContext();
 	}
-	
+
+    /**
+     * Used in expressions
+     * @return
+     */
+    public static Date getCurrentDate() {
+        return new Date();
+    }
 	
 	private void initializeELContext() {
 		// initialize the model variable
 		try {
 			context.setFunction("", "msg", App.class.getMethod("getMessage", String.class));
+            context.setFunction("", "now", DefaultFormDataModel.class.getMethod("getCurrentDate"));
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
