@@ -43,7 +43,7 @@
 		<field value="tbcase.diagnosisType" label="@DiagnosisType" required="true" readonly="true"/>
 		<field value="tbcase.registrationDate" label="@TbCase.registrationDate" required="true"/>
 		<region visible="${tbcase.diagnosisType == 'CONFIRMED'}">
-			<field value="tbcase.diagnosisDate" label="@TbCase.diagnosisDate" required="true" />
+			<field value="tbcase.diagnosisDate" label="@TbCase.diagnosisDate" required="true"/>
 			<field value="tbcase.drugResistanceType" options="${globalLists.drugResistanceTypes}" label="@DrugResistanceType"
 				   visible="${tbcase.classification == 'DRTB'}"/>
 
@@ -55,7 +55,7 @@
 			<field value="tbcase.patientTypeOther" label="@TbCase.patientTypeOther" visible="${tbcase.patientType == 'OTHER'}" required="true" />
 			<!--registration groups-->
 
-			<field value="tbcase.infectionSite" label="@InfectionSite"  required="${tbcase.validated}" options="${globalLists.infectionSite}"/>
+			<field value="tbcase.infectionSite" label="@InfectionSite"  required="${true}" options="${globalLists.infectionSite}"/>
 			<field value="tbcase.pulmonaryTypesBD" label="@TbField.PULMONARY_TYPES"
 				   options="${globalLists_bd.getPulmonaryTypesBD()}"
 				   colspan="3" visible="${tbcase.infectionSite == 'PULMONARY' or tbcase.infectionSite == 'BOTH'}">
@@ -78,7 +78,7 @@
 		<field value="tbcase.secDrugsReceived" label="@TbCase.seclineDrugsReceived" readonly="true"
 			   visible="${tbcase.classification != 'DRTB'}"/>
 		<field value="tbcase.treatmentCategory" label="@TreatmentCategory" readonly="true"/>
-		<field value="tbcase.patientRefToFv" label="@MedicalExamination.ReferredTo"
+		<field value="tbcase.patientRefToFv" label="@MedicalExamination.ReferredTo" required="true"
 			   options="${fieldsOptions.refToTypes}">
 		</field>
 		<field value="tbcase.referredToUnitName" label="@MedicalExamination.RefToUnit" visible="${tbcase.patientRefToFv != null}"/>

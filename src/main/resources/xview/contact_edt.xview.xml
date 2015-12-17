@@ -2,11 +2,11 @@
 <form column-count="2">
 			<field value="contact.name" label="@TbContact.name" required="true" maxchars="100" width="300"/>
 			<field value="contact.gender" label="@Gender" required="true" />
-			<field value="contact.age" label="@TbCase.age"  >
+			<field value="contact.age" label="@TbCase.age" required="true" >
 				<param name="min" value="0" />
 				<param name="max" value="150" />
 			</field>
-			<field value="contact.contactType" label="@TbField.CONTACTTYPE" options="${fieldsOptions.contactTypes}" handler="combo" />
+			<field value="contact.contactType" label="@TbField.CONTACTTYPE" options="${fieldsOptions.contactTypes}" handler="combo" required="true" />
 			<field value="contact.examinated" label="@TbContact.examined" handler="yesno"/>
 			<field value="contact.dateOfExamination" label="@cases.details.date" visible="${contact.examinated}"/>
 			<field value="contact.conduct" label="@TbField.CONTACTCONDUCT" options="${fieldsOptions.contactConducts}" handler="combo" />
