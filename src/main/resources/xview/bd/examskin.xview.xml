@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
 		<section title="@PatientSample.identification" column-count="2">
-			<field value="examskin.dateCollected" label="@PatientSample.dateCollected" required="true" />
+			<field value="examskin.dateCollected" label="@PatientSample.dateCollected" required="true">
+				<validation rule="${examskin.dateCollected &lt;= now()}" enabled-if="${not empty examskin.dateCollected}"
+							message="@validator.notfuture"/>
+			</field>
 			<field value="examskin.sampleNumber" label="@PatientSample.sampleNumber" width="200" maxchars="100" />
 			<field value="examskin.laboratory" label="@Laboratory" required="true" />
 		</section>
@@ -11,6 +14,8 @@
 				<validation rule="${examskin.dateRelease >= examskin.dateCollected}"
 					enabled-if="${not empty examskin.dateRelease}" 
 					message="@cases.exams.datereleasebeforecol"/>
+				<validation rule="${examskin.dateRelease &lt;= now()}" enabled-if="${not empty examskin.dateRelease}"
+							message="@validator.notfuture"/>
 			</field>
 			<field value="examskin.result" label="@cases.details.result" options="${globalLists_bd.skinTestResult}" required="true"/>
 			<field value="examskin.comments" label="@global.comments" handler="text" />

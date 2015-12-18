@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
 		<section title="@PatientSample.identification" column-count="2">
-			<field value="exammicroscopy.dateCollected" label="@PatientSample.dateCollected" required="true" />
+			<field value="exammicroscopy.dateCollected" label="@PatientSample.dateCollected" required="true">
+				<validation rule="${exammicroscopy.dateCollected &lt;= now()}" enabled-if="${not empty exammicroscopy.dateCollected}"
+							message="@validator.notfuture"/>
+			</field>
 			<field value="exammicroscopy.sampleType" label="@SpecimenType" handler="combo" options="${globalLists.microscopySampleTypes}"/>
 			<field value="exammicroscopy.otherSampleType" label="@CaseState.OTHER" width="200" maxchars="100" visible="${exammicroscopy.sampleType == 'OTHER'}" />
 			<field value="exammicroscopy.sampleNumber" label="@PatientSample.sampleNumber" width="200" maxchars="100" />
@@ -15,6 +18,8 @@
 				<validation rule="${exammicroscopy.dateRelease >= exammicroscopy.dateCollected}"
 					enabled-if="${not empty exammicroscopy.dateRelease}"
 					message="@cases.exams.datereleasebeforecol"/>
+				<validation rule="${exammicroscopy.dateRelease &lt;= now()}" enabled-if="${not empty exammicroscopy.dateRelease}"
+							message="@validator.notfuture"/>
 			</field>
 			<field value="exammicroscopy.result" label="@cases.details.result" options="${globalLists.microscopyResults}" required="true" />
 			<field value="exammicroscopy.numberOfAFB" label="@cases.exams.afb" visible="${exammicroscopy.result == 'POSITIVE'}"/>

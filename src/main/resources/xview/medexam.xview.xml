@@ -2,7 +2,10 @@
 <form>
     <h3>@cases.details.medexam</h3>
 		<section column-count="2">
-			<field value="medicalexamination.date" label="@cases.details.date" required="true" />
+			<field value="medicalexamination.date" label="@cases.details.date" required="true">
+				<validation rule="${medicalexamination.date &lt;= now()}"
+							message="@validator.notfuture"/>
+			</field>
 			<field value="medicalexamination.appointmentType" label="@MedAppointmentType" />
 			<field value="medicalexamination.weight" label="@MedicalExamination.weight" required="true">
 				<validation rule="${medicalexamination.weight &gt; 0}"

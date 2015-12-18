@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
 		<section title="@PatientSample.identification" column-count="2">
-			<field value="examculture.dateCollected" label="@PatientSample.dateCollected" required="true" />
+			<field value="examculture.dateCollected" label="@PatientSample.dateCollected" required="true">
+				<validation rule="${examculture.dateCollected &lt;= now()}" enabled-if="${not empty examculture.dateCollected}"
+							message="@validator.notfuture"/>
+			</field>
 			<field value="examculture.sampleNumber" label="@PatientSample.sampleNumber" width="200" maxchars="100" />
 			<field value="examculture.laboratory" label="@Laboratory" required="true" />
 			<field value="examculture.status" label="@ExamStatus" handler="combo" options="${globalLists.examStatusOptions}" required="true"/>
@@ -12,8 +15,8 @@
 				<validation rule="${examculture.dateRelease >= examculture.dateCollected}"
 					enabled-if="${not empty examculture.dateRelease}" 
 					message="@cases.exams.datereleasebeforecol"/>
-                <validation rule="${examculture.dateRelease == now()}"
-                            message="Cannot be a future date"/>
+                <validation rule="${examculture.dateRelease &lt;= now()}" enabled-if="${not empty examculture.dateRelease}"
+                            message="@validator.notfuture"/>
 			</field>
 			<field value="examculture.result" label="@cases.details.result" options="${globalLists.cultureResults}" required="true"/>
 			<field value="examculture.numberOfColonies" label="@ExamCulture.numberOfColonies" 

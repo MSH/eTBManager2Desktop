@@ -3,11 +3,20 @@
 
     <section column-count="4">
 		<field value="tbcase.registrationDate" label="@TbCase.registrationDate.TB" required="true"
-			   visible="${tbcase.classification == 'TB' and tbcase.diagnosisType == 'CONFIRMED'}"/>
+			   visible="${tbcase.classification == 'TB' and tbcase.diagnosisType == 'CONFIRMED'}">
+			<validation rule="${tbcase.registrationDate &lt;= now()}"
+						message="@validator.notfuture"/>
+		</field>
 		<field value="tbcase.registrationDate" label="@TbCase.registrationDate.DRTB" required="true"
-			   visible="${tbcase.classification == 'DRTB' and tbcase.diagnosisType == 'CONFIRMED'}"/>
+			   visible="${tbcase.classification == 'DRTB' and tbcase.diagnosisType == 'CONFIRMED'}">
+			<validation rule="${tbcase.registrationDate &lt;= now()}"
+						message="@validator.notfuture"/>
+		</field>
 		<field value="tbcase.registrationDate" label="@TbCase.registrationDate" required="true"
-			   visible="${tbcase.diagnosisType == 'SUSPECT'}"/>
+			   visible="${tbcase.diagnosisType == 'SUSPECT'}">
+			<validation rule="${tbcase.registrationDate &lt;= now()}"
+						message="@validator.notfuture"/>
+		</field>
 
 		<field value="tbcase.lastBmuTbRegistNumber" label="@DisplayCaseNumber.TB"
 			   visible="${tbcase.classification == 'DRTB' and tbcase.diagnosisType == 'CONFIRMED'}"/>
@@ -15,6 +24,8 @@
 			   visible="${tbcase.classification == 'DRTB' and tbcase.diagnosisType == 'CONFIRMED'}">
 			<validation rule="${tbcase.registrationDate >= tbcase.lastBmuDateTbRegister}"
 						message="@cases.details.valerror2" enabled-if="${not empty tbcase.lastBmuDateTbRegister}" />
+			<validation rule="${tbcase.lastBmuDateTbRegister &lt;= now()}" enabled-if="${not empty tbcase.lastBmuDateTbRegister}"
+						message="@validator.notfuture"/>
 		</field>
     </section>
 	<section id="sec1" title="@cases.patientdata" column-count="4">
@@ -24,7 +35,10 @@
 		</field>
 		<field value="patient.securityNumber" label="@Patient.securityNumber" maxchars="20" charCase="UPPER" />
 		<field value="patient.gender" label="@Gender" required="true" />
-		<field value="patient.birthDate" label="@Patient.birthDate" />
+		<field value="patient.birthDate" label="@Patient.birthDate">
+			<validation rule="${patient.birthDate &lt;= now()}" enabled-if="${not empty patient.birthDate}"
+						message="@validator.notfuture"/>
+		</field>
 		<field value="tbcase.age" label="@TbCase.age" required="true">
             <validation rule="${tbcase.age &gt; 0 and tbcase.age &lt; 150}"
                         message="@javax.faces.component.UISelectOne.INVALID" />
@@ -55,7 +69,10 @@
 		<field value="tbcase.notificationUnit" label="@TbCase.notificationUnit" required="true" readonly="true"/>
 		<field value="tbcase.diagnosisType" label="@DiagnosisType" required="true" readonly="true"/>
 		<region visible="${tbcase.diagnosisType == 'CONFIRMED'}">
-			<field value="tbcase.diagnosisDate" label="@TbCase.diagnosisDate" required="true" />
+			<field value="tbcase.diagnosisDate" label="@TbCase.diagnosisDate" required="true">
+				<validation rule="${tbcase.diagnosisDate &lt;= now()}"
+							message="@validator.notfuture"/>
+			</field>
 			<field value="tbcase.drugResistanceType" options="${globalLists.drugResistanceTypes}" label="@DrugResistanceType"
 				   visible="${tbcase.classification == 'DRTB'}"/>
 
@@ -88,7 +105,10 @@
 	</section>
 
 	<section title="@cases.details.medexam" visible="${empty tbcase.id and tbcase.diagnosisType == 'CONFIRMED'}" column-count="2">
-		<field value="medicalexamination.date" label="@cases.details.date" required="true" />
+		<field value="medicalexamination.date" label="@cases.details.date" required="true">
+			<validation rule="${medicalexamination.date &lt;= now()}"
+						message="@validator.notfuture"/>
+		</field>
 		<field value="medicalexamination.responsible" label="@MedicalExamination.responsible" required="true" maxchars="100" width="300" />
 		<field value="medicalexamination.height" label="@MedicalExamination.height" />
 		<field value="medicalexamination.weight" label="@MedicalExamination.weight" required="true">

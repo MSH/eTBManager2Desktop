@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
 	<section title="@PatientSample.identification" column-count="2">
-		<field value="examdst.dateCollected" label="@PatientSample.dateCollected" required="true" />
+		<field value="examdst.dateCollected" label="@PatientSample.dateCollected" required="true">
+			<validation rule="${examdst.dateCollected &lt;= now()}" enabled-if="${not empty examdst.dateCollected}"
+						message="@validator.notfuture"/>
+		</field>
 		<field value="examdst.sampleNumber" label="@PatientSample.sampleNumber" width="200" maxchars="100" />
 		<field value="examdst.laboratory" label="@Laboratory" required="true" />
 		<field value="examdst.status" label="@ExamStatus" handler="combo" options="${globalLists.examStatusOptions}" required="true"/>
@@ -12,6 +15,8 @@
 			<validation rule="examdst.dateRelease >= examdst.dateCollected"
 						enabled-if="not empty examdst.dateRelease"
 						message="@cases.exams.datereleasebeforecol"/>
+			<validation rule="${examdst.dateRelease &lt;= now()}" enabled-if="${not empty examdst.dateRelease}"
+						message="@validator.notfuture"/>
 		</field>
 
 		<field value="examdst.method" label="@cases.exams.method" handler="combo" options="${fieldsOptions.dstMethods}" />

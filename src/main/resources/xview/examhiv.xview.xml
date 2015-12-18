@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form >
     <section column-count="4">
-    		<field value="examhiv.date" label="@cases.exams.dateRelease" colspan="3" required="true"/>
+    		<field value="examhiv.date" label="@cases.exams.dateRelease" colspan="3" required="true">
+				<validation rule="${examhiv.date &lt;= now()}" enabled-if="${not empty examhiv.date}"
+							message="@validator.notfuture"/>
+			</field>
 			<field value="examhiv.result" label="@cases.details.result" colspan="3" required="true" options="${globalLists.HIVResults}"/>
 
 			<field value="examhiv.ARTstarted" label="@cases.examhiv.art" visible="${examhiv.result == 'POSITIVE'}"

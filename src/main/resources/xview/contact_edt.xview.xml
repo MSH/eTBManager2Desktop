@@ -8,7 +8,10 @@
 			</field>
 			<field value="contact.contactType" label="@TbField.CONTACTTYPE" options="${fieldsOptions.contactTypes}" handler="combo" required="true" />
 			<field value="contact.examinated" label="@TbContact.examined" handler="yesno"/>
-			<field value="contact.dateOfExamination" label="@cases.details.date" visible="${contact.examinated}"/>
+			<field value="contact.dateOfExamination" label="@cases.details.date" visible="${contact.examinated}">
+				<validation rule="${contact.dateOfExamination &lt;= now()}" enable-if="${not empty contact.dateOfExamination}"
+							message="@validator.notfuture"/>
+			</field>
 			<field value="contact.conduct" label="@TbField.CONTACTCONDUCT" options="${fieldsOptions.contactConducts}" handler="combo" />
 			<field value="contact.comments" label="@global.comments" handler="text"/>
 </form>

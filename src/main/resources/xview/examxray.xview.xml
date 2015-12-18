@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
 	<section column-count="2">
-		<field value="examxray.date" label="@cases.details.date" required="true" />
+		<field value="examxray.date" label="@cases.details.date" required="true">
+			<validation rule="${examxray.date &lt;= now()}" enabled-if="${not empty examxray.date}"
+						message="@validator.notfuture"/>
+		</field>
 		<field value="examxray.presentation" label="@TbField.XRAYPRESENTATION" required="true" options="${fieldsOptions.xrayPresentations}" />
 		<field value="examxray.evolution" label="@XRayEvolution" />
 		<field value="examxray.comments" label="@global.comments" handler="text" />

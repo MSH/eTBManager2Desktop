@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
 		<section title="@PatientSample.identification" column-count="2">
-			<field value="exambiopsy.dateCollected" label="@PatientSample.dateCollected" required="true" />
+			<field value="exambiopsy.dateCollected" label="@PatientSample.dateCollected" required="true">
+				<validation rule="${exambiopsy.dateCollected &lt;= now()}" enabled-if="${not empty exambiopsy.dateCollected}"
+							message="@validator.notfuture"/>
+			</field>
 			<field value="exambiopsy.sampleType" label="@PatientSample.sampleType" required="true" options="${globalLists_bd.getSampletype()}"/>
 			<field value="exambiopsy.sampleNumber" label="@PatientSample.sampleNumber" width="200" maxchars="100" />
 			<field value="exambiopsy.laboratory" label="@Laboratory" required="true" />
@@ -12,6 +15,8 @@
 				<validation rule="${exambiopsy.dateRelease >= exambiopsy.dateCollected}"
 					enabled-if="${not empty exambiopsy.dateRelease}" 
 					message="@cases.exams.datereleasebeforecol"/>
+				<validation rule="${exambiopsy.dateRelease &lt;= now()}" enabled-if="${not empty exambiopsy.dateRelease}"
+							message="@validator.notfuture"/>
 			</field>
 			<field value="exambiopsy.result" label="@cases.details.result" options="${globalLists_bd.getBiopsyResult()}" required="true"/>
 			<field value="exambiopsy.method" label="@cases.exams.method" options="${fieldsOptions.getBiopsyMethods()}"/>

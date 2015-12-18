@@ -4,7 +4,10 @@
 		handler="combo" options="${fieldsOptions.sideEffects}" />
 	<field value="sideeffect.substance" label="@Substance" handler="combo" options="${substances}"/>
 	<field value="sideeffect.substance2" label="@Substance" handler="combo" options="${substances}"/>
-	<field value="sideeffect.effectSt" label="@sideeffect.inidate" required="true"/>
+	<field value="sideeffect.effectSt" label="@sideeffect.inidate" required="true">
+		<validation rule="${sideeffect.effectSt &lt;= now()}"
+					message="@validator.notfuture"/>
+	</field>
 	<field value="sideeffect.grade" label="@cases.sideeffects.grade"  options="${globalLists_bd.getSideEffectGradings()}"/>
 	<field value="sideeffect.seriousness" label="@cases.sideeffects.seriousness"  options="${globalLists_bd.getSideEffectSeriousnesses()}"/>
 	<field value="sideeffect.actionTaken" label="@cases.sideeffects.action"  options="${globalLists_bd.getSideEffectActions()}"/>

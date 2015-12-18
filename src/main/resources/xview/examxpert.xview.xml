@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
 		<section title="@PatientSample.identification" column-count="2">
-			<field value="examxpert.dateCollected" label="@PatientSample.dateCollected" required="true" />
+			<field value="examxpert.dateCollected" label="@PatientSample.dateCollected" required="true">
+				<validation rule="${examxpert.dateCollected &lt;= now()}" enabled-if="${not empty examxpert.dateCollected}"
+							message="@validator.notfuture"/>
+			</field>
 			<field value="examxpert.sampleNumber" label="@PatientSample.sampleNumber" width="200" maxchars="100" />
 			<field value="examxpert.laboratory" label="@Laboratory" required="true" />
 			<field value="examxpert.status" label="@ExamStatus" handler="combo" options="${globalLists.examStatusOptions}" required="true"/>
@@ -12,6 +15,8 @@
 				<validation rule="${examxpert.dateRelease >= examxpert.dateCollected}"
 					enabled-if="${not empty examxpert.dateRelease}" 
 					message="@cases.exams.datereleasebeforecol"/>
+				<validation rule="${examxpert.dateRelease &lt;= now()}" enabled-if="${not empty examxpert.dateRelease}"
+							message="@validator.notfuture"/>
 			</field>
 			<field value="examxpert.result" label="@cases.details.result" required="true" handler="combo" options="${globalLists.xpertResults}" />
 			<field value="examxpert.rifResult" label="@cases.details.result" handler="combo" visible="${examxpert.result == 'TB_DETECTED'}" required="true">
