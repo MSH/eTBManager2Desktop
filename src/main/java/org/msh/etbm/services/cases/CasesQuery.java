@@ -107,7 +107,7 @@ public class CasesQuery extends EntityQuery<CaseResultItem> {
 		"c.treatmentPeriod.iniDate, c.registrationDate, nu.name.name1, " +
 		"loc.name.name1, loc.code, c.id, " +
 		"c.treatmentPeriod.endDate, c.state, c.classification, p.name.middleName, p.name.lastName, " +
-		"c.validationState, c.registrationCode, c.diagnosisType, p.birthDate, c.diagnosisDate, c.outcomeDate, c.syncData.changed " +
+		"c.validationState, c.registrationCode, c.diagnosisType, p.birthDate, c.diagnosisDate, c.outcomeDate, c.syncData.changed, c.syncData.serverId " +
 		getFromHQL() + " join c.patient p " +
 		"join c.notificationUnit nu " +
 		"join c.notifAddress.adminUnit loc ".concat(dynamicConditions());
@@ -357,20 +357,24 @@ public class CasesQuery extends EntityQuery<CaseResultItem> {
 			} catch (Exception e) {
 				patNumber = null;
 			}
-			if (vals.length > 1)
+			if (vals.length > 1) {
 				try {
 					caseNumber = Integer.parseInt(vals[1]);
 				} catch (Exception e) {
 					caseNumber = null;
 				}
+			}
 
-				if (patNumber == null)
-					return null;
+			if (patNumber == null)
+				return null;
 
-				String s = "p.recordNumber = " + patNumber;
-				if (caseNumber != null)
-					s = "(" + s + ") and (c.caseNumber = " + caseNumber + ")";
-				return s;
+			String s = "p.recordNumber = " + patNumber;
+			if (caseNumber != null)
+				s = "(((" + s + ") and (c.caseNumber = " + caseNumber + ")) or c.syncData.serverId = " + patNumber + ")";
+			else
+				s = "(" + s +  " or c.syncData.serverId = " + patNumber + ")";
+
+			return s;
 		}
 	}
 
@@ -470,6 +474,7 @@ public class CasesQuery extends EntityQuery<CaseResultItem> {
 			// update synchronization data
 			SynchronizationData data = new SynchronizationData();
 			data.setChanged((Boolean)obj[22]);
+			data.setServerId((Integer)obj[23]);
 			tbcase.setSyncData(data);
 
 			// search for administrative unit

@@ -42,6 +42,7 @@ import org.msh.customdata.CustomProperties;
 import org.msh.customdata.CustomPropertiesImpl;
 import org.msh.etbm.desktop.app.App;
 import org.msh.etbm.entities.enums.*;
+import org.msh.etbm.services.login.UserSession;
 import org.msh.etbm.sync.SyncClear;
 import org.msh.utils.FieldLog;
 import org.msh.utils.date.Period;
@@ -536,37 +537,48 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 		return ((TbCase)obj).getId().equals(getId());
 	}
 
-
 	/**
-	 * Returns the case number in a formated way ready for displaying
-	 * @return
+	* Returns the case number in a formated way ready for displaying
+	* @return
 	 */
 	public String getDisplayCaseNumber() {
-		Workspace ws = (patient != null? patient.getWorkspace() : null);
-		if ((ws != null) && (ws.getConfirmedCaseNumber() == DisplayCaseNumber.USER_DEFINED))
-			return getRegistrationCode();
-		else {
-			Integer number = getCaseNumber();
-			if ((number == null) || (getPatient() == null))
-				return "New";
-			
-			return formatCaseNumber(patient.getRecordNumber(), caseNumber);
+		Workspace ws = UserSession.getWorkspace();
+
+		if (ws == null)
+			return getSyncData().getServerId() != null? getSyncData().getServerId().toString(): "null";
+
+		DisplayCaseNumber dcn;
+		if (getDiagnosisType().equals(DiagnosisType.SUSPECT))
+			dcn = ws.getSuspectCaseNumber();
+		else dcn = ws.getConfirmedCaseNumber();
+
+		switch (dcn) {
+			case USER_DEFINED: {
+				String code;
+				if (getDiagnosisType().equals(DiagnosisType.SUSPECT))
+					code = getSuspectRegistrationCode();
+				else code = getRegistrationCode();
+				if ((code == null) || (code.isEmpty()))
+					code = "New";
+				return code;
+			}
+			case VALIDATION_NUMBER:
+				return getDisplayValidationNumber();
+			default: {
+				String r = getSyncData().getServerId() != null ? getSyncData().getServerId().toString() : "New";
+				if ((getCaseNumber() != null) && (getValidationState() != ValidationState.WAITING_VALIDATION))
+					r+=" ("+getDisplayValidationNumber()+")";
+				return r;
+			}
 		}
-	}        
-//	public String getDisplayCaseNumber() {
-//		Workspace ws = (patient != null? patient.getWorkspace() : null);
-//		if ((ws != null) && (ws.getDisplayCaseNumber() == DisplayCaseNumber.REGISTRATION_CODE))
-//			return getRegistrationCode();
-//		else {
-//			Integer number = getCaseNumber();
-//			if ((number == null) || (getPatient() == null))
-//				return "New";
-//                        
-//			
-//			return formatCaseNumber(patient.getRecordNumber()!=null?patient.getRecordNumber():0, caseNumber);
-//		}
-//	}
-	
+	}
+
+
+	public String getDisplayValidationNumber() {
+		if ((getCaseNumber() == null) || (getValidationState() == ValidationState.WAITING_VALIDATION))
+			return "New";
+		else return formatCaseNumber(patient.getRecordNumber(), caseNumber);
+	}
 
 	/**
 	 * Formats the case number to be displayed to the user
@@ -579,24 +591,9 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 		String s = df.format(patientNumber);
 
 		if (caseNumber > 1)
-			 return s + "-" + Integer.toString(caseNumber);
-		else return s;	
-	}        
-//	static public String formatCaseNumber(int patientNumber, int caseNumber) {
-//            String str = ""+patientNumber;
-//            String s;
-//            if(str.length()>4){
-//                String fst = str.substring(0, 6);
-//                String lst = str.substring(6);
-//                s = fst+":"+lst;
-//            }else{
-//		DecimalFormat df = new DecimalFormat("000");
-//		s = df.format(patientNumber);
-//            }
-//		if (caseNumber > 1)
-//			 return s + "-" + Integer.toString(caseNumber);
-//		else return s;		
-//	}
+			return s + "-" + Integer.toString(caseNumber);
+		else return s;
+	}
 
 	
 	/**
