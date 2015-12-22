@@ -34,7 +34,8 @@ public class ExamCultureEditDlg extends CaseDataEditDlg<ExamCulture> {
 	@Override
 	protected Dimension getFormSize() {
 		Dimension d = super.getFormSize();
-		d.setSize(650, 550);
+		d.setSize(850, 550);
+		getForm().getFormUI().setPreferredWidth(830);
 		return d;
 	}
 

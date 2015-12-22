@@ -552,7 +552,7 @@ public class TabExamsPanel extends CaseTabPanel {
 		}
 
 		// is ExamSkin selected ?
-		if (chkSkin.isSelected()) {
+		if ("bd".equals(UserSession.getWorkspace().getExtension()) && chkSkin.isSelected()) {
 			List<ExamSkin> lst = (new ExamSkinServices()).getList(getCaseId());
 			String type = Messages.getString("cases.examskintest");
 			for (ExamSkin exam: lst) {
@@ -569,7 +569,7 @@ public class TabExamsPanel extends CaseTabPanel {
 		}
 
 		// is ExamBiopsy selected ?
-		if (chkBiopsy.isSelected()) {
+		if ("bd".equals(UserSession.getWorkspace().getExtension()) && chkBiopsy.isSelected()) {
 			List<ExamBiopsy> lst = (new ExamBiopsyServices()).getList(getCaseId());
 			String type = Messages.getString("cases.exambiopsy");
 			for (ExamBiopsy exam: lst) {

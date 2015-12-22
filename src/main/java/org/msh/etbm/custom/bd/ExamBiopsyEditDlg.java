@@ -30,7 +30,8 @@ public class ExamBiopsyEditDlg extends CaseDataEditDlg<ExamBiopsy> {
     @Override
     protected Dimension getFormSize() {
         Dimension d = super.getFormSize();
-        d.setSize(650, 550);
+        d.setSize(850, 550);
+        getForm().getFormUI().setPreferredWidth(830);
         return d;
     }
 }

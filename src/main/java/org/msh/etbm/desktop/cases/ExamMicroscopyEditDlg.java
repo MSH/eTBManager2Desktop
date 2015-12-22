@@ -34,7 +34,8 @@ public class ExamMicroscopyEditDlg extends CaseDataEditDlg<ExamMicroscopy> {
 	@Override
 	protected Dimension getFormSize() {
 		Dimension d = super.getFormSize();
-		d.setSize(650, 580);
+		d.setSize(850, 550);
+		getForm().getFormUI().setPreferredWidth(830);
 		return d;
 	}
 

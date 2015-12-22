@@ -39,7 +39,8 @@ public class ExamXpertEditDlg  extends CaseDataEditDlg<ExamXpert> {
 	@Override
 	protected Dimension getFormSize() {
 		Dimension d = super.getFormSize();
-		d.setSize(650, 510);
+		d.setSize(850, 550);
+		getForm().getFormUI().setPreferredWidth(830);
 		return d;
 	}
 
