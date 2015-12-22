@@ -258,12 +258,17 @@ public class IniFileImporter {
 
 	public String getSelectedWorkspaceExtension(){
 		WorkspaceInfo selectedWorkspace = UserSession.instance().getWorkspaceInfo();
-		if(selectedWorkspace != null && (!selectedWorkspace.getExtension().isEmpty())){
-			return selectedWorkspace.getExtension();
-		}else if(UserSession.getWorkspace() != null){
+		if(selectedWorkspace != null) {
+			if(selectedWorkspace.getExtension() != null && (!selectedWorkspace.getExtension().isEmpty()))
+				return selectedWorkspace.getExtension();
+			return null;
+		}
+
+		if(UserSession.getWorkspace() != null){
 			return UserSession.getWorkspace().getExtension();
 		}
-		return "bd";
+
+		return null;
 	}
 	
 	/**
