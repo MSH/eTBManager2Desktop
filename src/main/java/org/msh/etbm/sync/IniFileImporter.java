@@ -422,10 +422,24 @@ public class IniFileImporter {
 	protected void handleDeletedEntity(DeletedEntity obj){
 		EntityManager em = App.getEntityManager();
 		Object o = null;
+		Object testClassObject = null;
+		List<Object> l = null;
 
-		List<Object> l = em.createQuery("from " + obj.getEntityName() + " a where a.syncData.serverId = :EntityId")
-				.setParameter("EntityId", obj.getEntityId())
-				.getResultList();
+		try{
+			testClassObject = o.getClass().newInstance();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
+		if(testClassObject instanceof SynchronizableEntity){
+			l = em.createQuery("from " + obj.getEntityName() + " a where a.syncData.serverId = :EntityId")
+					.setParameter("EntityId", obj.getEntityId())
+					.getResultList();
+		}else{
+			l = em.createQuery("from " + obj.getEntityName() + " a where a.id = :EntityId")
+					.setParameter("EntityId", obj.getEntityId())
+					.getResultList();
+		}
 
 		if(l!=null && l.size() > 0)
 			o = l.get(0);
