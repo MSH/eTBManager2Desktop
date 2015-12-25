@@ -30,7 +30,7 @@ public class MedicineComponent implements Serializable{
 
 	private Integer strength;
 	
-	@ManyToOne(cascade={CascadeType.ALL})
+	@ManyToOne(cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	@JoinColumn(name="MEDICINE_ID")
 	private Medicine medicine;
 

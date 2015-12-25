@@ -14,6 +14,7 @@ import javax.persistence.Table;
 
 import org.msh.etbm.entities.enums.MedicineCategory;
 import org.msh.etbm.entities.enums.MedicineLine;
+import org.msh.etbm.sync.SyncClear;
 import org.msh.utils.FieldLog;
 
 @Entity
@@ -41,6 +42,7 @@ public class Medicine extends WSObject implements Serializable {
     private MedicineLine line;
 
     @OneToMany(mappedBy = "medicine", cascade = {CascadeType.ALL})
+    @SyncClear
     private List<MedicineComponent> components = new ArrayList<MedicineComponent>();
 
     public String getTbInfoKey() {
