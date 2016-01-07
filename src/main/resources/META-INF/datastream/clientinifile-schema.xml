@@ -153,7 +153,7 @@
             <property name="id" xmlAttribute="true" use="REQUIRED" />
             <property name="medicines">
                 <objectGraph name="medicine" class="org.msh.etbm.entities.MedicineRegimen" parentProperty="regimen">
-                    <property name="id" xmlAttribute="true" />
+                    <property name="id" xmlAttribute="true" use="IGNORE"/>
                     <property name="medicine.id" elementName="medicine" />
                     <property name="defaultSource.id" elementName="source" />
                     <property name="phase" xmlAttribute="true" />

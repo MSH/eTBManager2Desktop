@@ -16,6 +16,7 @@ import javax.persistence.Transient;
 
 import org.msh.etbm.entities.enums.CaseClassification;
 import org.msh.etbm.entities.enums.RegimenPhase;
+import org.msh.etbm.sync.SyncClear;
 
 @Entity
 @Table(name = "regimen")
@@ -28,6 +29,7 @@ public class Regimen extends WSObject implements Serializable {
     private String name;
     private CaseClassification caseClassification;
     @OneToMany(cascade={CascadeType.ALL}, mappedBy="regimen")
+    @SyncClear
     private List<MedicineRegimen> medicines = new ArrayList<MedicineRegimen>();
     @Transient
     private List<MedicineRegimen> intensivePhaseMedicines = null;

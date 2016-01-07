@@ -25,7 +25,7 @@ public class UserPermission implements Serializable, Comparable<UserPermission> 
 	@NotNull
 	private UserRole userRole;
 
-	@ManyToOne(cascade={CascadeType.ALL})
+	@ManyToOne(cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	@JoinColumn(name="PROFILE_ID")
 	@NotNull
 	private UserProfile userProfile;
