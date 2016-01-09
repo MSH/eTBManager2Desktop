@@ -12,8 +12,8 @@
 
 	<section title="@cases.exams.results" column-count="2" visible="${examdst.status == 'PERFORMED' || (examdst.numResistant > 0 || examdst.numSusceptible > 0 || examdst.numContaminated > 0 )}">
 		<field value="examdst.dateRelease" label="@cases.exams.dateRelease" >
-			<validation rule="examdst.dateRelease >= examdst.dateCollected"
-						enabled-if="not empty examdst.dateRelease"
+			<validation rule="${examdst.dateRelease >= examdst.dateCollected}"
+						enabled-if="${not empty examdst.dateRelease}"
 						message="@cases.exams.datereleasebeforecol"/>
 			<validation rule="${examdst.dateRelease &lt;= now()}" enabled-if="${not empty examdst.dateRelease}"
 						message="@validator.notfuture"/>
