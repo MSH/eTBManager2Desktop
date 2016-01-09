@@ -21,7 +21,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author Mauricio Santos
- *
+ * Not being used, because the auto tags on server are written in MySQL and local database uses another SQL pattern.
+ * While a better solution is not found the link between tags and cases will allways be updated when synchronizing.
  */
 @Component
 public class TagServices {

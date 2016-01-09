@@ -502,25 +502,23 @@ public class IniFileImporter {
 	private void updateCaseTag(CaseTag caseTag) {
 		EntityManager em = App.getEntityManager();
 
-		// check if it's the first tag being updated to the given case 
-		if (!caseTagsUpdated.contains(caseTag.getCaseId())) {
-			// delete the previous tags of the case
-			App.getEntityManager().createNativeQuery("delete from tags_case where case_id = :id")
-				.setParameter("id", caseTag.getCaseId())
-				.executeUpdate();
-			caseTagsUpdated.add(caseTag.getCaseId());
+		if(caseTagsUpdated.size() == 0) {
+			App.getEntityManager().createNativeQuery("delete from tags_case")
+					.executeUpdate();
 		}
+		caseTagsUpdated.add(caseTag.getCaseId());
 
 		// return the tb case with the given server ID
 		List<TbCase> lst = App.getEntityManager().createQuery("from TbCase a where a.syncData.serverId = :id")
 				.setParameter("id", caseTag.getCaseId())
 				.getResultList();
-		
+
 		if (lst.size() == 0) {
 			throw new RuntimeException("Case not found. ID = " + caseTag.getCaseId());
 		}
-		
+
 		TbCase tbcase = lst.get(0);
+
 		// insert the tag to the case
 		em.createNativeQuery("insert into tags_case (case_id, tag_id) values (:caseid, :tagid)")
 			.setParameter("caseid", tbcase.getId())
