@@ -2,12 +2,7 @@ package org.msh.etbm.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.hibernate.validator.NotNull;
 import org.msh.etbm.entities.enums.CaseClassification;
@@ -18,6 +13,7 @@ public class UserPermission implements Serializable, Comparable<UserPermission> 
 	private static final long serialVersionUID = 7565244271956307412L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
 	@ManyToOne
@@ -25,7 +21,7 @@ public class UserPermission implements Serializable, Comparable<UserPermission> 
 	@NotNull
 	private UserRole userRole;
 
-	@ManyToOne(cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	@ManyToOne
 	@JoinColumn(name="PROFILE_ID")
 	@NotNull
 	private UserProfile userProfile;

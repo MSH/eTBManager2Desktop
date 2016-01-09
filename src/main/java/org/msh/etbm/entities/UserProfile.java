@@ -14,6 +14,7 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.NotNull;
 import org.msh.etbm.entities.enums.CaseClassification;
+import org.msh.etbm.sync.SyncClear;
 import org.msh.utils.FieldLog;
 
 @Entity
@@ -30,6 +31,7 @@ public class UserProfile extends WSObject implements Serializable, Comparable<Us
 	private String name;
 
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="userProfile",cascade={CascadeType.ALL})
+	@SyncClear
     private List<UserPermission> permissions = new ArrayList<UserPermission>();
 
 	@Column(length=50)
