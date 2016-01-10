@@ -336,7 +336,9 @@ public class UserSession {
 
 
 	public static Workspace getWorkspace() {
-		return instance().getUserWorkspaceRef().getWorkspace();
+		if(instance()!= null && instance().getUserWorkspaceRef() != null)
+			return instance().getUserWorkspaceRef().getWorkspace();
+		else return null;
 	}
 	
 	
