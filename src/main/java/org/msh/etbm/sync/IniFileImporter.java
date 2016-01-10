@@ -422,12 +422,26 @@ public class IniFileImporter {
 	protected void handleDeletedEntity(DeletedEntity obj){
 		EntityManager em = App.getEntityManager();
 		Object o = null;
+		Class testClass = null;
 		Object testClassObject = null;
 		List<Object> l = null;
 
-		try{
-			testClassObject = o.getClass().newInstance();
-		}catch(Exception e){
+		String className = "org.msh.etbm.entities."+obj.getEntityName();
+
+		try {
+			testClass = Class.forName(className);
+		} catch (ClassNotFoundException e1) {
+			try {
+				className = "org.msh.etbm.custom."+workspace.getExtension()+".entities."+obj.getEntityName();
+				testClass = Class.forName(className);
+			} catch (ClassNotFoundException e2) {
+				throw new RuntimeException("The deletedEntity Class doesn't exists");
+			}
+		}
+
+		try {
+			testClassObject = testClass.newInstance();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
