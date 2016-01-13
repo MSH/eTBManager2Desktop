@@ -38,4 +38,17 @@ public class SubstanceServices {
 				.getResultList();
 	}
 
+	/**
+	 * Return a list of {@link Substance} objects
+	 * @return
+	 */
+	public static List<Substance> getSubstancesPrevTreat() {
+		return App.getEntityManager()
+				.createQuery("from Substance where workspace.id = #{defaultWorkspace.id} " +
+						"and prevTreatmentForm = :p1 " +
+						"order by prevTreatmentOrder")
+				.setParameter("p1", true)
+				.getResultList();
+	}
+
 }

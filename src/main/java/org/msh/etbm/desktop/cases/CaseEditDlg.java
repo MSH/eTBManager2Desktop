@@ -2,6 +2,7 @@ package org.msh.etbm.desktop.cases;
 
 import java.awt.BorderLayout;
 
+import org.msh.etbm.controller.PrevTBTreatController;
 import org.msh.etbm.desktop.app.App;
 import org.msh.etbm.desktop.app.Messages;
 import org.msh.etbm.desktop.common.GenericDialog;
@@ -26,10 +27,13 @@ public class CaseEditDlg extends GenericDialog {
 	private static final long serialVersionUID = 7957443982626880044L;
 
 	private SwingFormContext form;
+	private PrevTBTreatController controller;
 	
 	public CaseEditDlg() {
 		setTitle(Messages.getString("cases.edit")); //$NON-NLS-1$
 		getClientContent().setLayout(new BorderLayout(0, 0));
+
+		controller = App.getComponent(PrevTBTreatController.class);
 	}
 
 	/**
@@ -60,12 +64,18 @@ public class CaseEditDlg extends GenericDialog {
 				form.getDataModel().setValue("medicalexamination", ETB.newWorkspaceObject(MedicalExamination.class));
 				form.getFormUI().setPreferredWidth(700);
 				form.getFormUI().update();
+
+				controller.setTbcase(tbcase);
 			}
 			
 		});
 
 		getClientContent().add( form.getScrollPaneForm(), BorderLayout.CENTER );
 		setBounds(100,100, 900, 600);
+
+		controller.initialize();
+
+		form.getDataModel().setValue("controller", controller);
 
 		return showModal();
 	}
