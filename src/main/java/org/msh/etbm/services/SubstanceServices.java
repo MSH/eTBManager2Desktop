@@ -44,9 +44,7 @@ public class SubstanceServices {
 	 */
 	public static List<Substance> getSubstancesPrevTreat() {
 		return App.getEntityManager()
-				.createQuery("from Substance where workspace.id = #{defaultWorkspace.id} " +
-						"and prevTreatmentForm = :p1 " +
-						"order by prevTreatmentOrder")
+				.createQuery("from Substance where prevTreatmentForm = :p1 order by prevTreatmentOrder")
 				.setParameter("p1", true)
 				.getResultList();
 	}

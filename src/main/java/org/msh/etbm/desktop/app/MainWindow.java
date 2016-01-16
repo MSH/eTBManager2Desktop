@@ -299,7 +299,7 @@ public class MainWindow implements EventBusListener {
 
 		txtUser.setText(UserSession.getUser().getName());
 		txtWorkspace.setText(UserSession.getWorkspace().getName().toString());
-		txtLastSync.setText(LocaleDateConverter.getDisplayDate(UserSession.getServerSignature().getLastSyncDate(), false)
+		txtLastSync.setText(LocaleDateConverter.getDisplayDate(UserSession.getServerSignature().getLastSyncDate(), false) + " "
 								+ LocaleDateConverter.getAsElapsedTime(new Period(UserSession.getServerSignature().getLastSyncDate(), DateUtils.getDate())));
 
     	// close login panel

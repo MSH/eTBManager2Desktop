@@ -24,6 +24,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import org.msh.etbm.services.cases.prevtreat.PrevTBTreatController;
 import org.msh.etbm.desktop.app.App;
 import org.msh.etbm.desktop.app.AppEvent;
 import org.msh.etbm.desktop.app.MainWindow;
@@ -80,6 +81,8 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 	private JButton btnSuspectFollowup;
 	
 	private JTabbedPane tabsCase;
+
+	private PrevTBTreatController prevTBTreatController;
 	
 	/**
 	 * Create the panel.
@@ -240,6 +243,8 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 		tabsCase.addTab(Messages.getString("cases.details.otherinfo"), null, pnlOthers, null);
 		tabsCase.setMnemonicAt(4, 4);
 
+		prevTBTreatController = App.getComponent(PrevTBTreatController.class);
+
 //		pnlDrugogram = new JPanel();
 //		tabsCase.addTab(Messages.getString("cases.details.report1"), null, pnlDrugogram, null);
 //		tabsCase.setMnemonicAt(5, 5);
@@ -247,7 +252,7 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 
 
 	/**
-	 * Called when user clicks on the delete button. A confirmation window is displayed to the
+	 * Called when user clicks on the delete button. A confirmation msantos	window is displayed to the
 	 * user confirm deleting the case, and once it's confirmed it's deleted  
 	 */
 	protected void deleteCase() {
@@ -441,7 +446,8 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 		
 		formData.getDataModel().setValue("tbcase", tbcase);
 		formData.getDataModel().setValue("medicalexamination", ETB.newWorkspaceObject(MedicalExamination.class));
-		formData.getFormUI().setPreferredWidth(600);
+		formData.getDataModel().setValue("prevTBTreatController", prevTBTreatController);
+		formData.getFormUI().setPreferredWidth(800);
 		
 		formData.getFormUI().setBackgroundColor(Color.WHITE);
 		formData.getFormUI().update();
