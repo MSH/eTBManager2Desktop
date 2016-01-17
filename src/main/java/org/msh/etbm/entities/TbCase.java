@@ -1399,9 +1399,13 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 		this.lastBmuTbRegistNumber = lastBmuTbRegistNumber;
 	}
 
-    public TreatmentCategory getTreatmentCategory() {
-        return treatmentCategory;
-    }
+	public TreatmentCategory getTreatmentCategory() {
+		return treatmentCategory;
+	}
+
+	public TreatmentCategory getTreatmentCategoryUndefined() {
+		return TreatmentCategory.UNDEFINED;
+	}
 
     public void setTreatmentCategory(TreatmentCategory treatmentCategory) {
         this.treatmentCategory = treatmentCategory;

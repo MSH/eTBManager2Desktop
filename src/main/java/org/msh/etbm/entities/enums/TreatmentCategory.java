@@ -6,7 +6,8 @@ package org.msh.etbm.entities.enums;
 public enum TreatmentCategory {
     INITIAL_REGIMEN_FIRST_LINE_DRUGS,
     RETREATMENT_FIRST_LINE_DRUGS,
-    SECOND_LINE_TREATMENT_REGIMEN
+    SECOND_LINE_TREATMENT_REGIMEN,
+    UNDEFINED
     ;
 
     public String getKey() {

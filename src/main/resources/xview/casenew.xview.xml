@@ -101,7 +101,8 @@
 		</region>
 		<field value="tbcase.secDrugsReceived" label="@TbCase.seclineDrugsReceived" readonly="true"
 			   visible="${tbcase.classification != 'DRTB'}"/>
-		<field value="tbcase.treatmentCategory" label="@TreatmentCategory" readonly="true"/>
+		<field value="tbcase.treatmentCategory" label="@TreatmentCategory" readonly="true" visible="${tbcase.treatmentCategory != null}"/>
+		<field value="tbcase.treatmentCategoryUndefined" label="@TreatmentCategory" readonly="true" visible="${tbcase.treatmentCategory == null}"/>
 	</section>
 
 	<section title="@cases.details.medexam" visible="${empty tbcase.id and tbcase.diagnosisType == 'CONFIRMED'}" column-count="2">
