@@ -149,9 +149,9 @@ public class TreatFollowupController {
             }
             vals[32] = planned == 0? "-": Integer.toString(planned);
 			vals[33] = executed == 0? "-": Integer.toString(executed);
-			vals[34] = "DOTS";
-			vals[35] = "SELF ADM.";
-			vals[36] = "CLEAR";
+			vals[34] = Messages.getString("TreatmentDayOption.DOTS");
+			vals[35] = Messages.getString("TreatmentDayOption.SELF");;
+			vals[36] = Messages.getString("form.clear");
 
             model.addRow(vals);
 			iniMonth = DateUtils.incMonths(iniMonth, 1);
