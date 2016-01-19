@@ -60,7 +60,8 @@ public class TreatmentServices {
 		pm.setComments(comments);
 		tbcase.getPrescribedMedicines().add(pm);
 		tbcase.getSyncData().setChanged(true);
-		
+		tbcase.updateDaysTreatPlanned();
+
 		em.persist(pm);
 		em.flush();
 
@@ -88,6 +89,7 @@ public class TreatmentServices {
 			em.remove(pm);
 
 		tbcase.setRegimen(null);
+		tbcase.updateDaysTreatPlanned();
 		updateTreatmentPeriod(tbcase);
 		em.flush();
 
@@ -125,6 +127,8 @@ public class TreatmentServices {
 			firstHU.getPeriod().setIniDate(dtini);
 			lastHU.getPeriod().setEndDate(dtend);
 		}
+
+		tbcase.updateDaysTreatPlanned();
 	}
 	
 
@@ -173,6 +177,7 @@ public class TreatmentServices {
 		tbcase.getPrescribedMedicines().clear();
 
 		tbcase.setOwnerUnit(tbcase.getNotificationUnit());
+		tbcase.updateDaysTreatPlanned();
 
 		em.persist(tbcase);
 		em.flush();
@@ -204,6 +209,7 @@ public class TreatmentServices {
 		srv.startStandardRegimen(tbcase, treatmentUnit, iniDate, regimen, medsIntPhase, medsContPhase);
 
 		tbcase.setRegimenIni(iniRegimen);
+		tbcase.updateDaysTreatPlanned();
 		CaseServices.instance().save(tbcase);
 		em.flush();
 	}
@@ -309,6 +315,8 @@ public class TreatmentServices {
 		TreatmentHealthUnit healthUnit = tbcase.getHealthUnits().get(tbcase.getHealthUnits().size() - 1);
 		healthUnit.setPeriod(p);
 		healthUnit.getSyncData().setChanged(true);
+
+		tbcase.updateDaysTreatPlanned();
 
 		em.persist(tbcase);
 	}

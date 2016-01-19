@@ -141,6 +141,7 @@ public class StartTreatmentServices {
 		tbcase.setState(CaseState.ONTREATMENT);
 		tbcase.setOwnerUnit(treatmentUnit);
 		tbcase.setIniContinuousPhase(iniContPhase);
+		tbcase.updateDaysTreatPlanned();
 
 		CaseServices.instance().save(tbcase);
 		em.flush();
