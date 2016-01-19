@@ -25,7 +25,8 @@ public class AdminUnitLabelUI extends ComponentUI<XField> {
 	
 	private AdministrativeUnit adminUnit;
 	private String fieldName;
-	
+	private boolean required;
+
 	/**
 	 * Default constructor
 	 * @param field
@@ -42,12 +43,18 @@ public class AdminUnitLabelUI extends ComponentUI<XField> {
 		JPanel pnl = new JPanel();
 		pnl.setLayout(null);
 		String[] names = AdminUnitsUtils.getCountryStructureLabels();
+		int i = 0;
 
 		for (String name: names) {
-			JXLabel lb = new JXLabel(name + ":");
+			String s = name + ":";
+			if(i==0 && isRequired())
+				s = "<html>" + s + "<span style='color:red'>*</span></html>";
+
+			JXLabel lb = new JXLabel(s);
 			lb.setLineWrap(true);
 			lb.setFont( UiConstants.fieldLabel );
 			pnl.add(lb);
+			i++;
 		}
 		return pnl;
 	}
@@ -172,5 +179,11 @@ public class AdminUnitLabelUI extends ComponentUI<XField> {
 //		update();
 	}
 
+	public boolean isRequired() {
+		return required;
+	}
 
+	public void setRequired(boolean required) {
+		this.required = required;
+	}
 }

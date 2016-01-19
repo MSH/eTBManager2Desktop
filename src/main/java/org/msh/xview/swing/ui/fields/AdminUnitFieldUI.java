@@ -166,6 +166,7 @@ public class AdminUnitFieldUI extends FieldComponentUI {
 	@Override
 	public ComponentUI createLabelDelegator() {
 		label = new AdminUnitLabelUI(getView().getField().getFieldName());
+		label.setRequired(isRequired());
 		return label;
 	}
 
