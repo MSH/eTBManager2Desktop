@@ -70,27 +70,4 @@ public class ExamDSTServices extends LaboratoryExamServices<ExamDST> {
 
 		super.save(exam);
 	}
-
-	/** {@inheritDoc}
-	 * @see org.msh.etbm.services.core.EntityServicesImpl#validate(org.msh.xview.FormContext)
-	 */
-	@Override
-	public boolean validate(ExamDST exam, FormContext form) {
-		// check if there is any result
-		if(ExamStatus.PERFORMED.equals(exam.getStatus())) {
-			boolean error = true;
-			for (ExamDSTResult res : exam.getResults())
-				if (res.getResult() != DstResult.NOTDONE) {
-					error = false;
-					break;
-				}
-			if (error) {
-				form.addMessage(null, "At least one result must be informed");
-				return false;
-			}
-		}
-
-		return super.validate(exam, form);
-	}
-
 }

@@ -1,5 +1,7 @@
 package org.msh.etbm.entities;
 
+import org.msh.etbm.entities.enums.DstResult;
+import org.msh.etbm.entities.enums.ExamStatus;
 import org.msh.etbm.sync.SyncClear;
 
 import java.io.Serializable;
@@ -92,5 +94,24 @@ public class ExamDST extends LaboratoryExamResult implements Serializable {
 	 */
 	public void setNumContaminated(int numContaminated) {
 		this.numContaminated = numContaminated;
+	}
+
+	/**
+	 * true is exam has result or should not be validated this way.
+	 * @return
+	 */
+	public boolean hasResult(){
+		// check if there is any result
+	 	if(ExamStatus.PERFORMED.equals(this.getStatus())) {
+			for (ExamDSTResult res : this.getResults()){
+				if (res.getResult() != DstResult.NOTDONE) {
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		return true;
 	}
 }

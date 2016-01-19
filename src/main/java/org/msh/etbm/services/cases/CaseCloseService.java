@@ -86,29 +86,6 @@ public class CaseCloseService {
 //		Events.instance().raiseEvent("case.close");
 	}
 
-
-	/**
-	 * Check if case can be closed
-	 * @return
-	 */
-	public boolean validateClose(TbCase tbcase, Date closeDate, FormContext frm) {
-/*		Date dt = tbcase.getDiagnosisDate();
-		if ((dt != null) && (date.before(dt))) {
-			if (frm != null)
-				frm.addMessage("tbcase.status", "cases.close.msg1");
-			return false;
-		}
-*/		
-		if (tbcase.getTreatmentPeriod() != null && closeDate.after(tbcase.getTreatmentPeriod().getEndDate())){
-			if (frm != null)
-				frm.addMessage("tbcase.status", "cases.close.msg2");
-			return false;
-		}
-		
-		return true;
-	}
-
-
 	/**
 	 * Reopen a closed case
 	 * @return

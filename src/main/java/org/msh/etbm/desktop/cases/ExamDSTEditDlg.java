@@ -66,19 +66,6 @@ public class ExamDSTEditDlg extends CaseDataEditDlg<ExamDST>{
 	}
 
 	/** {@inheritDoc}
-	 */
-	@Override
-	protected boolean saveFormData(FormDataModel dataModel) {
-		ExamDSTServices srv = App.getComponent(ExamDSTServices.class);
-		ExamDST exam = (ExamDST)dataModel.getValue("examdst");
-
-		if (!srv.validate(exam, getForm()))
-			return false;
-
-		return super.saveFormData(dataModel);
-	}
-
-	/** {@inheritDoc}
 	 * @see org.msh.etbm.desktop.cases.CaseDataEditDlg#getFormDimension()
 	 */
 	@Override

@@ -56,8 +56,6 @@ public class CloseCaseDlg extends GenericFormDialog {
 	@Override
 	protected boolean saveFormData(FormDataModel dataModel) {
 		CaseCloseService srv = App.getComponent(CaseCloseService.class);
-		if (!srv.validateClose(tbcase, date, getForm()))
-			return false;
 
 		// get the variables
 		TbCase tbcase = (TbCase)getForm().getValue("tbcase");
@@ -68,12 +66,21 @@ public class CloseCaseDlg extends GenericFormDialog {
 		srv.closeCase(tbcase, date, state, comment);
 		return true;
 	}
-	
-	
-	/**
-	 * Open the form and if case is closed, return true
-	 * @return
+
+	/** {@inheritDoc}
 	 */
+	public boolean validateCloseDate() {
+		if (tbcase.getTreatmentPeriod() != null && date.after(tbcase.getTreatmentPeriod().getEndDate())){
+			return false;
+		}
+		return true;
+	}
+
+
+		/**
+         * Open the form and if case is closed, return true
+         * @return
+         */
 	public static boolean execute(Integer caseId) {
 		CloseCaseDlg dlg = new CloseCaseDlg();
 		return dlg.openForm(caseId);
