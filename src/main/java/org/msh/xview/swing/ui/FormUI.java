@@ -3,11 +3,9 @@
  */
 package org.msh.xview.swing.ui;
 
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.*;
 
-import javax.swing.JComponent;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import org.msh.etbm.desktop.common.GuiUtils;
 import org.msh.xview.FormDataModel;
@@ -112,6 +110,20 @@ public class FormUI extends ComponentUI<XForm> {
 		panel.setPreferredSize(new Dimension(width, h));
 		panel.setMaximumSize(new Dimension(3000, h));
 		layoutRefreshNeeded = false;
+
+		doMessageUpdate();
+	}
+
+	/**
+	 * Update the label to display the messages
+	 */
+	@Override
+	protected void doMessageUpdate() {
+		// check about messages to display
+		if (hasMessages()) {
+			String msg = getDisplayMessages();
+			JOptionPane.showMessageDialog(getComponent(), msg);
+		}
 	}
 
 	/**

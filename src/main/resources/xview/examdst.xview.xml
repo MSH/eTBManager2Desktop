@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
+	<!--<validation rule="${false}" message="@PatientSample.dateCollected"/>-->
+
 	<section title="@PatientSample.identification" column-count="2">
 		<field value="examdst.dateCollected" label="@PatientSample.dateCollected" required="true">
 			<validation rule="${examdst.dateCollected &lt;= now()}" enabled-if="${not empty examdst.dateCollected}"

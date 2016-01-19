@@ -205,8 +205,8 @@ public abstract class ViewUI<E extends XView> {
 				}
 			}
 		}
-		
-		return result;
+
+		return result && validateRules();
 	}
 
 	/**
@@ -601,7 +601,8 @@ public abstract class ViewUI<E extends XView> {
 	 */
 	protected void initializeRules() {
 		E view = getView();
-		if ((view.getRules() == null) || (view.getRules().size() == 0)) {
+
+		if (view == null || (view.getRules() == null) || (view.getRules().size() == 0)) {
 			return;
 		}
 
