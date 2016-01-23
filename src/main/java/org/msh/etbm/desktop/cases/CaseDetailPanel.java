@@ -1,29 +1,20 @@
 package org.msh.etbm.desktop.cases;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.FlowLayout;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.GroupLayout;
+import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import org.jdesktop.swingx.JXLabel;
+import org.msh.etbm.entities.Tag;
+import org.msh.etbm.services.cases.CaseStateReport;
 import org.msh.etbm.services.cases.prevtreat.PrevTBTreatController;
 import org.msh.etbm.desktop.app.App;
 import org.msh.etbm.desktop.app.AppEvent;
@@ -70,6 +61,7 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 	private JPanel pnlMedExams;
 	private JPanel pnlTreatment;
 	private JPanel pnlOthers;
+	private JPanel pnlTags;
 	private JPanel pnlEdit;
 	
 	private SwingFormContext formData;
@@ -83,6 +75,10 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 	private JTabbedPane tabsCase;
 
 	private PrevTBTreatController prevTBTreatController;
+
+	private ImageIcon imgTagManual = new AwesomeIcon(AwesomeIcon.ICON_TAG, new Color(26, 53, 167), 18);
+	private ImageIcon imgTagAutogen = new AwesomeIcon(AwesomeIcon.ICON_TAG, new Color(8, 153, 73), 18);
+	private ImageIcon imgTagConsist = new AwesomeIcon(AwesomeIcon.ICON_TAG, new Color(239, 94, 94), 18);
 	
 	/**
 	 * Create the panel.
@@ -92,7 +88,10 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 		
 		pnlLeft = new JPanel();
 		add(pnlLeft, BorderLayout.WEST);
-		
+
+		pnlTags = new JPanel();
+		pnlTags.setLayout(new BoxLayout(pnlTags,BoxLayout.PAGE_AXIS));
+
 		btnDeleteCase = new JTransactionalButton(Messages.getString("form.casedelete"));
 		btnDeleteCase.setIcon(new AwesomeIcon(AwesomeIcon.ICON_REMOVE_SIGN, btnDeleteCase));
 		btnDeleteCase.addActionListener(new ActionListener() {
@@ -140,7 +139,8 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 										.addComponent(btnDeleteCase, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
 										.addComponent(btnCloseCase, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
 										.addComponent(btnReopen, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-										.addComponent(btnTags, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+										.addComponent(btnTags, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+										.addComponent(pnlTags, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
 								.addContainerGap(30, Short.MAX_VALUE))
         );
 		gl_pnlLeft.setVerticalGroup(
@@ -156,10 +156,12 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 								.addComponent(btnReopen)
 								.addPreferredGap(ComponentPlacement.RELATED)
 								.addComponent(btnTags)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(pnlTags)
 								.addContainerGap(360, Short.MAX_VALUE))
         );
 		pnlLeft.setLayout(gl_pnlLeft);
-		
+
 		pnlContent = new JPanel();
 		pnlContent.setBackground(Color.WHITE);
 		add(pnlContent, BorderLayout.CENTER);
@@ -226,7 +228,7 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
             }
         });
 		pnlEdit.add(btnEditCase);
-		
+
 		pnlExams = new JPanel();
 		tabsCase.addTab(Messages.getString("cases.details.exams"), null, pnlExams, null); //$NON-NLS-1$
 		tabsCase.setMnemonicAt(1, 1);
@@ -475,6 +477,8 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 		btnDeleteCase.setVisible( perms.canDelete(tbcase) );
 		btnTags.setVisible( false); //caseCtrl.isCanTagCase() );
 		btnSuspectFollowup.setVisible( tbcase.isSuspect() && tbcase.isOpen());
+
+		updateTags(tbcase);
 	}
 
 	/**
@@ -523,5 +527,27 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 	@Override
 	public void handleEvent(Object event, Object... data) {
 		refresh();
+	}
+
+	private void updateTags(TbCase c){
+		pnlTags.removeAll();
+
+		for(Tag t : c.getTags()){
+			JXLabel label = new JXLabel();
+			switch (t.getType()) {
+				case AUTOGEN:
+					label.setIcon(imgTagAutogen);
+					break;
+				case AUTOGEN_CONSISTENCY:
+					label.setIcon(imgTagConsist);
+					break;
+				default:
+					label.setIcon(imgTagManual);
+			}
+			label.setText(t.getName());
+			label.setLineWrap(true);
+			label.setMaximumSize(new Dimension(164,150));
+			pnlTags.add(label);
+		}
 	}
 }
