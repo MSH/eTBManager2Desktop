@@ -3,7 +3,9 @@
  */
 package org.msh.etbm.services.cases.prevtreat;
 
+import org.msh.etbm.entities.Substance;
 import org.msh.etbm.entities.enums.PrevTBTreatmentOutcome;
+import org.msh.utils.date.Month;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,16 +16,16 @@ import java.util.List;
  */
 public class PrevTBTreatmentData {
 
-	private Integer month;
+	private Month month;
 	private int year;
 	private PrevTBTreatmentOutcome outcome;
 	private List<SubstanceOption> substances = new ArrayList<SubstanceOption>();
 
-	public Integer getMonth() {
+	public Month getMonth() {
 		return month;
 	}
 
-	public void setMonth(Integer month) {
+	public void setMonth(Month month) {
 		this.month = month;
 	}
 
@@ -133,5 +135,18 @@ public class PrevTBTreatmentData {
 
 	public SubstanceOption getSubstance20() {
 		return substances.get(20);
+	}
+
+	public List<Substance> getSelectedSubstances(){
+		List<Substance> ret = null;
+		for(SubstanceOption o : substances){
+			if(o.isSelected()){
+				if(ret == null)
+					ret = new ArrayList<Substance>();
+				ret.add(o.getSubstance());
+			}
+		}
+
+		return ret;
 	}
 }

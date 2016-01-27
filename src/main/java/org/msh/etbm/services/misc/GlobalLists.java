@@ -1,13 +1,17 @@
 package org.msh.etbm.services.misc;
 
+import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.apache.commons.beanutils.PropertyUtils;
 import org.msh.etbm.desktop.app.App;
+import org.msh.etbm.desktop.common.SelectItem;
 import org.msh.etbm.entities.Workspace;
 import org.msh.etbm.entities.enums.*;
 import org.msh.etbm.services.login.UserSession;
+import org.msh.utils.date.Month;
 import org.springframework.stereotype.Component;
 
 /**
@@ -195,6 +199,21 @@ public class GlobalLists {
 			ExamStatus.REQUESTED,
 			ExamStatus.ONGOING,
 			ExamStatus.PERFORMED
+	};
+
+	private static final Month months[] = {
+			Month.JANUARY,
+			Month.FEBRUARY,
+			Month.MARCH,
+			Month.APRIL,
+			Month.MAY,
+			Month.JUNE,
+			Month.JULY,
+			Month.AUGUST,
+			Month.SEPTEMBER,
+			Month.OCTOBER,
+			Month.NOVEMBER,
+			Month.DECEMBER
 	};
 	
 	/**
@@ -395,7 +414,8 @@ public class GlobalLists {
 	
 //	@Factory("prevTBTreatmentOutcomes")
 	public PrevTBTreatmentOutcome[] getPrevTBTreatmentOutcomes() {
-		return getExtensionComponent("prevTBTreatmentOutcomes", PrevTBTreatmentOutcome[].class, prevTBTreatmentOutcomes);
+		return prevTBTreatmentOutcomes;
+		//return getExtensionComponent("prevTBTreatmentOutcomes", PrevTBTreatmentOutcome[].class, prevTBTreatmentOutcomes);
 	}
 	
 	public ExtraOutcomeInfo[] getExtraOutcomesInfo() {
@@ -561,6 +581,10 @@ public class GlobalLists {
 
 	public XpertResult[] getXpertResults(){
 		return getComponentValueWorkspace("xpertResults", XpertResult[].class, xpertResults);
+	}
+
+	public Month[] getMonths() {
+		return getComponentValueWorkspace("months", Month[].class, months);
 	}
 
 }

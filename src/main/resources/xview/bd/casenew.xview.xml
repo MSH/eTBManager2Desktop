@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form id="casenew" title="New notification">
 
+	<validation rule="${prevTBTreatController.isAllYearsValid()}" message="There is at least one invalid year at previous TB treatments."/>
+
 	<section id="sec1" title="@cases.patientdata" column-count="4">
 		<field value="patient.name" label="@Patient.name" colspan="3">
 			<validation rule="${!patient.name.isEmpty()}"
@@ -97,11 +99,20 @@
 						message="@validator.notfuture"/>
 		</field>
 	</section>
-<!--
+
 	<section title="@cases.prevtreat" visible="${true}" column-count="2">
 		<field value="prevTBTreatController.numPrevTbTreat" label="@cases.prevtreat.numprev"/>
 
-		<table values="${prevTBTreatController.listPrevTbTreat}" colspan="2" var="p" visible="${prevTBTreatController.numPrevTbTreat > 0}">
+		<table values="${prevTBTreatController.listPrevTbTreat}" colspan="2" var="p" visible="${prevTBTreatController.numPrevTbTreat >= 0}">
+			<column title="@cases.prevtreat.month">
+				<field value="p.month" options="${globalLists.months}"/>
+			</column>
+			<column title="@cases.prevtreat.year">
+				<field value="p.year" min="1900" max="2030" required="true">
+					<validation rule="${p.year &gt; 1930 and p.year &lt; 2030}"
+								message="@javax.faces.component.UISelectOne.INVALID" />
+				</field>
+			</column>
 			<column title="${prevTBTreatController.substances.get(0).abbrevName.name1}">
 				<field value="p.substance0.selected"/>
 			</column>
@@ -165,9 +176,12 @@
 			<column title="${prevTBTreatController.substances.get(20).abbrevName.name1}">
 				<field value="p.substance20.selected"/>
 			</column>
+			<column title="@PrevTBTreatment.outcome">
+				<field value="p.outcome" options="${globalLists.prevTBTreatmentOutcomes}" required="true"/>
+			</column>
 		</table>
 	</section>
--->
+
 	<section title="@cases.details.medexam" visible="${empty tbcase.id and tbcase.diagnosisType == 'CONFIRMED'}" column-count="2">
 		<field value="medicalexamination.date" label="@cases.details.date" required="true">
 			<validation enabled-if="${not empty medicalexamination.date}" rule="${medicalexamination.date &lt;= now()}"

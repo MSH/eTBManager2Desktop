@@ -245,8 +245,6 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 		tabsCase.addTab(Messages.getString("cases.details.otherinfo"), null, pnlOthers, null);
 		tabsCase.setMnemonicAt(4, 4);
 
-		prevTBTreatController = App.getComponent(PrevTBTreatController.class);
-
 //		pnlDrugogram = new JPanel();
 //		tabsCase.addTab(Messages.getString("cases.details.report1"), null, pnlDrugogram, null);
 //		tabsCase.setMnemonicAt(5, 5);
@@ -443,13 +441,14 @@ public class CaseDetailPanel extends JPanel implements Refreshable, PanelKey, Ev
 		formData.getDataModel().clear();
 		CaseServices caseSrv = App.getComponent(CaseServices.class);
 		tbcase = caseSrv.findEntity(tbcaseId);
-		
+		prevTBTreatController = new PrevTBTreatController(tbcase);
+
 		pnlEdit.setVisible(tbcase.isOpen());
 		
 		formData.getDataModel().setValue("tbcase", tbcase);
 		formData.getDataModel().setValue("medicalexamination", ETB.newWorkspaceObject(MedicalExamination.class));
 		formData.getDataModel().setValue("prevTBTreatController", prevTBTreatController);
-		formData.getFormUI().setPreferredWidth(800);
+		formData.getFormUI().setPreferredWidth(1300);
 		
 		formData.getFormUI().setBackgroundColor(Color.WHITE);
 		formData.getFormUI().update();

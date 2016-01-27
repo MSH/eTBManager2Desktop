@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form id="casenew" title="New notification">
 
+	<validation rule="${prevTBTreatController.isAllYearsValid()}" message="There is at least one invalid year at previous TB treatments."/>
+
     <section column-count="4">
 		<field value="tbcase.registrationDate" label="@TbCase.registrationDate.TB" required="true"
 			   visible="${tbcase.classification == 'TB' and tbcase.diagnosisType == 'CONFIRMED'}">
@@ -103,6 +105,88 @@
 			   visible="${tbcase.classification != 'DRTB'}"/>
 		<field value="tbcase.treatmentCategory" label="@TreatmentCategory" readonly="true" visible="${tbcase.treatmentCategory != null}"/>
 		<field value="tbcase.treatmentCategoryUndefined" label="@TreatmentCategory" readonly="true" visible="${tbcase.treatmentCategory == null}"/>
+	</section>
+
+	<section title="@cases.prevtreat" visible="${true}" column-count="2">
+		<field value="prevTBTreatController.numPrevTbTreat" label="@cases.prevtreat.numprev"/>
+
+		<table values="${prevTBTreatController.listPrevTbTreat}" colspan="2" var="p" visible="${prevTBTreatController.numPrevTbTreat >= 0}">
+			<column title="@cases.prevtreat.month">
+				<field value="p.month" options="${globalLists.months}"/>
+			</column>
+			<column title="@cases.prevtreat.year">
+				<field value="p.year" min="1900" max="2030" required="true">
+					<validation rule="${p.year &gt; 1930 and p.year &lt; 2030}"
+								message="@javax.faces.component.UISelectOne.INVALID" />
+				</field>
+			</column>
+			<column title="${prevTBTreatController.substances.get(0).abbrevName.name1}">
+				<field value="p.substance0.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(1).abbrevName.name1}">
+				<field value="p.substance1.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(2).abbrevName.name1}">
+				<field value="p.substance2.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(3).abbrevName.name1}">
+				<field value="p.substance3.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(4).abbrevName.name1}">
+				<field value="p.substance4.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(5).abbrevName.name1}">
+				<field value="p.substance5.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(6).abbrevName.name1}">
+				<field value="p.substance6.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(7).abbrevName.name1}">
+				<field value="p.substance7.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(8).abbrevName.name1}">
+				<field value="p.substance8.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(9).abbrevName.name1}">
+				<field value="p.substance9.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(10).abbrevName.name1}">
+				<field value="p.substance10.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(11).abbrevName.name1}">
+				<field value="p.substance11.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(12).abbrevName.name1}">
+				<field value="p.substance12.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(13).abbrevName.name1}">
+				<field value="p.substance13.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(14).abbrevName.name1}">
+				<field value="p.substance14.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(15).abbrevName.name1}">
+				<field value="p.substance15.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(16).abbrevName.name1}">
+				<field value="p.substance16.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(17).abbrevName.name1}">
+				<field value="p.substance17.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(18).abbrevName.name1}">
+				<field value="p.substance18.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(19).abbrevName.name1}">
+				<field value="p.substance19.selected"/>
+			</column>
+			<column title="${prevTBTreatController.substances.get(20).abbrevName.name1}">
+				<field value="p.substance20.selected"/>
+			</column>
+			<column title="@PrevTBTreatment.outcome">
+				<field value="p.outcome" options="${globalLists.prevTBTreatmentOutcomes}" required="true"/>
+			</column>
+		</table>
 	</section>
 
 	<section title="@cases.details.medexam" visible="${empty tbcase.id and tbcase.diagnosisType == 'CONFIRMED'}" column-count="2">

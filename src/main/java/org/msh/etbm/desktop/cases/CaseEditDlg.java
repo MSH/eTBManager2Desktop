@@ -1,6 +1,6 @@
 package org.msh.etbm.desktop.cases;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 
 import org.msh.etbm.services.cases.prevtreat.PrevTBTreatController;
 import org.msh.etbm.desktop.app.App;
@@ -32,8 +32,7 @@ public class CaseEditDlg extends GenericDialog {
 	public CaseEditDlg() {
 		setTitle(Messages.getString("cases.edit")); //$NON-NLS-1$
 		getClientContent().setLayout(new BorderLayout(0, 0));
-
-		prevTBTreatController = App.getComponent(PrevTBTreatController.class);
+		this.setResizable(true);
 	}
 
 	/**
@@ -59,18 +58,19 @@ public class CaseEditDlg extends GenericDialog {
 			@Override
 			public void execute(Integer caseid) {
                 TbCase tbcase = CaseServices.instance().findEntity(caseid);
+				prevTBTreatController = new PrevTBTreatController(tbcase);
 				form.getDataModel().setValue("tbcase", tbcase);
 //                form.getDataModel().setValue("patient", tbcase.getPatient());
 				form.getDataModel().setValue("medicalexamination", ETB.newWorkspaceObject(MedicalExamination.class));
 				form.getDataModel().setValue("prevTBTreatController", prevTBTreatController);
-				form.getFormUI().setPreferredWidth(700);
+				form.getFormUI().setPreferredWidth(1300);
 				form.getFormUI().update();
 			}
 			
 		});
 
 		getClientContent().add( form.getScrollPaneForm(), BorderLayout.CENTER );
-		setBounds(100,100, 900, 600);
+		setBounds(100,100, 1360, 800);
 
 		return showModal();
 	}
@@ -95,6 +95,7 @@ public class CaseEditDlg extends GenericDialog {
 				tbcase = App.getEntityManager().merge(tbcase);
 
 				CaseServices.instance().save(tbcase);
+				prevTBTreatController.save();
 			}
 			
 		});

@@ -1,11 +1,17 @@
 package org.msh.etbm.services.cases.prevtreat;
 
+import com.toedter.calendar.DateUtil;
+import org.msh.etbm.desktop.app.App;
+import org.msh.etbm.entities.PrevTBTreatment;
 import org.msh.etbm.entities.Substance;
 import org.msh.etbm.entities.TbCase;
 import org.msh.etbm.services.SubstanceServices;
+import org.msh.utils.date.DateUtils;
+import org.msh.utils.date.Month;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,28 +22,47 @@ import java.util.List;
 @Scope("prototype")
 public class PrevTBTreatController {
 
-    private int numPrevTbTreat = 1;
+    private int numPrevTbTreat;
     private TbCase tbcase;
     private List<Substance> substances;
     private List<PrevTBTreatmentData> listPrevTbTreat;
-    /**
-     * As the xml interface API doesn't have a "for each" tag the quantity of substances on prev tb table is hard coded.
-     */
-    private final static int NUM_PREVTB_SUSBTANCES = 21;
+
+    public PrevTBTreatController(TbCase c){
+        this.tbcase = c;
+        loadList();
+    }
+
+    public PrevTBTreatController(){
+
+    }
 
     private void updateLstPrevTbTreat(){
-        //TODO IMPROVE THIS ACCORDING TO WEB RULES.
+        int rowCount = (listPrevTbTreat != null ? listPrevTbTreat.size() : 0);
 
-        int i = 1;
-        listPrevTbTreat = new ArrayList<PrevTBTreatmentData>();
-        while (i<=numPrevTbTreat){
-            PrevTBTreatmentData info = new PrevTBTreatmentData();
-            info.setSubstances(new ArrayList<SubstanceOption>());
-            for(Substance s : getSubstances()){
-                info.getSubstances().add(new SubstanceOption(s, false));
+        if(rowCount > numPrevTbTreat){
+            //need to decrease quantity of rows.
+            if(listPrevTbTreat == null)
+                return;
+
+            while(listPrevTbTreat.size() > numPrevTbTreat){
+                listPrevTbTreat.remove(listPrevTbTreat.size()-1);
             }
-            listPrevTbTreat.add(info);
-            i = i+1;
+
+        }else if(numPrevTbTreat > rowCount){
+            //need to decrease quantity of rows.
+            if(listPrevTbTreat == null)
+                listPrevTbTreat = new ArrayList<PrevTBTreatmentData>();
+
+            while(numPrevTbTreat > listPrevTbTreat.size()){
+
+                PrevTBTreatmentData info = new PrevTBTreatmentData();
+                info.setSubstances(new ArrayList<SubstanceOption>());
+                for(Substance s : getSubstances()){
+                    info.getSubstances().add(new SubstanceOption(s, false));
+                }
+
+                listPrevTbTreat.add(info);
+            }
         }
     }
 
@@ -55,6 +80,7 @@ public class PrevTBTreatController {
 
     public void setTbcase(TbCase tbcase) {
         this.tbcase = tbcase;
+        loadList();
     }
 
     public List<Substance> getSubstances() {
@@ -75,5 +101,73 @@ public class PrevTBTreatController {
 
     public void setListPrevTbTreat(List<PrevTBTreatmentData> listPrevTbTreat) {
         this.listPrevTbTreat = listPrevTbTreat;
+    }
+
+    public void save(){
+        EntityManager entityManager = App.getEntityManager();
+
+        //remove existing prev tb treat
+        entityManager.createQuery("delete from PrevTBTreatment where tbcase.id = :caseId")
+                .setParameter("caseId", tbcase.getId())
+                .executeUpdate();
+
+        for(PrevTBTreatmentData p : listPrevTbTreat){
+            PrevTBTreatment p2 = new PrevTBTreatment();
+            p2.setSubstances(p.getSelectedSubstances());
+            p2.setTbcase(tbcase);
+            p2.setMonth(p.getMonth().getRecordNumber());
+            p2.setYear(p.getYear());
+            p2.setOutcome(p.getOutcome());
+
+            entityManager.persist(p2);
+        }
+    }
+
+    private void loadList(){
+        if(tbcase == null)
+            return;
+
+        EntityManager entityManager = App.getEntityManager();
+
+        List<PrevTBTreatment> list = entityManager.createQuery("from PrevTBTreatment where tbcase.id = :caseId")
+                .setParameter("caseId", tbcase.getId())
+                .getResultList();
+
+        for(PrevTBTreatment p : list){
+            PrevTBTreatmentData info = new PrevTBTreatmentData();
+            info.setOutcome(p.getOutcome());
+            info.setYear(p.getYear());
+            info.setMonth(Month.getByRecordNumber(p.getMonth()));
+            info.setSubstances(new ArrayList<SubstanceOption>());
+            for(Substance s : getSubstances()){
+                boolean isSelected = false;
+                for(Substance selSubst : p.getSubstances()){
+                    if(selSubst.getId().equals(s.getId())){
+                        isSelected = true;
+                        break;
+                    }
+                }
+                info.getSubstances().add(new SubstanceOption(s, isSelected));
+            }
+
+            if(listPrevTbTreat == null)
+                listPrevTbTreat = new ArrayList<PrevTBTreatmentData>();
+
+            listPrevTbTreat.add(info);
+        }
+
+        if(listPrevTbTreat != null)
+            this.numPrevTbTreat = listPrevTbTreat.size();
+    }
+
+    public boolean isAllYearsValid(){
+        int currentYear = DateUtils.yearOf(DateUtils.getDate());
+
+        for(PrevTBTreatmentData p : listPrevTbTreat){
+            if(p.getYear() > currentYear || p.getYear() < 1900)
+                return false;
+        }
+
+        return true;
     }
 }
