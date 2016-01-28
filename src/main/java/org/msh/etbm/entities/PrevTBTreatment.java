@@ -40,7 +40,13 @@ public class PrevTBTreatment extends SynchronizableEntity implements Serializabl
 	
 	@Column(name="TREATMENT_YEAR")
 	private int year;
-	
+
+	@Column(name="OUTCOME_MONTH")
+	private Integer outcomeMonth;
+
+	@Column(name="OUTCOME_YEAR")
+	private Integer outcomeYear;
+
 	@NotNull
 	private PrevTBTreatmentOutcome outcome;
 
@@ -98,5 +104,21 @@ public class PrevTBTreatment extends SynchronizableEntity implements Serializabl
 
 	public void setTbcase(TbCase tbcase) {
 		this.tbcase = tbcase;
+	}
+
+	public Integer getOutcomeMonth() {
+		return outcomeMonth;
+	}
+
+	public void setOutcomeMonth(Integer outcomeMonth) {
+		this.outcomeMonth = outcomeMonth;
+	}
+
+	public Integer getOutcomeYear() {
+		return outcomeYear;
+	}
+
+	public void setOutcomeYear(Integer outcomeYear) {
+		this.outcomeYear = outcomeYear;
 	}
 }

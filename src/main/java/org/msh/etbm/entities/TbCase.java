@@ -275,6 +275,10 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 	@OneToMany(cascade={CascadeType.ALL}, mappedBy="tbcase")
 	@FieldLog(ignore=true)
 	private List<ExamDST> examsDST = new ArrayList<ExamDST>();
+
+	@OneToMany(cascade={CascadeType.ALL}, mappedBy="tbcase", fetch=FetchType.LAZY)
+	@SyncClear
+	private List<PrevTBTreatment> prevTbTreats = new ArrayList<PrevTBTreatment>();
 	
 	private int issueCounter;
 
@@ -1433,5 +1437,14 @@ public class TbCase extends SynchronizableEntity implements Serializable, Custom
 
 	public void setMovedSecondLineTreatment(boolean movedSecondLineTreatment) {
 		this.movedSecondLineTreatment = movedSecondLineTreatment;
+	}
+
+
+	public List<PrevTBTreatment> getPrevTbTreats() {
+		return prevTbTreats;
+	}
+
+	public void setPrevTbTreats(List<PrevTBTreatment> prevTbTreats) {
+		this.prevTbTreats = prevTbTreats;
 	}
 }
