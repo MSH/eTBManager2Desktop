@@ -89,7 +89,7 @@ public class CaseServices extends EntityServicesImpl<TbCase> {
 			tbcase.setCurrentAddress(null);
 		}
 
-		if(!PatientType.PREVIOUSLY_TREATED.equals(tbcase.getInfectionSite())){
+		if(!PatientType.PREVIOUSLY_TREATED.equals(tbcase.getPatientType())){
 			tbcase.setPreviouslyTreatedType(null);
 		}
 
