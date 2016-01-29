@@ -184,7 +184,7 @@ public class NewCasePanel extends JPanel implements Refreshable {
 
 		FormManager formManager = (FormManager)App.getComponent("formManager");
 		formContext = (SwingFormContext)formManager.createFormAdapter("casenew");
-        ((SwingFormContext)formContext).getFormUI().setPreferredWidth(800);
+        ((SwingFormContext)formContext).getFormUI().setPreferredWidth(1420);
 
 		formContext.setValue("patient", patient);
 		formContext.setValue("tbcase", tbcase);
