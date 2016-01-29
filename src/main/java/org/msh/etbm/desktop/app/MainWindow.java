@@ -82,13 +82,15 @@ public class MainWindow implements EventBusListener {
     public static void main( String[] args )
     {
     	// the locale is manually set because in some countries it's not properly done
-    	String s = System.getProperty("user.language");
+    	/*String s = System.getProperty("user.language");
     	if (s != null) {
     		String locs[] = s.split("_");
     		if (locs.length > 1)
     			 Locale.setDefault(new Locale(locs[0], locs[1]));
     		else Locale.setDefault(new Locale(locs[0]));
-    	}
+    	}*/
+
+		Locale.setDefault(new Locale("en", "BD"));
 
     	// handle exceptions occurred inside the system
     	EventQueue queue = Toolkit.getDefaultToolkit().getSystemEventQueue();
