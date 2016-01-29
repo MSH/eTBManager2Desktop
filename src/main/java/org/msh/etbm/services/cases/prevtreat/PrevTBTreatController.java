@@ -171,7 +171,7 @@ public class PrevTBTreatController {
             if(p.getYear() > currentYear || p.getYear() < 1900)
                 return false;
 
-            if(p.getOutcomeYear() != 0 && (p.getOutcomeYear() > currentYear || p.getOutcomeYear() < 1900))
+            if(p.getOutcomeYear() != null && p.getOutcomeYear() != 0 && (p.getOutcomeYear() > currentYear || p.getOutcomeYear() < 1900))
                 return false;
         }
 
