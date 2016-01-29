@@ -70,7 +70,7 @@ public class TableUIPanel extends JPanel implements MouseListener, MouseMotionLi
 
 	/**
 	 * Default constructor
-	 * @param tableui is the instance of the {@link TableUI} linked to this table
+	 * @param table is the instance of the {@link TableUI} linked to this table
 	 */
 	public TableUIPanel(TableUI table) {
 		this.table = table;

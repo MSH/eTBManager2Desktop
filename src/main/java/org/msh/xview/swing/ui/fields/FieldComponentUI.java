@@ -37,6 +37,8 @@ public abstract class FieldComponentUI extends ComponentUI<XField>{
 	public static final String HANDLER_FLOAT = "float";
 	public static final String HANDLER_LONG = "long";
 	public static final String HANDLER_DOUBLE = "double";
+
+    public static final int READONLY_MIN_WIDTH = 32;
 	
 	private JXLabel lblReadOnly;
 	private int columnWidth;
@@ -54,7 +56,7 @@ public abstract class FieldComponentUI extends ComponentUI<XField>{
 		lblReadOnly.setLineWrap(true);
 		lblReadOnly.setVerticalAlignment(SwingConstants.TOP);
 		lblReadOnly.setFont( UiConstants.fieldValue );
-		lblReadOnly.setMinimumSize(new Dimension(100, 16));
+		lblReadOnly.setMinimumSize(new Dimension(READONLY_MIN_WIDTH, 16));
 		return lblReadOnly;
 	};
 
@@ -73,9 +75,6 @@ public abstract class FieldComponentUI extends ComponentUI<XField>{
 		JXLabel lbl = (JXLabel)getComponent();
 		String s = getDisplayText();
 		lbl.setText(s);
-//		int w = (int)lbl.getPreferredSize().getWidth();
-		// do that to update the height
-//		setWidth(w);
 	}
 	
 	
