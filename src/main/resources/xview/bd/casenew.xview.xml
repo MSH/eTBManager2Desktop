@@ -108,9 +108,9 @@
 				<field value="p.month" options="${globalLists.months}"/>
 			</column>
 			<column title="@cases.prevtreat.year">
-				<field value="p.year" min="1900" max="2030" required="true">
-					<validation rule="${p.year &gt; 1930 and p.year &lt; 2030}"
-								message="@javax.faces.component.UISelectOne.INVALID" />
+				<field value="p.year" handler="combo">
+					<param name="min" value="1966" />
+					<param name="max" value="2030" />
 				</field>
 			</column>
 			<column title="${prevTBTreatController.substances.get(0).abbrevName.name1}">
@@ -183,7 +183,10 @@
 				<field value="p.outcomeMonth" options="${globalLists.months}"/>
 			</column>
 			<column title="@cases.prevtreat.outyear">
-				<field value="p.outcomeYear" min="0" max="9999" required="true"/>
+				<field value="p.outcomeYear" handler="combo">
+					<param name="min" value="1966" />
+					<param name="max" value="2030" />
+				</field>
 			</column>
 		</table>
 	</section>
