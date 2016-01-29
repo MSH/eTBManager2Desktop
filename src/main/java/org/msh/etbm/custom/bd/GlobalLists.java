@@ -250,7 +250,7 @@ public class GlobalLists {
         return sideEffectOutcomes;
     }
 
-    public static PrevTBTreatmentOutcome[] getPrevTBTreatmentOutcomes(){
+    public PrevTBTreatmentOutcome[] getPrevTBTreatmentOutcomes(){
         return prevTBTreatmentOutcomes;
     }
 

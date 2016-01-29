@@ -179,6 +179,15 @@
 			<column title="@PrevTBTreatment.outcome">
 				<field value="p.outcome" options="${globalLists.prevTBTreatmentOutcomes}" required="true"/>
 			</column>
+			<column title="@cases.prevtreat.outmonth">
+				<field value="p.outcomeMonth" options="${globalLists.months}"/>
+			</column>
+			<column title="@cases.prevtreat.outyear">
+				<field value="p.outcomeYear" min="1900" max="2030" required="true">
+					<validation rule="${p.outcomeYear &gt; 1930 and p.outcomeYear &lt; 2030}"
+								message="@javax.faces.component.UISelectOne.INVALID" />
+				</field>
+			</column>
 		</table>
 	</section>
 

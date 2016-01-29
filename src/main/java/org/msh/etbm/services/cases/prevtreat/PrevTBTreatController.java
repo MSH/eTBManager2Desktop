@@ -118,6 +118,8 @@ public class PrevTBTreatController {
             p2.setMonth(p.getMonth().getRecordNumber());
             p2.setYear(p.getYear());
             p2.setOutcome(p.getOutcome());
+            p2.setOutcomeMonth(p.getOutcomeMonth().getRecordNumber());
+            p2.setOutcomeYear(p.getOutcomeYear());
 
             entityManager.persist(p2);
         }
@@ -138,6 +140,8 @@ public class PrevTBTreatController {
             info.setOutcome(p.getOutcome());
             info.setYear(p.getYear());
             info.setMonth(Month.getByRecordNumber(p.getMonth()));
+            info.setOutcomeYear(p.getOutcomeYear());
+            info.setOutcomeMonth(Month.getByRecordNumber(p.getOutcomeMonth()));
             info.setSubstances(new ArrayList<SubstanceOption>());
             for(Substance s : getSubstances()){
                 boolean isSelected = false;
@@ -165,6 +169,9 @@ public class PrevTBTreatController {
 
         for(PrevTBTreatmentData p : listPrevTbTreat){
             if(p.getYear() > currentYear || p.getYear() < 1900)
+                return false;
+
+            if(p.getOutcomeYear() != 0 && (p.getOutcomeYear() > currentYear || p.getOutcomeYear() < 1900))
                 return false;
         }
 

@@ -63,14 +63,14 @@ public class CaseEditDlg extends GenericDialog {
 //                form.getDataModel().setValue("patient", tbcase.getPatient());
 				form.getDataModel().setValue("medicalexamination", ETB.newWorkspaceObject(MedicalExamination.class));
 				form.getDataModel().setValue("prevTBTreatController", prevTBTreatController);
-				form.getFormUI().setPreferredWidth(1300);
+				form.getFormUI().setPreferredWidth(1360);
 				form.getFormUI().update();
 			}
 			
 		});
 
 		getClientContent().add( form.getScrollPaneForm(), BorderLayout.CENTER );
-		setBounds(100,100, 1360, 800);
+		setBounds(100,100, 1400, 800);
 
 		return showModal();
 	}

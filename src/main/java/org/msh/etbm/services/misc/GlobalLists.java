@@ -215,26 +215,7 @@ public class GlobalLists {
 			Month.NOVEMBER,
 			Month.DECEMBER
 	};
-	
-	/**
-	 * Get component according to the workspace in use
-	 * @param <E>
-	 * @param componentName
-	 * @param type
-	 * @param result
-	 * @return
-	 */
-	protected <E> E getExtensionComponent(String componentName, Class<E> type, Object result) {
-		Workspace defaultWorkspace = UserSession.getWorkspace();
 
-		if ((defaultWorkspace == null) || (defaultWorkspace.getExtension() == null))
-			return (E)result;
-		
-		E val = (E)App.getComponent(componentName.concat("." + defaultWorkspace.getExtension()));
-		return (val == null? (E)result: val);
-	}
-
-	
 	/**
 	 * Return a value of a property of a component called enumList + workspace extension
 	 * @param <E>
@@ -411,11 +392,9 @@ public class GlobalLists {
 		return lst;
 	}
 
-	
-//	@Factory("prevTBTreatmentOutcomes")
+
 	public PrevTBTreatmentOutcome[] getPrevTBTreatmentOutcomes() {
-		return prevTBTreatmentOutcomes;
-		//return getExtensionComponent("prevTBTreatmentOutcomes", PrevTBTreatmentOutcome[].class, prevTBTreatmentOutcomes);
+		return getComponentValueWorkspace("prevTBTreatmentOutcomes", PrevTBTreatmentOutcome[].class, prevTBTreatmentOutcomes);
 	}
 	
 	public ExtraOutcomeInfo[] getExtraOutcomesInfo() {

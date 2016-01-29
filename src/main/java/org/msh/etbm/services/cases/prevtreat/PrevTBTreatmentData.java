@@ -7,6 +7,7 @@ import org.msh.etbm.entities.Substance;
 import org.msh.etbm.entities.enums.PrevTBTreatmentOutcome;
 import org.msh.utils.date.Month;
 
+import javax.persistence.Column;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,8 @@ public class PrevTBTreatmentData {
 	private int year;
 	private PrevTBTreatmentOutcome outcome;
 	private List<SubstanceOption> substances = new ArrayList<SubstanceOption>();
+	private Month outcomeMonth;
+	private Integer outcomeYear;
 
 	public Month getMonth() {
 		return month;
@@ -135,6 +138,22 @@ public class PrevTBTreatmentData {
 
 	public SubstanceOption getSubstance20() {
 		return substances.get(20);
+	}
+
+	public Month getOutcomeMonth() {
+		return outcomeMonth;
+	}
+
+	public void setOutcomeMonth(Month outcomeMonth) {
+		this.outcomeMonth = outcomeMonth;
+	}
+
+	public Integer getOutcomeYear() {
+		return outcomeYear;
+	}
+
+	public void setOutcomeYear(Integer outcomeYear) {
+		this.outcomeYear = outcomeYear;
 	}
 
 	public List<Substance> getSelectedSubstances(){
