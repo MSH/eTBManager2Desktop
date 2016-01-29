@@ -118,8 +118,8 @@ public class PrevTBTreatController {
             p2.setMonth(p.getMonth().getRecordNumber());
             p2.setYear(p.getYear());
             p2.setOutcome(p.getOutcome());
-            p2.setOutcomeMonth(p.getOutcomeMonth().getRecordNumber());
-            p2.setOutcomeYear(p.getOutcomeYear());
+            p2.setOutcomeMonth(p.getOutcomeMonth() != null ? p.getOutcomeMonth().getRecordNumber() : null);
+            p2.setOutcomeYear((p.getOutcomeYear() == 0 ? null : p.getOutcomeYear()));
 
             entityManager.persist(p2);
         }
@@ -141,7 +141,7 @@ public class PrevTBTreatController {
             info.setYear(p.getYear());
             info.setMonth(Month.getByRecordNumber(p.getMonth()));
             info.setOutcomeYear(p.getOutcomeYear());
-            info.setOutcomeMonth(Month.getByRecordNumber(p.getOutcomeMonth()));
+            info.setOutcomeMonth(p.getOutcomeMonth() == null ? null : Month.getByRecordNumber(p.getOutcomeMonth()));
             info.setSubstances(new ArrayList<SubstanceOption>());
             for(Substance s : getSubstances()){
                 boolean isSelected = false;
