@@ -111,6 +111,9 @@ public class PrevTBTreatController {
                 .setParameter("caseId", tbcase.getId())
                 .executeUpdate();
 
+        if(listPrevTbTreat == null)
+            return;
+
         for(PrevTBTreatmentData p : listPrevTbTreat){
             PrevTBTreatment p2 = new PrevTBTreatment();
             p2.setSubstances(p.getSelectedSubstances());
@@ -165,6 +168,9 @@ public class PrevTBTreatController {
     }
 
     public boolean isAllYearsValid(){
+        if(listPrevTbTreat==null)
+            return true;
+
         int currentYear = DateUtils.yearOf(DateUtils.getDate());
 
         for(PrevTBTreatmentData p : listPrevTbTreat){
