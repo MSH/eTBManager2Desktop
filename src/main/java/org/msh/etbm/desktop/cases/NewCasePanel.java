@@ -26,6 +26,7 @@ import org.msh.etbm.entities.TbCase;
 import org.msh.etbm.entities.enums.DiagnosisType;
 import org.msh.etbm.services.cases.CaseServices;
 import org.msh.etbm.services.cases.MedicalExaminationServices;
+import org.msh.etbm.services.cases.prevtreat.PrevTBTreatController;
 import org.msh.etbm.services.misc.ETB;
 import org.msh.eventbus.EventBusService;
 import org.msh.springframework.persistence.ActionCallback;
@@ -47,6 +48,7 @@ public class NewCasePanel extends JPanel implements Refreshable {
 	private Patient patient;
 	private TbCase tbcase;
 	private SwingFormContext formContext;
+	private PrevTBTreatController prevTBTreatController;
 	
 	/**
 	 * Create the panel.
@@ -163,6 +165,8 @@ public class NewCasePanel extends JPanel implements Refreshable {
 					medexam.setTbcase(tbcase);
 					srv.save(medexam);
 				}
+
+				prevTBTreatController.save();
 			}
 		});
 
@@ -185,10 +189,12 @@ public class NewCasePanel extends JPanel implements Refreshable {
 		FormManager formManager = (FormManager)App.getComponent("formManager");
 		formContext = (SwingFormContext)formManager.createFormAdapter("casenew");
         ((SwingFormContext)formContext).getFormUI().setPreferredWidth(1420);
+		prevTBTreatController = new PrevTBTreatController(tbcase);
 
 		formContext.setValue("patient", patient);
 		formContext.setValue("tbcase", tbcase);
-		
+		formContext.setValue("prevTBTreatController", prevTBTreatController);
+
 		MedicalExamination medexam = ETB.newWorkspaceObject(MedicalExamination.class);
 		formContext.setValue("medicalexamination", medexam);
 
