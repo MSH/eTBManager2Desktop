@@ -124,7 +124,7 @@ public class CaseDataEditDlg<E> extends GenericFormDialog {
 		}
 		else getForm().setValue(getEntityVariableName(), getEntityService().newEntity());
 		
-		getForm().getFormUI().setPreferredWidth(600);
+		getForm().getFormUI().setPreferredWidth(getPreferredWidth());
 	}
 
 
@@ -224,6 +224,10 @@ public class CaseDataEditDlg<E> extends GenericFormDialog {
 	 */
 	public Integer getEntityId() {
 		return entityId;
+	}
+
+	protected Integer getPreferredWidth(){
+		return 600;
 	}
 
 }
