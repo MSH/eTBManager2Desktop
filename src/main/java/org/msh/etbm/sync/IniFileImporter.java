@@ -528,7 +528,10 @@ public class IniFileImporter {
 				.getResultList();
 
 		if (lst.size() == 0) {
-			throw new RuntimeException("Case not found. ID = " + caseTag.getCaseId());
+			return;
+			//When it is a new case the desktop returns an error because it can't find the case_id
+			//The case_id will be imported after this point
+			//throw new RuntimeException("Case not found. ID = " + caseTag.getCaseId());
 		}
 
 		TbCase tbcase = lst.get(0);
