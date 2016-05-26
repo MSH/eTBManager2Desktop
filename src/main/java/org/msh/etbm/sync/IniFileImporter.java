@@ -172,7 +172,6 @@ public class IniFileImporter {
             }
 		}else{
             Integer id = (Integer)params.get("id");
-            System.out.println(objectType + " -> " + id);
             if (id == null)
                 return null;
 

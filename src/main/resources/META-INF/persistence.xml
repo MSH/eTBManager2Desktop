@@ -1,52 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
-  <persistence-unit name="etbmPersistenceUnit" transaction-type="RESOURCE_LOCAL">
-    <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <class>org.msh.etbm.entities.AdministrativeUnit</class>
-    <class>org.msh.etbm.entities.CaseComorbidity</class>
-    <class>org.msh.etbm.entities.CaseSideEffect</class>
-    <class>org.msh.etbm.entities.CountryStructure</class>
-    <class>org.msh.etbm.entities.ExamCulture</class>
-    <class>org.msh.etbm.entities.ExamDST</class>
-    <class>org.msh.etbm.entities.ExamDSTResult</class>
-    <class>org.msh.etbm.entities.ExamHIV</class>
-    <class>org.msh.etbm.entities.ExamMicroscopy</class>
-    <class>org.msh.etbm.entities.ExamXRay</class>
-    <class>org.msh.etbm.entities.FieldValue</class>
-    <class>org.msh.etbm.entities.HealthSystem</class>
-    <class>org.msh.etbm.entities.Laboratory</class>
-    <class>org.msh.etbm.entities.MedicalExamination</class>
-    <class>org.msh.etbm.entities.Medicine</class>
-    <class>org.msh.etbm.entities.MedicineComponent</class>
-    <class>org.msh.etbm.entities.MedicineRegimen</class>
-    <class>org.msh.etbm.entities.Patient</class>
-    <class>org.msh.etbm.entities.PrescribedMedicine</class>
-    <class>org.msh.etbm.entities.PrevTBTreatment</class>
-    <class>org.msh.etbm.entities.Regimen</class>
-    <class>org.msh.etbm.entities.SequenceInfo</class>
-    <class>org.msh.etbm.entities.Source</class>
-    <class>org.msh.etbm.entities.Substance</class>
-    <class>org.msh.etbm.entities.Tag</class>
-    <class>org.msh.etbm.entities.TbCase</class>
-    <class>org.msh.etbm.entities.TbContact</class>
-    <class>org.msh.etbm.entities.Tbunit</class>
-    <class>org.msh.etbm.entities.TreatmentHealthUnit</class>
-    <class>org.msh.etbm.entities.User</class>
-    <class>org.msh.etbm.entities.UserPermission</class>
-    <class>org.msh.etbm.entities.UserProfile</class>
-    <class>org.msh.etbm.entities.UserRole</class>
-    <class>org.msh.etbm.entities.UserWorkspace</class>
-    <class>org.msh.etbm.entities.Workspace</class>
-    <class>org.msh.etbm.entities.WorkspaceView</class>
-    <properties>
-      <property name="hibernate.connection.username" value="SA"/>
-      <property name="hibernate.dialect" value="org.msh.utils.CustomHSQLDialect"/>
-      <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver"/>
-      <property name="hibernate.connection.password" value=""/>
-<!--       <property name="hibernate.connection.url" value="jdbc:hsqldb:file:database/etbmanager"/> -->
-      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
-      <property name="hibernate.hbm2ddl.auto" value="none"/>
-      <property name="hibernate.show_sql" value="${app.development}"/>
-    </properties>
-  </persistence-unit>
+    <persistence-unit name="etbmPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>org.msh.etbm.entities.AdministrativeUnit</class>
+        <class>org.msh.etbm.entities.CaseComorbidity</class>
+        <class>org.msh.etbm.entities.CaseSideEffect</class>
+        <class>org.msh.etbm.entities.CountryStructure</class>
+        <class>org.msh.etbm.entities.ExamCulture</class>
+        <class>org.msh.etbm.entities.ExamDST</class>
+        <class>org.msh.etbm.entities.ExamDSTResult</class>
+        <class>org.msh.etbm.entities.ExamHIV</class>
+        <class>org.msh.etbm.entities.ExamMicroscopy</class>
+        <class>org.msh.etbm.entities.ExamXRay</class>
+        <class>org.msh.etbm.entities.FieldValue</class>
+        <class>org.msh.etbm.entities.HealthSystem</class>
+        <class>org.msh.etbm.entities.Laboratory</class>
+        <class>org.msh.etbm.entities.MedicalExamination</class>
+        <class>org.msh.etbm.entities.Medicine</class>
+        <class>org.msh.etbm.entities.MedicineComponent</class>
+        <class>org.msh.etbm.entities.MedicineRegimen</class>
+        <class>org.msh.etbm.entities.Patient</class>
+        <class>org.msh.etbm.entities.PrescribedMedicine</class>
+        <class>org.msh.etbm.entities.PrevTBTreatment</class>
+        <class>org.msh.etbm.entities.Regimen</class>
+        <class>org.msh.etbm.entities.SequenceInfo</class>
+        <class>org.msh.etbm.entities.Source</class>
+        <class>org.msh.etbm.entities.Substance</class>
+        <class>org.msh.etbm.entities.Tag</class>
+        <class>org.msh.etbm.entities.TbCase</class>
+        <class>org.msh.etbm.entities.TbContact</class>
+        <class>org.msh.etbm.entities.Tbunit</class>
+        <class>org.msh.etbm.entities.TreatmentHealthUnit</class>
+        <class>org.msh.etbm.entities.User</class>
+        <class>org.msh.etbm.entities.UserPermission</class>
+        <class>org.msh.etbm.entities.UserProfile</class>
+        <class>org.msh.etbm.entities.UserRole</class>
+        <class>org.msh.etbm.entities.UserWorkspace</class>
+        <class>org.msh.etbm.entities.Workspace</class>
+        <class>org.msh.etbm.entities.WorkspaceView</class>
+        <class>org.msh.etbm.entities.ServerSignature</class>
+        <class>org.msh.etbm.entities.TreatmentMonitoring</class>
+        <class>org.msh.etbm.entities.ExamXpert</class>
+        <class>org.msh.etbm.entities.EntityLastVersion</class>
+        <properties>
+            <property name="hibernate.connection.username" value="SA"/>
+            <property name="hibernate.dialect" value="org.msh.utils.CustomHSQLDialect"/>
+            <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver"/>
+            <property name="hibernate.connection.password" value=""/>
+            <!--       <property name="hibernate.connection.url" value="jdbc:hsqldb:file:database/etbmanager"/> -->
+            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+            <property name="hibernate.hbm2ddl.auto" value="none"/>
+            <property name="hibernate.show_sql" value="${app.development}"/>
+        </properties>
+    </persistence-unit>
 </persistence>
