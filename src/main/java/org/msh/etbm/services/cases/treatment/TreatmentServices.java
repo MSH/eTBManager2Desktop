@@ -177,7 +177,6 @@ public class TreatmentServices {
 		tbcase.getPrescribedMedicines().clear();
 
 		tbcase.setOwnerUnit(tbcase.getNotificationUnit());
-		tbcase.updateDaysTreatPlanned();
 
 		em.persist(tbcase);
 		em.flush();

@@ -71,9 +71,16 @@ public class ExamDSTEditDlg extends CaseDataEditDlg<ExamDST>{
 	@Override
 	protected Dimension getFormSize() {
 		Dimension d = super.getFormSize();
-		d.setSize(850, 550);
-		getForm().getFormUI().setPreferredWidth(830);
+		d.setSize(870, 550);
 		return d;
+	}
+
+	/** {@inheritDoc}
+	 * @see org.msh.etbm.desktop.cases.CaseDataEditDlg#getFormDimension()
+	 */
+	@Override
+	protected Integer getPreferredWidth() {
+		return 800;
 	}
 
 
