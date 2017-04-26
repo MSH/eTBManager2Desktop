@@ -55,6 +55,8 @@ public class Tbunit extends WSObject implements Serializable {
     private HealthSystem healthSystem;
     @Column(length = 50)
     private String legacyId;
+    @Column(length=11)
+    private String dhis2Id;
     
     private String phoneNumber;
     // ready to be removed from the system
@@ -514,5 +516,13 @@ public class Tbunit extends WSObject implements Serializable {
 
     public void setShipAdminUnit(AdministrativeUnit shipAdminUnit) {
         this.shipAdminUnit = shipAdminUnit;
+    }
+
+    public String getDhis2Id() {
+        return dhis2Id;
+    }
+
+    public void setDhis2Id(String dhis2Id) {
+        this.dhis2Id = dhis2Id;
     }
 }
